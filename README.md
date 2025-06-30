@@ -60,7 +60,7 @@ Draftosaurus combina:
 
 Es **ideal para todas las edades** y perfecto tanto para **sesiones casuales** como para quienes disfrutan de **juegos con decisiones interesantes** y **rejugabilidad**.
 
----
+----
 
 ## 📌 Créditos
 
