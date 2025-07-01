@@ -1,5 +1,5 @@
 body {
-      background: linear-gradient(to bottom, #6e00ff, #000000);
+      background: linear-gradient(to bottom, #8e2de2, #000000);
       background-attachment: fixed;
       background-size: cover;
       background-position: center;
@@ -93,7 +93,7 @@ body {
     }
 
     .yellow-text {
-      color: #ffcc00 !important;
+      color: #ffc107 !important;
     }
 
     /* Estilos para alternar formularios */
@@ -164,7 +164,7 @@ body {
     }
 
     .toggle-link {
-      color: #ffcc00;
+      color: #ffc107;
       cursor: pointer;
       text-decoration: underline;
       font-weight: 500;
