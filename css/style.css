@@ -101,7 +101,7 @@ section {
 }
 
 #contacto button.btn-primary:hover {
-    background-color: #6a1bb7;
+    background-color: #3a1c5f;
 }
 
 .footer {
@@ -132,7 +132,7 @@ btn-zoom img {
 }
 
 #registrarse {
-    background: linear-gradient(to bottom, #4b007d, #000000);
+    background: linear-gradient(to bottom, #8e2de2, #000000);
     color: #eee;
     padding: 50px 20px;
 }
@@ -163,5 +163,5 @@ btn-zoom img {
 }
 
 #registrarse button.btn-primary:hover {
-    background-color: #6a1bb7;
+    background-color: #3a1c5f;
 }
