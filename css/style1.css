@@ -1,0 +1,167 @@
+body {
+    background-color: black;
+}
+
+.navbar-brand img {
+    height: 70px;
+    /* Adjust as needed */
+    width: auto;
+    /* Maintain aspect ratio */
+}
+
+.carousel-item img {
+    max-height: 500px;
+    /* Ajusta a lo que quieras */
+    object-fit: cover;
+    /* Recorta la imagen si es necesario */
+    width: 100%;
+    /* Que siga ocupando todo el ancho */
+}
+
+
+.card-custom {
+    background-color: #281039;
+    border-radius: 15px;
+    transition: transform 0.2s;
+}
+
+.card-custom:hover {
+    transform: scale(1.05);
+
+}
+
+.icon-style {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+#como-jugar .list-group-item {
+    background-color: #281039;
+    /* fondo oscuro, gris azulado */
+    color: #eee;
+    /* texto claro */
+    border-color: #444;
+    /* borde tenue */
+}
+
+#como-jugar .list-group-item .fw-bold {
+    color: #ffc107;
+    /* resaltado amarillo para títulos */
+}
+
+/* Opcional: sombra suave para la lista */
+#como-jugar .list-group {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+section {
+    background: linear-gradient(to bottom, #8e2de2, #000000);
+    color: white;
+    padding: 50px 20px;
+}
+
+
+#contacto {
+    background: linear-gradient(to bottom, #4b007d, #000000);
+    /* Un degradado más oscuro, similar al resto */
+    color: #eee;
+    /* Texto claro */
+    padding: 50px 20px;
+}
+
+#contacto .card {
+    background-color: #281039;
+    /* Igual que las cards de arriba */
+    border-radius: 15px;
+    color: #eee;
+}
+
+#contacto .form-label {
+    color: #ffc107;
+    /* Igual que los títulos resaltados de la sección "Cómo Jugar" */
+}
+
+#contacto .form-control {
+    background-color: #3a1c5f;
+    /* Campo de texto más oscuro */
+    color: #fff;
+    border: 1px solid #5a2e8a;
+}
+
+#contacto .form-control::placeholder {
+    color: #bbb;
+}
+
+#contacto button.btn-primary {
+    background-color: #8e2de2;
+    border: none;
+}
+
+#contacto button.btn-primary:hover {
+    background-color: #6a1bb7;
+}
+
+.footer {
+    background-color: #252129;
+    color: white;
+    padding: 40px 0;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+
+
+btn-zoom img {
+    width: auto;        /* Ajusta a lo que quieras (ej: 150px) */
+    height: 10px;         /* Mantiene proporción */
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.btn-zoom:hover img {
+    transform: scale(1.1);
+}
+
+#registrarse {
+    background: linear-gradient(to bottom, #4b007d, #000000);
+    color: #eee;
+    padding: 50px 20px;
+}
+
+#registrarse .card {
+    background-color: #281039;
+    border-radius: 15px;
+    color: #eee;
+}
+
+#registrarse .form-label {
+    color: #ffc107;
+}
+
+#registrarse .form-control {
+    background-color: #3a1c5f;
+    color: #fff;
+    border: 1px solid #5a2e8a;
+}
+
+#registrarse .form-control::placeholder {
+    color: #bbb;
+}
+
+#registrarse button.btn-primary {
+    background-color: #8e2de2;
+    border: none;
+}
+
+#registrarse button.btn-primary:hover {
+    background-color: #6a1bb7;
+}
