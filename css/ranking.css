@@ -93,3 +93,9 @@ body {
   background-color: #e0a800;
   transform: scale(1.05);
 }
+
+body {
+    background: linear-gradient(to bottom, #8e2de2, #000000);
+    color: white;
+    padding: 50px 20px;
+}
