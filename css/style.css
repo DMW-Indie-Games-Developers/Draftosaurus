@@ -38,9 +38,9 @@ body {
 #como-jugar .list-group-item {
     background-color: #281039;
     /* fondo oscuro, gris azulado */
-    color: #eee;
+    color: #fff;
     /* texto claro */
-    border-color: #444;
+    border-color: #000000;
     /* borde tenue */
 }
 
@@ -105,7 +105,7 @@ section {
 }
 
 .footer {
-    background-color: #252129;
+    background-color: #212529;
     color: white;
     padding: 40px 0;
     border-top-left-radius: 15px;
