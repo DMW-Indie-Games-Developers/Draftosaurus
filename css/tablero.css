@@ -1,7 +1,7 @@
 body {
+  background: linear-gradient(to bottom, #8e2de2, #000000);
   margin: 0;
   padding: 0;
-  background-color: #000;
   overflow-x: hidden;
   font-family: Arial, sans-serif;
 }
