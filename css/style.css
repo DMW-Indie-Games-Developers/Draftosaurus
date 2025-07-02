@@ -67,7 +67,7 @@ section {
 #contacto {
     background: linear-gradient(to bottom, #8e2de2, #000000);
     /* Un degradado más oscuro, similar al resto */
-    color: #eee;
+    color: #fff;
     /* Texto claro */
     padding: 50px 20px;
 }
@@ -76,7 +76,7 @@ section {
     background-color: #281039;
     /* Igual que las cards de arriba */
     border-radius: 15px;
-    color: #eee;
+    color: #fff;
 }
 
 #contacto .form-label {
@@ -133,14 +133,14 @@ btn-zoom img {
 
 #registrarse {
     background: linear-gradient(to bottom, #8e2de2, #000000);
-    color: #eee;
+    color: #fff;
     padding: 50px 20px;
 }
 
 #registrarse .card {
     background-color: #281039;
     border-radius: 15px;
-    color: #eee;
+    color: #fff;
 }
 
 #registrarse .form-label {
@@ -154,7 +154,7 @@ btn-zoom img {
 }
 
 #registrarse .form-control::placeholder {
-    color: #bbb;
+    color: #fff;
 }
 
 #registrarse button.btn-primary {
