@@ -1,5 +1,5 @@
 body {
-    background-color: black;
+    background-color: black;    
 }
 
 .navbar-brand img {
@@ -101,7 +101,7 @@ section {
 }
 
 #contacto button.btn-primary:hover {
-    background-color: #3a1c5f;
+    background-color: #3A1C5F;
 }
 
 .footer {
