@@ -61,8 +61,8 @@ body {
     }
 
     .form-control:focus {
-      border-color: #86b7fe;
-      box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+      border-color: #5a2e8a;
+      box-shadow: 0 0 0 0.25rem rgba(90, 46, 138, 0.25);
     }
 
     .glass-effect {

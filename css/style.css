@@ -38,9 +38,9 @@ body {
 #como-jugar .list-group-item {
     background-color: #281039;
     /* fondo oscuro, gris azulado */
-    color: #eee;
+    color: #fff;
     /* texto claro */
-    border-color: #444;
+    border-color: #000000;
     /* borde tenue */
 }
 
@@ -67,7 +67,7 @@ section {
 #contacto {
     background: linear-gradient(to bottom, #8e2de2, #000000);
     /* Un degradado más oscuro, similar al resto */
-    color: #eee;
+    color: #fff;
     /* Texto claro */
     padding: 50px 20px;
 }
@@ -76,7 +76,7 @@ section {
     background-color: #281039;
     /* Igual que las cards de arriba */
     border-radius: 15px;
-    color: #eee;
+    color: #fff;
 }
 
 #contacto .form-label {
@@ -105,7 +105,7 @@ section {
 }
 
 .footer {
-    background-color: #252129;
+    background-color: #212529;
     color: white;
     padding: 40px 0;
     border-top-left-radius: 15px;
@@ -132,15 +132,15 @@ btn-zoom img {
 }
 
 #registrarse {
-    background: linear-gradient(to bottom, #4b007d, #000000);
-    color: #eee;
+    background: linear-gradient(to bottom, #8e2de2, #000000);
+    color: #fff;
     padding: 50px 20px;
 }
 
 #registrarse .card {
     background-color: #281039;
     border-radius: 15px;
-    color: #eee;
+    color: #fff;
 }
 
 #registrarse .form-label {
@@ -154,7 +154,7 @@ btn-zoom img {
 }
 
 #registrarse .form-control::placeholder {
-    color: #bbb;
+    color: #fff;
 }
 
 #registrarse button.btn-primary {
@@ -163,5 +163,5 @@ btn-zoom img {
 }
 
 #registrarse button.btn-primary:hover {
-    background-color: #6a1bb7;
+    background-color: #3a1c5f;
 }
