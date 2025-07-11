@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?><project name="Proyecto Draftosaurus" company="Dreams Magic Wizard" webLink="" view-date="2025-05-25" view-index="0" gantt-divider-location="427" resource-divider-location="300" version="3.3.3316" locale="en_US">
+    <description/>
+    <view zooming-state="default:5" id="gantt-chart">
+        <field id="tpd3" name="Name" width="255" order="0"/>
+        <field id="tpd4" name="Begin date" width="78" order="1"/>
+        <field id="tpd5" name="End date" width="78" order="2"/>
+        <field id="tpd15" name="Notes" width="20" order="3"/>
+        <option id="filter.completedTasks" value="false"/>
+        <option id="filter.dueTodayTasks" value="false"/>
+        <option id="filter.overdueTasks" value="false"/>
+        <option id="filter.inProgressTodayTasks" value="false"/>
+        <option id="color.recent"><![CDATA[#66ff66 #ff3333 #ff3300 #ff33cc #00cc99 #0033cc #9900cc]]></option>
+    </view>
+    <view id="resource-table">
+        <field id="0" name="Name" width="210" order="0"/>
+        <field id="1" name="Default role" width="86" order="1"/>
+    </view>
+    <!-- -->
+    <calendars>
+        <day-types>
+            <day-type id="0"/>
+            <day-type id="1"/>
+            <default-week id="1" name="default" sun="0" mon="0" tue="0" wed="0" thu="0" fri="0" sat="0"/>
+            <only-show-weekends value="true"/>
+            <overriden-day-types/>
+            <days/>
+        </day-types>
+    </calendars>
+    <tasks empty-milestones="true">
+        <taskproperties>
+            <taskproperty id="tpd0" name="type" type="default" valuetype="icon"/>
+            <taskproperty id="tpd1" name="priority" type="default" valuetype="icon"/>
+            <taskproperty id="tpd2" name="info" type="default" valuetype="icon"/>
+            <taskproperty id="tpd3" name="name" type="default" valuetype="text"/>
+            <taskproperty id="tpd4" name="begindate" type="default" valuetype="date"/>
+            <taskproperty id="tpd5" name="enddate" type="default" valuetype="date"/>
+            <taskproperty id="tpd6" name="duration" type="default" valuetype="int"/>
+            <taskproperty id="tpd7" name="completion" type="default" valuetype="int"/>
+            <taskproperty id="tpd8" name="coordinator" type="default" valuetype="text"/>
+            <taskproperty id="tpd9" name="predecessorsr" type="default" valuetype="text"/>
+        </taskproperties>
+        <task id="0" uid="7e01aab9ae8f4d559b585d837294a7c7" name="Reglamento interno" color="#ff33cc" meeting="false" start="2025-06-17" duration="1" complete="0" expand="true">
+            <notes><![CDATA[UTU Lab]]></notes>
+        </task>
+        <task id="11" uid="1b7e2fe0be864e469e358e60f45064ec" name="Readacción academica" color="#0033cc" meeting="false" start="2025-06-20" duration="1" complete="0" expand="true">
+            <notes><![CDATA[Sociologia]]></notes>
+        </task>
+        <task id="12" uid="4e225837df584cec86c33f50c87186cf" name="Público objetivo" color="#0033cc" meeting="false" start="2025-06-16" duration="1" complete="0" expand="true">
+            <notes><![CDATA[Sociologia]]></notes>
+        </task>
+        <task id="24" uid="ce2a1fa4e14d49c685441361eb2f9606" name="Implementación de diseño responsivo" color="#ff3300" meeting="false" start="2025-07-18" duration="3" complete="0" expand="true">
+            <notes><![CDATA[FullStack]]></notes>
+        </task>
+        <task id="13" uid="32c8be8d933e498db46ee99ee72124d6" name="Estudio de factibiliidades" color="#00cc99" meeting="false" start="2025-06-16" duration="1" complete="0" expand="true">
+            <notes><![CDATA[Ingenieria de Software]]></notes>
+            <depend id="18" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="20" uid="11ad8195c21e4b22896367a504d91000" name="Cronograma inicial del proyecto" color="#ff33cc" meeting="false" start="2025-06-16" duration="1" complete="0" expand="true">
+            <notes><![CDATA[UTU Lab]]></notes>
+            <depend id="0" type="2" difference="0" hardness="Strong"/>
+            <depend id="5" type="2" difference="0" hardness="Strong"/>
+            <depend id="9" type="2" difference="0" hardness="Strong"/>
+            <depend id="15" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="31" uid="00e39e773a94492e82654cb1cd2afa04" name="Documentación" color="#66ff66" meeting="false" start="2025-07-31" duration="1" complete="0" expand="true">
+            <notes><![CDATA[Física]]></notes>
+            <depend id="17" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="30" uid="953637a55bd54a8d80497299a60042ee" name="Gestión y administración de paquetes del sistema operativo" color="#ff3333" meeting="false" start="2025-07-22" duration="1" complete="0" expand="true">
+            <notes><![CDATA[Sistemas Operativos]]></notes>
+            <depend id="28" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="29" uid="1392520e0d7e45139360725a07bdcb67" name="Instalación y configuración de la red" color="#ff3333" meeting="false" start="2025-07-26" duration="5" complete="0" expand="true">
+            <notes><![CDATA[Sistema Operativo]]></notes>
+            <depend id="31" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="25" uid="a355f0fa743c41778183c6a24bacded2" name="Configuración del entorno de desarrollo" color="#ff3300" meeting="false" start="2025-07-18" duration="4" complete="0" expand="true">
+            <notes><![CDATA[FullStack]]></notes>
+            <depend id="30" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="28" uid="43d6b2bc489a4c1ca017c4ad6da59e82" name="Manual de instalador SO Servidor" color="#ff3333" meeting="false" start="2025-07-23" duration="1" complete="0" expand="true">
+            <notes><![CDATA[Sistema Operativos]]></notes>
+            <depend id="27" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="27" uid="a9ab7be63b034828bcfdcfe6c2147d4e" name="Relevamiento de sistema operativo para el servidor" color="#ff3333" meeting="false" start="2025-07-24" duration="2" complete="0" expand="true">
+            <notes><![CDATA[Sistemas Operativos]]></notes>
+            <depend id="29" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="26" uid="b75ad02b06674655b44e35d8df37e111" name="Control de versiones y repositorio" color="#ff3300" meeting="false" start="2025-07-09" duration="4" complete="0" expand="true">
+            <notes><![CDATA[FullStack]]></notes>
+        </task>
+        <task id="21" uid="806a9fe5fe084eb0acde6b8d1998b444" name="Diseño del tablero de juego" color="#ff33cc" meeting="false" start="2025-07-02" duration="2" complete="0" expand="true">
+            <notes><![CDATA[UTU Lab]]></notes>
+            <depend id="19" type="2" difference="0" hardness="Strong"/>
+            <depend id="22" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="19" uid="d0159fd377be4bd8919421539003124c" name="Prototipo de interfaz de usuario" color="#ff3300" meeting="false" start="2025-07-04" duration="14" complete="0" expand="true">
+            <notes><![CDATA[FullStack]]></notes>
+            <depend id="24" type="2" difference="0" hardness="Strong"/>
+            <depend id="25" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="23" uid="ec424732b2d5447fa3ed6ee2c26c111c" name="Bocetos de UI/UX digital" color="#ff33cc" meeting="false" start="2025-07-02" duration="2" complete="0" expand="true">
+            <notes><![CDATA[UTU Lab]]></notes>
+        </task>
+        <task id="22" uid="89c21b66014a463c9bfb183e6dc05ca5" name="Diseño del dado" color="#ff33cc" meeting="false" start="2025-07-04" duration="2" complete="0" expand="true">
+            <notes><![CDATA[UTU Lab]]></notes>
+        </task>
+        <task id="18" uid="05b5723167bd4dfd949713528aee33f7" name="Justificación técnologica" color="#ff3300" meeting="false" start="2025-06-17" duration="4" complete="0" expand="true">
+            <notes><![CDATA[FullStack]]></notes>
+        </task>
+        <task id="7" uid="06235d19a6384948bdb9db3ac6e969ad" name="Relevamiento" color="#00cc99" meeting="false" start="2025-06-14" duration="1" complete="0" expand="true">
+            <notes><![CDATA[Ingenieria de Software]]></notes>
+            <depend id="4" type="2" difference="0" hardness="Strong"/>
+            <depend id="6" type="2" difference="0" hardness="Strong"/>
+            <depend id="8" type="2" difference="0" hardness="Strong"/>
+            <depend id="14" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="8" uid="7a5f6e851e644deb8f93f1f7806435ef" name="Especificación de requerimientos" color="#00cc99" meeting="false" start="2025-06-15" duration="1" complete="0" expand="true">
+            <notes><![CDATA[Ingenieria de Software]]></notes>
+            <depend id="12" type="2" difference="0" hardness="Strong"/>
+            <depend id="13" type="2" difference="0" hardness="Strong"/>
+            <depend id="20" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="9" uid="ab08edf6e405419683289cc381775e8f" name="Creación de repositorio en github" color="#00cc99" meeting="false" start="2025-06-17" duration="1" complete="0" expand="true">
+            <notes><![CDATA[Ingenieria de Software]]></notes>
+        </task>
+        <task id="17" uid="8854613696ed4b01abf8089eabec0fe3" name="Subir todo el proyecto hasta la primera entrega" color="#00cc99" meeting="false" start="2025-08-01" duration="1" complete="0" expand="true">
+            <notes><![CDATA[Ingenieria de Software]]></notes>
+        </task>
+        <task id="10" uid="d58549e23be247128a54440be6f602c4" name="Documentación obligatoria" color="#ff33cc" meeting="false" start="2025-06-19" duration="1" complete="0" expand="true">
+            <notes><![CDATA[UTU Lab]]></notes>
+            <depend id="11" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="1" uid="a4f3a547a7f24d7caaaa5c97dce51ae8" name="Nombre de empresa y fundamentción" color="#9900cc" meeting="false" start="2025-06-16" duration="1" complete="0" expand="true">
+            <notes><![CDATA[Emprendedurismo y gestión]]></notes>
+            <depend id="2" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="2" uid="7530358b74c44504b53696264fe502df" name="Creación logotipo, isotipo y slogan" color="#9900cc" meeting="false" start="2025-06-17" duration="1" complete="0" expand="true">
+            <notes><![CDATA[Emprendedurismo y gestión]]></notes>
+            <depend id="16" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="3" uid="8b9b58b25eea4873b29942498e1eb598" name="Misión, Visión y valores de la empresa" color="#9900cc" meeting="false" start="2025-06-18" duration="1" complete="0" expand="true">
+            <notes><![CDATA[Emprendedurismo y gestión]]></notes>
+            <depend id="10" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="16" uid="6a6a27e6824a4f7d9517204286629bdd" name="Prototipado de la aplicación" color="#00cc99" meeting="false" start="2025-06-18" duration="14" complete="0" expand="true">
+            <notes><![CDATA[Ingenieria y Full Stack]]></notes>
+            <depend id="21" type="2" difference="0" hardness="Strong"/>
+            <depend id="23" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="4" uid="17ca3ea68b3342a388696048b6968fb4" name="Localización de la empresa" color="#9900cc" meeting="false" start="2025-06-15" duration="1" complete="0" expand="true">
+            <notes><![CDATA[Emprendedurismo y gestión]]></notes>
+        </task>
+        <task id="15" uid="15c0d92148334737821e3883ad1bfd9f" name="Implementación del modelo de desarrollo (Tradicional)" color="#00cc99" meeting="false" start="2025-06-17" duration="7" complete="0" expand="true">
+            <notes><![CDATA[Ingenieria de Software]]></notes>
+        </task>
+        <task id="6" uid="fb96287412fb4d2ea8311b15d75b2e58" name="Forma Juridica" color="#9900cc" meeting="false" start="2025-06-15" duration="1" complete="0" expand="true">
+            <notes><![CDATA[Emprendedurismo y gestión]]></notes>
+            <depend id="1" type="2" difference="0" hardness="Strong"/>
+        </task>
+        <task id="14" uid="f16cd1c7ad36466092b693fd8fd0bc50" name="Documentación de inicio" color="#00cc99" meeting="false" start="2025-06-15" duration="14" complete="0" expand="true">
+            <notes><![CDATA[Ingenieria de Software]]></notes>
+        </task>
+        <task id="5" uid="58faa54247784d3dbff5bfce1b4c9fe4" name="Objetivos generales de la empresa" color="#9900cc" meeting="false" start="2025-06-17" duration="1" complete="0" expand="true">
+            <notes><![CDATA[Emprendedurismo y gestión]]></notes>
+            <depend id="3" type="2" difference="0" hardness="Strong"/>
+        </task>
+    </tasks>
+    <resources/>
+    <allocations/>
+    <vacations/>
+    <previous/>
+    <roles roleset-name="Default"/>
+</project>
