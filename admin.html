@@ -30,7 +30,6 @@
   </nav>
 
   <div class="container py-4">
-    <!-- Gestión de usuarios -->
     <div class="card mb-4 shadow">
       <div class="card-header d-flex justify-content-between align-items-center">
         <h5 class="mb-0">Gestión de Usuarios</h5>
@@ -47,14 +46,12 @@
               </tr>
             </thead>
             <tbody id="usersTable">
-              <!-- Aquí se insertarán los usuarios desde la API -->
             </tbody>
           </table>
         </div>
       </div>
     </div>
 
-    <!-- Mensajes -->
     <div class="card shadow">
       <div class="card-header">
         <h5 class="mb-0">Mensajes de Contacto</h5>
@@ -68,7 +65,6 @@
               </tr>
             </thead>
             <tbody id="messagesTable">
-              <!-- Aquí se insertarán los mensajes desde la API -->
             </tbody>
           </table>
         </div>
@@ -76,7 +72,6 @@
     </div>
   </div>
 
-  <!-- Modal Nuevo Usuario -->
   <div class="modal fade" id="newUserModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog"><div class="modal-content">
       <div class="modal-header">
@@ -106,7 +101,6 @@
     </div></div>
   </div>
 
-  <!-- Modal Editar Usuario -->
   <div class="modal fade" id="editUserModal" tabindex="-1" aria-hidden="true">
     <div class="modal-dialog"><div class="modal-content">
       <div class="modal-header">
@@ -140,11 +134,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
   <script>
-    // ==============================
-    // Llamadas a la API REST
-    // ==============================
 
-    // Cargar lista de usuarios
     async function loadUsers(){
       const res = await fetch("/api/users");
       const users = await res.json();
@@ -167,7 +157,6 @@
       });
     }
 
-    // Cargar mensajes de contacto
     async function loadMessages(){
       const res = await fetch("/api/contact-messages");
       const msgs = await res.json();
@@ -185,7 +174,6 @@
       });
     }
 
-    // Crear nuevo usuario
     document.getElementById("saveNewUser").addEventListener("click", async () => {
       const data = {
         name: document.getElementById("newName").value,
@@ -202,7 +190,6 @@
       loadUsers();
     });
 
-    // Abrir modal editar
     async function openEdit(id){
       const res = await fetch(`/api/users/${id}`);
       const u = await res.json();
@@ -213,7 +200,6 @@
       new bootstrap.Modal(document.getElementById("editUserModal")).show();
     }
 
-    // Guardar cambios edición
     document.getElementById("saveEditUser").addEventListener("click", async () => {
       const id = document.getElementById("editId").value;
       const data = {
@@ -231,7 +217,6 @@
       loadUsers();
     });
 
-    // Suspender/Reactivar
     async function toggleStatus(id, currentStatus){
       const newStatus = currentStatus==="active" ? "suspended" : "active";
       await fetch(`/api/users/${id}/status`, {
@@ -242,13 +227,10 @@
       loadUsers();
     }
 
-    // Cerrar sesión
     function logout(){
-      // Aquí podés limpiar token de sesión si lo usás
       window.location.href = "index.html";
     }
 
-    // Inicial
     loadUsers();
     loadMessages();
   </script>
