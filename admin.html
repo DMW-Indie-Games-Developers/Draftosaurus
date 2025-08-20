@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Panel Admin - Draftosaurus</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background: linear-gradient(135deg, #3a0ca3, #000000);
+      min-height: 100vh;
+    }
+    .card {
+      background-color: rgba(0,0,0,0.75);
+      color: #fff;
+    }
+    .modal-content {
+      background-color: #1a1a1a;
+      color: #fff;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="index.html"><img src="img/isotipoOficial.png" alt="isotipoDMW" class="img-fluid" style="height:40px;"></a>
+      <h1 class="text-white ms-2 fs-4">Panel de Administración</h1>
+      <button class="btn btn-outline-light ms-auto" onclick="logout()">Cerrar sesión</button>
+    </div>
+  </nav>
+
+  <div class="container py-4">
+    <!-- Gestión de usuarios -->
+    <div class="card mb-4 shadow">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h5 class="mb-0">Gestión de Usuarios</h5>
+        <button class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#newUserModal">
+          Nuevo Usuario
+        </button>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-dark table-hover">
+            <thead>
+              <tr>
+                <th>ID</th><th>Nombre</th><th>Email</th><th>Estado</th><th>Acciones</th>
+              </tr>
+            </thead>
+            <tbody id="usersTable">
+              <!-- Aquí se insertarán los usuarios desde la API -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mensajes -->
+    <div class="card shadow">
+      <div class="card-header">
+        <h5 class="mb-0">Mensajes de Contacto</h5>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+          <table class="table table-dark table-hover">
+            <thead>
+              <tr>
+                <th>ID</th><th>Nombre</th><th>Email</th><th>Mensaje</th><th>Fecha</th>
+              </tr>
+            </thead>
+            <tbody id="messagesTable">
+              <!-- Aquí se insertarán los mensajes desde la API -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal Nuevo Usuario -->
+  <div class="modal fade" id="newUserModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog"><div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Crear Nuevo Usuario</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="newUserForm">
+          <div class="mb-3">
+            <label for="newName" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="newName" required>
+          </div>
+          <div class="mb-3">
+            <label for="newEmail" class="form-label">Correo</label>
+            <input type="email" class="form-control" id="newEmail" required>
+          </div>
+          <div class="mb-3">
+            <label for="newPassword" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="newPassword" required>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="saveNewUser">Guardar</button>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- Modal Editar Usuario -->
+  <div class="modal fade" id="editUserModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog"><div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Editar Usuario</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <form id="editUserForm">
+          <input type="hidden" id="editId">
+          <div class="mb-3">
+            <label for="editName" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="editName" required>
+          </div>
+          <div class="mb-3">
+            <label for="editEmail" class="form-label">Correo</label>
+            <input type="email" class="form-control" id="editEmail" required>
+          </div>
+          <div class="mb-3">
+            <label for="editPassword" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="editPassword">
+            <small class="text-muted">Dejar vacío para no cambiar</small>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="saveEditUser">Guardar Cambios</button>
+      </div>
+    </div></div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // ==============================
+    // Llamadas a la API REST
+    // ==============================
+
+    // Cargar lista de usuarios
+    async function loadUsers(){
+      const res = await fetch("/api/users");
+      const users = await res.json();
+      const tbody = document.getElementById("usersTable");
+      tbody.innerHTML = "";
+      users.forEach(u => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${u.id}</td>
+          <td>${u.name}</td>
+          <td>${u.email}</td>
+          <td><span class="badge ${u.status==='active'?'bg-success':'bg-danger'}">${u.status}</span></td>
+          <td>
+            <button class="btn btn-sm btn-primary me-1" onclick="openEdit(${u.id})">Editar</button>
+            <button class="btn btn-sm ${u.status==='active'?'btn-warning':'btn-success'}" onclick="toggleStatus(${u.id}, '${u.status}')">
+              ${u.status==='active'?'Suspender':'Reactivar'}
+            </button>
+          </td>`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Cargar mensajes de contacto
+    async function loadMessages(){
+      const res = await fetch("/api/contact-messages");
+      const msgs = await res.json();
+      const tbody = document.getElementById("messagesTable");
+      tbody.innerHTML = "";
+      msgs.forEach(m => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${m.id}</td>
+          <td>${m.name}</td>
+          <td>${m.email}</td>
+          <td>${m.message}</td>
+          <td>${m.date}</td>`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    // Crear nuevo usuario
+    document.getElementById("saveNewUser").addEventListener("click", async () => {
+      const data = {
+        name: document.getElementById("newName").value,
+        email: document.getElementById("newEmail").value,
+        password: document.getElementById("newPassword").value
+      };
+      await fetch("/api/users", {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify(data)
+      });
+      document.getElementById("newUserForm").reset();
+      bootstrap.Modal.getInstance(document.getElementById("newUserModal")).hide();
+      loadUsers();
+    });
+
+    // Abrir modal editar
+    async function openEdit(id){
+      const res = await fetch(`/api/users/${id}`);
+      const u = await res.json();
+      document.getElementById("editId").value = u.id;
+      document.getElementById("editName").value = u.name;
+      document.getElementById("editEmail").value = u.email;
+      document.getElementById("editPassword").value = "";
+      new bootstrap.Modal(document.getElementById("editUserModal")).show();
+    }
+
+    // Guardar cambios edición
+    document.getElementById("saveEditUser").addEventListener("click", async () => {
+      const id = document.getElementById("editId").value;
+      const data = {
+        name: document.getElementById("editName").value,
+        email: document.getElementById("editEmail").value
+      };
+      const pwd = document.getElementById("editPassword").value;
+      if(pwd) data.password = pwd;
+      await fetch(`/api/users/${id}`, {
+        method: "PUT",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify(data)
+      });
+      bootstrap.Modal.getInstance(document.getElementById("editUserModal")).hide();
+      loadUsers();
+    });
+
+    // Suspender/Reactivar
+    async function toggleStatus(id, currentStatus){
+      const newStatus = currentStatus==="active" ? "suspended" : "active";
+      await fetch(`/api/users/${id}/status`, {
+        method: "PATCH",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({status:newStatus})
+      });
+      loadUsers();
+    }
+
+    // Cerrar sesión
+    function logout(){
+      // Aquí podés limpiar token de sesión si lo usás
+      window.location.href = "index.html";
+    }
+
+    // Inicial
+    loadUsers();
+    loadMessages();
+  </script>
+</body>
+</html>
