@@ -42,7 +42,7 @@ class UserRepository
      */
     public function findByEmail(string $email)
     {
-        $query = "SELECT id, username, email, password FROM users WHERE email = ?";
+    $query = "SELECT id, username, email, password, avatar FROM users WHERE email = ?";
         $stmt = $this->conn->prepare($query);
         if (!$stmt) {
             return null; // si falla la preparación, devolvemos null (no revelamos detalles de DB)
@@ -67,7 +67,7 @@ class UserRepository
      */
     public function findByUsername(string $username)
     {
-        $query = "SELECT id, username, email, password FROM users WHERE username = ?";
+    $query = "SELECT id, username, email, password, avatar FROM users WHERE username = ?";
         $stmt = $this->conn->prepare($query);
         if (!$stmt) {
             return null;
@@ -92,7 +92,7 @@ class UserRepository
      */
     public function findByUsernameOrEmail(string $identifier)
     {
-        $query = "SELECT id, username, email, password FROM users WHERE username = ? OR email = ?";
+    $query = "SELECT id, username, email, password, avatar FROM users WHERE username = ? OR email = ?";
         $stmt = $this->conn->prepare($query);
         if (!$stmt) {
             return null;
@@ -118,26 +118,42 @@ class UserRepository
      */
     public function createUser(string $username, string $email, string $hashedPassword)
     {
-        $query = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+        $query = "INSERT INTO users (username, email, password, avatar) VALUES (?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
         if (!$stmt) {
-            return false; // si no se pudo preparar, devolvemos false (fallo genérico)
+            return false;
         }
-
-        $stmt->bind_param("sss", $username, $email, $hashedPassword);
+        // Por defecto, avatar es isotipoOficial.png
+        $defaultAvatar = 'img/isotipoOficial.png';
+        $stmt->bind_param("ssss", $username, $email, $hashedPassword, $defaultAvatar);
         $ok = $stmt->execute();
         if (!$ok) {
             $stmt->close();
             return false;
         }
-
-        $insertId = $stmt->insert_id; // id autoincrement generado
+        $insertId = $stmt->insert_id;
         $stmt->close();
-
         return [
             'id' => (int)$insertId,
             'username' => $username,
             'email' => $email,
+            'avatar' => $defaultAvatar,
         ];
+    }
+
+    /**
+     * Actualiza la URL del avatar de un usuario.
+     */
+    public function updateAvatar(int $userId, string $avatarUrl)
+    {
+        $query = "UPDATE users SET avatar = ? WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+        if (!$stmt) {
+            return false;
+        }
+        $stmt->bind_param("si", $avatarUrl, $userId);
+        $ok = $stmt->execute();
+        $stmt->close();
+        return $ok;
     }
 }
