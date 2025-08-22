@@ -88,3 +88,14 @@
   max-width: 350px;
   margin: auto;
 }
+
+/* Título de la sección de login dentro del modal */
+.draftosaurus-modal .login-title {
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+/* Mensaje informativo dentro del modal */
+.draftosaurus-modal .modal-info {
+  color: #e6d7a7;
+}
