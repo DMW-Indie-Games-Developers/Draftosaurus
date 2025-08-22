@@ -119,6 +119,7 @@ try {
                 ['method' => 'POST', 'path' => '/login', 'description' => 'Login con email o username'],
                 ['method' => 'POST', 'path' => '/register', 'description' => 'Crear nuevo usuario'],
                 ['method' => 'GET', 'path' => '/perfil?id={id}', 'description' => 'Obtener perfil de usuario por id'],
+                ['method' => 'POST', 'path' => '/perfil/avatar', 'description' => 'Actualizar avatar de usuario'],
                 // Agrega aquí nuevas rutas futuras...
             ];
 
