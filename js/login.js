@@ -37,8 +37,12 @@
             const res = await postJson(`${BASE}/login`, { identifier, password });
             
             if (res.ok && res.json && res.json.success) {
+                // Guardar el userId en localStorage para la sesión
+                if (res.json.user && res.json.user.id) {
+                    localStorage.setItem('userId', res.json.user.id);
+                }
                 alert('¡Login exitoso!');
-                window.location.href = 'tablero.html';
+                window.location.href = 'perfil.html';
             } else {
                 alert('Login fallido: ' + (res.json?.message || 'Credenciales incorrectas.'));
             }

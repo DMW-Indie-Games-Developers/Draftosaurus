@@ -14,6 +14,8 @@ require_once 'api/config/Database.php';
 require_once 'api/repositories/UserRepository.php';
 require_once 'api/services/AuthService.php';
 require_once 'api/controllers/AuthController.php';
+require_once 'api/services/PerfilService.php';
+require_once 'api/controllers/PerfilController.php';
 
 // Cabeceras comunes para JSON y CORS (ajusta según tu necesidad real de seguridad)
 header('Content-Type: application/json'); // El cliente interpreta la respuesta como JSON
@@ -48,6 +50,30 @@ try {
      */
 
     switch ($resource) { // Enrutamiento muy simple basado en el primer segmento
+        case 'perfil':
+            $controller = new PerfilController();
+            if ($method === 'GET') {
+                $userId = $_GET['id'] ?? null;
+                echo json_encode($controller->getPerfil($userId));
+                break;
+            }
+            if ($method === 'POST' && isset($uri[1]) && $uri[1] === 'avatar') {
+                // Espera JSON con userId y avatarUrl
+                $raw = file_get_contents('php://input');
+                $data = json_decode($raw, true);
+                $userId = $data['userId'] ?? null;
+                $avatarUrl = $data['avatarUrl'] ?? null;
+                if ($userId && $avatarUrl) {
+                    echo json_encode($controller->updateAvatar($userId, $avatarUrl));
+                } else {
+                    http_response_code(400);
+                    echo json_encode(['success' => false, 'message' => 'Faltan datos para actualizar el avatar.']);
+                }
+                break;
+            }
+            http_response_code(405);
+            echo json_encode(['success' => false, 'message' => 'Método no permitido.']);
+            break;
         case 'login':
             if ($method === 'POST') {
                 $controller->login();
@@ -92,6 +118,7 @@ try {
                 ['method' => 'GET', 'path' => '/health', 'description' => 'Estado de la aplicación y servicios'],
                 ['method' => 'POST', 'path' => '/login', 'description' => 'Login con email o username'],
                 ['method' => 'POST', 'path' => '/register', 'description' => 'Crear nuevo usuario'],
+                ['method' => 'GET', 'path' => '/perfil?id={id}', 'description' => 'Obtener perfil de usuario por id'],
                 // Agrega aquí nuevas rutas futuras...
             ];
 

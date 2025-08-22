@@ -20,8 +20,8 @@ class Database {
     /** Configuración de conexión (ajusta a tu entorno local). */
     private string $host = "localhost";   // Host del servidor MySQL
     private string $user = "root";        // Usuario de la base de datos
-    private string $password = "root";  // Contraseña del usuario
-    private string $dbname = "login_api"; // Nombre de la base de datos
+    private string $password = "";  // Contraseña del usuario
+    private string $dbname = "testdraftosaurus"; // Nombre de la base de datos
 
     /**
      * Recurso de conexión de mysqli ya abierto y listo para usarse por el resto de la aplicación.

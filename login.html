@@ -26,7 +26,7 @@
           <input type="email" class="form-control" id="login-identifier" required placeholder="Ingresa tu correo" />
         </div>
         <div class="mb-3">
-          <input type="password" class="form-control" id="login-password" required placeholder="Ingresa tu contraseña" />
+    <input type="password" class="form-control" id="login-password" required placeholder="Ingresa tu contraseña" autocomplete="current-password" />
         </div>
         <button type="button" id="btn-login" class="img-button">
           <img src="img/botonjugar.png" alt="Iniciar" />
@@ -42,7 +42,7 @@
       <!-- Formulario de Registro -->
       <form class="form register-form" action="registro.html" method="get">
         <div class="mb-3">
-          <input type="text" class="form-control" id="reg-username" required placeholder="Tu nombre" />
+          <input type="text" class="form-control" id="reg-fullname" required placeholder="Tu nombre" />
         </div>
         <div class="mb-3">
           <input type="text" class="form-control" id="reg-username" required placeholder="Usuario" />
@@ -51,8 +51,8 @@
           <input type="email" class="form-control" id="reg-email" required placeholder="Tu correo" />
         </div>
         <div class="mb-3">
-          <input type="password" class="form-control" id="reg-password" required placeholder="Nueva contraseña" />
-          <input type="password" class="form-control" id="confirm-password" required placeholder="Repetir contraseña" />
+          <input type="password" class="form-control" id="reg-password" required placeholder="Nueva contraseña" autocomplete="new-password" />
+          <input type="password" class="form-control" id="confirm-password" required placeholder="Repetir contraseña" autocomplete="new-password" />
         </div>
         <button type="button" id="btn-register" class="img-button">
           <img src="img/botonjugar.png" alt="Registrar" />
