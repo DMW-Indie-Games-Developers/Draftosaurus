@@ -278,12 +278,13 @@ document.addEventListener('DOMContentLoaded', function () {
       });
     });
 
-    const ganador = puntos[1] === puntos[2] ? 'Empate' : (puntos[1] > puntos[2] ? 1 : 2);
+  //  const ganador = puntos[1] === puntos[2] ? 'Empate' : (puntos[1] > puntos[2] ? 1 : 2);
+    const nombreGanador = ganador === 'Empate' ? '' : (ganador === 1 ? userName1 : userName2);
     alert(
       `¡Fin del juego!\n\n` +
-      `Jugador 1: ${puntos[1]} puntos\n` +
-      `Jugador 2: ${puntos[2]} puntos\n\n` +
-      (ganador === 'Empate' ? '¡Es un empate!' : `¡Ganador: Jugador ${ganador}!`)
+      `${userName1}: ${puntos[1]} puntos\n` +
+      `${userName2}: ${puntos[2]} puntos\n\n` +
+      (ganador === 'Empate' ? '¡Es un empate!' : `¡Ganador: ${nombreGanador}!`)
     );
   }
 
