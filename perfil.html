@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/perfil.css">
+    <link rel="stylesheet" href="css/modal-custom.css">
 </head>
 <body>
     <div class="container d-flex flex-column align-items-center justify-content-center" style="min-height: 100vh;">
@@ -32,12 +33,12 @@
                 <!-- Modal Crear Partida -->
                 <div class="modal fade" id="modalCrearPartida" tabindex="-1" aria-labelledby="modalCrearPartidaLabel" aria-hidden="true">
                     <div class="modal-dialog modal-dialog-centered">
-                        <div class="modal-content" style="background: linear-gradient(135deg, #3a0ca3 60%, #000000 100%); border-radius: 20px; color: #ffc107; box-shadow: 0 0 20px rgba(0,0,0,0.5);">
-                            <div class="modal-header border-0">
-                                <h5 class="modal-title" id="modalCrearPartidaLabel">Crear Partida</h5>
+                        <div class="modal-content draftosaurus-modal">
+                            <div class="modal-header draftosaurus-modal">
+                                <h5 class="modal-title draftosaurus-modal" id="modalCrearPartidaLabel">Crear Partida</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
                             </div>
-                            <div class="modal-body">
+                            <div class="modal-body draftosaurus-modal">
                                 <div class="d-flex justify-content-center mb-3 gap-3">
                                     <button class="btn btn-outline-light rounded-pill px-4" id="btnInvitado">Invitado</button>
                                     <button class="btn btn-outline-light rounded-pill px-4" id="btnUsers">Usuario</button>
