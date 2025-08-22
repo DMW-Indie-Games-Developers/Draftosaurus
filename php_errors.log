@@ -6,3 +6,5 @@ Stack trace:
 #3 C:\Users\leand\OneDrive\Desktop\Proyecto\index.php(57): PerfilController->getPerfil('1')
 #4 {main}
   thrown in C:\Users\leand\OneDrive\Desktop\Proyecto\api\repositories\PerfilRepository.php on line 9
+[22-Aug-2025 11:38:17 America/Montevideo] PHP Deprecated:  Method mysqli::ping() is deprecated since 8.4, because the reconnect feature has been removed in PHP 8.2 and this method is now redundant in C:\Users\leand\OneDrive\Desktop\Proyecto\index.php on line 105
+[22-Aug-2025 11:38:17 America/Montevideo] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at C:\Users\leand\OneDrive\Desktop\Proyecto\index.php:105) in C:\Users\leand\OneDrive\Desktop\Proyecto\index.php on line 125

@@ -1,6 +1,39 @@
 document.addEventListener('DOMContentLoaded', function() {
+    // Modal Crear Partida
+    const modalCrearPartida = new bootstrap.Modal(document.getElementById('modalCrearPartida'));
     document.getElementById('crear-partida-btn').addEventListener('click', function() {
-        window.location.href = 'tablero.html';
+        modalCrearPartida.show();
+    });
+
+    // Botones para elegir tipo de jugador
+    document.getElementById('btnInvitado').addEventListener('click', function() {
+        document.getElementById('loginJugador2').style.display = 'none';
+    });
+    document.getElementById('btnUsers').addEventListener('click', function() {
+        document.getElementById('loginJugador2').style.display = 'block';
+    });
+
+    // Login Jugador 2 (solo frontend, puedes conectar con tu API)
+    document.getElementById('formLoginJugador2').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const email = document.getElementById('emailJugador2').value.trim();
+        const password = document.getElementById('passwordJugador2').value;
+        fetch('/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ identifier: email, password: password })
+        })
+        .then(res => res.json())
+        .then(data => {
+            if (data.success && data.user && data.user.id) {
+                localStorage.setItem('userId2', data.user.id);
+                localStorage.setItem('userName2', data.user.username);
+                window.location.href = 'tablero.html';
+            } else {
+                alert('Login fallido: ' + (data.message || 'Credenciales incorrectas.'));
+            }
+        })
+        .catch(() => alert('Error de red al intentar iniciar sesión.'));
     });
     // Suponiendo que tienes el id del usuario logueado
     const userId = localStorage.getItem('userId');

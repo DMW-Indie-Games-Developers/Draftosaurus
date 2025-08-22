@@ -1,4 +1,38 @@
 document.addEventListener('DOMContentLoaded', function () {
+  let avatar1 = 'img/isotipoOficial.png';
+  let avatar2 = 'img/isotipoOficial.png';
+  // Obtener los IDs de los jugadores desde localStorage
+  const userId1 = localStorage.getItem('userId'); // Host
+  const userId2 = localStorage.getItem('userId2'); // Segundo jugador
+  let userName1 = 'Jugador 1';
+  let userName2 = 'Jugador 2';
+
+  // Traer nombres desde la base de datos
+  function fetchPlayerName(userId, callback) {
+    if (!userId) return callback(null);
+    fetch(`/perfil?id=${userId}`)
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.username) {
+          if (userId == userId1 && data.avatar) avatar1 = data.avatar;
+          if (userId == userId2 && data.avatar) avatar2 = data.avatar;
+          callback(data.username);
+        } else {
+          callback(null);
+        }
+      })
+      .catch(() => callback(null));
+  }
+
+  // Actualizar nombres antes de iniciar la partida
+  fetchPlayerName(userId1, function(name) {
+    if (name) userName1 = name;
+    fetchPlayerName(userId2, function(name2) {
+      if (name2) userName2 = name2;
+      iniciarRonda(); // Solo iniciar la ronda cuando ambos nombres estén listos
+    });
+  });
+
   const recintos = document.querySelectorAll('.recinto');
   const rulesBtn = document.querySelector('.rules-btn');
   const rulesModal = document.getElementById('rules-modal');
@@ -78,18 +112,25 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function actualizarUI() {
-    dinoPanelTitle.textContent = `Tus Dinosaurios - Jugador ${jugadorActivo}`;
+    dinoPanelTitle.textContent = `Tus Dinosaurios - ${jugadorActivo === 1 ? userName1 : userName2}`;
+    // Mostrar avatar en el seguimiento
+    const avatarImg = document.getElementById('avatar-jugador');
+    if (jugadorActivo === 1) {
+      avatarImg.src = avatar1;
+    } else {
+      avatarImg.src = avatar2;
+    }
     renderMano(jugadorActivo);
     actualizarPuntuacionJugadorActivo();
     actualizarPuntuacionesVisualesRecintos();
     actualizarVisibilidadDinos();
 
     if (restriccionActual === null) {
-      turnoText.textContent = `Ronda ${ronda} - Turno ${turno} - Jugador ${jugadorActivo} debe tirar dado`;
+      turnoText.textContent = `Ronda ${ronda} - Turno ${turno} - ${jugadorActivo === 1 ? userName1 : userName2} debe tirar dado`;
     } else if (jugadorActivo === jugadorQueTiroDado) {
-      turnoText.textContent = `Ronda ${ronda} - Turno ${turno} - Jugador ${jugadorActivo} debe colocar (SIN restricciones)`;
+      turnoText.textContent = `Ronda ${ronda} - Turno ${turno} - ${jugadorActivo === 1 ? userName1 : userName2} debe colocar (SIN restricciones)`;
     } else {
-      turnoText.textContent = `Ronda ${ronda} - Turno ${turno} - Jugador ${jugadorActivo} debe colocar (CON restricción: ${restricciones[restriccionActual]})`;
+      turnoText.textContent = `Ronda ${ronda} - Turno ${turno} - ${jugadorActivo === 1 ? userName1 : userName2} debe colocar (CON restricción: ${restricciones[restriccionActual]})`;
     }
 
     dadoBtn.style.display = restriccionActual === null ? 'inline-block' : 'none';
