@@ -1,0 +1,262 @@
+[30-Aug-2025 14:49:58 America/Montevideo] PHP Warning:  include(db.php): Failed to open stream: No such file or directory in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php on line 3
+[30-Aug-2025 14:49:58 America/Montevideo] PHP Warning:  include(): Failed opening 'db.php' for inclusion (include_path='.;C:\php\pear') in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php on line 3
+[30-Aug-2025 14:49:58 America/Montevideo] PHP Warning:  Undefined variable $conn in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php on line 6
+[30-Aug-2025 14:49:58 America/Montevideo] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php on line 6
+[30-Aug-2025 14:49:58 America/Montevideo] PHP Warning:  include(db.php): Failed to open stream: No such file or directory in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 3
+[30-Aug-2025 14:49:58 America/Montevideo] PHP Warning:  include(): Failed opening 'db.php' for inclusion (include_path='.;C:\php\pear') in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 3
+[30-Aug-2025 14:49:59 America/Montevideo] PHP Warning:  Undefined variable $conn in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 6
+[30-Aug-2025 14:49:59 America/Montevideo] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 6
+[30-Aug-2025 14:54:02 America/Montevideo] PHP Warning:  include(db.php): Failed to open stream: No such file or directory in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php on line 3
+[30-Aug-2025 14:54:02 America/Montevideo] PHP Warning:  include(): Failed opening 'db.php' for inclusion (include_path='.;C:\php\pear') in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php on line 3
+[30-Aug-2025 14:54:02 America/Montevideo] PHP Warning:  Undefined variable $conn in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php on line 6
+[30-Aug-2025 14:54:02 America/Montevideo] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php on line 6
+[30-Aug-2025 14:54:02 America/Montevideo] PHP Warning:  include(db.php): Failed to open stream: No such file or directory in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 3
+[30-Aug-2025 14:54:02 America/Montevideo] PHP Warning:  include(): Failed opening 'db.php' for inclusion (include_path='.;C:\php\pear') in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 3
+[30-Aug-2025 14:54:02 America/Montevideo] PHP Warning:  Undefined variable $conn in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 6
+[30-Aug-2025 14:54:02 America/Montevideo] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 6
+[30-Aug-2025 14:56:44 America/Montevideo] PHP Warning:  include(db.php): Failed to open stream: No such file or directory in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\create_user.php on line 3
+[30-Aug-2025 14:56:44 America/Montevideo] PHP Warning:  include(): Failed opening 'db.php' for inclusion (include_path='.;C:\php\pear') in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\create_user.php on line 3
+[30-Aug-2025 14:56:44 America/Montevideo] PHP Warning:  include(db.php): Failed to open stream: No such file or directory in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php on line 3
+[30-Aug-2025 14:56:44 America/Montevideo] PHP Warning:  include(): Failed opening 'db.php' for inclusion (include_path='.;C:\php\pear') in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php on line 3
+[30-Aug-2025 14:56:44 America/Montevideo] PHP Warning:  Undefined variable $conn in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php on line 6
+[30-Aug-2025 14:56:44 America/Montevideo] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php on line 6
+[30-Aug-2025 14:59:11 America/Montevideo] PHP Warning:  include(db.php): Failed to open stream: No such file or directory in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\create_user.php on line 3
+[30-Aug-2025 14:59:11 America/Montevideo] PHP Warning:  include(): Failed opening 'db.php' for inclusion (include_path='.;C:\php\pear') in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\create_user.php on line 3
+[30-Aug-2025 14:59:11 America/Montevideo] PHP Warning:  include(db.php): Failed to open stream: No such file or directory in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php on line 3
+[30-Aug-2025 14:59:11 America/Montevideo] PHP Warning:  include(): Failed opening 'db.php' for inclusion (include_path='.;C:\php\pear') in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php on line 3
+[30-Aug-2025 14:59:11 America/Montevideo] PHP Warning:  Undefined variable $conn in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php on line 6
+[30-Aug-2025 14:59:11 America/Montevideo] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php on line 6
+[30-Aug-2025 14:59:46 America/Montevideo] PHP Warning:  include(db.php): Failed to open stream: No such file or directory in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php on line 3
+[30-Aug-2025 14:59:46 America/Montevideo] PHP Warning:  include(): Failed opening 'db.php' for inclusion (include_path='.;C:\php\pear') in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php on line 3
+[30-Aug-2025 14:59:46 America/Montevideo] PHP Warning:  Undefined variable $conn in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php on line 6
+[30-Aug-2025 14:59:46 America/Montevideo] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php on line 6
+[30-Aug-2025 14:59:46 America/Montevideo] PHP Warning:  include(db.php): Failed to open stream: No such file or directory in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 3
+[30-Aug-2025 14:59:46 America/Montevideo] PHP Warning:  include(): Failed opening 'db.php' for inclusion (include_path='.;C:\php\pear') in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 3
+[30-Aug-2025 14:59:46 America/Montevideo] PHP Warning:  Undefined variable $conn in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 6
+[30-Aug-2025 14:59:46 America/Montevideo] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 6
+[30-Aug-2025 14:59:55 America/Montevideo] PHP Warning:  include(db.php): Failed to open stream: No such file or directory in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\create_user.php on line 3
+[30-Aug-2025 14:59:55 America/Montevideo] PHP Warning:  include(): Failed opening 'db.php' for inclusion (include_path='.;C:\php\pear') in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\create_user.php on line 3
+[30-Aug-2025 14:59:55 America/Montevideo] PHP Warning:  include(db.php): Failed to open stream: No such file or directory in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php on line 3
+[30-Aug-2025 14:59:55 America/Montevideo] PHP Warning:  include(): Failed opening 'db.php' for inclusion (include_path='.;C:\php\pear') in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php on line 3
+[30-Aug-2025 14:59:55 America/Montevideo] PHP Warning:  Undefined variable $conn in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php on line 6
+[30-Aug-2025 14:59:55 America/Montevideo] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_users.php on line 6
+[30-Aug-2025 15:07:45 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.mensajes_contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:8
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(8): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 8
+[30-Aug-2025 15:57:12 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:8
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(8): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 8
+[30-Aug-2025 15:57:57 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:8
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(8): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 8
+[30-Aug-2025 16:01:57 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.mensajes_contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:8
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(8): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 8
+[30-Aug-2025 16:02:12 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.mensajes_contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:8
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(8): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 8
+[30-Aug-2025 16:04:14 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.mensajes_contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:8
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(8): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 8
+[30-Aug-2025 16:05:58 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.mensajes_contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:8
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(8): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 8
+[30-Aug-2025 16:08:15 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.mensajes_contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:8
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(8): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 8
+[30-Aug-2025 16:08:30 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.mensajes_contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:8
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(8): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 8
+[30-Aug-2025 16:11:23 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:8
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(8): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 8
+[30-Aug-2025 16:12:02 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:8
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(8): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 8
+[30-Aug-2025 16:12:10 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:8
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(8): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 8
+[30-Aug-2025 16:14:22 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:8
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(8): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 8
+[30-Aug-2025 16:14:23 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:8
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(8): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 8
+[30-Aug-2025 16:16:37 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:9
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(9): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 9
+[30-Aug-2025 16:16:37 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:9
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(9): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 9
+[30-Aug-2025 16:16:38 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:9
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(9): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 9
+[30-Aug-2025 16:16:38 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:9
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(9): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 9
+[30-Aug-2025 16:17:02 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:8
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(8): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 8
+[30-Aug-2025 16:17:02 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:8
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(8): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 8
+[30-Aug-2025 16:17:07 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:8
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(8): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 8
+[30-Aug-2025 16:17:07 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:8
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(8): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 8
+[30-Aug-2025 16:17:25 America/Montevideo] PHP Warning:  include(db.php): Failed to open stream: No such file or directory in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 3
+[30-Aug-2025 16:17:25 America/Montevideo] PHP Warning:  include(): Failed opening 'db.php' for inclusion (include_path='.;C:\php\pear') in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 3
+[30-Aug-2025 16:17:25 America/Montevideo] PHP Warning:  Undefined variable $conn in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 6
+[30-Aug-2025 16:17:25 America/Montevideo] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 6
+[30-Aug-2025 16:17:25 America/Montevideo] PHP Warning:  include(db.php): Failed to open stream: No such file or directory in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 3
+[30-Aug-2025 16:17:25 America/Montevideo] PHP Warning:  include(): Failed opening 'db.php' for inclusion (include_path='.;C:\php\pear') in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 3
+[30-Aug-2025 16:17:25 America/Montevideo] PHP Warning:  Undefined variable $conn in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 6
+[30-Aug-2025 16:17:25 America/Montevideo] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 6
+[30-Aug-2025 16:17:38 America/Montevideo] PHP Warning:  include(db.php): Failed to open stream: No such file or directory in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 3
+[30-Aug-2025 16:17:38 America/Montevideo] PHP Warning:  include(): Failed opening 'db.php' for inclusion (include_path='.;C:\php\pear') in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 3
+[30-Aug-2025 16:17:38 America/Montevideo] PHP Warning:  Undefined variable $conn in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 6
+[30-Aug-2025 16:17:38 America/Montevideo] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 6
+[30-Aug-2025 16:17:39 America/Montevideo] PHP Warning:  include(db.php): Failed to open stream: No such file or directory in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 3
+[30-Aug-2025 16:17:39 America/Montevideo] PHP Warning:  include(): Failed opening 'db.php' for inclusion (include_path='.;C:\php\pear') in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 3
+[30-Aug-2025 16:17:39 America/Montevideo] PHP Warning:  Undefined variable $conn in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 6
+[30-Aug-2025 16:17:39 America/Montevideo] PHP Fatal error:  Uncaught Error: Call to a member function query() on null in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:6
+Stack trace:
+#0 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 6
+[30-Aug-2025 16:19:11 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:9
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(9): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 9
+[30-Aug-2025 16:19:11 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:9
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(9): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 9
+[30-Aug-2025 16:19:12 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:9
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(9): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 9
+[30-Aug-2025 16:19:12 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:9
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(9): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 9
+[30-Aug-2025 16:20:08 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:9
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(9): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 9
+[30-Aug-2025 16:20:08 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:9
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(9): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 9
+[30-Aug-2025 16:20:20 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:9
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(9): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 9
+[30-Aug-2025 16:20:40 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:9
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(9): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 9
+[30-Aug-2025 16:20:46 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:9
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(9): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 9
+[30-Aug-2025 16:21:01 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:9
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(9): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 9
+[30-Aug-2025 16:21:43 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Table 'panel_admin.contacto' doesn't exist in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php:9
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php(9): mysqli->query('SELECT id, nomb...')
+#1 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\get_messages.php on line 9

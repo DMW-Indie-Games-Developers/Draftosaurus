@@ -16,3 +16,9 @@ Stack trace:
 Stack trace:
 #0 {main}
   thrown in C:\Users\leand\OneDrive\Desktop\Proyecto\upload-avatar.php on line 39
+[30-Aug-2025 13:33:03 America/Montevideo] PHP Fatal error:  Uncaught mysqli_sql_exception: Access denied for user 'root'@'localhost' (using password: NO) in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\config\Database.php:7
+Stack trace:
+#0 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\config\Database.php(7): mysqli->__construct('localhost', 'root', Object(SensitiveParameterValue), 'draftosaurus_db')
+#1 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\index.php(13): require_once('C:\\Users\\espac\\...')
+#2 {main}
+  thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\config\Database.php on line 7

@@ -21,49 +21,48 @@
       <!-- Título Registro -->
       <h2 class="form-title register-title yellow-text">Registrarse</h2>
       <!-- Formulario de Login -->
-      <form class="form login-form">
-        <div class="mb-3">
-          <input type="email" class="form-control" id="login-identifier" required placeholder="Ingresa tu correo" />
-        </div>
-        <div class="mb-3">
-    <input type="password" class="form-control" id="login-password" required placeholder="Ingresa tu contraseña" autocomplete="current-password" />
-        </div>
-        <button type="button" id="btn-login" class="img-button">
-          <img src="img/botonjugar.png" alt="Iniciar" />
-        </button>
-        <div class="mt-3 text-center yellow-text">
-          <label for="toggle-form" class="toggle-link">¿No tenés cuenta? Registrate</label>
-        </div>
-        <div class="mt-4 text-center">
-          <a href="index.html" class="btn btn-outline-warning">Volver al inicio</a>
-        </div>
-      </form>
-
+      <form class="form login-form" action="login.php" method="POST">
+  <div class="mb-3">
+    <input type="email" class="form-control" id="login-identifier" name="correo" required placeholder="Ingresa tu correo" />
+  </div>
+  <div class="mb-3">
+    <input type="password" class="form-control" id="login-password" name="password" required placeholder="Ingresa tu contraseña" autocomplete="current-password" />
+  </div>
+  <button type="submit" id="btn-login" class="img-button">
+    <img src="img/botonjugar.png" alt="Iniciar" />
+  </button>
+  <div class="mt-3 text-center yellow-text">
+    <label for="toggle-form" class="toggle-link">¿No tenés cuenta? Registrate</label>
+  </div>
+  <div class="mt-4 text-center">
+    <a href="index.html" class="btn btn-outline-warning">Volver al inicio</a>
+  </div>
+</form>
       <!-- Formulario de Registro -->
-      <form class="form register-form" action="registro.html" method="get">
-        <div class="mb-3">
-          <input type="text" class="form-control" id="reg-fullname" required placeholder="Tu nombre" />
-        </div>
-        <div class="mb-3">
-          <input type="text" class="form-control" id="reg-username" required placeholder="Usuario" />
-        </div>
-        <div class="mb-3">
-          <input type="email" class="form-control" id="reg-email" required placeholder="Tu correo" />
-        </div>
-        <div class="mb-3">
-          <input type="password" class="form-control" id="reg-password" required placeholder="Nueva contraseña" autocomplete="new-password" />
-          <input type="password" class="form-control" id="confirm-password" required placeholder="Repetir contraseña" autocomplete="new-password" />
-        </div>
-        <button type="button" id="btn-register" class="img-button">
-          <img src="img/botonjugar.png" alt="Registrar" />
-        </button>
-        <div class="mt-3 text-center yellow-text">
-          <label for="toggle-form" class="toggle-link">¿Ya tenés cuenta? Iniciá sesión</label>
-        </div>
-        <div class="mt-4 text-center">
-          <a href="index.html" class="btn btn-outline-warning">Volver al inicio</a>
-        </div>
-      </form>
+      <form class="form register-form" action="register.php" method="POST">
+  <div class="mb-3">
+    <input type="text" class="form-control" id="reg-fullname" name="nombre" required placeholder="Tu nombre" />
+  </div>
+  <div class="mb-3">
+    <input type="text" class="form-control" id="reg-username" name="usuario" required placeholder="Usuario" />
+  </div>
+  <div class="mb-3">
+    <input type="email" class="form-control" id="reg-email" name="correo" required placeholder="Tu correo" />
+  </div>
+  <div class="mb-3">
+    <input type="password" class="form-control" id="reg-password" name="password" required placeholder="Nueva contraseña" autocomplete="new-password" />
+    <input type="password" class="form-control" id="confirm-password" name="password_confirm" required placeholder="Repetir contraseña" autocomplete="new-password" />
+  </div>
+  <button type="submit" id="btn-register" class="img-button">
+    <img src="img/botonjugar.png" alt="Registrar" />
+  </button>
+  <div class="mt-3 text-center yellow-text">
+    <label for="toggle-form" class="toggle-link">¿Ya tenés cuenta? Iniciá sesión</label>
+  </div>
+  <div class="mt-4 text-center">
+    <a href="index.html" class="btn btn-outline-warning">Volver al inicio</a>
+  </div>
+</form>
     </div>
   </div>
 <script src="js/login.js"></script>
