@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <title>Cliente API simple</title>
+    <!--
+      Propósito:
+      - Proveer un cliente mínimo para probar la API sin herramientas externas.
+      - Mostrar cómo realizar peticiones fetch (GET/POST) y presentar las respuestas JSON.
+      Estructura:
+      - Secciones para Login, Registro y Health.
+      - Un panel de salida que acumula las respuestas.
+    -->
+</head>
+<body>
+
+<!--
+  Sección de Login: Permite iniciar sesión usando email o username.
+  El backend acepta un campo "identifier" y "password".
+-->
+<section>
+    <h2>Login</h2>
+    <div>
+        <label>Identificador (email o username):
+            <input id="login-identifier"/>
+        </label>
+    </div>
+    <div>
+        <label>Contraseña:
+            <input id="login-password" type="password"/>
+        </label>
+    </div>
+    <button id="btn-login" type="button">Iniciar sesión</button>
+    <div>Endpoint: POST http://localhost:8000/login</div>
+</section>
+
+<!--
+  Sección de Registro: Crea una nueva cuenta con username, email y contraseña.
+-->
+<section>
+    <h2>Registro</h2>
+    <div>
+        <label>Username:
+            <input id="reg-username"/>
+        </label>
+    </div>
+    <div>
+        <label>Email:
+            <input id="reg-email" type="email"/>
+        </label>
+    </div>
+    <div>
+        <label>Contraseña:
+            <input id="reg-password" type="password"/>
+        </label>
+    </div>
+    <button id="btn-register" type="button">Crear cuenta</button>
+    <div>Endpoint: POST http://localhost:8000/register</div>
+</section>
+
+<!--
+  Sección de Salud: Consulta el estado de la API y sus servicios.
+-->
+<section>
+    <h2>Salud</h2>
+    <button id="btn-health" type="button">Consultar /health</button>
+    <div>Endpoint: GET http://localhost:8000/health</div>
+</section>
+
+<!--
+  Salida: Muestra las respuestas estructuradas.
+-->
+<section>
+    <h2>Salida</h2>
+    <pre id="output"></pre>
+    <button id="btn-clear" type="button">Limpiar salida</button>
+</section>
+
+<script>
+    // URL base de la API (ajústala si corres la API en otro puerto/host)
+    const BASE = 'http://localhost:8000';
+
+    /**
+     * Envía un POST con cuerpo JSON y devuelve un objeto con {ok, status, json}.
+     * Nota: No establecemos Content-Type para evitar preflight CORS en servidores simples.
+     */
+    async function postJson(url, data) {
+        const res = await fetch(url, {
+            method: 'POST',
+            mode: 'cors',
+            body: JSON.stringify(data)
+        });
+        // Leemos como texto primero para poder manejar casos en los que la respuesta no sea JSON válido
+        const text = await res.text();
+        let json = null;
+        try {
+            json = text ? JSON.parse(text) : null;
+        } catch {
+            json = {parseError: true, raw: text};
+        }
+        return {ok: res.ok, status: res.status, json};
+    }
+
+    /**
+     * Realiza un GET y trata de parsear la respuesta como JSON de forma segura.
+     */
+    async function getJson(url) {
+        const res = await fetch(url, {method: 'GET', mode: 'cors'});
+        const text = await res.text();
+        let json = null;
+        try {
+            json = text ? JSON.parse(text) : null;
+        } catch {
+            json = {parseError: true, raw: text};
+        }
+        return {ok: res.ok, status: res.status, json};
+    }
+
+    /**
+     * Imprime una línea con timestamp y el JSON formateado en el panel de salida.
+     */
+    function printOutput(label, payload) {
+        const out = document.getElementById('output');
+        const ts = new Date().toISOString();
+        const pretty = JSON.stringify(payload, null, 2);
+        out.textContent = `[${ts}] ${label}\n${pretty}\n\n` + out.textContent;
+    }
+
+    // Maneja clic en Login: valida campos mínimos, hace POST y muestra el resultado
+    document.getElementById('btn-login').addEventListener('click', async () => {
+        const identifier = document.getElementById('login-identifier').value.trim();
+        const password = document.getElementById('login-password').value;
+        if (!identifier || !password) {
+            printOutput('Validación Login', {error: 'Identificador y contraseña requeridos.'});
+            return;
+        }
+        try {
+            const res = await postJson(`${BASE}/login`, {identifier, password});
+            printOutput(`POST ${BASE}/login (status ${res.status})`, res.json ?? {empty: true});
+        } catch (err) {
+            printOutput('POST /login - Error de red', {error: String(err)});
+        }
+    });
+
+    // Maneja clic en Registro: valida campos, hace POST y muestra el resultado
+    document.getElementById('btn-register').addEventListener('click', async () => {
+        const username = document.getElementById('reg-username').value.trim();
+        const email = document.getElementById('reg-email').value.trim();
+        const password = document.getElementById('reg-password').value;
+        if (!username || !email || !password) {
+            printOutput('Validación Registro', {error: 'Username, email y contraseña requeridos.'});
+            return;
+        }
+        try {
+            const res = await postJson(`${BASE}/register`, {username, email, password});
+            printOutput(`POST ${BASE}/register (status ${res.status})`, res.json ?? {empty: true});
+        } catch (err) {
+            printOutput('POST /register - Error de red', {error: String(err)});
+        }
+    });
+
+    // Maneja clic en Health: consulta GET /health y lo imprime
+    document.getElementById('btn-health').addEventListener('click', async () => {
+        try {
+            const res = await getJson(`${BASE}/health`);
+            printOutput(`GET ${BASE}/health (status ${res.status})`, res.json ?? {empty: true});
+        } catch (err) {
+            printOutput('GET /health - Error de red', {error: String(err)});
+        }
+    });
+
+    // Limpia el panel de salida
+    document.getElementById('btn-clear').addEventListener('click', () => {
+        document.getElementById('output').textContent = '';
+    });
+</script>
+</body>
+<style>
+    /* Estilos básicos para hacer la interfaz más legible */
+    *, *::before, *::after {
+        box-sizing: border-box;
+    }
+
+    html, body {
+        height: 100%;
+    }
+
+    body {
+        margin: 0;
+        padding: 0 16px;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 16px;
+        font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+        line-height: 1.35;
+        background: #f7f7f7;
+    }
+
+    h1 {
+        margin: 0;
+        text-align: center;
+    }
+
+    section {
+        width: 100%;
+        max-width: 680px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 14px;
+    }
+
+    label {
+        display: block;
+        margin: 8px 0 4px;
+    }
+
+    input {
+        display: block;
+        width: 100%;
+        max-width: 100%; /* asegura que no se salga del contenedor */
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+
+    button {
+        display: inline-block;
+        max-width: 100%;
+        margin-top: 10px;
+        padding: 10px 14px;
+        border: 1px solid #0ea5e9;
+        background: #38bdf8;
+        color: #04243a;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+
+    button:hover {
+        filter: brightness(1.05);
+    }
+
+    hr {
+        width: 100%;
+        max-width: 680px;
+        border: none;
+        border-top: 1px dashed #ddd;
+    }
+
+    pre {
+        white-space: pre-wrap;
+        word-break: break-word;
+        border: 1px solid #eee;
+        border-radius: 8px;
+        padding: 10px;
+        max-height: 300px;
+        overflow: auto;
+        background: #fafafa;
+    }
+</style>
+</html>
