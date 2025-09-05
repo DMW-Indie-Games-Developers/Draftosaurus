@@ -1,17 +1,14 @@
 <?php
 /**
  * Responsabilidad:
- *  - Encapsular el acceso a la base de datos para la entidad "users".
- *  - Proveer métodos de consulta e inserción usando consultas preparadas (prepared statements) para evitar SQL Injection.
- *
- * Diseño:
- *  - Singleton: comparte la misma conexión (mysqli) provista por Database.
+ * - Encapsular el acceso a la base de datos para la entidad "usuarios".
+ * - Proveer métodos de consulta e inserción usando consultas preparadas (prepared statements) para evitar SQL Injection.
  */
 
 class UserRepository
 {
     /** Instancia única del repositorio. */
-    private static ?UserRepository $instance = null; // instancia única
+    private static ?UserRepository $instance = null;
 
     /** Conexión activa a MySQL (mysqli). */
     private mysqli $conn;
@@ -21,8 +18,8 @@ class UserRepository
      */
     private function __construct()
     {
-        // Obtenemos la conexión de la capa Database
-        $this->conn = Database::getInstance()->getConnection();
+        // Usamos la clase de conexión que definimos en las respuestas anteriores
+        $this->conn = Config::getConnection();
     }
 
     /**
@@ -37,22 +34,47 @@ class UserRepository
     }
 
     /**
-     * Busca un usuario por email.
+     * Busca un usuario por ID.
      * Retorna un array asociativo con las columnas solicitadas o null si no existe.
      */
-    public function findByEmail(string $email)
+    public function findById(int $id)
     {
-    $query = "SELECT id, username, email, password, avatar FROM users WHERE email = ?";
+        $query = "SELECT id, username, email, avatar FROM usuarios WHERE id = ?";
         $stmt = $this->conn->prepare($query);
         if (!$stmt) {
-            return null; // si falla la preparación, devolvemos null (no revelamos detalles de DB)
+            return null;
         }
 
-        $stmt->bind_param("s", $email); // "s" indica string
+        $stmt->bind_param("i", $id); // "i" indica integer
         $stmt->execute();
 
         $result = $stmt->get_result();
-        $user = $result ? $result->fetch_assoc() : null; // fetch_assoc devuelve array asociativo
+        $user = $result ? $result->fetch_assoc() : null;
+
+        if ($result) {
+            $result->free();
+        }
+        $stmt->close();
+
+        return $user ?: null;
+    }
+
+    /**
+     * Busca un usuario por email.
+     */
+    public function findByEmail(string $email)
+    {
+        $query = "SELECT id, username, email, password, avatar FROM usuarios WHERE email = ?";
+        $stmt = $this->conn->prepare($query);
+        if (!$stmt) {
+            return null;
+        }
+
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $user = $result ? $result->fetch_assoc() : null;
 
         if ($result) {
             $result->free();
@@ -67,7 +89,7 @@ class UserRepository
      */
     public function findByUsername(string $username)
     {
-    $query = "SELECT id, username, email, password, avatar FROM users WHERE username = ?";
+        $query = "SELECT id, username, email, password, avatar FROM usuarios WHERE username = ?";
         $stmt = $this->conn->prepare($query);
         if (!$stmt) {
             return null;
@@ -88,11 +110,11 @@ class UserRepository
     }
 
     /**
-     * Busca un usuario por username o email (cualquiera que coincida).
+     * Busca un usuario por username o email.
      */
     public function findByUsernameOrEmail(string $identifier)
     {
-    $query = "SELECT id, username, email, password, avatar FROM users WHERE username = ? OR email = ?";
+        $query = "SELECT id, username, email, password, avatar FROM usuarios WHERE username = ? OR email = ?";
         $stmt = $this->conn->prepare($query);
         if (!$stmt) {
             return null;
@@ -118,21 +140,24 @@ class UserRepository
      */
     public function createUser(string $username, string $email, string $hashedPassword)
     {
-        $query = "INSERT INTO users (username, email, password, avatar) VALUES (?, ?, ?, ?)";
+        // Consulta corregida para la tabla 'usuarios'
+        $query = "INSERT INTO usuarios (username, email, password, avatar) VALUES (?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
         if (!$stmt) {
             return false;
         }
-        // Por defecto, avatar es isotipoOficial.png
+
         $defaultAvatar = 'img/isotipoOficial.png';
         $stmt->bind_param("ssss", $username, $email, $hashedPassword, $defaultAvatar);
         $ok = $stmt->execute();
+        
         if (!$ok) {
             $stmt->close();
             return false;
         }
         $insertId = $stmt->insert_id;
         $stmt->close();
+
         return [
             'id' => (int)$insertId,
             'username' => $username,
@@ -146,11 +171,12 @@ class UserRepository
      */
     public function updateAvatar(int $userId, string $avatarUrl)
     {
-        $query = "UPDATE users SET avatar = ? WHERE id = ?";
+        $query = "UPDATE usuarios SET avatar = ? WHERE id = ?";
         $stmt = $this->conn->prepare($query);
         if (!$stmt) {
             return false;
         }
+
         $stmt->bind_param("si", $avatarUrl, $userId);
         $ok = $stmt->execute();
         $stmt->close();

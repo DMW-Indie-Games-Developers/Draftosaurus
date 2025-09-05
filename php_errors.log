@@ -22,3 +22,48 @@ Stack trace:
 #1 C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\index.php(13): require_once('C:\\Users\\espac\\...')
 #2 {main}
   thrown in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\config\Database.php on line 7
+[04-Sep-2025 17:46:41 America/Montevideo] PHP Fatal error:  Uncaught Error: Class "Config" not found in C:\Users\leand\OneDrive\Desktop\Proyecto\api\repositories\UserRepository.php:22
+Stack trace:
+#0 C:\Users\leand\OneDrive\Desktop\Proyecto\api\repositories\UserRepository.php(31): UserRepository->__construct()
+#1 C:\Users\leand\OneDrive\Desktop\Proyecto\api\services\AuthService.php(27): UserRepository::getInstance()
+#2 C:\Users\leand\OneDrive\Desktop\Proyecto\api\services\AuthService.php(36): AuthService->__construct()
+#3 C:\Users\leand\OneDrive\Desktop\Proyecto\api\controllers\AuthController.php(19): AuthService::getInstance()
+#4 C:\Users\leand\OneDrive\Desktop\Proyecto\index.php(43): AuthController->__construct()
+#5 {main}
+  thrown in C:\Users\leand\OneDrive\Desktop\Proyecto\api\repositories\UserRepository.php on line 22
+[04-Sep-2025 17:46:41 America/Montevideo] PHP Fatal error:  Uncaught Error: Class "Config" not found in C:\Users\leand\OneDrive\Desktop\Proyecto\api\repositories\UserRepository.php:22
+Stack trace:
+#0 C:\Users\leand\OneDrive\Desktop\Proyecto\api\repositories\UserRepository.php(31): UserRepository->__construct()
+#1 C:\Users\leand\OneDrive\Desktop\Proyecto\api\services\AuthService.php(27): UserRepository::getInstance()
+#2 C:\Users\leand\OneDrive\Desktop\Proyecto\api\services\AuthService.php(36): AuthService->__construct()
+#3 C:\Users\leand\OneDrive\Desktop\Proyecto\api\controllers\AuthController.php(19): AuthService::getInstance()
+#4 C:\Users\leand\OneDrive\Desktop\Proyecto\index.php(43): AuthController->__construct()
+#5 {main}
+  thrown in C:\Users\leand\OneDrive\Desktop\Proyecto\api\repositories\UserRepository.php on line 22
+[04-Sep-2025 17:49:13 America/Montevideo] PHP Fatal error:  Uncaught Error: Class "Config" not found in C:\Users\leand\OneDrive\Desktop\Proyecto\api\repositories\UserRepository.php:22
+Stack trace:
+#0 C:\Users\leand\OneDrive\Desktop\Proyecto\api\repositories\UserRepository.php(31): UserRepository->__construct()
+#1 C:\Users\leand\OneDrive\Desktop\Proyecto\api\services\AuthService.php(27): UserRepository::getInstance()
+#2 C:\Users\leand\OneDrive\Desktop\Proyecto\api\services\AuthService.php(36): AuthService->__construct()
+#3 C:\Users\leand\OneDrive\Desktop\Proyecto\api\controllers\AuthController.php(19): AuthService::getInstance()
+#4 C:\Users\leand\OneDrive\Desktop\Proyecto\index.php(43): AuthController->__construct()
+#5 {main}
+  thrown in C:\Users\leand\OneDrive\Desktop\Proyecto\api\repositories\UserRepository.php on line 22
+[04-Sep-2025 17:49:26 America/Montevideo] PHP Fatal error:  Uncaught Error: Class "Config" not found in C:\Users\leand\OneDrive\Desktop\Proyecto\api\repositories\UserRepository.php:22
+Stack trace:
+#0 C:\Users\leand\OneDrive\Desktop\Proyecto\api\repositories\UserRepository.php(31): UserRepository->__construct()
+#1 C:\Users\leand\OneDrive\Desktop\Proyecto\api\services\AuthService.php(27): UserRepository::getInstance()
+#2 C:\Users\leand\OneDrive\Desktop\Proyecto\api\services\AuthService.php(36): AuthService->__construct()
+#3 C:\Users\leand\OneDrive\Desktop\Proyecto\api\controllers\AuthController.php(19): AuthService::getInstance()
+#4 C:\Users\leand\OneDrive\Desktop\Proyecto\index.php(43): AuthController->__construct()
+#5 {main}
+  thrown in C:\Users\leand\OneDrive\Desktop\Proyecto\api\repositories\UserRepository.php on line 22
+[04-Sep-2025 17:49:26 America/Montevideo] PHP Fatal error:  Uncaught Error: Class "Config" not found in C:\Users\leand\OneDrive\Desktop\Proyecto\api\repositories\UserRepository.php:22
+Stack trace:
+#0 C:\Users\leand\OneDrive\Desktop\Proyecto\api\repositories\UserRepository.php(31): UserRepository->__construct()
+#1 C:\Users\leand\OneDrive\Desktop\Proyecto\api\services\AuthService.php(27): UserRepository::getInstance()
+#2 C:\Users\leand\OneDrive\Desktop\Proyecto\api\services\AuthService.php(36): AuthService->__construct()
+#3 C:\Users\leand\OneDrive\Desktop\Proyecto\api\controllers\AuthController.php(19): AuthService::getInstance()
+#4 C:\Users\leand\OneDrive\Desktop\Proyecto\index.php(43): AuthController->__construct()
+#5 {main}
+  thrown in C:\Users\leand\OneDrive\Desktop\Proyecto\api\repositories\UserRepository.php on line 22
