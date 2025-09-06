@@ -89,8 +89,8 @@ class AuthController
      *  - 401 Unauthorized si las credenciales no son válidas.
      *  - 500 Internal Server Error para errores inesperados.
      */
-    public function login()
-    {
+   public function login()
+{
         $raw = file_get_contents("php://input");
         $data = json_decode($raw, true);
 
@@ -100,33 +100,24 @@ class AuthController
             return;
         }
 
-        // Puede venir como "identifier" o por separado "email" / "username"
         $identifier = $data['identifier'] ?? ($data['email'] ?? ($data['username'] ?? null));
         $password = $data['password'] ?? null;
 
         if (!$identifier || !$password) {
             http_response_code(400);
-            echo json_encode([
-                'success' => false,
-                'message' => 'Identificador (email o username) y contraseña son requeridos.'
-            ]);
+            echo json_encode(['success' => false, 'message' => 'Identificador y contraseña son requeridos.']);
             return;
         }
 
-        // Normalizamos tipos y removemos espacios laterales
         $identifier = trim((string)$identifier);
         $password = (string)$password;
 
         if ($identifier === '' || $password === '') {
             http_response_code(400);
-            echo json_encode([
-                'success' => false,
-                'message' => 'Identificador y contraseña no pueden estar vacíos.'
-            ]);
+            echo json_encode(['success' => false, 'message' => 'Identificador y contraseña no pueden estar vacíos.']);
             return;
         }
 
-        // Delegamos autenticación al servicio
         $result = $this->authService->login($identifier, $password);
 
         if (!is_array($result) || !array_key_exists('success', $result)) {
@@ -135,8 +126,9 @@ class AuthController
             return;
         }
 
-        // 200 si ok; 401 si credenciales incorrectas
+        // ✅ Guardar en sesión PHP (sin session_start() duplicado)
         if ($result['success']) {
+            $_SESSION['userId'] = $result['user']['id'];
             http_response_code(200);
         } else {
             http_response_code(401);
@@ -144,4 +136,3 @@ class AuthController
 
         echo json_encode($result);
     }
-}

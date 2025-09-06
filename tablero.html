@@ -1,65 +1,83 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Draftosaurus - Tablero</title>
   <link rel="stylesheet" href="css/tablero.css">
 </head>
-
 <body>
   <div class="main-layout">
 
     <div class="sidebar right">
-      <h4>Dado</h4>
-      <img src="img/dado/dado.png" alt="Dado" class="dado-img" id="dado-img">
-      <button id="tirar-dado-btn">Tirar Dado</button>
-      <p id="restriccion-text">Esperando...</p>
-    </div>
+  <h4>Dado</h4>
+  <img src="img/dado/dado.png" alt="Dado" class="dado-img" id="dado-img">
+  <button id="tirar-dado-btn">Tirar Dado</button>
+  <p id="restriccion-text">Esperando...</p>
+</div>
 
     <!-- TABLERO -->
-    <div class="tablero">
-      <div class="recinto" id="recinto-1" data-tipo="bosque-semenjanza" data-nombre="Bosque de la Semejanza"
-        data-zona="izquierda" data-ambiente="boscoso">
-        <div class="recinto-score">0</div>
-        <div class="recinto-name"></div>
-      </div>
+<div class="tablero">
+  <div class="recinto" id="recinto-1"
+       data-tipo="bosque-semenjanza"
+       data-nombre="Bosque de la Semejanza"
+       data-zona="izquierda"
+       data-ambiente="boscoso">
+    <div class="recinto-score">0</div>
+    <div class="recinto-name"></div>
+  </div>
 
-      <div class="recinto" id="recinto-2" data-tipo="trio-frondoso" data-nombre="Trío Frondoso" data-zona="izquierda"
-        data-ambiente="boscoso">
-        <div class="recinto-score">0</div>
-        <div class="recinto-name"></div>
-      </div>
+  <div class="recinto" id="recinto-2"
+       data-tipo="trio-frondoso"
+       data-nombre="Trío Frondoso"
+       data-zona="izquierda"
+       data-ambiente="boscoso">
+    <div class="recinto-score">0</div>
+    <div class="recinto-name"></div>
+  </div>
 
-      <div class="recinto" id="recinto-3" data-tipo="pradera-amor" data-nombre="Pradera del Amor" data-zona="izquierda">
-        <div class="recinto-score">0</div>
-        <div class="recinto-name"></div>
-      </div>
+  <div class="recinto" id="recinto-3"
+       data-tipo="pradera-amor"
+       data-nombre="Pradera del Amor"
+       data-zona="izquierda">
+    <div class="recinto-score">0</div>
+    <div class="recinto-name"></div>
+  </div>
 
-      <div class="recinto" id="recinto-4" data-tipo="rey-selva" data-nombre="Rey de la Selva" data-zona="derecha">
-        <div class="recinto-score">0</div>
-        <div class="recinto-name"></div>
-      </div>
+  <div class="recinto" id="recinto-4"
+       data-tipo="rey-selva"
+       data-nombre="Rey de la Selva"
+       data-zona="derecha">
+    <div class="recinto-score">0</div>
+    <div class="recinto-name"></div>
+  </div>
 
-      <div class="recinto" id="recinto-5" data-tipo="prado-diferencia" data-nombre="El Prado de la Diferencia"
-        data-zona="derecha">
-        <div class="recinto-score">0</div>
-        <div class="recinto-name"></div>
-      </div>
+  <div class="recinto" id="recinto-5"
+       data-tipo="prado-diferencia"
+       data-nombre="El Prado de la Diferencia"
+       data-zona="derecha">
+    <div class="recinto-score">0</div>
+    <div class="recinto-name"></div>
+  </div>
 
-      <div class="recinto" id="recinto-6" data-tipo="rio" data-nombre="Río" data-zona="centro">
-        <div class="recinto-score">0</div>
-        <div class="recinto-name"></div>
-      </div>
+  <div class="recinto" id="recinto-6"
+       data-tipo="rio"
+       data-nombre="Río"
+       data-zona="centro">
+    <div class="recinto-score">0</div>
+    <div class="recinto-name"></div>
+  </div>
 
-      <div class="recinto" id="recinto-7" data-tipo="isla-solitario" data-nombre="Isla Solitaria" data-zona="derecha">
-        <div class="recinto-score">0</div>
-        <div class="recinto-name"></div>
-      </div>
-    </div>
+  <div class="recinto" id="recinto-7"
+       data-tipo="isla-solitario"
+       data-nombre="Isla Solitaria"
+       data-zona="derecha">
+    <div class="recinto-score">0</div>
+    <div class="recinto-name"></div>
+  </div>
+</div>
 
-    <!-- DINOSAURIOS -->
+       <!-- DINOSAURIOS -->
     <div class="dino-panel">
       <h4 id="dino-panel-title">Tus Dinosaurios - Jugador 1</h4>
       <div class="dino-grid">
@@ -68,7 +86,7 @@
         <img src="img/imagen_Tablero/dino3.png" class="dino-img" data-especie="dino3" draggable="true" alt="Dino 3">
         <img src="img/imagen_Tablero/dino4.png" class="dino-img" data-especie="dino4" draggable="true" alt="Dino 4">
         <img src="img/imagen_Tablero/dino5.png" class="dino-img" data-especie="dino5" draggable="true" alt="Dino 5">
-        <img src="img/imagen_Tablero/trex.png" class="dino-img" data-especie="trex" draggable="true" alt="Dino 6">
+        <img src="img/imagen_Tablero/T-rex.png" class="dino-img" data-especie="trex" draggable="true" alt="Dino 6">
       </div>
 
       <!--  PUNTOS debajo de Tus Dinosaurios  -->
@@ -93,23 +111,18 @@
     <div class="rules-content">
       <h2>Reglas de los Recintos</h2>
       <ul>
-        <li><strong>Isla Solitaria:</strong> Solo 1 dinosaurio. 7 puntos si es único en tu parque, 0 en caso contrario.
-        </li>
+        <li><strong>Isla Solitaria:</strong> Solo 1 dinosaurio. 7 puntos si es único en tu parque, 0 en caso contrario.</li>
         <li><strong>Trío Frondoso:</strong> Hasta 3 dinosaurios. 7 puntos si tiene exactamente 3 dinosaurios.</li>
-        <li><strong>Bosque de la Semejanza:</strong> Solo dinosaurios de la misma especie. Puntos según cantidad: 1=1,
-          2=3, 3=6, 4=10, 5=15, 6=21.</li>
-        <li><strong>Prado de la Diferencia:</strong> Solo dinosaurios de especies distintas. Puntos según cantidad: 1=1,
-          2=3, 3=6, 4=10, 5=15, 6=21.</li>
+        <li><strong>Bosque de la Semejanza:</strong> Solo dinosaurios de la misma especie. Puntos según cantidad: 1=1, 2=3, 3=6, 4=10, 5=15, 6=21.</li>
+        <li><strong>Prado de la Diferencia:</strong> Solo dinosaurios de especies distintas. Puntos según cantidad: 1=1, 2=3, 3=6, 4=10, 5=15, 6=21.</li>
         <li><strong>Pradera del Amor:</strong> 5 puntos por cada pareja de la misma especie.</li>
         <li><strong>Río:</strong> 1 punto por cada dinosaurio.</li>
-        <li><strong>Rey de la Selva:</strong> Solo 1 dinosaurio. 7 puntos si es el único de su especie en tu parque.
-        </li>
+        <li><strong>Rey de la Selva:</strong> Solo 1 dinosaurio. 7 puntos si es el único de su especie en tu parque.</li>
       </ul>
       <button class="close-btn">Cerrar</button>
     </div>
   </div>
-
+  
   <script src="js/tablero.js"></script>
 </body>
-
 </html>

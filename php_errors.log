@@ -26,3 +26,124 @@
 [05-Sep-2025 20:09:43 America/Montevideo] PHP Parse error:  syntax error, unexpected single-quoted string "api/services/TableroService.php" in C:\Users\USUARIO\Documents\GitHub\DraftosaurusMartin\index.php on line 22
 [05-Sep-2025 20:09:47 America/Montevideo] PHP Parse error:  syntax error, unexpected single-quoted string "api/services/TableroService.php" in C:\Users\USUARIO\Documents\GitHub\DraftosaurusMartin\index.php on line 22
 [05-Sep-2025 20:10:06 America/Montevideo] PHP Parse error:  syntax error, unexpected single-quoted string "api/services/TableroService.php" in C:\Users\USUARIO\Documents\GitHub\DraftosaurusMartin\index.php on line 22
+[05-Sep-2025 20:38:00 America/Montevideo] PHP Parse error:  syntax error, unexpected single-quoted string "api/services/TableroService.php" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 22
+[05-Sep-2025 20:38:00 America/Montevideo] PHP Parse error:  syntax error, unexpected single-quoted string "api/services/TableroService.php" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 22
+[05-Sep-2025 20:38:08 America/Montevideo] PHP Parse error:  syntax error, unexpected single-quoted string "api/services/TableroService.php" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 22
+[05-Sep-2025 20:38:14 America/Montevideo] PHP Parse error:  syntax error, unexpected single-quoted string "api/services/TableroService.php" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 22
+[05-Sep-2025 20:38:42 America/Montevideo] PHP Parse error:  syntax error, unexpected single-quoted string "api/services/TableroService.php" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 22
+[05-Sep-2025 20:43:20 America/Montevideo] PHP Warning:  require_once(api/services/PerfilService.php): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 20
+[05-Sep-2025 20:43:20 America/Montevideo] PHP Fatal error:  Uncaught Error: Failed opening required 'api/services/PerfilService.php' (include_path='.;C:\php\pear') in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php:20
+Stack trace:
+#0 {main}
+  thrown in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 20
+[05-Sep-2025 20:43:25 America/Montevideo] PHP Warning:  require_once(api/services/PerfilService.php): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 20
+[05-Sep-2025 20:43:25 America/Montevideo] PHP Fatal error:  Uncaught Error: Failed opening required 'api/services/PerfilService.php' (include_path='.;C:\php\pear') in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php:20
+Stack trace:
+#0 {main}
+  thrown in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 20
+[05-Sep-2025 20:45:02 America/Montevideo] PHP Warning:  require_once(../api/config/Database.php): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 16
+[05-Sep-2025 20:45:02 America/Montevideo] PHP Fatal error:  Uncaught Error: Failed opening required '../api/config/Database.php' (include_path='.;C:\php\pear') in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php:16
+Stack trace:
+#0 {main}
+  thrown in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 16
+[05-Sep-2025 20:45:04 America/Montevideo] PHP Warning:  require_once(../api/config/Database.php): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 16
+[05-Sep-2025 20:45:04 America/Montevideo] PHP Fatal error:  Uncaught Error: Failed opening required '../api/config/Database.php' (include_path='.;C:\php\pear') in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php:16
+Stack trace:
+#0 {main}
+  thrown in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 16
+[05-Sep-2025 20:48:04 America/Montevideo] PHP Warning:  require_once(../api/config/Database.php): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 16
+[05-Sep-2025 20:48:04 America/Montevideo] PHP Fatal error:  Uncaught Error: Failed opening required '../api/config/Database.php' (include_path='.;C:\php\pear') in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php:16
+Stack trace:
+#0 {main}
+  thrown in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 16
+[05-Sep-2025 20:48:08 America/Montevideo] PHP Warning:  require_once(../api/config/Database.php): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 16
+[05-Sep-2025 20:48:08 America/Montevideo] PHP Fatal error:  Uncaught Error: Failed opening required '../api/config/Database.php' (include_path='.;C:\php\pear') in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php:16
+Stack trace:
+#0 {main}
+  thrown in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 16
+[05-Sep-2025 20:48:13 America/Montevideo] PHP Warning:  require_once(../api/config/Database.php): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 16
+[05-Sep-2025 20:48:13 America/Montevideo] PHP Fatal error:  Uncaught Error: Failed opening required '../api/config/Database.php' (include_path='.;C:\php\pear') in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php:16
+Stack trace:
+#0 {main}
+  thrown in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 16
+[05-Sep-2025 20:49:44 America/Montevideo] PHP Warning:  require_once(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/api/services/PerfilService.php): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 20
+[05-Sep-2025 20:49:44 America/Montevideo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\Users\USUARIO\Documents\GitHub\Draftosaurus/api/services/PerfilService.php' (include_path='.;C:\php\pear') in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php:20
+Stack trace:
+#0 {main}
+  thrown in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 20
+[05-Sep-2025 20:49:55 America/Montevideo] PHP Warning:  require_once(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/api/services/PerfilService.php): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 20
+[05-Sep-2025 20:49:55 America/Montevideo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\Users\USUARIO\Documents\GitHub\Draftosaurus/api/services/PerfilService.php' (include_path='.;C:\php\pear') in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php:20
+Stack trace:
+#0 {main}
+  thrown in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 20
+[05-Sep-2025 20:50:01 America/Montevideo] PHP Warning:  require_once(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/api/services/PerfilService.php): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 20
+[05-Sep-2025 20:50:01 America/Montevideo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\Users\USUARIO\Documents\GitHub\Draftosaurus/api/services/PerfilService.php' (include_path='.;C:\php\pear') in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php:20
+Stack trace:
+#0 {main}
+  thrown in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 20
+[05-Sep-2025 20:51:21 America/Montevideo] PHP Warning:  require_once(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/api/services/PerfilService.php): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 20
+[05-Sep-2025 20:51:21 America/Montevideo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\Users\USUARIO\Documents\GitHub\Draftosaurus/api/services/PerfilService.php' (include_path='.;C:\php\pear') in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php:20
+Stack trace:
+#0 {main}
+  thrown in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 20
+[05-Sep-2025 20:51:42 America/Montevideo] PHP Warning:  require_once(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/api/services/PerfilService.php): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 20
+[05-Sep-2025 20:51:42 America/Montevideo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\Users\USUARIO\Documents\GitHub\Draftosaurus/api/services/PerfilService.php' (include_path='.;C:\php\pear') in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php:20
+Stack trace:
+#0 {main}
+  thrown in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 20
+[05-Sep-2025 20:58:17 America/Montevideo] PHP Warning:  Undefined array key "partidas_jugadas" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 92
+[05-Sep-2025 20:58:17 America/Montevideo] PHP Warning:  Undefined array key "partidas_ganadas" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 93
+[05-Sep-2025 20:58:17 America/Montevideo] PHP Warning:  Undefined array key "puntuacion_total" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 94
+[05-Sep-2025 20:58:17 America/Montevideo] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php:92) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 140
+[05-Sep-2025 20:59:34 America/Montevideo] PHP Warning:  Undefined array key "partidas_jugadas" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 92
+[05-Sep-2025 20:59:34 America/Montevideo] PHP Warning:  Undefined array key "partidas_ganadas" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 93
+[05-Sep-2025 20:59:34 America/Montevideo] PHP Warning:  Undefined array key "puntuacion_total" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 94
+[05-Sep-2025 20:59:34 America/Montevideo] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php:92) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 140
+[05-Sep-2025 20:59:48 America/Montevideo] PHP Warning:  Undefined array key "partidas_jugadas" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 92
+[05-Sep-2025 20:59:48 America/Montevideo] PHP Warning:  Undefined array key "partidas_ganadas" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 93
+[05-Sep-2025 20:59:48 America/Montevideo] PHP Warning:  Undefined array key "puntuacion_total" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 94
+[05-Sep-2025 20:59:48 America/Montevideo] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php:92) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 140
+[05-Sep-2025 20:59:56 America/Montevideo] PHP Warning:  Undefined array key "partidas_jugadas" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 92
+[05-Sep-2025 20:59:56 America/Montevideo] PHP Warning:  Undefined array key "partidas_ganadas" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 93
+[05-Sep-2025 20:59:56 America/Montevideo] PHP Warning:  Undefined array key "puntuacion_total" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 94
+[05-Sep-2025 20:59:56 America/Montevideo] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php:92) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 140
+[05-Sep-2025 21:01:19 America/Montevideo] PHP Warning:  Undefined array key "partidas_jugadas" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 92
+[05-Sep-2025 21:01:19 America/Montevideo] PHP Warning:  Undefined array key "partidas_ganadas" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 93
+[05-Sep-2025 21:01:19 America/Montevideo] PHP Warning:  Undefined array key "puntuacion_total" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 94
+[05-Sep-2025 21:01:19 America/Montevideo] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php:92) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 140
+[05-Sep-2025 21:03:09 America/Montevideo] PHP Warning:  Undefined array key "partidas_jugadas" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 92
+[05-Sep-2025 21:03:09 America/Montevideo] PHP Warning:  Undefined array key "partidas_ganadas" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 93
+[05-Sep-2025 21:03:09 America/Montevideo] PHP Warning:  Undefined array key "puntuacion_total" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 94
+[05-Sep-2025 21:03:09 America/Montevideo] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php:92) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 140
+[05-Sep-2025 21:05:22 America/Montevideo] PHP Warning:  Undefined array key "partidas_jugadas" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 92
+[05-Sep-2025 21:05:22 America/Montevideo] PHP Warning:  Undefined array key "partidas_ganadas" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 93
+[05-Sep-2025 21:05:22 America/Montevideo] PHP Warning:  Undefined array key "puntuacion_total" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 94
+[05-Sep-2025 21:05:22 America/Montevideo] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php:92) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 140
+[05-Sep-2025 21:12:04 America/Montevideo] PHP Warning:  Undefined array key "partidas_jugadas" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 92
+[05-Sep-2025 21:12:04 America/Montevideo] PHP Warning:  Undefined array key "partidas_ganadas" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 93
+[05-Sep-2025 21:12:04 America/Montevideo] PHP Warning:  Undefined array key "puntuacion_total" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 94
+[05-Sep-2025 21:12:04 America/Montevideo] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php:92) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 140
+[05-Sep-2025 21:12:14 America/Montevideo] PHP Warning:  Undefined array key "partidas_jugadas" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 92
+[05-Sep-2025 21:12:14 America/Montevideo] PHP Warning:  Undefined array key "partidas_ganadas" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 93
+[05-Sep-2025 21:12:14 America/Montevideo] PHP Warning:  Undefined array key "puntuacion_total" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php on line 94
+[05-Sep-2025 21:12:14 America/Montevideo] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\services\AuthService.php:92) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 140
+[05-Sep-2025 21:14:17 America/Montevideo] PHP Fatal error:  Uncaught Error: Class "PerfilController" not found in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php:71
+Stack trace:
+#0 {main}
+  thrown in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 71
+[05-Sep-2025 21:14:17 America/Montevideo] PHP Fatal error:  Uncaught Error: Class "PerfilController" not found in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php:71
+Stack trace:
+#0 {main}
+  thrown in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 71
+[05-Sep-2025 21:14:26 America/Montevideo] PHP Fatal error:  Uncaught Error: Class "PerfilController" not found in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php:71
+Stack trace:
+#0 {main}
+  thrown in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 71
+[05-Sep-2025 21:14:26 America/Montevideo] PHP Fatal error:  Uncaught Error: Class "PerfilController" not found in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php:71
+Stack trace:
+#0 {main}
+  thrown in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 71
+[05-Sep-2025 22:18:48 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 50) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 140
+[05-Sep-2025 22:18:48 America/Montevideo] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php:140) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 142
+[05-Sep-2025 22:19:29 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\USUARIO\Documents\GitHub\Draftosaurus\index.php on line 50) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 140
+[05-Sep-2025 22:19:29 America/Montevideo] PHP Warning:  http_response_code(): Cannot set response code - headers already sent (output started at C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php:140) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 142

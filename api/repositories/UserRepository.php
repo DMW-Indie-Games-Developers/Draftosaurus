@@ -42,7 +42,7 @@ class UserRepository
     public function findByEmail(string $email): ?array
     {
         // Se usa * para traer todos los campos de la tabla usuarios
-        $query = "SELECT * FROM usuarios WHERE email = ?";
+        $query = "SELECT * FROM users WHERE email = ?";
         $stmt = $this->conn->prepare($query);
         if (!$stmt) {
             return null;
@@ -63,7 +63,7 @@ class UserRepository
      */
     public function findByUsernameOrEmail(string $identifier): ?array
     {
-        $query = "SELECT * FROM usuarios WHERE username = ? OR email = ?";
+        $query = "SELECT * FROM users WHERE username = ? OR email = ?";
         $stmt = $this->conn->prepare($query);
         if (!$stmt) {
             return null;
@@ -86,19 +86,18 @@ class UserRepository
      */
     public function createUser(string $username, string $email, string $hashedPassword): array|false
     {
-        $query = "INSERT INTO usuarios (username, email, password) VALUES (?, ?, ?)";
+        $query = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
         $stmt = $this->conn->prepare($query);
         if (!$stmt) {
             return false;
         }
 
         $stmt->bind_param("sss", $username, $email, $hashedPassword);
-        $ok = $stmt->execute();
-        if (!$ok) {
-            $stmt->close();
-            // Podríamos verificar el código de error para duplicados (1062)
-            return false;
-        }
+            if (!$stmt->execute()) {
+        $error = $stmt->error;          // ← mensaje de MySQL
+        $stmt->close();
+        throw new Exception("Error al crear usuario: $error");
+}
 
         $insertId = $stmt->insert_id;
         $stmt->close();

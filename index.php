@@ -13,15 +13,16 @@ error_reporting(E_ALL);
  *  - Luego puedes probar con el cliente simple index.html o Postman, cURL, etc.
  */
 
-require_once 'api/config/Database.php';
-require_once 'api/repositories/UserRepository.php';
-require_once 'api/services/AuthService.php';
-require_once 'api/controllers/AuthController.php';
-require_once 'api/services/PerfilService.php';
-require_once 'api/controllers/PerfilController.php';
-require_one  'api/services/TableroService.php';
-require_once 'api/controllers/TableroController.php';
-require_once 'api/repositories/TableroRepository.php';
+require_once __DIR__ . '/api/config/Database.php';
+require_once __DIR__ . '/api/repositories/UserRepository.php';
+require_once __DIR__ . '/api/services/AuthService.php';
+require_once __DIR__ . '/api/controllers/AuthController.php';
+require_once __DIR__ . '/api/services/TableroService.php';
+require_once __DIR__ . '/api/controllers/TableroController.php';
+require_once __DIR__ . '/api/repositories/TableroRepository.php';
+require_once __DIR__ . '/api/controllers/PerfilController.php';
+require_once __DIR__ . '/api/repositories/PerfilRepository.php';
+require_once __DIR__ . '/api/services/PerfilService.php';
 
 
 // Cabeceras comunes para JSON y CORS (ajusta según tu necesidad real de seguridad)
@@ -71,13 +72,12 @@ try {
     switch ($resource) { // Enrutamiento muy simple basado en el primer segmento
         case 'perfil':
             $controller = new PerfilController();
-            if ($method === 'GET') {
-                $userId = isset($uri[1]) && is_numeric($uri[1]) ? (int) $uri[1] : null;
+            if ($method === 'GET' && isset($uri[1]) && is_numeric($uri[1])) {
+                $userId = (int)$uri[1];
                 echo json_encode($controller->getPerfil($userId));
                 break;
             }
             if ($method === 'POST' && isset($uri[1]) && $uri[1] === 'avatar') {
-                // Espera JSON con userId y avatarUrl
                 $raw = file_get_contents('php://input');
                 $data = json_decode($raw, true);
                 $userId = $data['userId'] ?? null;
@@ -93,6 +93,7 @@ try {
             http_response_code(405);
             echo json_encode(['success' => false, 'message' => 'Método no permitido.']);
             break;
+
         case 'login':
             if ($method === 'POST') {
                 $controller->login();
@@ -110,6 +111,25 @@ try {
             http_response_code(405);
             echo json_encode(['success' => false, 'message' => 'Método no permitido.']);
             break;
+        case 'mi-perfil':
+            session_start();
+            if (!isset($_SESSION['userId'])) {
+                http_response_code(401);
+                echo json_encode(['error' => 'No autorizado']);
+                break;
+            }
+
+            $userId = $_SESSION['userId'];
+            $controller = new PerfilController();
+            echo json_encode($controller->getPerfil($userId));
+            break;
+        case 'logout':
+            session_start();                  // asegurar sesión activa
+            session_unset();                  // borra TODAS las variables de sesión
+            session_destroy();                // destruye el archivo de sesión
+            http_response_code(200);
+            echo json_encode(['success' => true, 'message' => 'Sesión cerrada']);
+            break;        
 
         case 'health':
             // Estado general de la API y verificación básica de la base de datos
