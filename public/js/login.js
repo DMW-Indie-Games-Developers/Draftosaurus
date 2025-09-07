@@ -34,6 +34,8 @@ document.getElementById('btn-login')?.addEventListener('click', async () => {
 
   const { ok, json } = await postJson(`${BASE}/login`, { identifier: identificador, password: clave });
 
+  console.log('Respuesta del login:', { ok, json }); // DEBUG
+
   if (ok && json?.success) {
     const u = json.user;
     localStorage.setItem('userId', u.id);
@@ -41,9 +43,21 @@ document.getElementById('btn-login')?.addEventListener('click', async () => {
     localStorage.setItem('userEmail', u.email);
     localStorage.setItem('userAvatar', u.avatar || 'img/isotipoOficial.png');
 
+    console.log('Usuario logueado:', u); // DEBUG
+    console.log('Rol del usuario:', u.rol); // DEBUG
+
     alert('¡Login exitoso!');
-    location.href = '/perfil'; // ← ruta limpia
+    
+    // Verificar el rol con más detalle
+    if (u.rol === 'admin') {
+      console.log('Redirigiendo a admin...'); // DEBUG
+      location.href = '/admin';
+    } else {
+      console.log('Redirigiendo a perfil...'); // DEBUG
+      location.href = '/perfil';
+    }
   } else {
+    console.error('Error en login:', json); // DEBUG
     alert('Login fallido: ' + (json?.message || 'Credenciales incorrectas.'));
   }
 });

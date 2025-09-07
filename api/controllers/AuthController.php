@@ -42,9 +42,9 @@ class AuthController
         }
 
         // Sanitiza/normaliza datos (trim para quitar espacios a los extremos)
-        $username = isset($data['username']) ? trim((string)$data['username']) : '';
-        $email = isset($data['email']) ? trim((string)$data['email']) : '';
-        $password = isset($data['password']) ? (string)$data['password'] : '';
+        $username = isset($data['username']) ? trim((string) $data['username']) : '';
+        $email = isset($data['email']) ? trim((string) $data['email']) : '';
+        $password = isset($data['password']) ? (string) $data['password'] : '';
 
         // Validación mínima de presencia de campos
         if ($username === '' || $email === '' || $password === '') {
@@ -109,8 +109,20 @@ class AuthController
             return;
         }
 
-        $identifier = trim((string)$identifier);
-        $password = (string)$password;
+        $identifier = trim((string) $identifier);
+        $password = (string) $password;
+
+        // ✅ DEBUG: Guardá lo que llega
+        error_log("Login intentado: $identifier / $password");
+        file_put_contents('login_debug.log', "Login: $identifier / $password\n", FILE_APPEND);
+
+        if ($identifier === '' || $password === '') {
+            http_response_code(400);
+            echo json_encode(['success' => false, 'message' => 'Identificador y contraseña no pueden estar vacíos.']);
+            return;
+        }
+
+        $result = $this->authService->login($identifier, $password);
 
         if ($identifier === '' || $password === '') {
             http_response_code(400);
@@ -129,6 +141,7 @@ class AuthController
         // ✅ Guardar en sesión PHP (sin session_start() duplicado)
         if ($result['success']) {
             $_SESSION['userId'] = $result['user']['id'];
+            $_SESSION['rol'] = $result['user']['rol'];
             http_response_code(200);
         } else {
             http_response_code(401);

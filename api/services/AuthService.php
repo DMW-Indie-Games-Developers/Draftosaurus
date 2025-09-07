@@ -74,24 +74,40 @@ class AuthService
      */
     private function verifyCredentials(string $identifier, string $plainPassword): array|false
     {
+        error_log("=== INICIO verifyCredentials ===");
         $user = $this->userRepository->findByUsernameOrEmail($identifier);
 
         if (!$user) {
+            error_log("Usuario NO encontrado");
+            error_log("=== FIN verifyCredentials (fail) ===");
             return false;
         }
 
+        error_log("Usuario encontrado: " . ($user['username'] ?? 'sin username'));
+        error_log("Hash en BD: " . ($user['password'] ?? 'sin password'));
+
+        error_log("Pass HEX: " . bin2hex($plainPassword));
+        error_log("Hash HEX: " . bin2hex($user['password']));
+
         if (!password_verify($plainPassword, $user['password'])) {
+            error_log("Pass recibida: " . $plainPassword);
+            error_log("Verify result: FAIL");
+            error_log("=== FIN verifyCredentials (fail) ===");
             return false;
         }
 
         // Importante: removemos el hash de la contraseña antes de devolver los datos.
         unset($user['password']);
-        
+
         // Convertimos los tipos de datos numéricos
-        $user['id'] = (int)$user['id'];
-        $user['partidas_jugadas'] = (int)$user['partidas_jugadas'];
-        $user['partidas_ganadas'] = (int)$user['partidas_ganadas'];
-        $user['puntuacion_total'] = (int)$user['puntuacion_total'];
+        $user['id'] = (int) $user['id'];
+        $user['partidas_jugadas'] = (int) ($user['partidas_jugadas'] ?? 0);
+        $user['partidas_ganadas'] = (int) ($user['partidas_ganadas'] ?? 0);
+        $user['puntuacion_total'] = (int) ($user['puntuacion_total'] ?? 0);
+
+        error_log("Pass recibida: " . $plainPassword);
+        error_log("Verify result: OK");
+        error_log("=== FIN verifyCredentials (ok) ===");
 
         return $user;
     }
@@ -109,7 +125,12 @@ class AuthService
         return [
             'success' => true,
             'message' => 'Login exitoso.',
-            'user' => $user, // Devolvemos todos los datos del usuario
+            'user' => [
+                'id'       => $user['id'],
+                'username' => $user['username'],
+                'email'    => $user['email'],
+                'rol'      => $user['rol'],
+            ]
         ];
     }
 }

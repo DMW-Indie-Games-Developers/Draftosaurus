@@ -1,253 +1,205 @@
-[06-Sep-2025 22:05:10 America/Montevideo] PHP Warning:  require_once(C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public/api/config/Database.php): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 28
-[06-Sep-2025 22:05:10 America/Montevideo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public/api/config/Database.php' (include_path='.;C:\php\pear') in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php:28
-Stack trace:
-#0 {main}
-  thrown in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 28
-[06-Sep-2025 22:05:12 America/Montevideo] PHP Warning:  require_once(C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public/api/config/Database.php): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 28
-[06-Sep-2025 22:05:12 America/Montevideo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public/api/config/Database.php' (include_path='.;C:\php\pear') in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php:28
-Stack trace:
-#0 {main}
-  thrown in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 28
-[06-Sep-2025 22:07:20 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 53
-[06-Sep-2025 22:07:31 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 53
-[06-Sep-2025 22:07:32 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 53
-[06-Sep-2025 22:16:16 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:16:16 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/view/index.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\home.php on line 18
-[06-Sep-2025 22:16:31 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:16:31 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/view/index.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\home.php on line 18
-[06-Sep-2025 22:16:35 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:17:23 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:17:23 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 5) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\tablero.php on line 4
-[06-Sep-2025 22:17:23 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:17:26 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:17:37 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:22:46 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:22:46 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 5) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\home.php on line 2
-[06-Sep-2025 22:22:46 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/view/index.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\home.php on line 24
-[06-Sep-2025 22:22:47 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:22:47 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 5) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\home.php on line 2
-[06-Sep-2025 22:22:47 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/view/index.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\home.php on line 24
-[06-Sep-2025 22:23:14 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:23:19 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:23:19 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 5) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\home.php on line 2
-[06-Sep-2025 22:23:19 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/view/index.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\home.php on line 24
-[06-Sep-2025 22:23:19 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:30:35 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:30:35 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/view/index.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\home.php on line 20
-[06-Sep-2025 22:30:41 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:30:50 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:30:50 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/view/index.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\home.php on line 20
-[06-Sep-2025 22:30:50 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:33:56 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:33:56 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:34:05 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:34:05 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:34:36 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:34:36 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:34:36 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:34:37 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:34:37 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:47:56 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:48:03 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:48:04 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:48:04 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:48:09 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:48:11 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:50:20 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:50:20 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:50:25 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:50:25 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:50:29 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:50:29 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:50:35 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:50:35 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:51:26 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:51:29 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:51:29 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:51:32 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 22:51:34 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:08:23 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:08:23 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:08:35 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:08:35 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:08:47 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:08:50 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:08:50 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:08:52 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:08:54 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:08:54 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:08:57 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:08:57 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:09:00 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:09:00 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:09:03 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:09:03 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:09:03 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:09:03 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:09:40 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:09:40 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:09:45 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:09:45 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:09:45 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:09:45 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:10:05 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:10:07 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:10:07 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:10:11 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:10:13 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:10:13 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:10:39 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:10:40 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:15:02 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:15:02 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:15:05 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:15:05 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:15:16 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:15:16 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:15:23 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:15:25 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:15:26 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:15:29 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:15:31 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:15:31 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:15:33 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[06-Sep-2025 23:15:33 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 48
-[07-Sep-2025 00:17:01 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:17:01 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:17:01 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:17:01 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:17:01 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:17:01 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:17:01 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:17:01 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:17:06 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:17:06 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:17:06 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:17:06 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:17:09 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:17:09 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:17:09 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:17:09 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:17:09 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:17:09 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:17:09 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:17:09 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:17:09 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:17:09 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:17:09 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:17:09 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:17:09 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:17:09 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:17:09 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:17:09 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:17:19 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:17:19 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:17:19 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:17:19 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:17:21 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:17:21 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:17:21 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:17:21 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:17:21 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:17:21 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:17:21 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:17:21 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:17:21 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:17:21 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:17:21 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:17:21 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:17:21 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:17:21 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:17:21 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:17:21 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:18:29 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:29 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:29 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:18:29 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:18:30 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:30 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:30 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:18:30 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:18:34 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:34 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:34 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:18:34 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:18:34 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:34 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:34 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:18:34 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:18:36 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:36 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:36 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:18:36 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:18:36 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:36 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:36 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:18:36 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:18:36 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:36 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:36 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:18:36 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:18:36 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:36 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:36 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:18:36 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:18:39 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:39 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:39 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:18:39 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:18:39 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:39 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:39 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:18:39 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:18:43 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:43 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:43 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:18:43 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:18:43 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:43 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:43 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:18:43 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:18:46 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:46 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:46 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:18:46 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:18:46 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:46 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:46 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:18:46 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:18:46 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:46 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:46 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:18:46 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:18:46 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:46 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:46 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:18:46 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:18:50 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:50 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:50 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:18:50 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:18:50 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:50 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:50 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:18:50 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:18:52 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:52 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:52 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:18:52 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:18:52 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:52 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:52 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:18:52 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:18:52 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:52 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:52 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:18:52 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 00:18:52 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:52 America/Montevideo] PHP Warning:  Trying to access array offset on null in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 141
-[07-Sep-2025 00:18:52 America/Montevideo] PHP Warning:  Undefined variable $result in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\controllers\AuthController.php on line 147
-[07-Sep-2025 00:18:52 America/Montevideo] PHP Warning:  session_set_cookie_params(): Session cookie parameters cannot be changed when a session is active in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 49
-[07-Sep-2025 12:10:41 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 58) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 198
-[07-Sep-2025 12:11:00 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 58) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 198
-[07-Sep-2025 12:55:32 America/Montevideo] PHP Notice:  session_start(): ps_files_cleanup_dir: opendir(C:\Windows\Temp) failed: No error (0) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 58
+
+[07-Sep-2025 14:13:03 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 14:13:03 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 14:13:03 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 14:13:03 America/Montevideo] Hash en BD: $2y$10$XjP18WHMvEYRFKmUdn5BeebQxg7ds8nL7nju1tXkVL5dCUhGNiHPy
+[07-Sep-2025 14:13:04 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 14:13:04 America/Montevideo] Verify result: FAIL
+[07-Sep-2025 14:13:04 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 14:13:04 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 14:13:04 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 14:13:04 America/Montevideo] Hash en BD: $2y$10$XjP18WHMvEYRFKmUdn5BeebQxg7ds8nL7nju1tXkVL5dCUhGNiHPy
+[07-Sep-2025 14:13:04 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 14:13:04 America/Montevideo] Verify result: FAIL
+[07-Sep-2025 14:13:04 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 14:15:38 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 14:15:38 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 14:15:38 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 14:15:38 America/Montevideo] Hash en BD: $2y$10$XjP18WHMvEYRFKmUdn5BeebQxg7ds8nL7nju1tXkVL5dCUhGNiHPy
+[07-Sep-2025 14:15:38 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 14:15:38 America/Montevideo] Verify result: FAIL
+[07-Sep-2025 14:15:38 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 14:15:38 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 14:15:38 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 14:15:38 America/Montevideo] Hash en BD: $2y$10$XjP18WHMvEYRFKmUdn5BeebQxg7ds8nL7nju1tXkVL5dCUhGNiHPy
+[07-Sep-2025 14:15:38 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 14:15:38 America/Montevideo] Verify result: FAIL
+[07-Sep-2025 14:15:38 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 14:17:12 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 14:17:12 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 14:17:12 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 14:17:12 America/Montevideo] Hash en BD: $2y$10$XjP18WHMvEYRFKmUdn5BeebQxg7ds8nL7nju1tXkVL5dCUhGNiHPy
+[07-Sep-2025 14:17:12 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 14:17:12 America/Montevideo] Hash HEX: 24327924313024586a50313857484d76455952464b6d55646e3542656562517867376473386e4c376e6a753174586b564c3564435568474e69485079
+[07-Sep-2025 14:17:12 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 14:17:12 America/Montevideo] Verify result: FAIL
+[07-Sep-2025 14:17:12 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 14:17:12 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 14:17:12 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 14:17:12 America/Montevideo] Hash en BD: $2y$10$XjP18WHMvEYRFKmUdn5BeebQxg7ds8nL7nju1tXkVL5dCUhGNiHPy
+[07-Sep-2025 14:17:12 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 14:17:12 America/Montevideo] Hash HEX: 24327924313024586a50313857484d76455952464b6d55646e3542656562517867376473386e4c376e6a753174586b564c3564435568474e69485079
+[07-Sep-2025 14:17:12 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 14:17:12 America/Montevideo] Verify result: FAIL
+[07-Sep-2025 14:17:12 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 14:18:29 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 14:18:29 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 14:18:29 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 14:18:29 America/Montevideo] Hash en BD: $2y$10$XjP18WHMvEYRFKmUdn5BeebQxg7ds8nL7nju1tXkVL5dCUhGNiHPy
+[07-Sep-2025 14:18:29 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 14:18:29 America/Montevideo] Hash HEX: 24327924313024586a50313857484d76455952464b6d55646e3542656562517867376473386e4c376e6a753174586b564c3564435568474e69485079
+[07-Sep-2025 14:18:29 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 14:18:29 America/Montevideo] Verify result: FAIL
+[07-Sep-2025 14:18:29 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 14:18:29 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 14:18:29 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 14:18:29 America/Montevideo] Hash en BD: $2y$10$XjP18WHMvEYRFKmUdn5BeebQxg7ds8nL7nju1tXkVL5dCUhGNiHPy
+[07-Sep-2025 14:18:29 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 14:18:29 America/Montevideo] Hash HEX: 24327924313024586a50313857484d76455952464b6d55646e3542656562517867376473386e4c376e6a753174586b564c3564435568474e69485079
+[07-Sep-2025 14:18:29 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 14:18:29 America/Montevideo] Verify result: FAIL
+[07-Sep-2025 14:18:29 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 14:21:14 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 14:21:14 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 14:21:14 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 14:21:14 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 14:21:14 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 14:21:14 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 14:21:14 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 14:21:14 America/Montevideo] Verify result: OK
+[07-Sep-2025 14:21:14 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 14:21:14 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 14:21:14 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 14:21:14 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 14:21:14 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 14:21:14 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 14:21:15 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 14:21:15 America/Montevideo] Verify result: OK
+[07-Sep-2025 14:21:15 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 14:21:27 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 14:21:27 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 14:21:27 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 14:21:27 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 14:21:27 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 14:21:27 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 14:21:27 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 14:21:27 America/Montevideo] Verify result: OK
+[07-Sep-2025 14:21:27 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 14:21:27 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 14:21:27 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 14:21:27 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 14:21:27 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 14:21:27 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 14:21:28 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 14:21:28 America/Montevideo] Verify result: OK
+[07-Sep-2025 14:21:28 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 14:21:29 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public/views/admin.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 159
+[07-Sep-2025 14:24:30 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public/views/admin.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 159
+[07-Sep-2025 14:29:24 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 14:29:24 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 14:29:24 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 14:29:24 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 14:29:24 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 14:29:24 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 14:29:24 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 14:29:24 America/Montevideo] Verify result: OK
+[07-Sep-2025 14:29:24 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 14:29:24 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 14:29:24 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 14:29:24 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 14:29:24 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 14:29:24 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 14:29:25 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 14:29:25 America/Montevideo] Verify result: OK
+[07-Sep-2025 14:29:25 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 14:29:26 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 13) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\admin.php on line 2
+[07-Sep-2025 14:33:50 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 14:33:50 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 14:33:50 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 14:33:50 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 14:33:50 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 14:33:50 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 14:33:50 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 14:33:50 America/Montevideo] Verify result: OK
+[07-Sep-2025 14:33:50 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 14:33:50 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 14:33:50 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 14:33:50 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 14:33:50 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 14:33:50 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 14:33:50 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 14:33:50 America/Montevideo] Verify result: OK
+[07-Sep-2025 14:33:50 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 14:33:52 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 13) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 153
+[07-Sep-2025 14:33:52 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 13) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\admin.php on line 2
+[07-Sep-2025 14:40:52 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 14:40:52 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 14:40:52 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 14:40:52 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 14:40:52 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 14:40:52 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 14:40:52 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 14:40:52 America/Montevideo] Verify result: OK
+[07-Sep-2025 14:40:52 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 14:40:52 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 14:40:52 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 14:40:52 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 14:40:52 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 14:40:52 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 14:40:52 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 14:40:52 America/Montevideo] Verify result: OK
+[07-Sep-2025 14:40:52 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 14:40:54 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 13) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\admin.php on line 2
+[07-Sep-2025 14:41:48 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 14:41:48 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 14:41:48 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 14:41:48 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 14:41:48 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 14:41:48 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 14:41:49 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 14:41:49 America/Montevideo] Verify result: OK
+[07-Sep-2025 14:41:49 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 14:41:49 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 14:41:49 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 14:41:49 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 14:41:49 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 14:41:49 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 14:41:49 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 14:41:49 America/Montevideo] Verify result: OK
+[07-Sep-2025 14:41:49 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 14:41:51 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 13) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\admin.php on line 2
+[07-Sep-2025 14:49:07 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 14:49:07 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 14:49:07 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 14:49:07 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 14:49:07 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 14:49:07 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 14:49:07 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 14:49:07 America/Montevideo] Verify result: OK
+[07-Sep-2025 14:49:07 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 14:49:07 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 14:49:07 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 14:49:07 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 14:49:07 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 14:49:07 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 14:49:08 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 14:49:08 America/Montevideo] Verify result: OK
+[07-Sep-2025 14:49:08 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 14:49:09 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 13) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\admin.php on line 2
+[07-Sep-2025 15:30:10 America/Montevideo] Login intentado: martin@martin.com / martin
+[07-Sep-2025 15:30:10 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 15:30:10 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 15:30:10 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[07-Sep-2025 15:30:10 America/Montevideo] Pass HEX: 6d617274696e
+[07-Sep-2025 15:30:10 America/Montevideo] Hash HEX: 243279243132245830686e4659516d4942453542794a504d436a64422e7238584d774530527532696854475045384333564b637874504d5673365947
+[07-Sep-2025 15:30:10 America/Montevideo] Pass recibida: martin
+[07-Sep-2025 15:30:10 America/Montevideo] Verify result: OK
+[07-Sep-2025 15:30:10 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 15:30:10 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 15:30:10 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 15:30:10 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[07-Sep-2025 15:30:10 America/Montevideo] Pass HEX: 6d617274696e
+[07-Sep-2025 15:30:10 America/Montevideo] Hash HEX: 243279243132245830686e4659516d4942453542794a504d436a64422e7238584d774530527532696854475045384333564b637874504d5673365947
+[07-Sep-2025 15:30:11 America/Montevideo] Pass recibida: martin
+[07-Sep-2025 15:30:11 America/Montevideo] Verify result: OK
+[07-Sep-2025 15:30:11 America/Montevideo] === FIN verifyCredentials (ok) ===

@@ -3,10 +3,14 @@
 ob_start();          // bufferiza todo
 ini_set('display_errors', 0);   // no imprime warnings al browser
 
-
-/* ---------- Redirecciones de archivo estático a recurso controlado ---------- */
 if ($_SERVER['REQUEST_URI'] === '/tablero.html') {
     header('Location: /tablero');
+    exit;
+}
+
+// Agregar esta redirección para index.html
+if ($_SERVER['REQUEST_URI'] === '/index.html') {
+    header('Location: /home');
     exit;
 }
 
@@ -148,6 +152,21 @@ try {
             $controller = new PerfilController();
             echo json_encode($controller->getPerfil($userId));
             break;
+
+        case 'admin':
+            // Cambiar el header Content-Type antes de verificar la sesión
+            header('Content-Type: text/html; charset=utf-8');
+            
+            // Verificar sesión y rol
+            if (!isset($_SESSION['userId']) || $_SESSION['rol'] !== 'admin') {
+                // Redirigir a login si no está autorizado
+                header('Location: /login');
+                exit;
+            }
+            
+            // Incluir el archivo admin.php 
+            require_once __DIR__ . '/../admin.php';
+            exit;
 
         case 'logout':
             $_SESSION = [];
