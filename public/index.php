@@ -24,7 +24,9 @@ if ($_SERVER['REQUEST_URI'] === '/index.html') {
  *  - Desde el directorio del proyecto: php -S localhost:8000 -t public
  *  - Luego puedes probar con el cliente simple index.html o Postman, cURL, etc.
  */
-
+require_once __DIR__ . '/../api/controllers/AdminController.php';
+require_once __DIR__ . '/../api/repositories/AdminRepository.php';
+require_once __DIR__ . '/../api/services/AdminService.php';
 require_once __DIR__ . '/../api/helpers/AuthHelper.php';
 require_once __DIR__ . '/../api/config/Database.php';
 require_once __DIR__ . '/../api/repositories/UserRepository.php';
@@ -211,7 +213,53 @@ try {
                 'cookies' => $_COOKIE,
                 'userId' => $_SESSION['userId'] ?? null
             ]);
-            exit;    
+            exit;
+            
+        case 'api':
+            $sub = $uri[1] ?? '';
+            if ($sub === 'admin') {
+                $controller = new AdminController();
+                $op    = $uri[2] ?? '';      // users | messages
+                $id    = (int)($uri[3] ?? 0);
+                $extra = $uri[4] ?? '';      // status
+
+                switch ("$method $op") {
+                    /* --- USUARIOS --- */
+                    case 'GET users':
+                        $controller->listUsers();
+                        exit;
+                    case 'POST users':
+                        $controller->createUser();
+                        exit;
+                    case "GET users $id":
+                        $controller->getUser($id);
+                        exit;
+                    /* -----  NUEVO BLOQUE  ----- */
+                    default:
+                        // Captura cualquier PUT sobre users/{id}
+                        if ($method === 'PUT' && $op === 'users' && $id > 0) {
+                            $controller->updateUser($id);
+                            exit;
+                        }
+                        break;
+                    /* ---------------------------- */
+                    case 'PATCH users':
+                        if ($id > 0 && $extra === 'status') {
+                            $controller->toggleUserStatus($id);
+                            exit;
+                        }
+                        break;
+
+                    /* --- MENSAJES --- */
+                    case 'GET messages':
+                        $controller->listMessages();
+                        exit;
+                }
+                http_response_code(404);
+                echo json_encode(['error' => 'Ruta admin no encontrada']);
+                exit;
+            }
+            break;    
 
         default:
             http_response_code(404);

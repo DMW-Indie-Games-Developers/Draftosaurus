@@ -1,323 +1,189 @@
-
-[07-Sep-2025 14:13:03 America/Montevideo] Login intentado: admin / admin
-[07-Sep-2025 14:13:03 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 14:13:03 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 14:13:03 America/Montevideo] Hash en BD: $2y$10$XjP18WHMvEYRFKmUdn5BeebQxg7ds8nL7nju1tXkVL5dCUhGNiHPy
-[07-Sep-2025 14:13:04 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 14:13:04 America/Montevideo] Verify result: FAIL
-[07-Sep-2025 14:13:04 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 14:13:04 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 14:13:04 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 14:13:04 America/Montevideo] Hash en BD: $2y$10$XjP18WHMvEYRFKmUdn5BeebQxg7ds8nL7nju1tXkVL5dCUhGNiHPy
-[07-Sep-2025 14:13:04 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 14:13:04 America/Montevideo] Verify result: FAIL
-[07-Sep-2025 14:13:04 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 14:15:38 America/Montevideo] Login intentado: admin / admin
-[07-Sep-2025 14:15:38 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 14:15:38 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 14:15:38 America/Montevideo] Hash en BD: $2y$10$XjP18WHMvEYRFKmUdn5BeebQxg7ds8nL7nju1tXkVL5dCUhGNiHPy
-[07-Sep-2025 14:15:38 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 14:15:38 America/Montevideo] Verify result: FAIL
-[07-Sep-2025 14:15:38 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 14:15:38 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 14:15:38 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 14:15:38 America/Montevideo] Hash en BD: $2y$10$XjP18WHMvEYRFKmUdn5BeebQxg7ds8nL7nju1tXkVL5dCUhGNiHPy
-[07-Sep-2025 14:15:38 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 14:15:38 America/Montevideo] Verify result: FAIL
-[07-Sep-2025 14:15:38 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 14:17:12 America/Montevideo] Login intentado: admin / admin
-[07-Sep-2025 14:17:12 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 14:17:12 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 14:17:12 America/Montevideo] Hash en BD: $2y$10$XjP18WHMvEYRFKmUdn5BeebQxg7ds8nL7nju1tXkVL5dCUhGNiHPy
-[07-Sep-2025 14:17:12 America/Montevideo] Pass HEX: 61646d696e
-[07-Sep-2025 14:17:12 America/Montevideo] Hash HEX: 24327924313024586a50313857484d76455952464b6d55646e3542656562517867376473386e4c376e6a753174586b564c3564435568474e69485079
-[07-Sep-2025 14:17:12 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 14:17:12 America/Montevideo] Verify result: FAIL
-[07-Sep-2025 14:17:12 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 14:17:12 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 14:17:12 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 14:17:12 America/Montevideo] Hash en BD: $2y$10$XjP18WHMvEYRFKmUdn5BeebQxg7ds8nL7nju1tXkVL5dCUhGNiHPy
-[07-Sep-2025 14:17:12 America/Montevideo] Pass HEX: 61646d696e
-[07-Sep-2025 14:17:12 America/Montevideo] Hash HEX: 24327924313024586a50313857484d76455952464b6d55646e3542656562517867376473386e4c376e6a753174586b564c3564435568474e69485079
-[07-Sep-2025 14:17:12 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 14:17:12 America/Montevideo] Verify result: FAIL
-[07-Sep-2025 14:17:12 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 14:18:29 America/Montevideo] Login intentado: admin / admin
-[07-Sep-2025 14:18:29 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 14:18:29 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 14:18:29 America/Montevideo] Hash en BD: $2y$10$XjP18WHMvEYRFKmUdn5BeebQxg7ds8nL7nju1tXkVL5dCUhGNiHPy
-[07-Sep-2025 14:18:29 America/Montevideo] Pass HEX: 61646d696e
-[07-Sep-2025 14:18:29 America/Montevideo] Hash HEX: 24327924313024586a50313857484d76455952464b6d55646e3542656562517867376473386e4c376e6a753174586b564c3564435568474e69485079
-[07-Sep-2025 14:18:29 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 14:18:29 America/Montevideo] Verify result: FAIL
-[07-Sep-2025 14:18:29 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 14:18:29 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 14:18:29 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 14:18:29 America/Montevideo] Hash en BD: $2y$10$XjP18WHMvEYRFKmUdn5BeebQxg7ds8nL7nju1tXkVL5dCUhGNiHPy
-[07-Sep-2025 14:18:29 America/Montevideo] Pass HEX: 61646d696e
-[07-Sep-2025 14:18:29 America/Montevideo] Hash HEX: 24327924313024586a50313857484d76455952464b6d55646e3542656562517867376473386e4c376e6a753174586b564c3564435568474e69485079
-[07-Sep-2025 14:18:29 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 14:18:29 America/Montevideo] Verify result: FAIL
-[07-Sep-2025 14:18:29 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 14:21:14 America/Montevideo] Login intentado: admin / admin
-[07-Sep-2025 14:21:14 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 14:21:14 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 14:21:14 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
-[07-Sep-2025 14:21:14 America/Montevideo] Pass HEX: 61646d696e
-[07-Sep-2025 14:21:14 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
-[07-Sep-2025 14:21:14 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 14:21:14 America/Montevideo] Verify result: OK
-[07-Sep-2025 14:21:14 America/Montevideo] === FIN verifyCredentials (ok) ===
-[07-Sep-2025 14:21:14 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 14:21:14 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 14:21:14 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
-[07-Sep-2025 14:21:14 America/Montevideo] Pass HEX: 61646d696e
-[07-Sep-2025 14:21:14 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
-[07-Sep-2025 14:21:15 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 14:21:15 America/Montevideo] Verify result: OK
-[07-Sep-2025 14:21:15 America/Montevideo] === FIN verifyCredentials (ok) ===
-[07-Sep-2025 14:21:27 America/Montevideo] Login intentado: admin / admin
-[07-Sep-2025 14:21:27 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 14:21:27 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 14:21:27 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
-[07-Sep-2025 14:21:27 America/Montevideo] Pass HEX: 61646d696e
-[07-Sep-2025 14:21:27 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
-[07-Sep-2025 14:21:27 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 14:21:27 America/Montevideo] Verify result: OK
-[07-Sep-2025 14:21:27 America/Montevideo] === FIN verifyCredentials (ok) ===
-[07-Sep-2025 14:21:27 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 14:21:27 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 14:21:27 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
-[07-Sep-2025 14:21:27 America/Montevideo] Pass HEX: 61646d696e
-[07-Sep-2025 14:21:27 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
-[07-Sep-2025 14:21:28 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 14:21:28 America/Montevideo] Verify result: OK
-[07-Sep-2025 14:21:28 America/Montevideo] === FIN verifyCredentials (ok) ===
-[07-Sep-2025 14:21:29 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public/views/admin.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 159
-[07-Sep-2025 14:24:30 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public/views/admin.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 159
-[07-Sep-2025 14:29:24 America/Montevideo] Login intentado: admin / admin
-[07-Sep-2025 14:29:24 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 14:29:24 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 14:29:24 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
-[07-Sep-2025 14:29:24 America/Montevideo] Pass HEX: 61646d696e
-[07-Sep-2025 14:29:24 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
-[07-Sep-2025 14:29:24 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 14:29:24 America/Montevideo] Verify result: OK
-[07-Sep-2025 14:29:24 America/Montevideo] === FIN verifyCredentials (ok) ===
-[07-Sep-2025 14:29:24 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 14:29:24 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 14:29:24 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
-[07-Sep-2025 14:29:24 America/Montevideo] Pass HEX: 61646d696e
-[07-Sep-2025 14:29:24 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
-[07-Sep-2025 14:29:25 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 14:29:25 America/Montevideo] Verify result: OK
-[07-Sep-2025 14:29:25 America/Montevideo] === FIN verifyCredentials (ok) ===
-[07-Sep-2025 14:29:26 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 13) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\admin.php on line 2
-[07-Sep-2025 14:33:50 America/Montevideo] Login intentado: admin / admin
-[07-Sep-2025 14:33:50 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 14:33:50 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 14:33:50 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
-[07-Sep-2025 14:33:50 America/Montevideo] Pass HEX: 61646d696e
-[07-Sep-2025 14:33:50 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
-[07-Sep-2025 14:33:50 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 14:33:50 America/Montevideo] Verify result: OK
-[07-Sep-2025 14:33:50 America/Montevideo] === FIN verifyCredentials (ok) ===
-[07-Sep-2025 14:33:50 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 14:33:50 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 14:33:50 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
-[07-Sep-2025 14:33:50 America/Montevideo] Pass HEX: 61646d696e
-[07-Sep-2025 14:33:50 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
-[07-Sep-2025 14:33:50 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 14:33:50 America/Montevideo] Verify result: OK
-[07-Sep-2025 14:33:50 America/Montevideo] === FIN verifyCredentials (ok) ===
-[07-Sep-2025 14:33:52 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 13) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 153
-[07-Sep-2025 14:33:52 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 13) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\admin.php on line 2
-[07-Sep-2025 14:40:52 America/Montevideo] Login intentado: admin / admin
-[07-Sep-2025 14:40:52 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 14:40:52 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 14:40:52 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
-[07-Sep-2025 14:40:52 America/Montevideo] Pass HEX: 61646d696e
-[07-Sep-2025 14:40:52 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
-[07-Sep-2025 14:40:52 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 14:40:52 America/Montevideo] Verify result: OK
-[07-Sep-2025 14:40:52 America/Montevideo] === FIN verifyCredentials (ok) ===
-[07-Sep-2025 14:40:52 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 14:40:52 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 14:40:52 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
-[07-Sep-2025 14:40:52 America/Montevideo] Pass HEX: 61646d696e
-[07-Sep-2025 14:40:52 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
-[07-Sep-2025 14:40:52 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 14:40:52 America/Montevideo] Verify result: OK
-[07-Sep-2025 14:40:52 America/Montevideo] === FIN verifyCredentials (ok) ===
-[07-Sep-2025 14:40:54 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 13) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\admin.php on line 2
-[07-Sep-2025 14:41:48 America/Montevideo] Login intentado: admin / admin
-[07-Sep-2025 14:41:48 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 14:41:48 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 14:41:48 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
-[07-Sep-2025 14:41:48 America/Montevideo] Pass HEX: 61646d696e
-[07-Sep-2025 14:41:48 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
-[07-Sep-2025 14:41:49 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 14:41:49 America/Montevideo] Verify result: OK
-[07-Sep-2025 14:41:49 America/Montevideo] === FIN verifyCredentials (ok) ===
-[07-Sep-2025 14:41:49 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 14:41:49 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 14:41:49 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
-[07-Sep-2025 14:41:49 America/Montevideo] Pass HEX: 61646d696e
-[07-Sep-2025 14:41:49 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
-[07-Sep-2025 14:41:49 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 14:41:49 America/Montevideo] Verify result: OK
-[07-Sep-2025 14:41:49 America/Montevideo] === FIN verifyCredentials (ok) ===
-[07-Sep-2025 14:41:51 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 13) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\admin.php on line 2
-[07-Sep-2025 14:49:07 America/Montevideo] Login intentado: admin / admin
-[07-Sep-2025 14:49:07 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 14:49:07 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 14:49:07 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
-[07-Sep-2025 14:49:07 America/Montevideo] Pass HEX: 61646d696e
-[07-Sep-2025 14:49:07 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
-[07-Sep-2025 14:49:07 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 14:49:07 America/Montevideo] Verify result: OK
-[07-Sep-2025 14:49:07 America/Montevideo] === FIN verifyCredentials (ok) ===
-[07-Sep-2025 14:49:07 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 14:49:07 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 14:49:07 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
-[07-Sep-2025 14:49:07 America/Montevideo] Pass HEX: 61646d696e
-[07-Sep-2025 14:49:07 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
-[07-Sep-2025 14:49:08 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 14:49:08 America/Montevideo] Verify result: OK
-[07-Sep-2025 14:49:08 America/Montevideo] === FIN verifyCredentials (ok) ===
-[07-Sep-2025 14:49:09 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 13) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\admin.php on line 2
-[07-Sep-2025 15:30:10 America/Montevideo] Login intentado: martin@martin.com / martin
-[07-Sep-2025 15:30:10 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 15:30:10 America/Montevideo] Usuario encontrado: martin123
-[07-Sep-2025 15:30:10 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
-[07-Sep-2025 15:30:10 America/Montevideo] Pass HEX: 6d617274696e
-[07-Sep-2025 15:30:10 America/Montevideo] Hash HEX: 243279243132245830686e4659516d4942453542794a504d436a64422e7238584d774530527532696854475045384333564b637874504d5673365947
-[07-Sep-2025 15:30:10 America/Montevideo] Pass recibida: martin
-[07-Sep-2025 15:30:10 America/Montevideo] Verify result: OK
-[07-Sep-2025 15:30:10 America/Montevideo] === FIN verifyCredentials (ok) ===
-[07-Sep-2025 15:30:10 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 15:30:10 America/Montevideo] Usuario encontrado: martin123
-[07-Sep-2025 15:30:10 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
-[07-Sep-2025 15:30:10 America/Montevideo] Pass HEX: 6d617274696e
-[07-Sep-2025 15:30:10 America/Montevideo] Hash HEX: 243279243132245830686e4659516d4942453542794a504d436a64422e7238584d774530527532696854475045384333564b637874504d5673365947
-[07-Sep-2025 15:30:11 America/Montevideo] Pass recibida: martin
-[07-Sep-2025 15:30:11 America/Montevideo] Verify result: OK
-[07-Sep-2025 15:30:11 America/Montevideo] === FIN verifyCredentials (ok) ===
-[07-Sep-2025 15:52:04 America/Montevideo] Login intentado: admin@draftosaurus.com / admin
-[07-Sep-2025 15:52:04 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 15:52:04 America/Montevideo] Usuario NO encontrado
-[07-Sep-2025 15:52:04 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 15:52:04 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 15:52:05 America/Montevideo] Usuario NO encontrado
-[07-Sep-2025 15:52:05 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 15:52:15 America/Montevideo] Login intentado: admin / admin
-[07-Sep-2025 15:52:15 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 15:52:15 America/Montevideo] Usuario NO encontrado
-[07-Sep-2025 15:52:15 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 15:52:15 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 15:52:15 America/Montevideo] Usuario NO encontrado
-[07-Sep-2025 15:52:15 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 15:53:03 America/Montevideo] Login intentado: admin@draftosaurus.com / admin
-[07-Sep-2025 15:53:03 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 15:53:03 America/Montevideo] Usuario NO encontrado
-[07-Sep-2025 15:53:03 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 15:53:03 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 15:53:03 America/Montevideo] Usuario NO encontrado
-[07-Sep-2025 15:53:03 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 15:54:13 America/Montevideo] Login intentado: admin@draftosaurus.com / admin123
-[07-Sep-2025 15:54:13 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 15:54:13 America/Montevideo] Usuario NO encontrado
-[07-Sep-2025 15:54:13 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 15:54:13 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 15:54:13 America/Montevideo] Usuario NO encontrado
-[07-Sep-2025 15:54:13 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 15:54:36 America/Montevideo] Login intentado: admin@draftosaurus.com / admin123
-[07-Sep-2025 15:54:36 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 15:54:36 America/Montevideo] Usuario NO encontrado
-[07-Sep-2025 15:54:36 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 15:54:36 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 15:54:36 America/Montevideo] Usuario NO encontrado
-[07-Sep-2025 15:54:36 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 15:54:42 America/Montevideo] Login intentado: admin@draftosaurus.com / admin
-[07-Sep-2025 15:54:42 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 15:54:42 America/Montevideo] Usuario NO encontrado
-[07-Sep-2025 15:54:42 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 15:54:42 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 15:54:42 America/Montevideo] Usuario NO encontrado
-[07-Sep-2025 15:54:42 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 15:54:52 America/Montevideo] Login intentado: admin@draftosaurus.com / admin12345
-[07-Sep-2025 15:54:52 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 15:54:52 America/Montevideo] Usuario NO encontrado
-[07-Sep-2025 15:54:52 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 15:54:52 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 15:54:52 America/Montevideo] Usuario NO encontrado
-[07-Sep-2025 15:54:52 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 15:59:35 America/Montevideo] Login intentado: admin@draftosaurus.com / admin
-[07-Sep-2025 15:59:35 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 15:59:35 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 15:59:35 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
-[07-Sep-2025 15:59:35 America/Montevideo] Pass HEX: 61646d696e
-[07-Sep-2025 15:59:35 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
-[07-Sep-2025 15:59:35 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 15:59:35 America/Montevideo] Verify result: OK
-[07-Sep-2025 15:59:35 America/Montevideo] === FIN verifyCredentials (ok) ===
-[07-Sep-2025 15:59:35 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 15:59:35 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 15:59:35 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
-[07-Sep-2025 15:59:35 America/Montevideo] Pass HEX: 61646d696e
-[07-Sep-2025 15:59:35 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
-[07-Sep-2025 15:59:36 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 15:59:36 America/Montevideo] Verify result: OK
-[07-Sep-2025 15:59:36 America/Montevideo] === FIN verifyCredentials (ok) ===
-[07-Sep-2025 15:59:51 America/Montevideo] PHP Notice:  session_start(): ps_files_cleanup_dir: opendir(C:\Windows\Temp) failed: No such file or directory (2) in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 13
-[07-Sep-2025 16:08:29 America/Montevideo] Login intentado: admin@draftosaurus.com / admin
-[07-Sep-2025 16:08:29 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 16:08:29 America/Montevideo] Usuario NO encontrado
-[07-Sep-2025 16:08:29 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 16:08:29 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 16:08:29 America/Montevideo] Usuario NO encontrado
-[07-Sep-2025 16:08:29 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 16:08:36 America/Montevideo] Login intentado: admin@draftosaurus.com / admin123
-[07-Sep-2025 16:08:36 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 16:08:36 America/Montevideo] Usuario NO encontrado
-[07-Sep-2025 16:08:36 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 16:08:36 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 16:08:36 America/Montevideo] Usuario NO encontrado
-[07-Sep-2025 16:08:36 America/Montevideo] === FIN verifyCredentials (fail) ===
-[07-Sep-2025 16:10:42 America/Montevideo] Login intentado: admin@draftosaurus.com / admin
-[07-Sep-2025 16:10:42 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 16:10:42 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 16:10:42 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
-[07-Sep-2025 16:10:42 America/Montevideo] Pass HEX: 61646d696e
-[07-Sep-2025 16:10:42 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
-[07-Sep-2025 16:10:43 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 16:10:43 America/Montevideo] Verify result: OK
-[07-Sep-2025 16:10:43 America/Montevideo] === FIN verifyCredentials (ok) ===
-[07-Sep-2025 16:10:43 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 16:10:43 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 16:10:43 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
-[07-Sep-2025 16:10:43 America/Montevideo] Pass HEX: 61646d696e
-[07-Sep-2025 16:10:43 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
-[07-Sep-2025 16:10:44 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 16:10:44 America/Montevideo] Verify result: OK
-[07-Sep-2025 16:10:44 America/Montevideo] === FIN verifyCredentials (ok) ===
-[07-Sep-2025 16:10:46 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 13) in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\admin.php on line 2
-[07-Sep-2025 16:11:05 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 13) in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\admin.php on line 2
-[07-Sep-2025 16:26:43 America/Montevideo] Login intentado: admin@draftosaurus.com / admin
-[07-Sep-2025 16:26:43 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 16:26:43 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 16:26:43 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
-[07-Sep-2025 16:26:43 America/Montevideo] Pass HEX: 61646d696e
-[07-Sep-2025 16:26:43 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
-[07-Sep-2025 16:26:44 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 16:26:44 America/Montevideo] Verify result: OK
-[07-Sep-2025 16:26:44 America/Montevideo] === FIN verifyCredentials (ok) ===
-[07-Sep-2025 16:26:44 America/Montevideo] === INICIO verifyCredentials ===
-[07-Sep-2025 16:26:44 America/Montevideo] Usuario encontrado: admin
-[07-Sep-2025 16:26:44 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
-[07-Sep-2025 16:26:44 America/Montevideo] Pass HEX: 61646d696e
-[07-Sep-2025 16:26:44 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
-[07-Sep-2025 16:26:44 America/Montevideo] Pass recibida: admin
-[07-Sep-2025 16:26:45 America/Montevideo] Verify result: OK
-[07-Sep-2025 16:26:45 America/Montevideo] === FIN verifyCredentials (ok) ===
-[07-Sep-2025 16:26:46 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 13) in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\admin.php on line 2
+[07-Sep-2025 17:52:17 America/Montevideo] PHP Notice:  session_start(): ps_files_cleanup_dir: opendir(C:\Windows\Temp) failed: No error (0) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 13
+[07-Sep-2025 17:52:20 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 17:52:20 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 17:52:20 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 17:52:20 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 17:52:20 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 17:52:20 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 17:52:21 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 17:52:21 America/Montevideo] Verify result: OK
+[07-Sep-2025 17:52:21 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 17:52:21 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 17:52:21 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 17:52:21 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 17:52:21 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 17:52:21 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 17:52:21 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 17:52:21 America/Montevideo] Verify result: OK
+[07-Sep-2025 17:52:21 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 17:57:40 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 17:57:40 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 17:57:40 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 17:57:40 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 17:57:40 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 17:57:40 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 17:57:41 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 17:57:41 America/Montevideo] Verify result: OK
+[07-Sep-2025 17:57:41 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 17:57:41 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 17:57:41 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 17:57:41 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 17:57:41 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 17:57:41 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 17:57:41 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 17:57:41 America/Montevideo] Verify result: OK
+[07-Sep-2025 17:57:41 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 18:01:16 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 18:01:16 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 18:01:16 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 18:01:16 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 18:01:16 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 18:01:16 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 18:01:16 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 18:01:16 America/Montevideo] Verify result: OK
+[07-Sep-2025 18:01:16 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 18:01:16 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 18:01:16 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 18:01:16 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 18:01:16 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 18:01:16 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 18:01:17 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 18:01:17 America/Montevideo] Verify result: OK
+[07-Sep-2025 18:01:17 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 18:06:46 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 18:06:46 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 18:06:46 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 18:06:46 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 18:06:46 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 18:06:46 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 18:06:47 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 18:06:47 America/Montevideo] Verify result: OK
+[07-Sep-2025 18:06:47 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 18:06:47 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 18:06:47 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 18:06:47 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 18:06:47 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 18:06:47 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 18:06:47 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 18:06:47 America/Montevideo] Verify result: OK
+[07-Sep-2025 18:06:47 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 18:10:26 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 18:10:26 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 18:10:26 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 18:10:26 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 18:10:26 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 18:10:26 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 18:10:27 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 18:10:27 America/Montevideo] Verify result: OK
+[07-Sep-2025 18:10:27 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 18:10:27 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 18:10:27 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 18:10:27 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 18:10:27 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 18:10:27 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 18:10:27 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 18:10:27 America/Montevideo] Verify result: OK
+[07-Sep-2025 18:10:27 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 18:13:08 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 18:13:08 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 18:13:08 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 18:13:08 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 18:13:08 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 18:13:08 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 18:13:08 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 18:13:08 America/Montevideo] Verify result: OK
+[07-Sep-2025 18:13:08 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 18:13:08 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 18:13:08 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 18:13:08 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 18:13:08 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 18:13:08 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 18:13:09 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 18:13:09 America/Montevideo] Verify result: OK
+[07-Sep-2025 18:13:09 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 18:13:09 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 18:13:09 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 18:13:09 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 18:13:09 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 18:13:09 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 18:13:09 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 18:13:09 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 18:13:09 America/Montevideo] Verify result: OK
+[07-Sep-2025 18:13:09 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 18:13:09 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 18:13:09 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 18:13:09 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 18:13:09 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 18:13:09 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 18:13:09 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 18:13:09 America/Montevideo] Verify result: OK
+[07-Sep-2025 18:13:09 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 18:18:55 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 18:18:55 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 18:18:55 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 18:18:55 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 18:18:55 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 18:18:55 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 18:18:56 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 18:18:56 America/Montevideo] Verify result: OK
+[07-Sep-2025 18:18:56 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 18:18:56 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 18:18:56 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 18:18:56 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 18:18:56 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 18:18:56 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 18:18:56 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 18:18:56 America/Montevideo] Verify result: OK
+[07-Sep-2025 18:18:56 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 18:25:33 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 18:25:33 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 18:25:33 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 18:25:33 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 18:25:33 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 18:25:33 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 18:25:33 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 18:25:33 America/Montevideo] Verify result: OK
+[07-Sep-2025 18:25:33 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 18:25:33 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 18:25:33 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 18:25:33 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 18:25:33 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 18:25:33 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 18:25:34 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 18:25:34 America/Montevideo] Verify result: OK
+[07-Sep-2025 18:25:34 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 18:27:55 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 18:27:55 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 18:27:55 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 18:27:55 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 18:27:55 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 18:27:55 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 18:27:55 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 18:27:55 America/Montevideo] Verify result: OK
+[07-Sep-2025 18:27:55 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 18:27:55 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 18:27:55 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 18:27:55 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 18:27:55 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 18:27:55 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 18:27:56 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 18:27:56 America/Montevideo] Verify result: OK
+[07-Sep-2025 18:27:56 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 18:36:32 America/Montevideo] PHP Notice:  session_start(): ps_files_cleanup_dir: opendir(C:\Windows\Temp) failed: No error (0) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 13
+[07-Sep-2025 18:36:32 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 18:36:32 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 18:36:32 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 18:36:32 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 18:36:32 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 18:36:32 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 18:36:33 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 18:36:33 America/Montevideo] Verify result: OK
+[07-Sep-2025 18:36:33 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 18:36:33 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 18:36:33 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 18:36:33 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 18:36:33 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 18:36:33 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 18:36:33 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 18:36:33 America/Montevideo] Verify result: OK
+[07-Sep-2025 18:36:33 America/Montevideo] === FIN verifyCredentials (ok) ===

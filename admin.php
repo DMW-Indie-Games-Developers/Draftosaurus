@@ -1,6 +1,5 @@
 <?php
-session_start();
-// Cambiar 'id' por 'userId' para coincidir con AuthController
+
 if(!isset($_SESSION['userId']) || $_SESSION['rol'] !== 'admin'){
     header("Location: /login");
     exit;
