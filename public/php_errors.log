@@ -203,3 +203,121 @@
 [07-Sep-2025 15:30:11 America/Montevideo] Pass recibida: martin
 [07-Sep-2025 15:30:11 America/Montevideo] Verify result: OK
 [07-Sep-2025 15:30:11 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 15:52:04 America/Montevideo] Login intentado: admin@draftosaurus.com / admin
+[07-Sep-2025 15:52:04 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 15:52:04 America/Montevideo] Usuario NO encontrado
+[07-Sep-2025 15:52:04 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 15:52:04 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 15:52:05 America/Montevideo] Usuario NO encontrado
+[07-Sep-2025 15:52:05 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 15:52:15 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 15:52:15 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 15:52:15 America/Montevideo] Usuario NO encontrado
+[07-Sep-2025 15:52:15 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 15:52:15 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 15:52:15 America/Montevideo] Usuario NO encontrado
+[07-Sep-2025 15:52:15 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 15:53:03 America/Montevideo] Login intentado: admin@draftosaurus.com / admin
+[07-Sep-2025 15:53:03 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 15:53:03 America/Montevideo] Usuario NO encontrado
+[07-Sep-2025 15:53:03 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 15:53:03 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 15:53:03 America/Montevideo] Usuario NO encontrado
+[07-Sep-2025 15:53:03 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 15:54:13 America/Montevideo] Login intentado: admin@draftosaurus.com / admin123
+[07-Sep-2025 15:54:13 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 15:54:13 America/Montevideo] Usuario NO encontrado
+[07-Sep-2025 15:54:13 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 15:54:13 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 15:54:13 America/Montevideo] Usuario NO encontrado
+[07-Sep-2025 15:54:13 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 15:54:36 America/Montevideo] Login intentado: admin@draftosaurus.com / admin123
+[07-Sep-2025 15:54:36 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 15:54:36 America/Montevideo] Usuario NO encontrado
+[07-Sep-2025 15:54:36 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 15:54:36 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 15:54:36 America/Montevideo] Usuario NO encontrado
+[07-Sep-2025 15:54:36 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 15:54:42 America/Montevideo] Login intentado: admin@draftosaurus.com / admin
+[07-Sep-2025 15:54:42 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 15:54:42 America/Montevideo] Usuario NO encontrado
+[07-Sep-2025 15:54:42 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 15:54:42 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 15:54:42 America/Montevideo] Usuario NO encontrado
+[07-Sep-2025 15:54:42 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 15:54:52 America/Montevideo] Login intentado: admin@draftosaurus.com / admin12345
+[07-Sep-2025 15:54:52 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 15:54:52 America/Montevideo] Usuario NO encontrado
+[07-Sep-2025 15:54:52 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 15:54:52 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 15:54:52 America/Montevideo] Usuario NO encontrado
+[07-Sep-2025 15:54:52 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 15:59:35 America/Montevideo] Login intentado: admin@draftosaurus.com / admin
+[07-Sep-2025 15:59:35 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 15:59:35 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 15:59:35 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 15:59:35 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 15:59:35 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 15:59:35 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 15:59:35 America/Montevideo] Verify result: OK
+[07-Sep-2025 15:59:35 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 15:59:35 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 15:59:35 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 15:59:35 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 15:59:35 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 15:59:35 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 15:59:36 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 15:59:36 America/Montevideo] Verify result: OK
+[07-Sep-2025 15:59:36 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 15:59:51 America/Montevideo] PHP Notice:  session_start(): ps_files_cleanup_dir: opendir(C:\Windows\Temp) failed: No such file or directory (2) in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 13
+[07-Sep-2025 16:08:29 America/Montevideo] Login intentado: admin@draftosaurus.com / admin
+[07-Sep-2025 16:08:29 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 16:08:29 America/Montevideo] Usuario NO encontrado
+[07-Sep-2025 16:08:29 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 16:08:29 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 16:08:29 America/Montevideo] Usuario NO encontrado
+[07-Sep-2025 16:08:29 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 16:08:36 America/Montevideo] Login intentado: admin@draftosaurus.com / admin123
+[07-Sep-2025 16:08:36 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 16:08:36 America/Montevideo] Usuario NO encontrado
+[07-Sep-2025 16:08:36 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 16:08:36 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 16:08:36 America/Montevideo] Usuario NO encontrado
+[07-Sep-2025 16:08:36 America/Montevideo] === FIN verifyCredentials (fail) ===
+[07-Sep-2025 16:10:42 America/Montevideo] Login intentado: admin@draftosaurus.com / admin
+[07-Sep-2025 16:10:42 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 16:10:42 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 16:10:42 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 16:10:42 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 16:10:42 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 16:10:43 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 16:10:43 America/Montevideo] Verify result: OK
+[07-Sep-2025 16:10:43 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 16:10:43 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 16:10:43 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 16:10:43 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 16:10:43 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 16:10:43 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 16:10:44 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 16:10:44 America/Montevideo] Verify result: OK
+[07-Sep-2025 16:10:44 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 16:10:46 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 13) in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\admin.php on line 2
+[07-Sep-2025 16:11:05 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 13) in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\admin.php on line 2
+[07-Sep-2025 16:26:43 America/Montevideo] Login intentado: admin@draftosaurus.com / admin
+[07-Sep-2025 16:26:43 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 16:26:43 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 16:26:43 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 16:26:43 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 16:26:43 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 16:26:44 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 16:26:44 America/Montevideo] Verify result: OK
+[07-Sep-2025 16:26:44 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 16:26:44 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 16:26:44 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 16:26:44 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 16:26:44 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 16:26:44 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 16:26:44 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 16:26:45 America/Montevideo] Verify result: OK
+[07-Sep-2025 16:26:45 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 16:26:46 America/Montevideo] PHP Notice:  session_start(): Ignoring session_start() because a session is already active (started from C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 13) in C:\Users\espac\OneDrive\Documentos\GitHub\Draftosaurus\admin.php on line 2

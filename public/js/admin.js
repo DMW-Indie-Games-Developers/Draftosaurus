@@ -133,3 +133,124 @@ async function toggleStatus(id, estado){
     if(r.success) loadUsers();
     else alert(r.error||"Error al cambiar estado");
 }
+
+    async function loadUsers(){
+      const res = await fetch("/api/users");
+      const users = await res.json();
+      const tbody = document.getElementById("usersTable");
+      tbody.innerHTML = "";
+      users.forEach(u => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${u.id}</td>
+          <td>${u.name}</td>
+          <td>${u.email}</td>
+          <td><span class="badge ${u.status==='active'?'bg-success':'bg-danger'}">${u.status}</span></td>
+          <td>
+            <button class="btn btn-sm btn-primary me-1" onclick="openEdit(${u.id})">Editar</button>
+            <button class="btn btn-sm ${u.status==='active'?'btn-warning':'btn-success'}" onclick="toggleStatus(${u.id}, '${u.status}')">
+              ${u.status==='active'?'Suspender':'Reactivar'}
+            </button>
+          </td>`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    async function loadMessages(){
+      const res = await fetch("/api/contact-messages");
+      const msgs = await res.json();
+      const tbody = document.getElementById("messagesTable");
+      tbody.innerHTML = "";
+      msgs.forEach(m => {
+        const tr = document.createElement("tr");
+        tr.innerHTML = `
+          <td>${m.id}</td>
+          <td>${m.name}</td>
+          <td>${m.email}</td>
+          <td>${m.message}</td>
+          <td>${m.date}</td>`;
+        tbody.appendChild(tr);
+      });
+    }
+
+    document.getElementById("saveNewUser").addEventListener("click", async () => {
+      const data = {
+        name: document.getElementById("newName").value,
+        email: document.getElementById("newEmail").value,
+        password: document.getElementById("newPassword").value
+      };
+      await fetch("/api/users", {
+        method: "POST",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify(data)
+      });
+      document.getElementById("newUserForm").reset();
+      bootstrap.Modal.getInstance(document.getElementById("newUserModal")).hide();
+      loadUsers();
+    });
+
+    async function openEdit(id){
+      const res = await fetch(`/api/users/${id}`);
+      const u = await res.json();
+      document.getElementById("editId").value = u.id;
+      document.getElementById("editName").value = u.name;
+      document.getElementById("editEmail").value = u.email;
+      document.getElementById("editPassword").value = "";
+      new bootstrap.Modal(document.getElementById("editUserModal")).show();
+    }
+
+    document.getElementById("saveEditUser").addEventListener("click", async () => {
+      const id = document.getElementById("editId").value;
+      const data = {
+        name: document.getElementById("editName").value,
+        email: document.getElementById("editEmail").value
+      };
+      const pwd = document.getElementById("editPassword").value;
+      if(pwd) data.password = pwd;
+      await fetch(`/api/users/${id}`, {
+        method: "PUT",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify(data)
+      });
+      bootstrap.Modal.getInstance(document.getElementById("editUserModal")).hide();
+      loadUsers();
+    });
+
+    async function toggleStatus(id, currentStatus){
+      const newStatus = currentStatus==="active" ? "suspended" : "active";
+      await fetch(`/api/users/${id}/status`, {
+        method: "PATCH",
+        headers: {"Content-Type":"application/json"},
+        body: JSON.stringify({status:newStatus})
+      });
+      loadUsers();
+    }
+
+    function logout(){
+      // Llamar al endpoint de logout del servidor
+      fetch('/logout', { 
+        method: 'POST', 
+        credentials: 'include' 
+      })
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          // Limpiar localStorage si existe
+          localStorage.clear();
+          // Redirigir al login (no a index.html)
+          window.location.href = "/login";
+        } else {
+          alert('Error al cerrar sesión');
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        // Aunque falle, redirigir igualmente
+        localStorage.clear();
+        window.location.href = "/login";
+      });
+    }
+
+    loadUsers();
+    loadMessages();
+  
