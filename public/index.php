@@ -223,43 +223,59 @@ try {
                 $id    = (int)($uri[3] ?? 0);
                 $extra = $uri[4] ?? '';      // status
 
-                switch ("$method $op") {
-                    /* --- USUARIOS --- */
-                    case 'GET users':
-                        $controller->listUsers();
-                        exit;
-                    case 'POST users':
-                        $controller->createUser();
-                        exit;
-                    case "GET users $id":
-                        $controller->getUser($id);
-                        exit;
-                    /* -----  NUEVO BLOQUE  ----- */
-                    default:
-                        // Captura cualquier PUT sobre users/{id}
-                        if ($method === 'PUT' && $op === 'users' && $id > 0) {
-                            $controller->updateUser($id);
+                error_log("=== API ADMIN ROUTE ===");
+                error_log("Method: $method, Op: $op, ID: $id, Extra: $extra");
+                error_log("URI completa: " . implode('/', $uri));
+
+                switch ($method) {
+                    case 'GET':
+                        if ($op === 'users' && $id === 0) {
+                            // GET /api/admin/users
+                            $controller->listUsers();
                             exit;
-                        }
-                        break;
-                    /* ---------------------------- */
-                    case 'PATCH users':
-                        if ($id > 0 && $extra === 'status') {
-                            $controller->toggleUserStatus($id);
+                        } elseif ($op === 'users' && $id > 0) {
+                            // GET /api/admin/users/{id}
+                            $controller->getUser($id);
+                            exit;
+                        } elseif ($op === 'messages') {
+                            // GET /api/admin/messages
+                            $controller->listMessages();
                             exit;
                         }
                         break;
 
-                    /* --- MENSAJES --- */
-                    case 'GET messages':
-                        $controller->listMessages();
-                        exit;
+                    case 'POST':
+                        if ($op === 'users') {
+                            // POST /api/admin/users
+                            $controller->createUser();
+                            exit;
+                        }
+                        break;
+
+                    case 'PUT':
+                        if ($op === 'users' && $id > 0) {
+                            // PUT /api/admin/users/{id}
+                            error_log("Ejecutando updateUser para ID: $id");
+                            $controller->updateUser($id);
+                            exit;
+                        }
+                        break;
+
+                    case 'PATCH':
+                        if ($op === 'users' && $id > 0 && $extra === 'status') {
+                            // PATCH /api/admin/users/{id}/status
+                            $controller->toggleUserStatus($id);
+                            exit;
+                        }
+                        break;
                 }
+                
+                error_log("ERROR: Ruta API admin no encontrada - $method $op");
                 http_response_code(404);
                 echo json_encode(['error' => 'Ruta admin no encontrada']);
                 exit;
             }
-            break;    
+            break;
 
         default:
             http_response_code(404);

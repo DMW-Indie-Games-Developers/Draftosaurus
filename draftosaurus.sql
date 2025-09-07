@@ -14,7 +14,7 @@ CREATE TABLE IF NOT EXISTS users (
   partidas_jugadas  INT          DEFAULT 0,
   partidas_ganadas  INT          DEFAULT 0,
   rol               VARCHAR(20)  NOT NULL DEFAULT 'usuario',
-  estado            BOOLEAN      NOT NULL DEFAULT 1,
+  estado     ENUM('activo','suspendido') DEFAULT 'activo',
   created_at        TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
   updated_at        TIMESTAMP    DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   CONSTRAINT chk_rol CHECK (rol IN ('admin','usuario'))
@@ -66,3 +66,11 @@ CREATE INDEX idx_partidas_jugador ON partidas(jugador1);
 CREATE INDEX idx_partidas_jugador2 ON partidas(jugador2);
 CREATE INDEX idx_jugadas_partida   ON jugadas(id_partida);
 
+CREATE TABLE IF NOT EXISTS contacto (
+  id          INT AUTO_INCREMENT PRIMARY KEY,
+  nombre      VARCHAR(100) NOT NULL,
+  email       VARCHAR(255) NOT NULL,
+  asunto      VARCHAR(255) NOT NULL,
+  mensaje     TEXT NOT NULL,
+  fecha_envio DATETIME DEFAULT CURRENT_TIMESTAMP
+);

@@ -187,3 +187,376 @@
 [07-Sep-2025 18:36:33 America/Montevideo] Pass recibida: admin
 [07-Sep-2025 18:36:33 America/Montevideo] Verify result: OK
 [07-Sep-2025 18:36:33 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 20:22:36 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 20:22:36 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 20:22:36 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 20:22:36 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 20:22:36 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 20:22:36 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 20:22:37 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 20:22:37 America/Montevideo] Verify result: OK
+[07-Sep-2025 20:22:37 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 20:22:37 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 20:22:37 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 20:22:37 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 20:22:37 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 20:22:37 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 20:22:37 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 20:22:37 America/Montevideo] Verify result: OK
+[07-Sep-2025 20:22:37 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 20:26:42 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 20:26:42 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 20:26:42 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 20:26:42 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 20:26:42 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 20:26:42 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 20:26:42 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 20:26:42 America/Montevideo] Verify result: OK
+[07-Sep-2025 20:26:42 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 20:26:42 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 20:26:42 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 20:26:42 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 20:26:42 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 20:26:42 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 20:26:42 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 20:26:42 America/Montevideo] Verify result: OK
+[07-Sep-2025 20:26:42 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 20:41:18 America/Montevideo] PHP Notice:  session_start(): ps_files_cleanup_dir: opendir(C:\Windows\Temp) failed: No error (0) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 13
+[07-Sep-2025 20:41:34 America/Montevideo] Login intentado: martin@martin.com / martin
+[07-Sep-2025 20:41:34 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 20:41:34 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 20:41:34 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[07-Sep-2025 20:41:34 America/Montevideo] Pass HEX: 6d617274696e
+[07-Sep-2025 20:41:34 America/Montevideo] Hash HEX: 243279243132245830686e4659516d4942453542794a504d436a64422e7238584d774530527532696854475045384333564b637874504d5673365947
+[07-Sep-2025 20:41:35 America/Montevideo] Pass recibida: martin
+[07-Sep-2025 20:41:35 America/Montevideo] Verify result: OK
+[07-Sep-2025 20:41:35 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 20:41:35 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 20:41:35 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 20:41:35 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[07-Sep-2025 20:41:35 America/Montevideo] Pass HEX: 6d617274696e
+[07-Sep-2025 20:41:35 America/Montevideo] Hash HEX: 243279243132245830686e4659516d4942453542794a504d436a64422e7238584d774530527532696854475045384333564b637874504d5673365947
+[07-Sep-2025 20:41:35 America/Montevideo] Pass recibida: martin
+[07-Sep-2025 20:41:35 America/Montevideo] Verify result: OK
+[07-Sep-2025 20:41:35 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 20:41:43 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 20:41:43 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 20:41:43 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 20:41:43 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 20:41:43 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 20:41:43 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 20:41:43 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 20:41:43 America/Montevideo] Verify result: OK
+[07-Sep-2025 20:41:43 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 20:41:43 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 20:41:43 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 20:41:43 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 20:41:43 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 20:41:43 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 20:41:43 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 20:41:43 America/Montevideo] Verify result: OK
+[07-Sep-2025 20:41:43 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 20:41:45 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:41:45 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 20:41:45 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 20:41:45 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 20:41:45 America/Montevideo] Usuarios obtenidos: 15
+[07-Sep-2025 20:41:45 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 20:41:45 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:41:45 America/Montevideo] Method: GET, Op: messages, ID: 0, Extra: 
+[07-Sep-2025 20:41:45 America/Montevideo] URI completa: api/admin/messages
+[07-Sep-2025 20:41:45 America/Montevideo] === AdminController::listMessages - INICIO ===
+[07-Sep-2025 20:41:45 America/Montevideo] Mensajes obtenidos: 4
+[07-Sep-2025 20:41:45 America/Montevideo] === AdminController::listMessages - SUCCESS ===
+[07-Sep-2025 20:41:45 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:41:45 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 20:41:45 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 20:41:45 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 20:41:45 America/Montevideo] Usuarios obtenidos: 15
+[07-Sep-2025 20:41:45 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 20:41:45 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:41:45 America/Montevideo] Method: GET, Op: messages, ID: 0, Extra: 
+[07-Sep-2025 20:41:45 America/Montevideo] URI completa: api/admin/messages
+[07-Sep-2025 20:41:45 America/Montevideo] === AdminController::listMessages - INICIO ===
+[07-Sep-2025 20:41:45 America/Montevideo] Mensajes obtenidos: 4
+[07-Sep-2025 20:41:45 America/Montevideo] === AdminController::listMessages - SUCCESS ===
+[07-Sep-2025 20:41:57 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:41:57 America/Montevideo] Method: POST, Op: users, ID: 0, Extra: 
+[07-Sep-2025 20:41:57 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 20:41:57 America/Montevideo] === AdminController::createUser - INICIO ===
+[07-Sep-2025 20:41:57 America/Montevideo] Raw input recibido: {"name":"pasdpaspd","email":"aslñdlfmkl@asdafgwe.com","password":"mamamama"}
+[07-Sep-2025 20:41:57 America/Montevideo] Datos JSON parseados: {"name":"pasdpaspd","email":"aslñdlfmkl@asdafgwe.com","password":"mamamama"}
+[07-Sep-2025 20:41:57 America/Montevideo] Datos sanitizados - name: 'pasdpaspd', email: 'aslñdlfmkl@asdafgwe.com'
+[07-Sep-2025 20:41:57 America/Montevideo] === AdminService::createUser - INICIO ===
+[07-Sep-2025 20:41:57 America/Montevideo] Datos recibidos: {"name":"pasdpaspd","email":"aslñdlfmkl@asdafgwe.com","password":"mamamama"}
+[07-Sep-2025 20:41:57 America/Montevideo] === findUserByUsername: 'pasdpaspd' ===
+[07-Sep-2025 20:41:57 America/Montevideo] Usuario NO encontrado
+[07-Sep-2025 20:41:57 America/Montevideo] === findUserByEmail: 'aslñdlfmkl@asdafgwe.com' ===
+[07-Sep-2025 20:41:57 America/Montevideo] Email NO encontrado
+[07-Sep-2025 20:41:57 America/Montevideo] Procediendo a insertar usuario: pasdpaspd
+[07-Sep-2025 20:41:57 America/Montevideo] === AdminRepository::insertUser - INICIO ===
+[07-Sep-2025 20:41:57 America/Montevideo] Datos recibidos: {"name":"pasdpaspd","email":"aslñdlfmkl@asdafgwe.com","password":"mamamama"}
+[07-Sep-2025 20:41:57 America/Montevideo] Username a insertar: 'pasdpaspd'
+[07-Sep-2025 20:41:57 America/Montevideo] Email a insertar: 'aslñdlfmkl@asdafgwe.com'
+[07-Sep-2025 20:41:57 America/Montevideo] === findUserByUsername: 'pasdpaspd' ===
+[07-Sep-2025 20:41:57 America/Montevideo] Usuario NO encontrado
+[07-Sep-2025 20:41:57 America/Montevideo] === findUserByEmail: 'aslñdlfmkl@asdafgwe.com' ===
+[07-Sep-2025 20:41:57 America/Montevideo] Email NO encontrado
+[07-Sep-2025 20:41:57 America/Montevideo] Verificaciones completadas - Usuario y email disponibles
+[07-Sep-2025 20:41:57 America/Montevideo] Password hasheado correctamente
+[07-Sep-2025 20:41:57 America/Montevideo] Statement preparado correctamente
+[07-Sep-2025 20:41:57 America/Montevideo] Ejecutando INSERT...
+[07-Sep-2025 20:41:57 America/Montevideo] INSERT exitoso - Nuevo ID: 22
+[07-Sep-2025 20:41:57 America/Montevideo] === AdminRepository::insertUser - SUCCESS ===
+[07-Sep-2025 20:41:57 America/Montevideo] Usuario creado exitosamente con ID: 22
+[07-Sep-2025 20:41:57 America/Montevideo] === AdminService::createUser - SUCCESS ===
+[07-Sep-2025 20:41:57 America/Montevideo] Resultado del service: {"success":true,"id":22,"message":"Usuario creado exitosamente"}
+[07-Sep-2025 20:41:57 America/Montevideo] Respuesta enviada con código: 201
+[07-Sep-2025 20:41:57 America/Montevideo] === AdminController::createUser - FIN ===
+[07-Sep-2025 20:41:59 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:41:59 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 20:41:59 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 20:41:59 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 20:41:59 America/Montevideo] Usuarios obtenidos: 16
+[07-Sep-2025 20:41:59 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 20:42:42 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:42:42 America/Montevideo] Method: POST, Op: users, ID: 0, Extra: 
+[07-Sep-2025 20:42:42 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 20:42:42 America/Montevideo] === AdminController::createUser - INICIO ===
+[07-Sep-2025 20:42:42 America/Montevideo] Raw input recibido: {"name":"bastardo","email":"bastardo@picchulin.com","password":"asdasdasd"}
+[07-Sep-2025 20:42:42 America/Montevideo] Datos JSON parseados: {"name":"bastardo","email":"bastardo@picchulin.com","password":"asdasdasd"}
+[07-Sep-2025 20:42:42 America/Montevideo] Datos sanitizados - name: 'bastardo', email: 'bastardo@picchulin.com'
+[07-Sep-2025 20:42:42 America/Montevideo] === AdminService::createUser - INICIO ===
+[07-Sep-2025 20:42:42 America/Montevideo] Datos recibidos: {"name":"bastardo","email":"bastardo@picchulin.com","password":"asdasdasd"}
+[07-Sep-2025 20:42:42 America/Montevideo] === findUserByUsername: 'bastardo' ===
+[07-Sep-2025 20:42:42 America/Montevideo] Usuario NO encontrado
+[07-Sep-2025 20:42:42 America/Montevideo] === findUserByEmail: 'bastardo@picchulin.com' ===
+[07-Sep-2025 20:42:42 America/Montevideo] Email NO encontrado
+[07-Sep-2025 20:42:42 America/Montevideo] Procediendo a insertar usuario: bastardo
+[07-Sep-2025 20:42:42 America/Montevideo] === AdminRepository::insertUser - INICIO ===
+[07-Sep-2025 20:42:42 America/Montevideo] Datos recibidos: {"name":"bastardo","email":"bastardo@picchulin.com","password":"asdasdasd"}
+[07-Sep-2025 20:42:42 America/Montevideo] Username a insertar: 'bastardo'
+[07-Sep-2025 20:42:42 America/Montevideo] Email a insertar: 'bastardo@picchulin.com'
+[07-Sep-2025 20:42:42 America/Montevideo] === findUserByUsername: 'bastardo' ===
+[07-Sep-2025 20:42:42 America/Montevideo] Usuario NO encontrado
+[07-Sep-2025 20:42:42 America/Montevideo] === findUserByEmail: 'bastardo@picchulin.com' ===
+[07-Sep-2025 20:42:42 America/Montevideo] Email NO encontrado
+[07-Sep-2025 20:42:42 America/Montevideo] Verificaciones completadas - Usuario y email disponibles
+[07-Sep-2025 20:42:42 America/Montevideo] Password hasheado correctamente
+[07-Sep-2025 20:42:42 America/Montevideo] Statement preparado correctamente
+[07-Sep-2025 20:42:42 America/Montevideo] Ejecutando INSERT...
+[07-Sep-2025 20:42:42 America/Montevideo] INSERT exitoso - Nuevo ID: 23
+[07-Sep-2025 20:42:42 America/Montevideo] === AdminRepository::insertUser - SUCCESS ===
+[07-Sep-2025 20:42:42 America/Montevideo] Usuario creado exitosamente con ID: 23
+[07-Sep-2025 20:42:42 America/Montevideo] === AdminService::createUser - SUCCESS ===
+[07-Sep-2025 20:42:42 America/Montevideo] Resultado del service: {"success":true,"id":23,"message":"Usuario creado exitosamente"}
+[07-Sep-2025 20:42:42 America/Montevideo] Respuesta enviada con código: 201
+[07-Sep-2025 20:42:42 America/Montevideo] === AdminController::createUser - FIN ===
+[07-Sep-2025 20:43:06 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:43:06 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 20:43:06 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 20:43:06 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 20:43:06 America/Montevideo] Usuarios obtenidos: 17
+[07-Sep-2025 20:43:06 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 20:43:15 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:43:15 America/Montevideo] Method: PATCH, Op: users, ID: 7, Extra: status
+[07-Sep-2025 20:43:15 America/Montevideo] URI completa: api/admin/users/7/status
+[07-Sep-2025 20:43:15 America/Montevideo] === AdminController::toggleUserStatus(7) - INICIO ===
+[07-Sep-2025 20:43:15 America/Montevideo] Cambiando status de usuario 7 a: suspendido
+[07-Sep-2025 20:43:15 America/Montevideo] Resultado cambio status: {"success":true,"message":"Estado actualizado"}
+[07-Sep-2025 20:43:15 America/Montevideo] === AdminController::toggleUserStatus - FIN ===
+[07-Sep-2025 20:43:15 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:43:15 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 20:43:15 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 20:43:15 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 20:43:15 America/Montevideo] Usuarios obtenidos: 17
+[07-Sep-2025 20:43:15 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 20:43:16 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:43:16 America/Montevideo] Method: PATCH, Op: users, ID: 8, Extra: status
+[07-Sep-2025 20:43:16 America/Montevideo] URI completa: api/admin/users/8/status
+[07-Sep-2025 20:43:16 America/Montevideo] === AdminController::toggleUserStatus(8) - INICIO ===
+[07-Sep-2025 20:43:16 America/Montevideo] Cambiando status de usuario 8 a: suspendido
+[07-Sep-2025 20:43:16 America/Montevideo] Resultado cambio status: {"success":true,"message":"Estado actualizado"}
+[07-Sep-2025 20:43:16 America/Montevideo] === AdminController::toggleUserStatus - FIN ===
+[07-Sep-2025 20:43:16 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:43:16 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 20:43:16 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 20:43:16 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 20:43:16 America/Montevideo] Usuarios obtenidos: 17
+[07-Sep-2025 20:43:16 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 20:43:17 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:43:17 America/Montevideo] Method: PATCH, Op: users, ID: 9, Extra: status
+[07-Sep-2025 20:43:17 America/Montevideo] URI completa: api/admin/users/9/status
+[07-Sep-2025 20:43:17 America/Montevideo] === AdminController::toggleUserStatus(9) - INICIO ===
+[07-Sep-2025 20:43:17 America/Montevideo] Cambiando status de usuario 9 a: suspendido
+[07-Sep-2025 20:43:17 America/Montevideo] Resultado cambio status: {"success":true,"message":"Estado actualizado"}
+[07-Sep-2025 20:43:17 America/Montevideo] === AdminController::toggleUserStatus - FIN ===
+[07-Sep-2025 20:43:17 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:43:17 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 20:43:17 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 20:43:17 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 20:43:17 America/Montevideo] Usuarios obtenidos: 17
+[07-Sep-2025 20:43:17 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 20:43:17 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:43:17 America/Montevideo] Method: PATCH, Op: users, ID: 10, Extra: status
+[07-Sep-2025 20:43:17 America/Montevideo] URI completa: api/admin/users/10/status
+[07-Sep-2025 20:43:17 America/Montevideo] === AdminController::toggleUserStatus(10) - INICIO ===
+[07-Sep-2025 20:43:17 America/Montevideo] Cambiando status de usuario 10 a: suspendido
+[07-Sep-2025 20:43:17 America/Montevideo] Resultado cambio status: {"success":true,"message":"Estado actualizado"}
+[07-Sep-2025 20:43:17 America/Montevideo] === AdminController::toggleUserStatus - FIN ===
+[07-Sep-2025 20:43:17 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:43:17 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 20:43:17 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 20:43:17 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 20:43:17 America/Montevideo] Usuarios obtenidos: 17
+[07-Sep-2025 20:43:17 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 20:43:18 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:43:18 America/Montevideo] Method: PATCH, Op: users, ID: 12, Extra: status
+[07-Sep-2025 20:43:18 America/Montevideo] URI completa: api/admin/users/12/status
+[07-Sep-2025 20:43:18 America/Montevideo] === AdminController::toggleUserStatus(12) - INICIO ===
+[07-Sep-2025 20:43:18 America/Montevideo] Cambiando status de usuario 12 a: suspendido
+[07-Sep-2025 20:43:18 America/Montevideo] Resultado cambio status: {"success":true,"message":"Estado actualizado"}
+[07-Sep-2025 20:43:18 America/Montevideo] === AdminController::toggleUserStatus - FIN ===
+[07-Sep-2025 20:43:18 America/Montevideo] PHP Notice:  session_start(): ps_files_cleanup_dir: opendir(C:\Windows\Temp) failed: No error (0) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 13
+[07-Sep-2025 20:43:18 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:43:18 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 20:43:18 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 20:43:18 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 20:43:18 America/Montevideo] Usuarios obtenidos: 17
+[07-Sep-2025 20:43:18 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 20:43:19 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:43:19 America/Montevideo] Method: PATCH, Op: users, ID: 14, Extra: status
+[07-Sep-2025 20:43:19 America/Montevideo] URI completa: api/admin/users/14/status
+[07-Sep-2025 20:43:19 America/Montevideo] === AdminController::toggleUserStatus(14) - INICIO ===
+[07-Sep-2025 20:43:19 America/Montevideo] Cambiando status de usuario 14 a: suspendido
+[07-Sep-2025 20:43:19 America/Montevideo] Resultado cambio status: {"success":true,"message":"Estado actualizado"}
+[07-Sep-2025 20:43:19 America/Montevideo] === AdminController::toggleUserStatus - FIN ===
+[07-Sep-2025 20:43:19 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:43:19 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 20:43:19 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 20:43:19 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 20:43:19 America/Montevideo] Usuarios obtenidos: 17
+[07-Sep-2025 20:43:19 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 20:43:19 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:43:19 America/Montevideo] Method: PATCH, Op: users, ID: 16, Extra: status
+[07-Sep-2025 20:43:19 America/Montevideo] URI completa: api/admin/users/16/status
+[07-Sep-2025 20:43:19 America/Montevideo] === AdminController::toggleUserStatus(16) - INICIO ===
+[07-Sep-2025 20:43:19 America/Montevideo] Cambiando status de usuario 16 a: suspendido
+[07-Sep-2025 20:43:19 America/Montevideo] Resultado cambio status: {"success":true,"message":"Estado actualizado"}
+[07-Sep-2025 20:43:19 America/Montevideo] === AdminController::toggleUserStatus - FIN ===
+[07-Sep-2025 20:43:19 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:43:19 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 20:43:19 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 20:43:19 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 20:43:19 America/Montevideo] Usuarios obtenidos: 17
+[07-Sep-2025 20:43:19 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 20:43:20 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:43:20 America/Montevideo] Method: PATCH, Op: users, ID: 18, Extra: status
+[07-Sep-2025 20:43:20 America/Montevideo] URI completa: api/admin/users/18/status
+[07-Sep-2025 20:43:20 America/Montevideo] === AdminController::toggleUserStatus(18) - INICIO ===
+[07-Sep-2025 20:43:20 America/Montevideo] Cambiando status de usuario 18 a: suspendido
+[07-Sep-2025 20:43:20 America/Montevideo] Resultado cambio status: {"success":true,"message":"Estado actualizado"}
+[07-Sep-2025 20:43:20 America/Montevideo] === AdminController::toggleUserStatus - FIN ===
+[07-Sep-2025 20:43:20 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:43:20 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 20:43:20 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 20:43:20 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 20:43:20 America/Montevideo] Usuarios obtenidos: 17
+[07-Sep-2025 20:43:20 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 20:43:21 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:43:21 America/Montevideo] Method: PATCH, Op: users, ID: 20, Extra: status
+[07-Sep-2025 20:43:21 America/Montevideo] URI completa: api/admin/users/20/status
+[07-Sep-2025 20:43:21 America/Montevideo] === AdminController::toggleUserStatus(20) - INICIO ===
+[07-Sep-2025 20:43:21 America/Montevideo] Cambiando status de usuario 20 a: suspendido
+[07-Sep-2025 20:43:21 America/Montevideo] Resultado cambio status: {"success":true,"message":"Estado actualizado"}
+[07-Sep-2025 20:43:21 America/Montevideo] === AdminController::toggleUserStatus - FIN ===
+[07-Sep-2025 20:43:21 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:43:21 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 20:43:21 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 20:43:21 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 20:43:21 America/Montevideo] Usuarios obtenidos: 17
+[07-Sep-2025 20:43:21 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 20:43:27 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:43:27 America/Montevideo] Method: PATCH, Op: users, ID: 2, Extra: status
+[07-Sep-2025 20:43:27 America/Montevideo] URI completa: api/admin/users/2/status
+[07-Sep-2025 20:43:27 America/Montevideo] === AdminController::toggleUserStatus(2) - INICIO ===
+[07-Sep-2025 20:43:27 America/Montevideo] Cambiando status de usuario 2 a: suspendido
+[07-Sep-2025 20:43:27 America/Montevideo] Resultado cambio status: {"success":true,"message":"Estado actualizado"}
+[07-Sep-2025 20:43:27 America/Montevideo] === AdminController::toggleUserStatus - FIN ===
+[07-Sep-2025 20:43:27 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:43:27 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 20:43:27 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 20:43:27 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 20:43:27 America/Montevideo] Usuarios obtenidos: 17
+[07-Sep-2025 20:43:27 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 20:43:33 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:43:33 America/Montevideo] Method: PATCH, Op: users, ID: 1, Extra: status
+[07-Sep-2025 20:43:33 America/Montevideo] URI completa: api/admin/users/1/status
+[07-Sep-2025 20:43:33 America/Montevideo] === AdminController::toggleUserStatus(1) - INICIO ===
+[07-Sep-2025 20:43:33 America/Montevideo] Cambiando status de usuario 1 a: suspendido
+[07-Sep-2025 20:43:33 America/Montevideo] Resultado cambio status: {"success":true,"message":"Estado actualizado"}
+[07-Sep-2025 20:43:33 America/Montevideo] === AdminController::toggleUserStatus - FIN ===
+[07-Sep-2025 20:43:33 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:43:33 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 20:43:33 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 20:43:33 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 20:43:33 America/Montevideo] Usuarios obtenidos: 17
+[07-Sep-2025 20:43:33 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 20:43:38 America/Montevideo] Login intentado: martin@martin.com / martin
+[07-Sep-2025 20:43:38 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 20:43:38 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 20:43:38 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[07-Sep-2025 20:43:38 America/Montevideo] Pass HEX: 6d617274696e
+[07-Sep-2025 20:43:38 America/Montevideo] Hash HEX: 243279243132245830686e4659516d4942453542794a504d436a64422e7238584d774530527532696854475045384333564b637874504d5673365947
+[07-Sep-2025 20:43:39 America/Montevideo] Pass recibida: martin
+[07-Sep-2025 20:43:39 America/Montevideo] Verify result: OK
+[07-Sep-2025 20:43:39 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 20:43:39 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 20:43:39 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 20:43:39 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[07-Sep-2025 20:43:39 America/Montevideo] Pass HEX: 6d617274696e
+[07-Sep-2025 20:43:39 America/Montevideo] Hash HEX: 243279243132245830686e4659516d4942453542794a504d436a64422e7238584d774530527532696854475045384333564b637874504d5673365947
+[07-Sep-2025 20:43:39 America/Montevideo] Pass recibida: martin
+[07-Sep-2025 20:43:39 America/Montevideo] Verify result: OK
+[07-Sep-2025 20:43:39 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 20:43:57 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 20:43:57 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 20:43:57 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 20:43:57 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 20:43:57 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 20:43:57 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 20:43:58 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 20:43:58 America/Montevideo] Verify result: OK
+[07-Sep-2025 20:43:58 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 20:43:58 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 20:43:58 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 20:43:58 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 20:43:58 America/Montevideo] Pass HEX: 61646d696e
+[07-Sep-2025 20:43:58 America/Montevideo] Hash HEX: 243279243132243759693974424a656b3067535a507141497937586e2e39677662476378306456525a46455452466841444a565533316474342e3671
+[07-Sep-2025 20:43:58 America/Montevideo] Pass recibida: admin
+[07-Sep-2025 20:43:58 America/Montevideo] Verify result: OK
+[07-Sep-2025 20:43:58 America/Montevideo] === FIN verifyCredentials (ok) ===
+[07-Sep-2025 20:44:00 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:44:00 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 20:44:00 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 20:44:00 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 20:44:00 America/Montevideo] Usuarios obtenidos: 17
+[07-Sep-2025 20:44:00 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 20:44:00 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:44:00 America/Montevideo] Method: GET, Op: messages, ID: 0, Extra: 
+[07-Sep-2025 20:44:00 America/Montevideo] URI completa: api/admin/messages
+[07-Sep-2025 20:44:00 America/Montevideo] === AdminController::listMessages - INICIO ===
+[07-Sep-2025 20:44:00 America/Montevideo] Mensajes obtenidos: 4
+[07-Sep-2025 20:44:00 America/Montevideo] === AdminController::listMessages - SUCCESS ===
+[07-Sep-2025 20:44:00 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:44:00 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 20:44:00 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 20:44:00 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 20:44:00 America/Montevideo] Usuarios obtenidos: 17
+[07-Sep-2025 20:44:00 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 20:44:00 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 20:44:00 America/Montevideo] Method: GET, Op: messages, ID: 0, Extra: 
+[07-Sep-2025 20:44:00 America/Montevideo] URI completa: api/admin/messages
+[07-Sep-2025 20:44:00 America/Montevideo] === AdminController::listMessages - INICIO ===
+[07-Sep-2025 20:44:00 America/Montevideo] Mensajes obtenidos: 4
+[07-Sep-2025 20:44:00 America/Montevideo] === AdminController::listMessages - SUCCESS ===
