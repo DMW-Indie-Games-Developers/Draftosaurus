@@ -9,7 +9,11 @@ class PerfilController {
     }
 
     public function getPerfil($userId) {
-        return $this->service->getPerfil($userId);
+        $result = $this->service->getPerfil($userId);
+        if (isset($result['error'])) {
+            return ['success' => false, 'error' => $result['error']];
+        }
+        return ['success' => true] + $result;
     }
 
     // Endpoint para actualizar el avatar

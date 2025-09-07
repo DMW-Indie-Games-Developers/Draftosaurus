@@ -1,0 +1,207 @@
+<?php
+/* ---------- 1.  Silenciar CUALQUIER output ---------- */
+ob_start();          // bufferiza todo
+ini_set('display_errors', 0);   // no imprime warnings al browser
+
+
+/* ---------- Redirecciones de archivo estático a recurso controlado ---------- */
+if ($_SERVER['REQUEST_URI'] === '/tablero.html') {
+    header('Location: /tablero');
+    exit;
+}
+
+/**
+ * Punto de entrada de la API (Front Controller):
+ *  - Carga las dependencias principales.
+ *  - Configura cabeceras comunes (JSON, CORS básico).
+ *  - Resuelve la ruta solicitada y delega la ejecución al controlador correspondiente.
+ *
+ * Cómo ejecutar localmente (modo embebido de PHP):
+ *  - Desde el directorio del proyecto: php -S localhost:8000 -t public
+ *  - Luego puedes probar con el cliente simple index.html o Postman, cURL, etc.
+ */
+
+require_once __DIR__ . '/../api/helpers/AuthHelper.php';
+require_once __DIR__ . '/../api/config/Database.php';
+require_once __DIR__ . '/../api/repositories/UserRepository.php';
+require_once __DIR__ . '/../api/services/AuthService.php';
+require_once __DIR__ . '/../api/controllers/AuthController.php';
+require_once __DIR__ . '/../api/services/TableroService.php';
+require_once __DIR__ . '/../api/controllers/TableroController.php';
+require_once __DIR__ . '/../api/repositories/TableroRepository.php';
+require_once __DIR__ . '/../api/controllers/PerfilController.php';
+require_once __DIR__ . '/../api/repositories/PerfilRepository.php';
+require_once __DIR__ . '/../api/services/PerfilService.php';
+
+AuthHelper::iniciarSesion();
+
+// Cabeceras comunes para JSON y CORS (ajusta según tu necesidad real de seguridad)
+header('Content-Type: application/json'); // El cliente interpreta la respuesta como JSON
+header('Access-Control-Allow-Origin: http://localhost:8000');
+header('Access-Control-Allow-Credentials: true'); // Permite cualquier origen (en producción conviene restringir)
+header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type, Authorization');
+
+// Manejar la solicitud OPTIONS antes de cualquier otra lógica de enrutamiento.
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
+
+try {
+    // Parseo de la URL solicitada; ejemplo: /register -> ['register']
+    $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH); // Ruta sin host
+    $uri = explode('/', trim((string) $uri, '/')); // Partes de la ruta
+    $method = strtoupper($_SERVER['REQUEST_METHOD']); // Método HTTP en mayúsculas
+
+    // Recurso principal (primer segmento) y un posible parámetro (segundo segmento)
+    $resource = $uri[0] ?? '';
+    $param = $uri[1] ?? '';
+
+    // En este proyecto, un solo controlador maneja login/registro/health
+    $controller = new AuthController();
+
+    switch ($resource) {
+        /* ---------- HOME / LANDING ---------- */
+        case '':
+        case 'home':
+            require_once __DIR__ . '/../home.php';
+            exit;
+
+        /* ---------- Rutas API/JSON ---------- */
+        case 'perfil':
+            $controller = new PerfilController();
+
+            /* 1) HTML propio (logueado) */
+            if ($method === 'GET' && !isset($uri[1])) {
+                require_once __DIR__ . '/../perfil.php';   // sólo valida sesión y sirve HTML
+                exit;
+            }
+
+            /* 2) JSON propio (logueado) */
+            if ($method === 'GET' && $uri[1] === 'me') {
+                if (!isset($_SESSION['userId'])) {
+                    http_response_code(401);
+                    echo json_encode(['error' => 'No autorizado']);
+                    exit;
+                }
+                echo json_encode($controller->getPerfil($_SESSION['userId']));
+                exit;
+            }
+
+            /* 3) JSON ajeno (opcional, público) */
+            if ($method === 'GET' && isset($uri[1]) && is_numeric($uri[1])) {
+                $userId = (int)$uri[1];
+                echo json_encode($controller->getPerfil($userId));
+                exit;
+            }
+
+            /* 4) Update avatar */
+            if ($method === 'POST' && ($uri[1] ?? '') === 'avatar') {
+                $raw = file_get_contents('php://input');
+                $data = json_decode($raw, true);
+                $userId = $data['userId'] ?? null;
+                $avatarUrl = $data['avatarUrl'] ?? null;
+                if ($userId && $avatarUrl) {
+                    echo json_encode($controller->updateAvatar($userId, $avatarUrl));
+                } else {
+                    http_response_code(400);
+                    echo json_encode(['success' => false, 'message' => 'Faltan datos']);
+                }
+                exit;
+            }
+
+            http_response_code(405);
+            echo json_encode(['success' => false, 'message' => 'Método no permitido']);
+            break;
+
+        case 'login':
+            if ($method === 'POST') {
+                $controller->login();
+                break;
+            }
+            if ($method === 'GET') {
+                // Mostrar formulario de login
+                require_once __DIR__ . '/../login.php';
+                exit;
+            }
+            http_response_code(405);
+            echo json_encode(['success' => false, 'message' => 'Método no permitido']);
+            break;
+
+        case 'register':
+            if ($method === 'POST') {
+                $controller->register();
+                break;
+            }
+            http_response_code(405);
+            echo json_encode(['success' => false, 'message' => 'Método no permitido.']);
+            break;
+
+        case 'mi-perfil':
+            if (!isset($_SESSION['userId'])) {
+                http_response_code(401);
+                echo json_encode(['error' => 'No autorizado']);
+                break;
+            }
+            $userId = $_SESSION['userId'];
+            $controller = new PerfilController();
+            echo json_encode($controller->getPerfil($userId));
+            break;
+
+        case 'logout':
+            $_SESSION = [];
+            session_destroy();
+            if (ini_get('session.use_cookies')) {
+                $params = session_get_cookie_params();
+                setcookie(session_name(), '', time() - 42000, $params['path'], $params['domain'], $params['secure'], $params['httponly']);
+            }
+            http_response_code(200);
+            echo json_encode(['success' => true]);
+            break;
+
+        case 'health':
+            $status = 'OK';
+            $services = ['database' => ['status' => 'unknown']];
+            try {
+                $db = Database::getInstance()->getConnection();
+                $services['database']['status'] = ($db && $db->ping()) ? 'up' : 'down';
+                if ($services['database']['status'] === 'down') $status = 'DEGRADED';
+            } catch (Exception $e) {
+                $services['database']['status'] = 'down';
+                $status = 'DEGRADED';
+            }
+            $endpoints = [
+                ['method' => 'GET',  'path' => '/health',        'description' => 'Estado de la aplicación y servicios'],
+                ['method' => 'POST', 'path' => '/login',         'description' => 'Login con email o username'],
+                ['method' => 'POST', 'path' => '/register',      'description' => 'Crear nuevo usuario'],
+                ['method' => 'GET',  'path' => '/perfil',        'description' => 'Obtener perfil de usuario por id'],
+                ['method' => 'POST', 'path' => '/perfil/avatar', 'description' => 'Actualizar avatar de usuario'],
+            ];
+            http_response_code(200);
+            echo json_encode(['success' => true, 'status' => $status, 'timestamp' => date('c'), 'services' => $services, 'endpoints' => $endpoints]);
+            break;
+
+        case 'tablero':
+            require_once __DIR__ . '/../tablero.php';
+            exit;
+        case 'debug-session':
+            session_start();
+            echo json_encode([
+                'session' => $_SESSION,
+                'cookies' => $_COOKIE,
+                'userId' => $_SESSION['userId'] ?? null
+            ]);
+            exit;    
+
+        default:
+            http_response_code(404);
+            echo json_encode(['success' => false, 'message' => 'No existe el recurso.']);
+            break;
+    }
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode(['success' => false, 'message' => 'Error interno del servidor.']);
+}
+
+ob_end_flush();

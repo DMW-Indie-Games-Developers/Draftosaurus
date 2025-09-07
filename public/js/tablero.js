@@ -1,3 +1,10 @@
+/* ------ Bloqueo frontal: sin sesión → login ------ */
+if (!localStorage.getItem('userId')) {
+  localStorage.clear();
+  location.replace('/login');
+}
+/* -------------------------------------------------- */
+
 document.addEventListener('DOMContentLoaded', function () {
   const recintos = document.querySelectorAll('.recinto');
   const rulesBtn = document.querySelector('.rules-btn');
@@ -31,7 +38,7 @@ document.addEventListener('DOMContentLoaded', function () {
     2: "Zona derecha",
     3: "Zona boscosa",
     4: "Recinto vacío",
-    5: "Recinto sin T-Rex",
+    5: "Recinto sin T-REX",
     6: "Sin restricción"
   };
 

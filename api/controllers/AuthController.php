@@ -89,8 +89,8 @@ class AuthController
      *  - 401 Unauthorized si las credenciales no son válidas.
      *  - 500 Internal Server Error para errores inesperados.
      */
-   public function login()
-{
+    public function login()
+    {
         $raw = file_get_contents("php://input");
         $data = json_decode($raw, true);
 
@@ -136,3 +136,4 @@ class AuthController
 
         echo json_encode($result);
     }
+}

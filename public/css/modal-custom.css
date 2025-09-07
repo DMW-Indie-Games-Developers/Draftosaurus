@@ -1,0 +1,101 @@
+/* Estilos personalizados para las modals de Draftosaurus */
+
+.modal-content.draftosaurus-modal {
+  background: linear-gradient(135deg, #3a0ca3 60%, #000000 100%);
+  border-radius: 20px;
+  color: #ffc107;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+  border: 2px solid #ffc107;
+}
+
+.modal-header.draftosaurus-modal {
+  border: none;
+  background: transparent;
+}
+
+.modal-title.draftosaurus-modal {
+  color: #ffc107;
+  font-weight: bold;
+}
+
+.draftosaurus-modal .btn,
+.draftosaurus-modal .form-control {
+  border-radius: 20px;
+}
+
+.draftosaurus-modal .btn-custom {
+  background: #7b2ff2;
+  color: #fff;
+  border: none;
+  font-weight: bold;
+  box-shadow: 0 2px 8px rgba(58,12,163,0.2);
+}
+
+.draftosaurus-modal .btn-custom:hover {
+  background: #3a0ca3;
+  color: #ffc107;
+}
+
+.draftosaurus-modal .form-label {
+  color: #ffc107;
+  font-weight: bold;
+}
+
+.draftosaurus-modal .form-control {
+  background: #2d1a4d;
+  color: #fff;
+  border: 1px solid #ffc107;
+}
+
+.draftosaurus-modal .form-control:focus {
+  border-color: #7b2ff2;
+  box-shadow: 0 0 0 2px #3a0ca333;
+}
+
+.draftosaurus-modal .modal-body {
+  padding: 2rem 1.5rem;
+}
+
+.draftosaurus-modal .modal-footer {
+  border: none;
+  background: transparent;
+}
+
+.draftosaurus-modal .btn-close {
+  filter: invert(70%) sepia(100%) saturate(500%) hue-rotate(10deg);
+}
+
+/* Botones de tipo de jugador */
+.draftosaurus-modal .btn-outline-light {
+  color: #ffc107;
+  border-color: #ffc107;
+  background: transparent;
+}
+.draftosaurus-modal .btn-outline-light:hover {
+  background: #3a0ca3;
+  color: #fff;
+}
+
+/* Centrado y padding extra */
+.draftosaurus-modal .d-flex {
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Tamaño y padding del modal */
+.draftosaurus-modal {
+  min-width: 300px;
+  max-width: 350px;
+  margin: auto;
+}
+
+/* Título de la sección de login dentro del modal */
+.draftosaurus-modal .login-title {
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+/* Mensaje informativo dentro del modal */
+.draftosaurus-modal .modal-info {
+  color: #e6d7a7;
+}
