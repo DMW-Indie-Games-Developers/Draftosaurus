@@ -4,7 +4,7 @@ CREATE DATABASE IF NOT EXISTS draftosaurus
 
 USE draftosaurus;
 
-CREATE TABLE users (
+CREATE TABLE IF NOT EXISTS users (
   id                INT AUTO_INCREMENT PRIMARY KEY,
   username          VARCHAR(50)  NOT NULL UNIQUE,
   email             VARCHAR(100) NOT NULL UNIQUE,
@@ -13,10 +13,21 @@ CREATE TABLE users (
   puntuacion_total  INT          DEFAULT 0,
   partidas_jugadas  INT          DEFAULT 0,
   partidas_ganadas  INT          DEFAULT 0,
+  rol               VARCHAR(20)  NOT NULL DEFAULT 'usuario',
+  estado            BOOLEAN      NOT NULL DEFAULT 1,
   created_at        TIMESTAMP    DEFAULT CURRENT_TIMESTAMP,
-  updated_at        TIMESTAMP    DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+  updated_at        TIMESTAMP    DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  CONSTRAINT chk_rol CHECK (rol IN ('admin','usuario'))
 ) ENGINE = InnoDB;
 
+-- Índices rápidos
+CREATE INDEX idx_users_rol    ON users(rol);
+CREATE INDEX idx_users_estado ON users(estado);
+
+INSERT INTO users (username, email, password, rol, estado) 
+VALUES 
+('admin','admin@draftosaurus.com','$2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q','admin',1), -- Contraseña admin
+('test','test@draftosaurus.com','$2y$12$6GPrYxJ.VRfuGoZNvNke8eg9BkIebd.9k7msOjuQWDjjkikGNtr.y','usuario',1); -- contraseña test
 
 CREATE TABLE partidas (
   id          INT AUTO_INCREMENT PRIMARY KEY,
