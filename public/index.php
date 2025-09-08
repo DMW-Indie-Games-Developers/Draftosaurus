@@ -14,6 +14,12 @@ if ($_SERVER['REQUEST_URI'] === '/index.html') {
     exit;
 }
 
+// ✅ Redirigir /home.php → /home
+if ($_SERVER['REQUEST_URI'] === '/home.php') {
+    header('Location: /home', true, 301);
+    exit;
+}
+
 /**
  * Punto de entrada de la API (Front Controller):
  *  - Carga las dependencias principales.
@@ -86,12 +92,12 @@ try {
 
             /* 2) JSON propio (logueado) */
             if ($method === 'GET' && $uri[1] === 'me') {
-                if (!isset($_SESSION['userId'])) {
-                    http_response_code(401);
-                    echo json_encode(['error' => 'No autorizado']);
-                    exit;
+                try {
+                    $user = AuthHelper::requireActiveUser();
+                    echo json_encode($controller->getPerfil($user['id']));
+                } catch (Exception $e) {
+                    // requireActiveUser ya respondió
                 }
-                echo json_encode($controller->getPerfil($_SESSION['userId']));
                 exit;
             }
 
@@ -145,14 +151,13 @@ try {
             break;
 
         case 'mi-perfil':
-            if (!isset($_SESSION['userId'])) {
-                http_response_code(401);
-                echo json_encode(['error' => 'No autorizado']);
-                break;
+            try {
+                $user = AuthHelper::requireActiveUser();
+                $controller = new PerfilController();
+                echo json_encode($controller->getPerfil($user['id']));
+            } catch (Exception $e) {
+                // requireActiveUser ya respondió
             }
-            $userId = $_SESSION['userId'];
-            $controller = new PerfilController();
-            echo json_encode($controller->getPerfil($userId));
             break;
 
         case 'admin':
@@ -231,15 +236,24 @@ try {
                     case 'GET':
                         if ($op === 'users' && $id === 0) {
                             // GET /api/admin/users
-                            $controller->listUsers();
+                            try {
+                                AuthHelper::requireActiveUser();
+                                $controller->listUsers();
+                            } catch (Exception $e) {}
                             exit;
                         } elseif ($op === 'users' && $id > 0) {
                             // GET /api/admin/users/{id}
-                            $controller->getUser($id);
+                            try {
+                                AuthHelper::requireActiveUser();
+                                $controller->getUser($id);
+                            } catch (Exception $e) {}
                             exit;
                         } elseif ($op === 'messages') {
                             // GET /api/admin/messages
-                            $controller->listMessages();
+                            try {
+                                AuthHelper::requireActiveUser();
+                                $controller->listMessages();
+                            } catch (Exception $e) {}
                             exit;
                         }
                         break;
@@ -247,7 +261,10 @@ try {
                     case 'POST':
                         if ($op === 'users') {
                             // POST /api/admin/users
-                            $controller->createUser();
+                            try {
+                                AuthHelper::requireActiveUser();
+                                $controller->createUser();
+                            } catch (Exception $e) {}
                             exit;
                         }
                         break;
@@ -256,7 +273,10 @@ try {
                         if ($op === 'users' && $id > 0) {
                             // PUT /api/admin/users/{id}
                             error_log("Ejecutando updateUser para ID: $id");
-                            $controller->updateUser($id);
+                            try {
+                                AuthHelper::requireActiveUser();
+                                $controller->updateUser($id);
+                            } catch (Exception $e) {}
                             exit;
                         }
                         break;
@@ -264,7 +284,10 @@ try {
                     case 'PATCH':
                         if ($op === 'users' && $id > 0 && $extra === 'status') {
                             // PATCH /api/admin/users/{id}/status
-                            $controller->toggleUserStatus($id);
+                            try {
+                                AuthHelper::requireActiveUser();
+                                $controller->toggleUserStatus($id);
+                            } catch (Exception $e) {}
                             exit;
                         }
                         break;

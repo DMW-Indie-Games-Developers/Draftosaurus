@@ -266,15 +266,25 @@
 
 <body>
     <script>
-        (async () => {
-            if (localStorage.getItem('userId')) {
+    // Script simplificado - solo redirigue si hay sesión VÁLIDA
+    (async () => {
+        const userId = localStorage.getItem('userId');
+        if (userId) {
+            try {
                 const r = await fetch('/mi-perfil');
                 const j = await r.json();
-                if (!j.error) location.replace('/perfil');
-                else localStorage.clear();
+                // Solo redirigir si NO hay error (sesión válida)
+                if (!j.error) {
+                    location.replace('/perfil');
+                }
+                // Si hay error (incluyendo cuenta suspendida), no hacer nada
+                // Dejar que la página funcione normalmente
+            } catch (e) {
+                // Error de red - no hacer nada, funcionalidad normal
             }
-        })();
-    </script>
+        }
+    })();
+</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q"
         crossorigin="anonymous"></script>

@@ -58,6 +58,38 @@ class UserRepository
     }
 
     /**
+     * NUEVO: Busca un usuario por ID.
+     * Retorna un array asociativo con todos los datos del usuario o null si no se encuentra.
+     */
+    public function findById(int $id): ?array
+    {
+        error_log("=== UserRepository::findById($id) ===");
+        
+        $query = "SELECT * FROM users WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+        if (!$stmt) {
+            error_log("Error preparando findById: " . $this->conn->error);
+            return null;
+        }
+
+        $stmt->bind_param("i", $id);
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+        $user = $result ? $result->fetch_assoc() : null;
+
+        $stmt->close();
+
+        if ($user) {
+            error_log("Usuario ID $id encontrado: " . $user['username'] . " (estado: " . $user['estado'] . ")");
+        } else {
+            error_log("Usuario ID $id NO encontrado");
+        }
+
+        return $user;
+    }
+
+    /**
      * Busca un usuario por su username o email.
      * Retorna un array asociativo con todos los datos del usuario o null si no se encuentra.
      */
@@ -93,11 +125,11 @@ class UserRepository
         }
 
         $stmt->bind_param("sss", $username, $email, $hashedPassword);
-            if (!$stmt->execute()) {
-        $error = $stmt->error;          // ← mensaje de MySQL
-        $stmt->close();
-        throw new Exception("Error al crear usuario: $error");
-}
+        if (!$stmt->execute()) {
+            $error = $stmt->error;          // ← mensaje de MySQL
+            $stmt->close();
+            throw new Exception("Error al crear usuario: $error");
+        }
 
         $insertId = $stmt->insert_id;
         $stmt->close();

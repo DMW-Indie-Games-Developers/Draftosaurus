@@ -560,3 +560,930 @@
 [07-Sep-2025 20:44:00 America/Montevideo] === AdminController::listMessages - INICIO ===
 [07-Sep-2025 20:44:00 America/Montevideo] Mensajes obtenidos: 4
 [07-Sep-2025 20:44:00 America/Montevideo] === AdminController::listMessages - SUCCESS ===
+[07-Sep-2025 21:18:08 America/Montevideo] PHP Parse error:  syntax error, unexpected token "default" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 297
+[07-Sep-2025 21:23:01 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 21:23:01 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 21:23:01 America/Montevideo] Intentando login para: admin
+[07-Sep-2025 21:23:01 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 21:23:01 America/Montevideo] Identifier: admin
+[07-Sep-2025 21:23:01 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 21:23:01 America/Montevideo] Estado del usuario: activo
+[07-Sep-2025 21:23:01 America/Montevideo] Usuario activo, verificando contraseña...
+[07-Sep-2025 21:23:01 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 21:23:01 America/Montevideo] Password verify: OK
+[07-Sep-2025 21:23:01 America/Montevideo] Usuario estado final: activo
+[07-Sep-2025 21:23:01 America/Montevideo] === FIN verifyCredentials (success) ===
+[07-Sep-2025 21:23:01 America/Montevideo] Login exitoso para usuario ID: 4
+[07-Sep-2025 21:23:01 America/Montevideo] === FIN AuthService::login (success) ===
+[07-Sep-2025 21:23:01 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 21:23:01 America/Montevideo] Intentando login para: admin
+[07-Sep-2025 21:23:01 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 21:23:01 America/Montevideo] Identifier: admin
+[07-Sep-2025 21:23:01 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 21:23:01 America/Montevideo] Estado del usuario: activo
+[07-Sep-2025 21:23:01 America/Montevideo] Usuario activo, verificando contraseña...
+[07-Sep-2025 21:23:01 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 21:23:02 America/Montevideo] Password verify: OK
+[07-Sep-2025 21:23:02 America/Montevideo] Usuario estado final: activo
+[07-Sep-2025 21:23:02 America/Montevideo] === FIN verifyCredentials (success) ===
+[07-Sep-2025 21:23:02 America/Montevideo] Login exitoso para usuario ID: 4
+[07-Sep-2025 21:23:02 America/Montevideo] === FIN AuthService::login (success) ===
+[07-Sep-2025 21:23:02 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 21:23:02 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 21:23:02 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 21:23:02 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 21:23:02 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 21:23:02 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 21:23:02 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 21:23:02 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 21:23:02 America/Montevideo] Usuarios obtenidos: 17
+[07-Sep-2025 21:23:02 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 21:23:02 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 21:23:02 America/Montevideo] Method: GET, Op: messages, ID: 0, Extra: 
+[07-Sep-2025 21:23:02 America/Montevideo] URI completa: api/admin/messages
+[07-Sep-2025 21:23:02 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 21:23:02 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 21:23:02 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 21:23:02 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 21:23:02 America/Montevideo] === AdminController::listMessages - INICIO ===
+[07-Sep-2025 21:23:02 America/Montevideo] Mensajes obtenidos: 4
+[07-Sep-2025 21:23:02 America/Montevideo] === AdminController::listMessages - SUCCESS ===
+[07-Sep-2025 21:23:02 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 21:23:02 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 21:23:02 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 21:23:02 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 21:23:02 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 21:23:02 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 21:23:02 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 21:23:02 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 21:23:02 America/Montevideo] Usuarios obtenidos: 17
+[07-Sep-2025 21:23:02 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 21:23:02 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 21:23:02 America/Montevideo] Method: GET, Op: messages, ID: 0, Extra: 
+[07-Sep-2025 21:23:02 America/Montevideo] URI completa: api/admin/messages
+[07-Sep-2025 21:23:02 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 21:23:02 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 21:23:02 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 21:23:02 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 21:23:02 America/Montevideo] === AdminController::listMessages - INICIO ===
+[07-Sep-2025 21:23:02 America/Montevideo] Mensajes obtenidos: 4
+[07-Sep-2025 21:23:02 America/Montevideo] === AdminController::listMessages - SUCCESS ===
+[07-Sep-2025 21:23:19 America/Montevideo] Login intentado: martin@martin.com / martin
+[07-Sep-2025 21:23:19 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 21:23:19 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 21:23:19 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 21:23:19 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 21:23:19 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 21:23:19 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 21:23:19 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 21:23:19 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 21:23:19 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 21:23:19 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 21:23:19 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 21:23:19 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 21:23:19 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 21:23:19 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 21:23:19 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 21:23:19 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 21:23:19 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 21:23:19 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 21:31:09 America/Montevideo] Login intentado: martin@martin.com / martin
+[07-Sep-2025 21:31:09 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 21:31:09 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 21:31:09 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 21:31:09 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 21:31:09 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 21:31:09 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 21:31:09 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 21:31:09 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 21:31:09 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 21:31:09 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 21:31:09 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 21:31:09 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 21:31:09 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 21:31:09 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 21:31:09 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 21:31:09 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 21:31:09 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 21:31:09 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 21:31:30 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 21:31:30 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 21:31:30 America/Montevideo] Intentando login para: admin
+[07-Sep-2025 21:31:30 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 21:31:30 America/Montevideo] Identifier: admin
+[07-Sep-2025 21:31:30 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 21:31:30 America/Montevideo] Estado del usuario: activo
+[07-Sep-2025 21:31:30 America/Montevideo] Usuario activo, verificando contraseña...
+[07-Sep-2025 21:31:30 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 21:31:31 America/Montevideo] Password verify: OK
+[07-Sep-2025 21:31:31 America/Montevideo] Usuario estado final: activo
+[07-Sep-2025 21:31:31 America/Montevideo] === FIN verifyCredentials (success) ===
+[07-Sep-2025 21:31:31 America/Montevideo] Login exitoso para usuario ID: 4
+[07-Sep-2025 21:31:31 America/Montevideo] === FIN AuthService::login (success) ===
+[07-Sep-2025 21:31:31 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 21:31:31 America/Montevideo] Intentando login para: admin
+[07-Sep-2025 21:31:31 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 21:31:31 America/Montevideo] Identifier: admin
+[07-Sep-2025 21:31:31 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 21:31:31 America/Montevideo] Estado del usuario: activo
+[07-Sep-2025 21:31:31 America/Montevideo] Usuario activo, verificando contraseña...
+[07-Sep-2025 21:31:31 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 21:31:31 America/Montevideo] Password verify: OK
+[07-Sep-2025 21:31:31 America/Montevideo] Usuario estado final: activo
+[07-Sep-2025 21:31:31 America/Montevideo] === FIN verifyCredentials (success) ===
+[07-Sep-2025 21:31:31 America/Montevideo] Login exitoso para usuario ID: 4
+[07-Sep-2025 21:31:31 America/Montevideo] === FIN AuthService::login (success) ===
+[07-Sep-2025 21:31:31 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 21:31:31 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 21:31:31 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 21:31:31 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 21:31:31 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 21:31:31 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 21:31:31 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 21:31:31 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 21:31:31 America/Montevideo] Usuarios obtenidos: 17
+[07-Sep-2025 21:31:31 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 21:31:31 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 21:31:31 America/Montevideo] Method: GET, Op: messages, ID: 0, Extra: 
+[07-Sep-2025 21:31:31 America/Montevideo] URI completa: api/admin/messages
+[07-Sep-2025 21:31:31 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 21:31:31 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 21:31:31 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 21:31:31 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 21:31:31 America/Montevideo] === AdminController::listMessages - INICIO ===
+[07-Sep-2025 21:31:31 America/Montevideo] Mensajes obtenidos: 4
+[07-Sep-2025 21:31:31 America/Montevideo] === AdminController::listMessages - SUCCESS ===
+[07-Sep-2025 21:31:31 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 21:31:31 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 21:31:31 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 21:31:31 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 21:31:31 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 21:31:31 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 21:31:31 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 21:31:31 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 21:31:31 America/Montevideo] Usuarios obtenidos: 17
+[07-Sep-2025 21:31:31 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 21:31:31 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 21:31:31 America/Montevideo] Method: GET, Op: messages, ID: 0, Extra: 
+[07-Sep-2025 21:31:31 America/Montevideo] URI completa: api/admin/messages
+[07-Sep-2025 21:31:31 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 21:31:31 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 21:31:31 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 21:31:31 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 21:31:31 America/Montevideo] === AdminController::listMessages - INICIO ===
+[07-Sep-2025 21:31:31 America/Montevideo] Mensajes obtenidos: 4
+[07-Sep-2025 21:31:31 America/Montevideo] === AdminController::listMessages - SUCCESS ===
+[07-Sep-2025 21:31:34 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 21:31:34 America/Montevideo] Method: PATCH, Op: users, ID: 1, Extra: status
+[07-Sep-2025 21:31:34 America/Montevideo] URI completa: api/admin/users/1/status
+[07-Sep-2025 21:31:34 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 21:31:34 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 21:31:34 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 21:31:34 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 21:31:34 America/Montevideo] === AdminController::toggleUserStatus(1) - INICIO ===
+[07-Sep-2025 21:31:34 America/Montevideo] Cambiando status de usuario 1 a: activo
+[07-Sep-2025 21:31:34 America/Montevideo] Resultado cambio status: {"success":true,"message":"Estado actualizado"}
+[07-Sep-2025 21:31:34 America/Montevideo] === AdminController::toggleUserStatus - FIN ===
+[07-Sep-2025 21:31:34 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 21:31:34 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 21:31:34 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 21:31:34 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 21:31:34 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 21:31:34 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 21:31:34 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 21:31:34 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 21:31:34 America/Montevideo] Usuarios obtenidos: 17
+[07-Sep-2025 21:31:34 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 21:31:35 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 21:31:35 America/Montevideo] Method: PATCH, Op: users, ID: 2, Extra: status
+[07-Sep-2025 21:31:35 America/Montevideo] URI completa: api/admin/users/2/status
+[07-Sep-2025 21:31:35 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 21:31:35 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 21:31:35 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 21:31:35 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 21:31:35 America/Montevideo] === AdminController::toggleUserStatus(2) - INICIO ===
+[07-Sep-2025 21:31:35 America/Montevideo] Cambiando status de usuario 2 a: activo
+[07-Sep-2025 21:31:35 America/Montevideo] Resultado cambio status: {"success":true,"message":"Estado actualizado"}
+[07-Sep-2025 21:31:35 America/Montevideo] === AdminController::toggleUserStatus - FIN ===
+[07-Sep-2025 21:31:35 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 21:31:35 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 21:31:35 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 21:31:35 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 21:31:35 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 21:31:35 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 21:31:35 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 21:31:35 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 21:31:35 America/Montevideo] Usuarios obtenidos: 17
+[07-Sep-2025 21:31:35 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 21:31:44 America/Montevideo] Login intentado: martin@martin.com / martin
+[07-Sep-2025 21:31:44 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 21:31:44 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 21:31:44 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 21:31:44 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 21:31:44 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 21:31:44 America/Montevideo] Estado del usuario: activo
+[07-Sep-2025 21:31:44 America/Montevideo] Usuario activo, verificando contraseña...
+[07-Sep-2025 21:31:44 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[07-Sep-2025 21:31:44 America/Montevideo] Password verify: OK
+[07-Sep-2025 21:31:44 America/Montevideo] Usuario estado final: activo
+[07-Sep-2025 21:31:44 America/Montevideo] === FIN verifyCredentials (success) ===
+[07-Sep-2025 21:31:44 America/Montevideo] Login exitoso para usuario ID: 1
+[07-Sep-2025 21:31:44 America/Montevideo] === FIN AuthService::login (success) ===
+[07-Sep-2025 21:31:44 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 21:31:44 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 21:31:44 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 21:31:44 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 21:31:44 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 21:31:44 America/Montevideo] Estado del usuario: activo
+[07-Sep-2025 21:31:44 America/Montevideo] Usuario activo, verificando contraseña...
+[07-Sep-2025 21:31:44 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[07-Sep-2025 21:31:44 America/Montevideo] Password verify: OK
+[07-Sep-2025 21:31:44 America/Montevideo] Usuario estado final: activo
+[07-Sep-2025 21:31:44 America/Montevideo] === FIN verifyCredentials (success) ===
+[07-Sep-2025 21:31:44 America/Montevideo] Login exitoso para usuario ID: 1
+[07-Sep-2025 21:31:44 America/Montevideo] === FIN AuthService::login (success) ===
+[07-Sep-2025 21:31:44 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[07-Sep-2025 21:31:44 America/Montevideo] === UserRepository::findById(1) ===
+[07-Sep-2025 21:31:44 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[07-Sep-2025 21:31:44 America/Montevideo] Usuario 1 está activo
+[07-Sep-2025 21:31:44 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[07-Sep-2025 21:31:44 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[07-Sep-2025 21:31:44 America/Montevideo] === UserRepository::findById(1) ===
+[07-Sep-2025 21:31:44 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[07-Sep-2025 21:31:44 America/Montevideo] Usuario 1 está activo
+[07-Sep-2025 22:31:08 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 22:31:08 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 22:31:08 America/Montevideo] Intentando login para: admin
+[07-Sep-2025 22:31:08 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 22:31:08 America/Montevideo] Identifier: admin
+[07-Sep-2025 22:31:08 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 22:31:08 America/Montevideo] Estado del usuario: activo
+[07-Sep-2025 22:31:08 America/Montevideo] Usuario activo, verificando contraseña...
+[07-Sep-2025 22:31:08 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 22:31:08 America/Montevideo] Password verify: OK
+[07-Sep-2025 22:31:08 America/Montevideo] Usuario estado final: activo
+[07-Sep-2025 22:31:08 America/Montevideo] === FIN verifyCredentials (success) ===
+[07-Sep-2025 22:31:08 America/Montevideo] Login exitoso para usuario ID: 4
+[07-Sep-2025 22:31:08 America/Montevideo] === FIN AuthService::login (success) ===
+[07-Sep-2025 22:31:08 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 22:31:08 America/Montevideo] Intentando login para: admin
+[07-Sep-2025 22:31:08 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 22:31:08 America/Montevideo] Identifier: admin
+[07-Sep-2025 22:31:08 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 22:31:08 America/Montevideo] Estado del usuario: activo
+[07-Sep-2025 22:31:08 America/Montevideo] Usuario activo, verificando contraseña...
+[07-Sep-2025 22:31:08 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 22:31:09 America/Montevideo] Password verify: OK
+[07-Sep-2025 22:31:09 America/Montevideo] Usuario estado final: activo
+[07-Sep-2025 22:31:09 America/Montevideo] === FIN verifyCredentials (success) ===
+[07-Sep-2025 22:31:09 America/Montevideo] Login exitoso para usuario ID: 4
+[07-Sep-2025 22:31:09 America/Montevideo] === FIN AuthService::login (success) ===
+[07-Sep-2025 22:31:09 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 22:31:09 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 22:31:09 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 22:31:09 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 22:31:09 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 22:31:09 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 22:31:09 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 22:31:09 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 22:31:09 America/Montevideo] Usuarios obtenidos: 17
+[07-Sep-2025 22:31:09 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 22:31:09 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 22:31:09 America/Montevideo] Method: GET, Op: messages, ID: 0, Extra: 
+[07-Sep-2025 22:31:09 America/Montevideo] URI completa: api/admin/messages
+[07-Sep-2025 22:31:09 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 22:31:09 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 22:31:09 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 22:31:09 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 22:31:09 America/Montevideo] === AdminController::listMessages - INICIO ===
+[07-Sep-2025 22:31:09 America/Montevideo] Mensajes obtenidos: 4
+[07-Sep-2025 22:31:09 America/Montevideo] === AdminController::listMessages - SUCCESS ===
+[07-Sep-2025 22:31:09 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 22:31:09 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 22:31:09 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 22:31:09 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 22:31:09 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 22:31:09 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 22:31:09 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 22:31:09 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 22:31:09 America/Montevideo] Usuarios obtenidos: 17
+[07-Sep-2025 22:31:09 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 22:31:09 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 22:31:09 America/Montevideo] Method: GET, Op: messages, ID: 0, Extra: 
+[07-Sep-2025 22:31:09 America/Montevideo] URI completa: api/admin/messages
+[07-Sep-2025 22:31:09 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 22:31:09 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 22:31:09 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 22:31:09 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 22:31:09 America/Montevideo] === AdminController::listMessages - INICIO ===
+[07-Sep-2025 22:31:09 America/Montevideo] Mensajes obtenidos: 4
+[07-Sep-2025 22:31:09 America/Montevideo] === AdminController::listMessages - SUCCESS ===
+[07-Sep-2025 22:31:12 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 22:31:12 America/Montevideo] Method: PATCH, Op: users, ID: 1, Extra: status
+[07-Sep-2025 22:31:12 America/Montevideo] URI completa: api/admin/users/1/status
+[07-Sep-2025 22:31:12 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 22:31:12 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 22:31:12 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 22:31:12 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 22:31:12 America/Montevideo] === AdminController::toggleUserStatus(1) - INICIO ===
+[07-Sep-2025 22:31:12 America/Montevideo] Cambiando status de usuario 1 a: suspendido
+[07-Sep-2025 22:31:12 America/Montevideo] Resultado cambio status: {"success":true,"message":"Estado actualizado"}
+[07-Sep-2025 22:31:12 America/Montevideo] === AdminController::toggleUserStatus - FIN ===
+[07-Sep-2025 22:31:12 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 22:31:12 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 22:31:12 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 22:31:12 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 22:31:12 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 22:31:12 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 22:31:12 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 22:31:12 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 22:31:12 America/Montevideo] Usuarios obtenidos: 17
+[07-Sep-2025 22:31:12 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 22:31:13 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 22:31:13 America/Montevideo] Method: PATCH, Op: users, ID: 2, Extra: status
+[07-Sep-2025 22:31:13 America/Montevideo] URI completa: api/admin/users/2/status
+[07-Sep-2025 22:31:13 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 22:31:13 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 22:31:13 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 22:31:13 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 22:31:13 America/Montevideo] === AdminController::toggleUserStatus(2) - INICIO ===
+[07-Sep-2025 22:31:13 America/Montevideo] Cambiando status de usuario 2 a: suspendido
+[07-Sep-2025 22:31:13 America/Montevideo] Resultado cambio status: {"success":true,"message":"Estado actualizado"}
+[07-Sep-2025 22:31:13 America/Montevideo] === AdminController::toggleUserStatus - FIN ===
+[07-Sep-2025 22:31:13 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 22:31:13 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 22:31:13 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 22:31:13 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 22:31:13 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 22:31:13 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 22:31:13 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 22:31:13 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 22:31:13 America/Montevideo] Usuarios obtenidos: 17
+[07-Sep-2025 22:31:13 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 22:31:19 America/Montevideo] Login intentado: martin@martin.com / martin
+[07-Sep-2025 22:31:19 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 22:31:19 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 22:31:19 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 22:31:19 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 22:31:19 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 22:31:19 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 22:31:19 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 22:31:19 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 22:31:19 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 22:31:19 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 22:31:19 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 22:31:19 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 22:31:19 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 22:31:19 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 22:31:19 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 22:31:19 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 22:31:19 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 22:31:19 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 22:36:19 America/Montevideo] Login intentado: martin@martin.com / martin
+[07-Sep-2025 22:36:19 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 22:36:19 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 22:36:19 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 22:36:19 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 22:36:19 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 22:36:19 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 22:36:19 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 22:36:19 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 22:36:19 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 22:36:19 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 22:36:19 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 22:36:19 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 22:36:19 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 22:36:19 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 22:36:19 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 22:36:19 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 22:36:19 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 22:36:19 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 22:36:31 America/Montevideo] Login intentado: martin@martin.com / martin
+[07-Sep-2025 22:36:31 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 22:36:31 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 22:36:31 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 22:36:31 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 22:36:31 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 22:36:31 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 22:36:31 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 22:36:31 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 22:36:31 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 22:36:31 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 22:36:31 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 22:36:31 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 22:36:31 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 22:36:31 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 22:36:31 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 22:36:31 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 22:36:31 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 22:36:31 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 22:47:01 America/Montevideo] Login intentado: martin@martin.com / martin
+[07-Sep-2025 22:47:01 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 22:47:01 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 22:47:01 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 22:47:01 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 22:47:01 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 22:47:01 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 22:47:01 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 22:47:01 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 22:47:01 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 22:47:01 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 22:47:01 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 22:47:01 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 22:47:01 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 22:47:01 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 22:47:01 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 22:47:01 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 22:47:01 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 22:47:01 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 22:47:18 America/Montevideo] Login intentado: martin@martin.com / martin
+[07-Sep-2025 22:47:18 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 22:47:18 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 22:47:18 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 22:47:18 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 22:47:18 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 22:47:18 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 22:47:18 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 22:47:18 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 22:47:18 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 22:47:18 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 22:47:18 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 22:47:18 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 22:47:18 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 22:47:18 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 22:47:18 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 22:47:18 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 22:47:18 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 22:47:18 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 22:52:02 America/Montevideo] Login intentado: martin@martin.com / martin
+[07-Sep-2025 22:52:02 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 22:52:02 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 22:52:02 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 22:52:02 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 22:52:02 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 22:52:02 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 22:52:02 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 22:52:02 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 22:52:02 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 22:52:02 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 22:52:02 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 22:52:02 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 22:52:02 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 22:52:02 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 22:52:02 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 22:52:02 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 22:52:02 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 22:52:02 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 23:12:11 America/Montevideo] Login intentado: martin@martin.com / martin
+[07-Sep-2025 23:12:11 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 23:12:11 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 23:12:11 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 23:12:11 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 23:12:11 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 23:12:11 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 23:12:11 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 23:12:11 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 23:12:11 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 23:12:11 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 23:12:11 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 23:12:11 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 23:12:11 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 23:12:11 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 23:12:11 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 23:12:11 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 23:12:11 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 23:12:11 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 23:12:14 America/Montevideo] PHP Notice:  session_start(): ps_files_cleanup_dir: opendir(C:\Windows\Temp) failed: No error (0) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 15
+[07-Sep-2025 23:12:14 America/Montevideo] Login intentado: martin@martin.com / martin
+[07-Sep-2025 23:12:14 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 23:12:14 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 23:12:14 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 23:12:14 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 23:12:14 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 23:12:14 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 23:12:14 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 23:12:14 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 23:12:14 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 23:12:14 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 23:12:14 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 23:12:14 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 23:12:14 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 23:12:14 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 23:12:14 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 23:12:14 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 23:12:14 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 23:12:14 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 23:12:15 America/Montevideo] Login intentado: martin@martin.com / martin
+[07-Sep-2025 23:12:15 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 23:12:15 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 23:12:15 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 23:12:15 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 23:12:15 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 23:12:15 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 23:12:15 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 23:12:15 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 23:12:15 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 23:12:15 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 23:12:15 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 23:12:15 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 23:12:15 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 23:12:15 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 23:12:15 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 23:12:15 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 23:12:15 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 23:12:15 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 23:12:15 America/Montevideo] Login intentado: martin@martin.com / martin
+[07-Sep-2025 23:12:15 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 23:12:15 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 23:12:15 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 23:12:15 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 23:12:15 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 23:12:15 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 23:12:15 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 23:12:15 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 23:12:15 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 23:12:15 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 23:12:15 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 23:12:15 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 23:12:15 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 23:12:15 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 23:12:15 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 23:12:15 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 23:12:15 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 23:12:15 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 23:12:16 America/Montevideo] Login intentado: martin@martin.com / martin
+[07-Sep-2025 23:12:16 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 23:12:16 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 23:12:16 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 23:12:16 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 23:12:16 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 23:12:16 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 23:12:16 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 23:12:16 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 23:12:16 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 23:12:16 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 23:12:16 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 23:12:16 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 23:12:16 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 23:12:16 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 23:12:16 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 23:12:16 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 23:12:16 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 23:12:16 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 23:12:23 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 23:12:23 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 23:12:23 America/Montevideo] Intentando login para: admin
+[07-Sep-2025 23:12:23 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 23:12:23 America/Montevideo] Identifier: admin
+[07-Sep-2025 23:12:23 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 23:12:23 America/Montevideo] Estado del usuario: activo
+[07-Sep-2025 23:12:23 America/Montevideo] Usuario activo, verificando contraseña...
+[07-Sep-2025 23:12:23 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 23:12:23 America/Montevideo] Password verify: OK
+[07-Sep-2025 23:12:23 America/Montevideo] Usuario estado final: activo
+[07-Sep-2025 23:12:23 America/Montevideo] === FIN verifyCredentials (success) ===
+[07-Sep-2025 23:12:23 America/Montevideo] Login exitoso para usuario ID: 4
+[07-Sep-2025 23:12:23 America/Montevideo] === FIN AuthService::login (success) ===
+[07-Sep-2025 23:12:23 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 23:12:23 America/Montevideo] Intentando login para: admin
+[07-Sep-2025 23:12:23 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 23:12:23 America/Montevideo] Identifier: admin
+[07-Sep-2025 23:12:23 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 23:12:23 America/Montevideo] Estado del usuario: activo
+[07-Sep-2025 23:12:23 America/Montevideo] Usuario activo, verificando contraseña...
+[07-Sep-2025 23:12:23 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 23:12:24 America/Montevideo] Password verify: OK
+[07-Sep-2025 23:12:24 America/Montevideo] Usuario estado final: activo
+[07-Sep-2025 23:12:24 America/Montevideo] === FIN verifyCredentials (success) ===
+[07-Sep-2025 23:12:24 America/Montevideo] Login exitoso para usuario ID: 4
+[07-Sep-2025 23:12:24 America/Montevideo] === FIN AuthService::login (success) ===
+[07-Sep-2025 23:12:24 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 23:12:24 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 23:12:24 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 23:12:24 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 23:12:24 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 23:12:24 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 23:12:24 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 23:12:24 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 23:12:24 America/Montevideo] Usuarios obtenidos: 18
+[07-Sep-2025 23:12:24 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 23:12:24 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 23:12:24 America/Montevideo] Method: GET, Op: messages, ID: 0, Extra: 
+[07-Sep-2025 23:12:24 America/Montevideo] URI completa: api/admin/messages
+[07-Sep-2025 23:12:24 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 23:12:24 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 23:12:24 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 23:12:24 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 23:12:24 America/Montevideo] === AdminController::listMessages - INICIO ===
+[07-Sep-2025 23:12:24 America/Montevideo] Mensajes obtenidos: 4
+[07-Sep-2025 23:12:24 America/Montevideo] === AdminController::listMessages - SUCCESS ===
+[07-Sep-2025 23:12:24 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 23:12:24 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 23:12:24 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 23:12:24 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 23:12:24 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 23:12:24 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 23:12:24 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 23:12:24 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 23:12:24 America/Montevideo] Usuarios obtenidos: 18
+[07-Sep-2025 23:12:24 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 23:12:24 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 23:12:24 America/Montevideo] Method: GET, Op: messages, ID: 0, Extra: 
+[07-Sep-2025 23:12:24 America/Montevideo] URI completa: api/admin/messages
+[07-Sep-2025 23:12:24 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 23:12:24 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 23:12:24 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 23:12:24 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 23:12:24 America/Montevideo] === AdminController::listMessages - INICIO ===
+[07-Sep-2025 23:12:24 America/Montevideo] Mensajes obtenidos: 4
+[07-Sep-2025 23:12:24 America/Montevideo] === AdminController::listMessages - SUCCESS ===
+[07-Sep-2025 23:12:32 America/Montevideo] Login intentado: martin@martin.com / martin
+[07-Sep-2025 23:12:32 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 23:12:32 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 23:12:32 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 23:12:32 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 23:12:32 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 23:12:32 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 23:12:32 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 23:12:32 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 23:12:32 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 23:12:32 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 23:12:32 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 23:12:32 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 23:12:32 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 23:12:32 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 23:12:32 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 23:12:32 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 23:12:32 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 23:12:32 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 23:16:44 America/Montevideo] Login intentado: martin@martin.com / martin
+[07-Sep-2025 23:16:44 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 23:16:44 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 23:16:44 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 23:16:44 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 23:16:44 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 23:16:44 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 23:16:44 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 23:16:44 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 23:16:44 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 23:16:44 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 23:16:44 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 23:16:44 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 23:16:44 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 23:16:44 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 23:16:44 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 23:16:44 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 23:16:44 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 23:16:44 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 23:17:21 America/Montevideo] Login intentado: martin@martin.com / martin
+[07-Sep-2025 23:17:21 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 23:17:21 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 23:17:21 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 23:17:21 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 23:17:21 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 23:17:21 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 23:17:21 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 23:17:21 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 23:17:21 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 23:17:21 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 23:17:21 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 23:17:21 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 23:17:21 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 23:17:21 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 23:17:21 America/Montevideo] Estado del usuario: suspendido
+[07-Sep-2025 23:17:21 America/Montevideo] ACCESO DENEGADO: Usuario suspendido
+[07-Sep-2025 23:17:21 America/Montevideo] === FIN verifyCredentials (usuario suspendido) ===
+[07-Sep-2025 23:17:21 America/Montevideo] Login fallido: Usuario suspendido
+[07-Sep-2025 23:17:28 America/Montevideo] Login intentado: admin / admin
+[07-Sep-2025 23:17:28 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 23:17:28 America/Montevideo] Intentando login para: admin
+[07-Sep-2025 23:17:28 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 23:17:28 America/Montevideo] Identifier: admin
+[07-Sep-2025 23:17:28 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 23:17:28 America/Montevideo] Estado del usuario: activo
+[07-Sep-2025 23:17:28 America/Montevideo] Usuario activo, verificando contraseña...
+[07-Sep-2025 23:17:28 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 23:17:29 America/Montevideo] Password verify: OK
+[07-Sep-2025 23:17:29 America/Montevideo] Usuario estado final: activo
+[07-Sep-2025 23:17:29 America/Montevideo] === FIN verifyCredentials (success) ===
+[07-Sep-2025 23:17:29 America/Montevideo] Login exitoso para usuario ID: 4
+[07-Sep-2025 23:17:29 America/Montevideo] === FIN AuthService::login (success) ===
+[07-Sep-2025 23:17:29 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 23:17:29 America/Montevideo] Intentando login para: admin
+[07-Sep-2025 23:17:29 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 23:17:29 America/Montevideo] Identifier: admin
+[07-Sep-2025 23:17:29 America/Montevideo] Usuario encontrado: admin
+[07-Sep-2025 23:17:29 America/Montevideo] Estado del usuario: activo
+[07-Sep-2025 23:17:29 America/Montevideo] Usuario activo, verificando contraseña...
+[07-Sep-2025 23:17:29 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[07-Sep-2025 23:17:29 America/Montevideo] Password verify: OK
+[07-Sep-2025 23:17:29 America/Montevideo] Usuario estado final: activo
+[07-Sep-2025 23:17:29 America/Montevideo] === FIN verifyCredentials (success) ===
+[07-Sep-2025 23:17:29 America/Montevideo] Login exitoso para usuario ID: 4
+[07-Sep-2025 23:17:29 America/Montevideo] === FIN AuthService::login (success) ===
+[07-Sep-2025 23:17:29 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 23:17:29 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 23:17:29 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 23:17:29 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 23:17:29 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 23:17:29 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 23:17:29 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 23:17:29 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 23:17:29 America/Montevideo] Usuarios obtenidos: 18
+[07-Sep-2025 23:17:29 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 23:17:29 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 23:17:29 America/Montevideo] Method: GET, Op: messages, ID: 0, Extra: 
+[07-Sep-2025 23:17:29 America/Montevideo] URI completa: api/admin/messages
+[07-Sep-2025 23:17:29 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 23:17:29 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 23:17:29 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 23:17:29 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 23:17:29 America/Montevideo] === AdminController::listMessages - INICIO ===
+[07-Sep-2025 23:17:29 America/Montevideo] Mensajes obtenidos: 4
+[07-Sep-2025 23:17:29 America/Montevideo] === AdminController::listMessages - SUCCESS ===
+[07-Sep-2025 23:17:29 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 23:17:29 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 23:17:29 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 23:17:29 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 23:17:29 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 23:17:29 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 23:17:29 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 23:17:29 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 23:17:29 America/Montevideo] Usuarios obtenidos: 18
+[07-Sep-2025 23:17:29 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 23:17:29 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 23:17:29 America/Montevideo] Method: GET, Op: messages, ID: 0, Extra: 
+[07-Sep-2025 23:17:29 America/Montevideo] URI completa: api/admin/messages
+[07-Sep-2025 23:17:29 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 23:17:29 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 23:17:29 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 23:17:29 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 23:17:29 America/Montevideo] === AdminController::listMessages - INICIO ===
+[07-Sep-2025 23:17:29 America/Montevideo] Mensajes obtenidos: 4
+[07-Sep-2025 23:17:29 America/Montevideo] === AdminController::listMessages - SUCCESS ===
+[07-Sep-2025 23:18:11 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 23:18:11 America/Montevideo] Method: PATCH, Op: users, ID: 1, Extra: status
+[07-Sep-2025 23:18:11 America/Montevideo] URI completa: api/admin/users/1/status
+[07-Sep-2025 23:18:11 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 23:18:11 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 23:18:11 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 23:18:11 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 23:18:11 America/Montevideo] === AdminController::toggleUserStatus(1) - INICIO ===
+[07-Sep-2025 23:18:11 America/Montevideo] Cambiando status de usuario 1 a: activo
+[07-Sep-2025 23:18:11 America/Montevideo] Resultado cambio status: {"success":true,"message":"Estado actualizado"}
+[07-Sep-2025 23:18:11 America/Montevideo] === AdminController::toggleUserStatus - FIN ===
+[07-Sep-2025 23:18:11 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 23:18:11 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 23:18:11 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 23:18:11 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 23:18:11 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 23:18:11 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 23:18:11 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 23:18:11 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 23:18:11 America/Montevideo] Usuarios obtenidos: 18
+[07-Sep-2025 23:18:11 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 23:18:14 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 23:18:14 America/Montevideo] Method: PATCH, Op: users, ID: 2, Extra: status
+[07-Sep-2025 23:18:14 America/Montevideo] URI completa: api/admin/users/2/status
+[07-Sep-2025 23:18:14 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 23:18:14 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 23:18:14 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 23:18:14 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 23:18:14 America/Montevideo] === AdminController::toggleUserStatus(2) - INICIO ===
+[07-Sep-2025 23:18:14 America/Montevideo] Cambiando status de usuario 2 a: activo
+[07-Sep-2025 23:18:14 America/Montevideo] Resultado cambio status: {"success":true,"message":"Estado actualizado"}
+[07-Sep-2025 23:18:14 America/Montevideo] === AdminController::toggleUserStatus - FIN ===
+[07-Sep-2025 23:18:14 America/Montevideo] === API ADMIN ROUTE ===
+[07-Sep-2025 23:18:14 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[07-Sep-2025 23:18:14 America/Montevideo] URI completa: api/admin/users
+[07-Sep-2025 23:18:14 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Sep-2025 23:18:14 America/Montevideo] === UserRepository::findById(4) ===
+[07-Sep-2025 23:18:14 America/Montevideo] Usuario ID 4 encontrado: admin (estado: activo)
+[07-Sep-2025 23:18:14 America/Montevideo] Usuario 4 está activo
+[07-Sep-2025 23:18:14 America/Montevideo] === AdminController::listUsers - INICIO ===
+[07-Sep-2025 23:18:14 America/Montevideo] Usuarios obtenidos: 18
+[07-Sep-2025 23:18:14 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[07-Sep-2025 23:18:37 America/Montevideo] Login intentado: martin@martin.com / martin
+[07-Sep-2025 23:18:37 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 23:18:37 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 23:18:37 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 23:18:37 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 23:18:37 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 23:18:37 America/Montevideo] Estado del usuario: activo
+[07-Sep-2025 23:18:37 America/Montevideo] Usuario activo, verificando contraseña...
+[07-Sep-2025 23:18:37 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[07-Sep-2025 23:18:38 America/Montevideo] Password verify: OK
+[07-Sep-2025 23:18:38 America/Montevideo] Usuario estado final: activo
+[07-Sep-2025 23:18:38 America/Montevideo] === FIN verifyCredentials (success) ===
+[07-Sep-2025 23:18:38 America/Montevideo] Login exitoso para usuario ID: 1
+[07-Sep-2025 23:18:38 America/Montevideo] === FIN AuthService::login (success) ===
+[07-Sep-2025 23:18:38 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 23:18:38 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 23:18:38 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 23:18:38 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 23:18:38 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 23:18:38 America/Montevideo] Estado del usuario: activo
+[07-Sep-2025 23:18:38 America/Montevideo] Usuario activo, verificando contraseña...
+[07-Sep-2025 23:18:38 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[07-Sep-2025 23:18:38 America/Montevideo] Password verify: OK
+[07-Sep-2025 23:18:38 America/Montevideo] Usuario estado final: activo
+[07-Sep-2025 23:18:38 America/Montevideo] === FIN verifyCredentials (success) ===
+[07-Sep-2025 23:18:38 America/Montevideo] Login exitoso para usuario ID: 1
+[07-Sep-2025 23:18:38 America/Montevideo] === FIN AuthService::login (success) ===
+[07-Sep-2025 23:18:38 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[07-Sep-2025 23:18:38 America/Montevideo] === UserRepository::findById(1) ===
+[07-Sep-2025 23:18:38 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[07-Sep-2025 23:18:38 America/Montevideo] Usuario 1 está activo
+[07-Sep-2025 23:18:38 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[07-Sep-2025 23:18:38 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[07-Sep-2025 23:18:38 America/Montevideo] === UserRepository::findById(1) ===
+[07-Sep-2025 23:18:38 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[07-Sep-2025 23:18:38 America/Montevideo] Usuario 1 está activo
+[07-Sep-2025 23:19:21 America/Montevideo] Login intentado: martin@martin.com / martin
+[07-Sep-2025 23:19:21 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 23:19:21 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 23:19:21 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 23:19:21 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 23:19:21 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 23:19:21 America/Montevideo] Estado del usuario: activo
+[07-Sep-2025 23:19:21 America/Montevideo] Usuario activo, verificando contraseña...
+[07-Sep-2025 23:19:21 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[07-Sep-2025 23:19:21 America/Montevideo] Password verify: OK
+[07-Sep-2025 23:19:21 America/Montevideo] Usuario estado final: activo
+[07-Sep-2025 23:19:21 America/Montevideo] === FIN verifyCredentials (success) ===
+[07-Sep-2025 23:19:21 America/Montevideo] Login exitoso para usuario ID: 1
+[07-Sep-2025 23:19:21 America/Montevideo] === FIN AuthService::login (success) ===
+[07-Sep-2025 23:19:21 America/Montevideo] === INICIO AuthService::login ===
+[07-Sep-2025 23:19:21 America/Montevideo] Intentando login para: martin@martin.com
+[07-Sep-2025 23:19:21 America/Montevideo] === INICIO verifyCredentials ===
+[07-Sep-2025 23:19:21 America/Montevideo] Identifier: martin@martin.com
+[07-Sep-2025 23:19:21 America/Montevideo] Usuario encontrado: martin123
+[07-Sep-2025 23:19:21 America/Montevideo] Estado del usuario: activo
+[07-Sep-2025 23:19:21 America/Montevideo] Usuario activo, verificando contraseña...
+[07-Sep-2025 23:19:21 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[07-Sep-2025 23:19:22 America/Montevideo] Password verify: OK
+[07-Sep-2025 23:19:22 America/Montevideo] Usuario estado final: activo
+[07-Sep-2025 23:19:22 America/Montevideo] === FIN verifyCredentials (success) ===
+[07-Sep-2025 23:19:22 America/Montevideo] Login exitoso para usuario ID: 1
+[07-Sep-2025 23:19:22 America/Montevideo] === FIN AuthService::login (success) ===
+[07-Sep-2025 23:19:22 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[07-Sep-2025 23:19:22 America/Montevideo] === UserRepository::findById(1) ===
+[07-Sep-2025 23:19:22 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[07-Sep-2025 23:19:22 America/Montevideo] Usuario 1 está activo
+[07-Sep-2025 23:19:22 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[07-Sep-2025 23:19:22 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[07-Sep-2025 23:19:22 America/Montevideo] === UserRepository::findById(1) ===
+[07-Sep-2025 23:19:22 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[07-Sep-2025 23:19:22 America/Montevideo] Usuario 1 está activo
+[07-Sep-2025 23:19:38 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/view/tablero.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\tablero.php on line 10
+[07-Sep-2025 23:19:41 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/view/tablero.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\tablero.php on line 10
+[07-Sep-2025 23:19:42 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/view/tablero.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\tablero.php on line 10
+[07-Sep-2025 23:19:42 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/view/tablero.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\tablero.php on line 10
+[07-Sep-2025 23:19:42 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/view/tablero.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\tablero.php on line 10
+[07-Sep-2025 23:19:42 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/view/tablero.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\tablero.php on line 10
+[07-Sep-2025 23:19:43 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/view/tablero.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\tablero.php on line 10
+[07-Sep-2025 23:19:43 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/view/tablero.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\tablero.php on line 10
+[07-Sep-2025 23:19:43 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/view/tablero.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\tablero.php on line 10
+[07-Sep-2025 23:19:43 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/view/tablero.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\tablero.php on line 10
+[07-Sep-2025 23:19:43 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/view/tablero.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\tablero.php on line 10
+[07-Sep-2025 23:19:44 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/view/tablero.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\tablero.php on line 10
+[07-Sep-2025 23:19:44 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/view/tablero.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\tablero.php on line 10
+[07-Sep-2025 23:19:44 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/view/tablero.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\tablero.php on line 10
+[07-Sep-2025 23:19:44 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/view/tablero.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\tablero.php on line 10
+[07-Sep-2025 23:19:44 America/Montevideo] PHP Warning:  readfile(C:\Users\USUARIO\Documents\GitHub\Draftosaurus/view/tablero.html): Failed to open stream: No such file or directory in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\tablero.php on line 10
+[07-Sep-2025 23:19:46 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[07-Sep-2025 23:19:46 America/Montevideo] === UserRepository::findById(1) ===
+[07-Sep-2025 23:19:46 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[07-Sep-2025 23:19:46 America/Montevideo] Usuario 1 está activo
+[07-Sep-2025 23:19:46 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[07-Sep-2025 23:19:46 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[07-Sep-2025 23:19:46 America/Montevideo] === UserRepository::findById(1) ===
+[07-Sep-2025 23:19:46 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[07-Sep-2025 23:19:46 America/Montevideo] Usuario 1 está activo
+[07-Sep-2025 23:19:51 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[07-Sep-2025 23:19:51 America/Montevideo] === UserRepository::findById(1) ===
+[07-Sep-2025 23:19:51 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[07-Sep-2025 23:19:51 America/Montevideo] Usuario 1 está activo
+[07-Sep-2025 23:19:51 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[07-Sep-2025 23:19:51 America/Montevideo] === UserRepository::findById(1) ===
+[07-Sep-2025 23:19:51 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[07-Sep-2025 23:19:51 America/Montevideo] Usuario 1 está activo
+[07-Sep-2025 23:19:51 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[07-Sep-2025 23:19:51 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[07-Sep-2025 23:19:51 America/Montevideo] === UserRepository::findById(1) ===
+[07-Sep-2025 23:19:51 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[07-Sep-2025 23:19:51 America/Montevideo] Usuario 1 está activo
+[07-Sep-2025 23:19:56 America/Montevideo] PHP Notice:  session_start(): ps_files_cleanup_dir: opendir(C:\Windows\Temp) failed: No error (0) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 15
+[07-Sep-2025 23:19:56 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[07-Sep-2025 23:19:56 America/Montevideo] === UserRepository::findById(1) ===
+[07-Sep-2025 23:19:56 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[07-Sep-2025 23:19:56 America/Montevideo] Usuario 1 está activo
+[07-Sep-2025 23:19:56 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[07-Sep-2025 23:19:56 America/Montevideo] === UserRepository::findById(1) ===
+[07-Sep-2025 23:19:56 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[07-Sep-2025 23:19:56 America/Montevideo] Usuario 1 está activo
+[07-Sep-2025 23:19:56 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[07-Sep-2025 23:19:56 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[07-Sep-2025 23:19:56 America/Montevideo] === UserRepository::findById(1) ===
+[07-Sep-2025 23:19:56 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[07-Sep-2025 23:19:56 America/Montevideo] Usuario 1 está activo

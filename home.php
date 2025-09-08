@@ -13,7 +13,7 @@ if (
 
 // 2. Si ya está logueado → redirigir
 require_once __DIR__.'/api/helpers/AuthHelper.php';
-AuthHelper::redirectIfLogged(); // <-- hace header + exit si hay sesión
+//AuthHelper::redirectIfLogged(); // <-- hace header + exit si hay sesión
 
 // 3. Si llegó acá → mostrar landing
 header('Content-Type: text/html; charset=utf-8');
