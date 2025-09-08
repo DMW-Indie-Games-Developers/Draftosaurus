@@ -1,7 +1,8 @@
+/* =====  perfil.js  ===== */
 /* ------ Si NO hay sesión local → login ------ */
 if (!localStorage.getItem('userId')) {
   localStorage.clear();
-  location.replace('/login'); // ← sin .html
+  location.replace('/login');
 }
 
 document.addEventListener('DOMContentLoaded', async () => {
@@ -38,25 +39,21 @@ document.addEventListener('DOMContentLoaded', async () => {
     const file = e.target.files?.[0];
     if (!file) return;
     const permitidos = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
-    if (!permitidos.includes(file.type)) return alert('Formato no soportado');
-    if (file.size > 3 * 1024 * 1024) return alert('Máx 3 MB');
+    if (!permitidos.includes(file.type)) return alert('Formato no permitido');
+    if (file.size > 3 * 1024 * 1024) return alert('Máximo 3 MB');
 
     const fd = new FormData();
     fd.append('avatar', file);
     fd.append('userId', data.id);
 
-    const res1 = await fetch('/upload-avatar.php', { method: 'POST', body: fd });
-    const r1 = await res1.json();
-    if (r1.success && r1.avatarUrl) {
-      const res2 = await fetch('/perfil/avatar', {
-        method: 'POST',
-        credentials: 'include',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userId: data.id, avatarUrl: r1.avatarUrl })
-      }).then(r => r.json());
-      if (res2.success && el('avatar-img')) el('avatar-img').src = r1.avatarUrl;
-      else alert('No se guardó el avatar');
-    } else alert(r1.message || 'Error al subir');
+    const res = await fetch('/api/upload-avatar.php', { method: 'POST', body: fd });
+    const r = await res.json();
+    if (r.success && r.avatarUrl) {
+      el('avatar-img').src = r.avatarUrl;
+      localStorage.setItem('userAvatar', r.avatarUrl);
+    } else {
+      alert(r.message || 'Error al subir imagen');
+    }
   });
 
   /* 5. Cerrar sesión */
@@ -67,5 +64,54 @@ document.addEventListener('DOMContentLoaded', async () => {
       localStorage.clear();
       location.href = '/login';
     } else alert('No se pudo cerrar sesión');
+  });
+
+  /* 6. Modal Crear Partida */
+  on('crear-partida-btn', 'click', () => {
+    const modal = new bootstrap.Modal(el('modalCrearPartida'));
+    modal.show();
+  });
+
+  /* 7. Elegir modo Invitado */
+  on('btnInvitado', 'click', () => {
+    bootstrap.Modal.getInstance(el('modalCrearPartida')).hide();
+    const modalInv = new bootstrap.Modal(el('modalInvitado'));
+    modalInv.show();
+  });
+
+  on('formInvitado', 'submit', (e) => {
+    e.preventDefault();
+    const nombre = el('guestName').value.trim() || 'Anónimo';
+    const yo = localStorage.getItem('userName') || 'Yo';
+    localStorage.setItem('jugadorActual', yo);
+    localStorage.setItem('rival', nombre);
+    localStorage.setItem('modo', 'invitado');
+    location.href = '/tablero.html';
+  });
+
+  /* 8. Elegir modo Usuario registrado */
+  on('btnUsers', 'click', () => el('loginJugador2').classList.remove('d-none'));
+
+  on('formLoginJugador2', 'submit', async (e) => {
+    e.preventDefault();
+    const email = el('emailJugador2').value.trim();
+    const pass = el('passwordJugador2').value;
+
+    const res = await fetch('/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ identifier: email, password: pass })
+    });
+    const data = await res.json();
+
+    if (data.success) {
+      const yo = localStorage.getItem('userName') || 'Yo';
+      localStorage.setItem('jugadorActual', yo);
+      localStorage.setItem('rival', data.user.username);
+      localStorage.setItem('modo', 'registrado');
+      location.href = '/tablero.html';
+    } else {
+      alert(data.message || 'Credenciales incorrectas');
+    }
   });
 });

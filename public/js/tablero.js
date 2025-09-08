@@ -1,9 +1,15 @@
+/* =====  tablero.js  ===== */
 /* ------ Bloqueo frontal: sin sesión → login ------ */
 if (!localStorage.getItem('userId')) {
   localStorage.clear();
   location.replace('/login');
 }
 /* -------------------------------------------------- */
+
+/* ------ Nombres reales ------ */
+const jugadorActualNombre = localStorage.getItem('jugadorActual') || 'Yo';
+const rivalNombre         = localStorage.getItem('rival')         || 'Rival';
+/* ---------------------------- */
 
 document.addEventListener('DOMContentLoaded', function () {
   const recintos = document.querySelectorAll('.recinto');
@@ -26,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
   let restriccionActual = null;
   let turno = 1;
   let ronda = 1;
-  const TOTAL_RONDAS = 4; // ✅ Cambiado a 4 rondas
+  const TOTAL_RONDAS = 4;
 
   let manos = { 1: [], 2: [] };
   let colocadosEnTurno = 0;
@@ -42,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function () {
     6: "Sin restricción"
   };
 
-  // ✅ Generar mano de 6 dinosaurios
   function generarMano() {
     return Array.from({ length: 6 }, () => especies[Math.floor(Math.random() * especies.length)]);
   }
@@ -52,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
     grid.innerHTML = '';
     manos[jugador].forEach((esp, idx) => {
       const img = document.createElement('img');
-      img.src = `img/imagen_Tablero/${esp}.png`;
+      img.src = `/img/imagen_Tablero/${esp}.png`;
       img.className = 'dino-img';
       img.draggable = true;
       img.dataset.especie = esp;
@@ -85,18 +90,19 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function actualizarUI() {
-    dinoPanelTitle.textContent = `Tus Dinosaurios - Jugador ${jugadorActivo}`;
+    const nombreTurno = jugadorActivo === 1 ? jugadorActualNombre : rivalNombre;
+    dinoPanelTitle.textContent = `Tus Dinosaurios - ${nombreTurno}`;
     renderMano(jugadorActivo);
     actualizarPuntuacionJugadorActivo();
     actualizarPuntuacionesVisualesRecintos();
     actualizarVisibilidadDinos();
 
     if (restriccionActual === null) {
-      turnoText.textContent = `Ronda ${ronda} - Turno ${turno} - Jugador ${jugadorActivo} debe tirar dado`;
+      turnoText.textContent = `Ronda ${ronda} - Turno ${turno} - ${nombreTurno} debe tirar dado`;
     } else if (jugadorActivo === jugadorQueTiroDado) {
-      turnoText.textContent = `Ronda ${ronda} - Turno ${turno} - Jugador ${jugadorActivo} debe colocar (SIN restricciones)`;
+      turnoText.textContent = `Ronda ${ronda} - Turno ${turno} - ${nombreTurno} debe colocar (SIN restricciones)`;
     } else {
-      turnoText.textContent = `Ronda ${ronda} - Turno ${turno} - Jugador ${jugadorActivo} debe colocar (CON restricción: ${restricciones[restriccionActual]})`;
+      turnoText.textContent = `Ronda ${ronda} - Turno ${turno} - ${nombreTurno} debe colocar (CON restricción: ${restricciones[restriccionActual]})`;
     }
 
     dadoBtn.style.display = restriccionActual === null ? 'inline-block' : 'none';
@@ -126,7 +132,7 @@ document.addEventListener('DOMContentLoaded', function () {
   function tirarDado() {
     if (restriccionActual !== null) return;
     const valor = Math.floor(Math.random() * 6) + 1;
-    dadoImg.src = `img/dado/dado${valor}.png`;
+    dadoImg.src = `/img/dado/dado${valor}.png`;
     restriccionActual = valor;
     restriccionText.textContent = restricciones[valor];
     actualizarUI();
@@ -136,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   function colocarDino(recinto, especie) {
     const dinoClone = document.createElement('img');
-    dinoClone.src = `img/imagen_Tablero/${especie}.png`;
+    dinoClone.src = `/img/imagen_Tablero/${especie}.png`;
     dinoClone.className = 'dino-in-recinto';
     dinoClone.dataset.especie = especie;
     dinoClone.dataset.jugador = jugadorActivo;
@@ -152,7 +158,7 @@ document.addEventListener('DOMContentLoaded', function () {
       colocadosEnTurno = 0;
       restriccionActual = null;
       restriccionText.textContent = "Esperando...";
-      dadoImg.src = "img/dado/dado.png";
+      dadoImg.src = "/img/dado/dado.png";
 
       turno++;
       if (turno > 3) {
@@ -173,12 +179,10 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   }
 
-  // ✅ Puntuación final con nuevas reglas
   function mostrarResultadosFinal() {
     const especiesJugador = { 1: {}, 2: {} };
     const recintosConTrex = { 1: new Set(), 2: new Set() };
 
-    // Contar especies y T-Rex por recinto
     [1, 2].forEach(j => {
       recintos.forEach(r => {
         const dinos = Array.from(r.querySelectorAll('.dino-in-recinto'))
@@ -247,13 +251,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const ganador = puntos[1] === puntos[2] ? 'Empate' : (puntos[1] > puntos[2] ? 1 : 2);
     alert(
       `¡Fin del juego!\n\n` +
-      `Jugador 1: ${puntos[1]} puntos\n` +
-      `Jugador 2: ${puntos[2]} puntos\n\n` +
-      (ganador === 'Empate' ? '¡Es un empate!' : `¡Ganador: Jugador ${ganador}!`)
+      `${jugadorActualNombre}: ${puntos[1]} puntos\n` +
+      `${rivalNombre}: ${puntos[2]} puntos\n\n` +
+      (ganador === 'Empate' ? '¡Es un empate!' : `¡Ganador: ${ganador === 1 ? jugadorActualNombre : rivalNombre}!`)
     );
   }
 
-  // Eventos de drag & drop sin cambios
   recintos.forEach(recinto => {
     recinto.addEventListener('dragover', e => {
       e.preventDefault();
@@ -288,10 +291,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
-  // Copia original de puedeColocarDino sin cambios
   function puedeColocarDino(recinto, tipoRecinto, especieDino) {
     const dinosauriosEnRecinto = Array.from(recinto.querySelectorAll('.dino-in-recinto'))
-  .filter(d => parseInt(d.dataset.jugador) === jugadorActivo);
+      .filter(d => parseInt(d.dataset.jugador) === jugadorActivo);
     const cantidadDinos = dinosauriosEnRecinto.length;
 
     if (tipoRecinto === 'rio') return true;
