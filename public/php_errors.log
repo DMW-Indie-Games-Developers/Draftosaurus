@@ -1848,3 +1848,1019 @@
 [08-Sep-2025 19:56:18 America/Montevideo] === AdminController::getUser(3) - INICIO ===
 [08-Sep-2025 19:56:18 America/Montevideo] Usuario 3 encontrado y enviado
 [08-Sep-2025 19:56:18 America/Montevideo] === AdminController::getUser - FIN ===
+[08-Sep-2025 20:48:05 America/Montevideo] Login intentado: admin / admin
+[08-Sep-2025 20:48:05 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 20:48:05 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 20:48:05 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 20:48:05 America/Montevideo] Identifier: admin
+[08-Sep-2025 20:48:05 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 20:48:05 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 20:48:05 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 20:48:05 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[08-Sep-2025 20:48:05 America/Montevideo] Password verify: OK
+[08-Sep-2025 20:48:05 America/Montevideo] Usuario estado final: 1
+[08-Sep-2025 20:48:05 America/Montevideo] === FIN verifyCredentials (success) ===
+[08-Sep-2025 20:48:05 America/Montevideo] Login exitoso para usuario ID: 1
+[08-Sep-2025 20:48:05 America/Montevideo] === FIN AuthService::login (success) ===
+[08-Sep-2025 20:48:05 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 20:48:05 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 20:48:05 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 20:48:05 America/Montevideo] Identifier: admin
+[08-Sep-2025 20:48:05 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 20:48:05 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 20:48:05 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 20:48:05 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[08-Sep-2025 20:48:06 America/Montevideo] Password verify: OK
+[08-Sep-2025 20:48:06 America/Montevideo] Usuario estado final: 1
+[08-Sep-2025 20:48:06 America/Montevideo] === FIN verifyCredentials (success) ===
+[08-Sep-2025 20:48:06 America/Montevideo] Login exitoso para usuario ID: 1
+[08-Sep-2025 20:48:06 America/Montevideo] === FIN AuthService::login (success) ===
+[08-Sep-2025 20:48:06 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 20:48:06 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[08-Sep-2025 20:48:06 America/Montevideo] URI completa: api/admin/users
+[08-Sep-2025 20:48:06 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 20:48:06 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 20:48:06 America/Montevideo] Usuario ID 1 encontrado: admin (estado: 1)
+[08-Sep-2025 20:48:06 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 20:48:06 America/Montevideo] === AdminController::listUsers - INICIO ===
+[08-Sep-2025 20:48:06 America/Montevideo] Usuarios obtenidos: 3
+[08-Sep-2025 20:48:06 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[08-Sep-2025 20:48:06 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 20:48:06 America/Montevideo] Method: GET, Op: messages, ID: 0, Extra: 
+[08-Sep-2025 20:48:06 America/Montevideo] URI completa: api/admin/messages
+[08-Sep-2025 20:48:06 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 20:48:06 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 20:48:06 America/Montevideo] Usuario ID 1 encontrado: admin (estado: 1)
+[08-Sep-2025 20:48:06 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 20:48:06 America/Montevideo] === AdminController::listMessages - INICIO ===
+[08-Sep-2025 20:48:06 America/Montevideo] ERROR en listMessages: Table 'draftosaurus.contacto' doesn't exist
+[08-Sep-2025 20:48:06 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 20:48:06 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[08-Sep-2025 20:48:06 America/Montevideo] URI completa: api/admin/users
+[08-Sep-2025 20:48:06 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 20:48:06 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 20:48:06 America/Montevideo] Usuario ID 1 encontrado: admin (estado: 1)
+[08-Sep-2025 20:48:06 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 20:48:06 America/Montevideo] === AdminController::listUsers - INICIO ===
+[08-Sep-2025 20:48:06 America/Montevideo] Usuarios obtenidos: 3
+[08-Sep-2025 20:48:06 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[08-Sep-2025 20:48:07 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 20:48:07 America/Montevideo] Method: GET, Op: messages, ID: 0, Extra: 
+[08-Sep-2025 20:48:07 America/Montevideo] URI completa: api/admin/messages
+[08-Sep-2025 20:48:07 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 20:48:07 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 20:48:07 America/Montevideo] Usuario ID 1 encontrado: admin (estado: 1)
+[08-Sep-2025 20:48:07 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 20:48:07 America/Montevideo] === AdminController::listMessages - INICIO ===
+[08-Sep-2025 20:48:07 America/Montevideo] ERROR en listMessages: Table 'draftosaurus.contacto' doesn't exist
+[08-Sep-2025 20:48:26 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 20:48:26 America/Montevideo] Method: GET, Op: users, ID: 3, Extra: 
+[08-Sep-2025 20:48:26 America/Montevideo] URI completa: api/admin/users/3
+[08-Sep-2025 20:48:26 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 20:48:26 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 20:48:26 America/Montevideo] Usuario ID 1 encontrado: admin (estado: 1)
+[08-Sep-2025 20:48:26 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 20:48:26 America/Montevideo] === AdminController::getUser(3) - INICIO ===
+[08-Sep-2025 20:48:26 America/Montevideo] Usuario 3 encontrado y enviado
+[08-Sep-2025 20:48:26 America/Montevideo] === AdminController::getUser - FIN ===
+[08-Sep-2025 20:48:39 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 20:48:39 America/Montevideo] Method: PATCH, Op: users, ID: 3, Extra: status
+[08-Sep-2025 20:48:39 America/Montevideo] URI completa: api/admin/users/3/status
+[08-Sep-2025 20:48:39 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 20:48:39 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 20:48:39 America/Montevideo] Usuario ID 1 encontrado: admin (estado: 1)
+[08-Sep-2025 20:48:39 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 20:48:39 America/Montevideo] === AdminController::toggleUserStatus(3) - INICIO ===
+[08-Sep-2025 20:48:39 America/Montevideo] Cambiando status de usuario 3 a: activo
+[08-Sep-2025 20:48:39 America/Montevideo] Resultado cambio status: {"success":false,"message":"Error al actualizar estado: Incorrect integer value: 'activo' for column 'estado' at row 1"}
+[08-Sep-2025 20:48:39 America/Montevideo] === AdminController::toggleUserStatus - FIN ===
+[08-Sep-2025 20:49:06 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 20:49:06 America/Montevideo] Method: POST, Op: users, ID: 0, Extra: 
+[08-Sep-2025 20:49:06 America/Montevideo] URI completa: api/admin/users
+[08-Sep-2025 20:49:06 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 20:49:06 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 20:49:06 America/Montevideo] Usuario ID 1 encontrado: admin (estado: 1)
+[08-Sep-2025 20:49:06 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 20:49:06 America/Montevideo] === AdminController::createUser - INICIO ===
+[08-Sep-2025 20:49:06 America/Montevideo] Raw input recibido: {"name":"prueba","email":"prueba@coso.com","password":"aver"}
+[08-Sep-2025 20:49:06 America/Montevideo] Datos JSON parseados: {"name":"prueba","email":"prueba@coso.com","password":"aver"}
+[08-Sep-2025 20:49:06 America/Montevideo] Datos sanitizados - name: 'prueba', email: 'prueba@coso.com'
+[08-Sep-2025 20:49:06 America/Montevideo] === AdminService::createUser - INICIO ===
+[08-Sep-2025 20:49:06 America/Montevideo] Datos recibidos: {"name":"prueba","email":"prueba@coso.com","password":"aver"}
+[08-Sep-2025 20:49:06 America/Montevideo] === findUserByUsername: 'prueba' ===
+[08-Sep-2025 20:49:06 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 20:49:06 America/Montevideo] === findUserByEmail: 'prueba@coso.com' ===
+[08-Sep-2025 20:49:06 America/Montevideo] Email NO encontrado
+[08-Sep-2025 20:49:06 America/Montevideo] Procediendo a insertar usuario: prueba
+[08-Sep-2025 20:49:06 America/Montevideo] === AdminRepository::insertUser - INICIO ===
+[08-Sep-2025 20:49:06 America/Montevideo] Datos recibidos: {"name":"prueba","email":"prueba@coso.com","password":"aver"}
+[08-Sep-2025 20:49:06 America/Montevideo] Username a insertar: 'prueba'
+[08-Sep-2025 20:49:06 America/Montevideo] Email a insertar: 'prueba@coso.com'
+[08-Sep-2025 20:49:06 America/Montevideo] === findUserByUsername: 'prueba' ===
+[08-Sep-2025 20:49:06 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 20:49:06 America/Montevideo] === findUserByEmail: 'prueba@coso.com' ===
+[08-Sep-2025 20:49:06 America/Montevideo] Email NO encontrado
+[08-Sep-2025 20:49:06 America/Montevideo] Verificaciones completadas - Usuario y email disponibles
+[08-Sep-2025 20:49:07 America/Montevideo] Password hasheado correctamente
+[08-Sep-2025 20:49:07 America/Montevideo] Statement preparado correctamente
+[08-Sep-2025 20:49:07 America/Montevideo] Ejecutando INSERT...
+[08-Sep-2025 20:49:07 America/Montevideo] ERROR EXCEPTION en createUser: Incorrect integer value: 'activo' for column 'estado' at row 1
+[08-Sep-2025 20:49:07 America/Montevideo] === AdminService::createUser - ERROR ===
+[08-Sep-2025 20:49:07 America/Montevideo] Resultado del service: {"success":false,"message":"Error al crear usuario: Incorrect integer value: 'activo' for column 'estado' at row 1"}
+[08-Sep-2025 20:49:07 America/Montevideo] Respuesta enviada con código: 400
+[08-Sep-2025 20:49:07 America/Montevideo] === AdminController::createUser - FIN ===
+[08-Sep-2025 20:52:33 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 20:52:33 America/Montevideo] Method: POST, Op: users, ID: 0, Extra: 
+[08-Sep-2025 20:52:33 America/Montevideo] URI completa: api/admin/users
+[08-Sep-2025 20:52:33 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 20:52:33 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 20:52:33 America/Montevideo] Usuario ID 1 NO encontrado
+[08-Sep-2025 20:52:33 America/Montevideo] Usuario 1 no encontrado
+[08-Sep-2025 20:52:33 America/Montevideo] Sesión destruida completamente
+[08-Sep-2025 20:52:46 America/Montevideo] Login intentado: admin / admin
+[08-Sep-2025 20:52:46 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 20:52:46 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 20:52:46 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 20:52:46 America/Montevideo] Identifier: admin
+[08-Sep-2025 20:52:46 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 20:52:46 America/Montevideo] === FIN verifyCredentials (usuario no existe) ===
+[08-Sep-2025 20:52:46 America/Montevideo] Login fallido: Usuario no existe
+[08-Sep-2025 20:52:46 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 20:52:46 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 20:52:46 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 20:52:46 America/Montevideo] Identifier: admin
+[08-Sep-2025 20:52:46 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 20:52:46 America/Montevideo] === FIN verifyCredentials (usuario no existe) ===
+[08-Sep-2025 20:52:46 America/Montevideo] Login fallido: Usuario no existe
+[08-Sep-2025 20:52:49 America/Montevideo] Login intentado: admin / admin
+[08-Sep-2025 20:52:49 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 20:52:49 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 20:52:49 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 20:52:49 America/Montevideo] Identifier: admin
+[08-Sep-2025 20:52:49 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 20:52:49 America/Montevideo] === FIN verifyCredentials (usuario no existe) ===
+[08-Sep-2025 20:52:49 America/Montevideo] Login fallido: Usuario no existe
+[08-Sep-2025 20:52:49 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 20:52:49 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 20:52:49 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 20:52:49 America/Montevideo] Identifier: admin
+[08-Sep-2025 20:52:49 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 20:52:49 America/Montevideo] === FIN verifyCredentials (usuario no existe) ===
+[08-Sep-2025 20:52:49 America/Montevideo] Login fallido: Usuario no existe
+[08-Sep-2025 21:00:29 America/Montevideo] Login intentado: admin / admin
+[08-Sep-2025 21:00:29 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:00:29 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 21:00:29 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:00:29 America/Montevideo] Identifier: admin
+[08-Sep-2025 21:00:29 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 21:00:29 America/Montevideo] === FIN verifyCredentials (usuario no existe) ===
+[08-Sep-2025 21:00:29 America/Montevideo] Login fallido: Usuario no existe
+[08-Sep-2025 21:00:29 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:00:29 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 21:00:29 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:00:29 America/Montevideo] Identifier: admin
+[08-Sep-2025 21:00:29 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 21:00:29 America/Montevideo] === FIN verifyCredentials (usuario no existe) ===
+[08-Sep-2025 21:00:29 America/Montevideo] Login fallido: Usuario no existe
+[08-Sep-2025 21:00:33 America/Montevideo] Login intentado: admin@draftosaurus.com / admin
+[08-Sep-2025 21:00:33 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:00:33 America/Montevideo] Intentando login para: admin@draftosaurus.com
+[08-Sep-2025 21:00:33 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:00:33 America/Montevideo] Identifier: admin@draftosaurus.com
+[08-Sep-2025 21:00:33 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 21:00:33 America/Montevideo] === FIN verifyCredentials (usuario no existe) ===
+[08-Sep-2025 21:00:33 America/Montevideo] Login fallido: Usuario no existe
+[08-Sep-2025 21:00:33 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:00:33 America/Montevideo] Intentando login para: admin@draftosaurus.com
+[08-Sep-2025 21:00:33 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:00:33 America/Montevideo] Identifier: admin@draftosaurus.com
+[08-Sep-2025 21:00:33 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 21:00:33 America/Montevideo] === FIN verifyCredentials (usuario no existe) ===
+[08-Sep-2025 21:00:33 America/Montevideo] Login fallido: Usuario no existe
+[08-Sep-2025 21:00:33 America/Montevideo] Login intentado: admin@draftosaurus.com / admin
+[08-Sep-2025 21:00:33 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:00:33 America/Montevideo] Intentando login para: admin@draftosaurus.com
+[08-Sep-2025 21:00:34 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:00:34 America/Montevideo] Identifier: admin@draftosaurus.com
+[08-Sep-2025 21:00:34 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 21:00:34 America/Montevideo] === FIN verifyCredentials (usuario no existe) ===
+[08-Sep-2025 21:00:34 America/Montevideo] Login fallido: Usuario no existe
+[08-Sep-2025 21:00:34 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:00:34 America/Montevideo] Intentando login para: admin@draftosaurus.com
+[08-Sep-2025 21:00:34 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:00:34 America/Montevideo] Identifier: admin@draftosaurus.com
+[08-Sep-2025 21:00:34 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 21:00:34 America/Montevideo] === FIN verifyCredentials (usuario no existe) ===
+[08-Sep-2025 21:00:34 America/Montevideo] Login fallido: Usuario no existe
+[08-Sep-2025 21:00:34 America/Montevideo] Login intentado: admin@draftosaurus.com / admin
+[08-Sep-2025 21:00:34 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:00:34 America/Montevideo] Intentando login para: admin@draftosaurus.com
+[08-Sep-2025 21:00:34 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:00:34 America/Montevideo] Identifier: admin@draftosaurus.com
+[08-Sep-2025 21:00:35 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 21:00:35 America/Montevideo] === FIN verifyCredentials (usuario no existe) ===
+[08-Sep-2025 21:00:35 America/Montevideo] Login fallido: Usuario no existe
+[08-Sep-2025 21:00:35 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:00:35 America/Montevideo] Intentando login para: admin@draftosaurus.com
+[08-Sep-2025 21:00:35 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:00:35 America/Montevideo] Identifier: admin@draftosaurus.com
+[08-Sep-2025 21:00:35 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 21:00:35 America/Montevideo] === FIN verifyCredentials (usuario no existe) ===
+[08-Sep-2025 21:00:35 America/Montevideo] Login fallido: Usuario no existe
+[08-Sep-2025 21:01:10 America/Montevideo] Login intentado: admin@draftosaurus.com / admin
+[08-Sep-2025 21:01:10 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:01:10 America/Montevideo] Intentando login para: admin@draftosaurus.com
+[08-Sep-2025 21:01:10 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:01:10 America/Montevideo] Identifier: admin@draftosaurus.com
+[08-Sep-2025 21:01:10 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 21:01:10 America/Montevideo] === FIN verifyCredentials (usuario no existe) ===
+[08-Sep-2025 21:01:10 America/Montevideo] Login fallido: Usuario no existe
+[08-Sep-2025 21:01:10 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:01:10 America/Montevideo] Intentando login para: admin@draftosaurus.com
+[08-Sep-2025 21:01:10 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:01:10 America/Montevideo] Identifier: admin@draftosaurus.com
+[08-Sep-2025 21:01:10 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 21:01:10 America/Montevideo] === FIN verifyCredentials (usuario no existe) ===
+[08-Sep-2025 21:01:10 America/Montevideo] Login fallido: Usuario no existe
+[08-Sep-2025 21:01:12 America/Montevideo] Login intentado: admin@draftosaurus.com / admin123
+[08-Sep-2025 21:01:12 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:01:12 America/Montevideo] Intentando login para: admin@draftosaurus.com
+[08-Sep-2025 21:01:12 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:01:12 America/Montevideo] Identifier: admin@draftosaurus.com
+[08-Sep-2025 21:01:12 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 21:01:12 America/Montevideo] === FIN verifyCredentials (usuario no existe) ===
+[08-Sep-2025 21:01:12 America/Montevideo] Login fallido: Usuario no existe
+[08-Sep-2025 21:01:12 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:01:12 America/Montevideo] Intentando login para: admin@draftosaurus.com
+[08-Sep-2025 21:01:12 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:01:12 America/Montevideo] Identifier: admin@draftosaurus.com
+[08-Sep-2025 21:01:12 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 21:01:12 America/Montevideo] === FIN verifyCredentials (usuario no existe) ===
+[08-Sep-2025 21:01:12 America/Montevideo] Login fallido: Usuario no existe
+[08-Sep-2025 21:04:38 America/Montevideo] Login intentado: admin@draftosaurus.com / admin123
+[08-Sep-2025 21:04:38 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:04:38 America/Montevideo] Intentando login para: admin@draftosaurus.com
+[08-Sep-2025 21:04:38 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:04:38 America/Montevideo] Identifier: admin@draftosaurus.com
+[08-Sep-2025 21:04:38 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 21:04:38 America/Montevideo] === FIN verifyCredentials (usuario no existe) ===
+[08-Sep-2025 21:04:38 America/Montevideo] Login fallido: Usuario no existe
+[08-Sep-2025 21:04:38 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:04:38 America/Montevideo] Intentando login para: admin@draftosaurus.com
+[08-Sep-2025 21:04:38 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:04:38 America/Montevideo] Identifier: admin@draftosaurus.com
+[08-Sep-2025 21:04:38 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 21:04:38 America/Montevideo] === FIN verifyCredentials (usuario no existe) ===
+[08-Sep-2025 21:04:38 America/Montevideo] Login fallido: Usuario no existe
+[08-Sep-2025 21:17:24 America/Montevideo] Login intentado: admin@dwm.com / admin123
+[08-Sep-2025 21:17:24 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:17:24 America/Montevideo] Intentando login para: admin@dwm.com
+[08-Sep-2025 21:17:24 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:17:24 America/Montevideo] Identifier: admin@dwm.com
+[08-Sep-2025 21:17:24 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 21:17:24 America/Montevideo] === FIN verifyCredentials (usuario no existe) ===
+[08-Sep-2025 21:17:24 America/Montevideo] Login fallido: Usuario no existe
+[08-Sep-2025 21:17:24 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:17:24 America/Montevideo] Intentando login para: admin@dwm.com
+[08-Sep-2025 21:17:24 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:17:24 America/Montevideo] Identifier: admin@dwm.com
+[08-Sep-2025 21:17:24 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 21:17:24 America/Montevideo] === FIN verifyCredentials (usuario no existe) ===
+[08-Sep-2025 21:17:24 America/Montevideo] Login fallido: Usuario no existe
+[08-Sep-2025 21:17:39 America/Montevideo] Login intentado: admin / admin123
+[08-Sep-2025 21:17:39 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:17:39 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 21:17:39 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:17:39 America/Montevideo] Identifier: admin
+[08-Sep-2025 21:17:39 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:17:39 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:17:39 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:17:39 America/Montevideo] Hash en BD: $2y$10$yEtwTm5Y0GvV..oNwHVby.9soHymDTL.DLMbFtd2OlZ97zS7uOq3m
+[08-Sep-2025 21:17:39 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:17:39 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:17:39 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:17:39 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:17:39 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 21:17:39 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:17:39 America/Montevideo] Identifier: admin
+[08-Sep-2025 21:17:39 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:17:39 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:17:39 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:17:39 America/Montevideo] Hash en BD: $2y$10$yEtwTm5Y0GvV..oNwHVby.9soHymDTL.DLMbFtd2OlZ97zS7uOq3m
+[08-Sep-2025 21:17:39 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:17:39 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:17:39 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:17:40 America/Montevideo] Login intentado: admin / admin123
+[08-Sep-2025 21:17:40 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:17:40 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 21:17:40 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:17:40 America/Montevideo] Identifier: admin
+[08-Sep-2025 21:17:40 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:17:40 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:17:40 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:17:40 America/Montevideo] Hash en BD: $2y$10$yEtwTm5Y0GvV..oNwHVby.9soHymDTL.DLMbFtd2OlZ97zS7uOq3m
+[08-Sep-2025 21:17:40 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:17:40 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:17:40 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:17:40 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:17:40 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 21:17:40 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:17:40 America/Montevideo] Identifier: admin
+[08-Sep-2025 21:17:40 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:17:40 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:17:40 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:17:40 America/Montevideo] Hash en BD: $2y$10$yEtwTm5Y0GvV..oNwHVby.9soHymDTL.DLMbFtd2OlZ97zS7uOq3m
+[08-Sep-2025 21:17:40 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:17:40 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:17:40 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:17:44 America/Montevideo] Login intentado: admin / admin
+[08-Sep-2025 21:17:44 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:17:44 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 21:17:44 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:17:44 America/Montevideo] Identifier: admin
+[08-Sep-2025 21:17:44 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:17:44 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:17:44 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:17:44 America/Montevideo] Hash en BD: $2y$10$yEtwTm5Y0GvV..oNwHVby.9soHymDTL.DLMbFtd2OlZ97zS7uOq3m
+[08-Sep-2025 21:17:44 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:17:44 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:17:44 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:17:44 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:17:44 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 21:17:44 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:17:44 America/Montevideo] Identifier: admin
+[08-Sep-2025 21:17:44 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:17:44 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:17:44 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:17:44 America/Montevideo] Hash en BD: $2y$10$yEtwTm5Y0GvV..oNwHVby.9soHymDTL.DLMbFtd2OlZ97zS7uOq3m
+[08-Sep-2025 21:17:44 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:17:44 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:17:44 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:18:01 America/Montevideo] Login intentado: admin@dmw.com / admin123
+[08-Sep-2025 21:18:01 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:18:01 America/Montevideo] Intentando login para: admin@dmw.com
+[08-Sep-2025 21:18:01 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:18:01 America/Montevideo] Identifier: admin@dmw.com
+[08-Sep-2025 21:18:01 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:18:01 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:18:01 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:18:01 America/Montevideo] Hash en BD: $2y$10$yEtwTm5Y0GvV..oNwHVby.9soHymDTL.DLMbFtd2OlZ97zS7uOq3m
+[08-Sep-2025 21:18:01 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:18:01 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:18:01 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:18:01 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:18:01 America/Montevideo] Intentando login para: admin@dmw.com
+[08-Sep-2025 21:18:01 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:18:01 America/Montevideo] Identifier: admin@dmw.com
+[08-Sep-2025 21:18:01 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:18:01 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:18:01 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:18:01 America/Montevideo] Hash en BD: $2y$10$yEtwTm5Y0GvV..oNwHVby.9soHymDTL.DLMbFtd2OlZ97zS7uOq3m
+[08-Sep-2025 21:18:01 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:18:01 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:18:01 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:20:21 America/Montevideo] Login intentado: admin / admin123
+[08-Sep-2025 21:20:21 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:20:21 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 21:20:21 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:20:21 America/Montevideo] Identifier: admin
+[08-Sep-2025 21:20:21 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:20:21 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:20:21 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:20:21 America/Montevideo] Hash en BD: $2y$10$yEtwTm5Y0GvV..oNwHVby.9soHymDTL.DLMbFtd2OlZ97zS7uOq3m
+[08-Sep-2025 21:20:21 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:20:21 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:20:21 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:20:21 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:20:21 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 21:20:21 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:20:21 America/Montevideo] Identifier: admin
+[08-Sep-2025 21:20:21 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:20:21 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:20:21 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:20:21 America/Montevideo] Hash en BD: $2y$10$yEtwTm5Y0GvV..oNwHVby.9soHymDTL.DLMbFtd2OlZ97zS7uOq3m
+[08-Sep-2025 21:20:21 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:20:21 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:20:21 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:20:30 America/Montevideo] Login intentado: admin@dmw.com / admin123
+[08-Sep-2025 21:20:30 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:20:30 America/Montevideo] Intentando login para: admin@dmw.com
+[08-Sep-2025 21:20:30 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:20:30 America/Montevideo] Identifier: admin@dmw.com
+[08-Sep-2025 21:20:30 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:20:30 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:20:30 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:20:30 America/Montevideo] Hash en BD: $2y$10$yEtwTm5Y0GvV..oNwHVby.9soHymDTL.DLMbFtd2OlZ97zS7uOq3m
+[08-Sep-2025 21:20:30 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:20:30 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:20:30 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:20:30 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:20:30 America/Montevideo] Intentando login para: admin@dmw.com
+[08-Sep-2025 21:20:30 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:20:30 America/Montevideo] Identifier: admin@dmw.com
+[08-Sep-2025 21:20:30 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:20:30 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:20:30 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:20:30 America/Montevideo] Hash en BD: $2y$10$yEtwTm5Y0GvV..oNwHVby.9soHymDTL.DLMbFtd2OlZ97zS7uOq3m
+[08-Sep-2025 21:20:30 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:20:30 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:20:30 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:24:59 America/Montevideo] Login intentado: admin2@dmw.com / admin123
+[08-Sep-2025 21:24:59 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:24:59 America/Montevideo] Intentando login para: admin2@dmw.com
+[08-Sep-2025 21:24:59 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:24:59 America/Montevideo] Identifier: admin2@dmw.com
+[08-Sep-2025 21:24:59 America/Montevideo] Usuario encontrado: admin2
+[08-Sep-2025 21:24:59 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:24:59 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:24:59 America/Montevideo] Hash en BD: $2y$10$JfQBkQ5q8qMGNIno1FokEu7u3aCBFdaCjtnMuQCVV7c5sFm8QX1xG
+[08-Sep-2025 21:24:59 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:24:59 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:24:59 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:24:59 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:24:59 America/Montevideo] Intentando login para: admin2@dmw.com
+[08-Sep-2025 21:24:59 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:24:59 America/Montevideo] Identifier: admin2@dmw.com
+[08-Sep-2025 21:24:59 America/Montevideo] Usuario encontrado: admin2
+[08-Sep-2025 21:24:59 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:24:59 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:24:59 America/Montevideo] Hash en BD: $2y$10$JfQBkQ5q8qMGNIno1FokEu7u3aCBFdaCjtnMuQCVV7c5sFm8QX1xG
+[08-Sep-2025 21:24:59 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:24:59 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:24:59 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:26:56 America/Montevideo] Login intentado: admin / admin123
+[08-Sep-2025 21:26:56 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:26:56 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 21:26:56 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:26:56 America/Montevideo] Identifier: admin
+[08-Sep-2025 21:26:56 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:26:56 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:26:56 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:26:56 America/Montevideo] Hash en BD: $2y$10$yEtwTm5Y0GvV..oNwHVby.9soHymDTL.DLMbFtd2OlZ97zS7uOq3m
+[08-Sep-2025 21:26:56 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:26:56 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:26:56 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:26:56 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:26:56 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 21:26:56 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:26:56 America/Montevideo] Identifier: admin
+[08-Sep-2025 21:26:56 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:26:56 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:26:56 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:26:56 America/Montevideo] Hash en BD: $2y$10$yEtwTm5Y0GvV..oNwHVby.9soHymDTL.DLMbFtd2OlZ97zS7uOq3m
+[08-Sep-2025 21:26:56 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:26:56 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:26:56 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:26:58 America/Montevideo] Login intentado: admin2 / admin123
+[08-Sep-2025 21:26:58 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:26:58 America/Montevideo] Intentando login para: admin2
+[08-Sep-2025 21:26:58 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:26:58 America/Montevideo] Identifier: admin2
+[08-Sep-2025 21:26:58 America/Montevideo] Usuario encontrado: admin2
+[08-Sep-2025 21:26:58 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:26:58 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:26:58 America/Montevideo] Hash en BD: $2y$10$JfQBkQ5q8qMGNIno1FokEu7u3aCBFdaCjtnMuQCVV7c5sFm8QX1xG
+[08-Sep-2025 21:26:58 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:26:58 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:26:58 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:26:58 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:26:58 America/Montevideo] Intentando login para: admin2
+[08-Sep-2025 21:26:58 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:26:58 America/Montevideo] Identifier: admin2
+[08-Sep-2025 21:26:58 America/Montevideo] Usuario encontrado: admin2
+[08-Sep-2025 21:26:58 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:26:58 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:26:58 America/Montevideo] Hash en BD: $2y$10$JfQBkQ5q8qMGNIno1FokEu7u3aCBFdaCjtnMuQCVV7c5sFm8QX1xG
+[08-Sep-2025 21:26:59 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:26:59 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:26:59 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:26:59 America/Montevideo] Login intentado: admin2 / admin123
+[08-Sep-2025 21:26:59 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:26:59 America/Montevideo] Intentando login para: admin2
+[08-Sep-2025 21:26:59 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:26:59 America/Montevideo] Identifier: admin2
+[08-Sep-2025 21:26:59 America/Montevideo] Usuario encontrado: admin2
+[08-Sep-2025 21:26:59 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:26:59 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:26:59 America/Montevideo] Hash en BD: $2y$10$JfQBkQ5q8qMGNIno1FokEu7u3aCBFdaCjtnMuQCVV7c5sFm8QX1xG
+[08-Sep-2025 21:27:00 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:27:00 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:27:00 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:27:00 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:27:00 America/Montevideo] Intentando login para: admin2
+[08-Sep-2025 21:27:00 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:27:00 America/Montevideo] Identifier: admin2
+[08-Sep-2025 21:27:00 America/Montevideo] Usuario encontrado: admin2
+[08-Sep-2025 21:27:00 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:27:00 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:27:00 America/Montevideo] Hash en BD: $2y$10$JfQBkQ5q8qMGNIno1FokEu7u3aCBFdaCjtnMuQCVV7c5sFm8QX1xG
+[08-Sep-2025 21:27:00 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:27:00 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:27:00 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:30:53 America/Montevideo] Login intentado: admin@dmw.com / admin123
+[08-Sep-2025 21:30:53 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:30:53 America/Montevideo] Intentando login para: admin@dmw.com
+[08-Sep-2025 21:30:53 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:30:53 America/Montevideo] Identifier: admin@dmw.com
+[08-Sep-2025 21:30:53 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:30:53 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:30:53 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:30:53 America/Montevideo] Hash en BD: $2y$10$QHvB4vnOtvP3RJXV9OnxHeNTuXRSLzdxFkXM5TnDpFOrS2tWLOJLu
+[08-Sep-2025 21:30:53 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:30:53 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:30:53 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:30:53 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:30:53 America/Montevideo] Intentando login para: admin@dmw.com
+[08-Sep-2025 21:30:53 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:30:53 America/Montevideo] Identifier: admin@dmw.com
+[08-Sep-2025 21:30:53 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:30:53 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:30:53 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:30:53 America/Montevideo] Hash en BD: $2y$10$QHvB4vnOtvP3RJXV9OnxHeNTuXRSLzdxFkXM5TnDpFOrS2tWLOJLu
+[08-Sep-2025 21:30:53 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:30:53 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:30:53 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:38:07 America/Montevideo] Login intentado: admin@dmw.com / admin
+[08-Sep-2025 21:38:07 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:38:07 America/Montevideo] Intentando login para: admin@dmw.com
+[08-Sep-2025 21:38:07 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:38:07 America/Montevideo] Identifier: admin@dmw.com
+[08-Sep-2025 21:38:07 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:38:07 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:38:07 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:38:07 America/Montevideo] Hash en BD: $2y$12$a3VaSYF1913RWhaHNgAbheZUZNnpIMxTX27QyMb19.zVeIPgpRTe2
+[08-Sep-2025 21:38:07 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:38:07 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:38:07 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:38:07 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:38:07 America/Montevideo] Intentando login para: admin@dmw.com
+[08-Sep-2025 21:38:07 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:38:07 America/Montevideo] Identifier: admin@dmw.com
+[08-Sep-2025 21:38:07 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:38:07 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:38:07 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:38:07 America/Montevideo] Hash en BD: $2y$12$a3VaSYF1913RWhaHNgAbheZUZNnpIMxTX27QyMb19.zVeIPgpRTe2
+[08-Sep-2025 21:38:08 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:38:08 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:38:08 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:38:10 America/Montevideo] Login intentado: admin@dmw.com / admin123
+[08-Sep-2025 21:38:10 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:38:10 America/Montevideo] Intentando login para: admin@dmw.com
+[08-Sep-2025 21:38:10 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:38:10 America/Montevideo] Identifier: admin@dmw.com
+[08-Sep-2025 21:38:10 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:38:10 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:38:10 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:38:10 America/Montevideo] Hash en BD: $2y$12$a3VaSYF1913RWhaHNgAbheZUZNnpIMxTX27QyMb19.zVeIPgpRTe2
+[08-Sep-2025 21:38:12 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:38:12 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:38:12 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:38:12 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:38:12 America/Montevideo] Intentando login para: admin@dmw.com
+[08-Sep-2025 21:38:12 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:38:12 America/Montevideo] Identifier: admin@dmw.com
+[08-Sep-2025 21:38:12 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:38:12 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:38:12 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:38:12 America/Montevideo] Hash en BD: $2y$12$a3VaSYF1913RWhaHNgAbheZUZNnpIMxTX27QyMb19.zVeIPgpRTe2
+[08-Sep-2025 21:38:12 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:38:12 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:38:12 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:38:20 America/Montevideo] Login intentado: admin / admin
+[08-Sep-2025 21:38:20 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:38:20 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 21:38:20 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:38:20 America/Montevideo] Identifier: admin
+[08-Sep-2025 21:38:20 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:38:20 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:38:20 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:38:20 America/Montevideo] Hash en BD: $2y$12$a3VaSYF1913RWhaHNgAbheZUZNnpIMxTX27QyMb19.zVeIPgpRTe2
+[08-Sep-2025 21:38:21 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:38:21 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:38:21 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:38:21 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:38:21 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 21:38:21 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:38:21 America/Montevideo] Identifier: admin
+[08-Sep-2025 21:38:21 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:38:21 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:38:21 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:38:21 America/Montevideo] Hash en BD: $2y$12$a3VaSYF1913RWhaHNgAbheZUZNnpIMxTX27QyMb19.zVeIPgpRTe2
+[08-Sep-2025 21:38:22 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:38:22 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:38:22 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:38:29 America/Montevideo] Login intentado: admin / admin
+[08-Sep-2025 21:38:29 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:38:29 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 21:38:29 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:38:29 America/Montevideo] Identifier: admin
+[08-Sep-2025 21:38:29 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:38:29 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:38:29 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:38:29 America/Montevideo] Hash en BD: $2y$12$a3VaSYF1913RWhaHNgAbheZUZNnpIMxTX27QyMb19.zVeIPgpRTe2
+[08-Sep-2025 21:38:33 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:38:33 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:38:33 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:38:33 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:38:33 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 21:38:33 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:38:33 America/Montevideo] Identifier: admin
+[08-Sep-2025 21:38:33 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:38:33 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:38:33 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:38:33 America/Montevideo] Hash en BD: $2y$12$a3VaSYF1913RWhaHNgAbheZUZNnpIMxTX27QyMb19.zVeIPgpRTe2
+[08-Sep-2025 21:38:34 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:38:34 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:38:34 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:38:52 America/Montevideo] Login intentado: admin@dmw.com / test
+[08-Sep-2025 21:38:52 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:38:52 America/Montevideo] Intentando login para: admin@dmw.com
+[08-Sep-2025 21:38:52 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:38:52 America/Montevideo] Identifier: admin@dmw.com
+[08-Sep-2025 21:38:52 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:38:52 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:38:52 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:38:52 America/Montevideo] Hash en BD: $2y$12$a3VaSYF1913RWhaHNgAbheZUZNnpIMxTX27QyMb19.zVeIPgpRTe2
+[08-Sep-2025 21:38:53 America/Montevideo] Password verify: OK
+[08-Sep-2025 21:38:53 America/Montevideo] Usuario estado final: 1
+[08-Sep-2025 21:38:53 America/Montevideo] === FIN verifyCredentials (success) ===
+[08-Sep-2025 21:38:53 America/Montevideo] Login exitoso para usuario ID: 1
+[08-Sep-2025 21:38:53 America/Montevideo] === FIN AuthService::login (success) ===
+[08-Sep-2025 21:38:53 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:38:53 America/Montevideo] Intentando login para: admin@dmw.com
+[08-Sep-2025 21:38:53 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:38:53 America/Montevideo] Identifier: admin@dmw.com
+[08-Sep-2025 21:38:53 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:38:53 America/Montevideo] Estado del usuario: 1
+[08-Sep-2025 21:38:53 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:38:53 America/Montevideo] Hash en BD: $2y$12$a3VaSYF1913RWhaHNgAbheZUZNnpIMxTX27QyMb19.zVeIPgpRTe2
+[08-Sep-2025 21:38:53 America/Montevideo] Password verify: OK
+[08-Sep-2025 21:38:53 America/Montevideo] Usuario estado final: 1
+[08-Sep-2025 21:38:53 America/Montevideo] === FIN verifyCredentials (success) ===
+[08-Sep-2025 21:38:53 America/Montevideo] Login exitoso para usuario ID: 1
+[08-Sep-2025 21:38:53 America/Montevideo] === FIN AuthService::login (success) ===
+[08-Sep-2025 21:38:53 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 21:38:53 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[08-Sep-2025 21:38:53 America/Montevideo] URI completa: api/admin/users
+[08-Sep-2025 21:38:53 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 21:38:53 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 21:38:53 America/Montevideo] Usuario ID 1 encontrado: admin (estado: 1)
+[08-Sep-2025 21:38:53 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 21:38:53 America/Montevideo] === AdminController::listUsers - INICIO ===
+[08-Sep-2025 21:38:53 America/Montevideo] Usuarios obtenidos: 4
+[08-Sep-2025 21:38:53 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[08-Sep-2025 21:38:54 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 21:38:54 America/Montevideo] Method: GET, Op: messages, ID: 0, Extra: 
+[08-Sep-2025 21:38:54 America/Montevideo] URI completa: api/admin/messages
+[08-Sep-2025 21:38:54 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 21:38:54 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 21:38:54 America/Montevideo] Usuario ID 1 encontrado: admin (estado: 1)
+[08-Sep-2025 21:38:54 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 21:38:54 America/Montevideo] === AdminController::listMessages - INICIO ===
+[08-Sep-2025 21:38:54 America/Montevideo] ERROR en listMessages: Table 'draftosaurus.contacto' doesn't exist
+[08-Sep-2025 21:38:54 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 21:38:54 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[08-Sep-2025 21:38:54 America/Montevideo] URI completa: api/admin/users
+[08-Sep-2025 21:38:54 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 21:38:54 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 21:38:54 America/Montevideo] Usuario ID 1 encontrado: admin (estado: 1)
+[08-Sep-2025 21:38:54 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 21:38:54 America/Montevideo] === AdminController::listUsers - INICIO ===
+[08-Sep-2025 21:38:54 America/Montevideo] Usuarios obtenidos: 4
+[08-Sep-2025 21:38:54 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[08-Sep-2025 21:38:54 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 21:38:54 America/Montevideo] Method: GET, Op: messages, ID: 0, Extra: 
+[08-Sep-2025 21:38:54 America/Montevideo] URI completa: api/admin/messages
+[08-Sep-2025 21:38:54 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 21:38:54 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 21:38:54 America/Montevideo] Usuario ID 1 encontrado: admin (estado: 1)
+[08-Sep-2025 21:38:54 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 21:38:54 America/Montevideo] === AdminController::listMessages - INICIO ===
+[08-Sep-2025 21:38:54 America/Montevideo] ERROR en listMessages: Table 'draftosaurus.contacto' doesn't exist
+[08-Sep-2025 21:39:10 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 21:39:10 America/Montevideo] Method: GET, Op: users, ID: 3, Extra: 
+[08-Sep-2025 21:39:10 America/Montevideo] URI completa: api/admin/users/3
+[08-Sep-2025 21:39:10 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 21:39:10 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 21:39:10 America/Montevideo] Usuario ID 1 encontrado: admin (estado: 1)
+[08-Sep-2025 21:39:10 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 21:39:10 America/Montevideo] === AdminController::getUser(3) - INICIO ===
+[08-Sep-2025 21:39:10 America/Montevideo] Usuario 3 encontrado y enviado
+[08-Sep-2025 21:39:10 America/Montevideo] === AdminController::getUser - FIN ===
+[08-Sep-2025 21:39:16 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 21:39:16 America/Montevideo] Method: POST, Op: users, ID: 0, Extra: 
+[08-Sep-2025 21:39:16 America/Montevideo] URI completa: api/admin/users
+[08-Sep-2025 21:39:16 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 21:39:16 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 21:39:16 America/Montevideo] Usuario ID 1 encontrado: admin (estado: 1)
+[08-Sep-2025 21:39:16 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 21:39:16 America/Montevideo] === AdminController::createUser - INICIO ===
+[08-Sep-2025 21:39:16 America/Montevideo] Raw input recibido: {"name":"asdad","email":"asdasd","password":"asdasd"}
+[08-Sep-2025 21:39:16 America/Montevideo] Datos JSON parseados: {"name":"asdad","email":"asdasd","password":"asdasd"}
+[08-Sep-2025 21:39:16 America/Montevideo] Datos sanitizados - name: 'asdad', email: 'asdasd'
+[08-Sep-2025 21:39:16 America/Montevideo] === AdminService::createUser - INICIO ===
+[08-Sep-2025 21:39:16 America/Montevideo] Datos recibidos: {"name":"asdad","email":"asdasd","password":"asdasd"}
+[08-Sep-2025 21:39:16 America/Montevideo] === findUserByUsername: 'asdad' ===
+[08-Sep-2025 21:39:16 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 21:39:16 America/Montevideo] === findUserByEmail: 'asdasd' ===
+[08-Sep-2025 21:39:16 America/Montevideo] Email NO encontrado
+[08-Sep-2025 21:39:16 America/Montevideo] Procediendo a insertar usuario: asdad
+[08-Sep-2025 21:39:16 America/Montevideo] === AdminRepository::insertUser - INICIO ===
+[08-Sep-2025 21:39:16 America/Montevideo] Datos recibidos: {"name":"asdad","email":"asdasd","password":"asdasd"}
+[08-Sep-2025 21:39:16 America/Montevideo] Username a insertar: 'asdad'
+[08-Sep-2025 21:39:16 America/Montevideo] Email a insertar: 'asdasd'
+[08-Sep-2025 21:39:16 America/Montevideo] === findUserByUsername: 'asdad' ===
+[08-Sep-2025 21:39:16 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 21:39:16 America/Montevideo] === findUserByEmail: 'asdasd' ===
+[08-Sep-2025 21:39:16 America/Montevideo] Email NO encontrado
+[08-Sep-2025 21:39:16 America/Montevideo] Verificaciones completadas - Usuario y email disponibles
+[08-Sep-2025 21:39:16 America/Montevideo] Password hasheado correctamente
+[08-Sep-2025 21:39:16 America/Montevideo] Statement preparado correctamente
+[08-Sep-2025 21:39:16 America/Montevideo] Ejecutando INSERT...
+[08-Sep-2025 21:39:16 America/Montevideo] ERROR EXCEPTION en createUser: Incorrect integer value: 'activo' for column 'estado' at row 1
+[08-Sep-2025 21:39:16 America/Montevideo] === AdminService::createUser - ERROR ===
+[08-Sep-2025 21:39:16 America/Montevideo] Resultado del service: {"success":false,"message":"Error al crear usuario: Incorrect integer value: 'activo' for column 'estado' at row 1"}
+[08-Sep-2025 21:39:16 America/Montevideo] Respuesta enviada con código: 400
+[08-Sep-2025 21:39:16 America/Montevideo] === AdminController::createUser - FIN ===
+[08-Sep-2025 21:39:46 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 21:39:46 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[08-Sep-2025 21:39:46 America/Montevideo] URI completa: api/admin/users
+[08-Sep-2025 21:39:46 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 21:39:46 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 21:39:46 America/Montevideo] Usuario ID 1 encontrado: admin (estado: 1)
+[08-Sep-2025 21:39:46 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 21:39:46 America/Montevideo] === AdminController::listUsers - INICIO ===
+[08-Sep-2025 21:39:46 America/Montevideo] Usuarios obtenidos: 4
+[08-Sep-2025 21:39:46 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[08-Sep-2025 21:39:46 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 21:39:46 America/Montevideo] Method: GET, Op: messages, ID: 0, Extra: 
+[08-Sep-2025 21:39:46 America/Montevideo] URI completa: api/admin/messages
+[08-Sep-2025 21:39:46 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 21:39:46 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 21:39:46 America/Montevideo] Usuario ID 1 encontrado: admin (estado: 1)
+[08-Sep-2025 21:39:46 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 21:39:46 America/Montevideo] === AdminController::listMessages - INICIO ===
+[08-Sep-2025 21:39:46 America/Montevideo] ERROR en listMessages: Table 'draftosaurus.contacto' doesn't exist
+[08-Sep-2025 21:39:46 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 21:39:46 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[08-Sep-2025 21:39:46 America/Montevideo] URI completa: api/admin/users
+[08-Sep-2025 21:39:46 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 21:39:46 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 21:39:46 America/Montevideo] Usuario ID 1 encontrado: admin (estado: 1)
+[08-Sep-2025 21:39:46 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 21:39:46 America/Montevideo] === AdminController::listUsers - INICIO ===
+[08-Sep-2025 21:39:46 America/Montevideo] Usuarios obtenidos: 4
+[08-Sep-2025 21:39:46 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[08-Sep-2025 21:39:46 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 21:39:46 America/Montevideo] Method: GET, Op: messages, ID: 0, Extra: 
+[08-Sep-2025 21:39:46 America/Montevideo] URI completa: api/admin/messages
+[08-Sep-2025 21:39:46 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 21:39:46 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 21:39:46 America/Montevideo] Usuario ID 1 encontrado: admin (estado: 1)
+[08-Sep-2025 21:39:46 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 21:39:46 America/Montevideo] === AdminController::listMessages - INICIO ===
+[08-Sep-2025 21:39:46 America/Montevideo] ERROR en listMessages: Table 'draftosaurus.contacto' doesn't exist
+[08-Sep-2025 21:40:02 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 21:40:02 America/Montevideo] Method: POST, Op: users, ID: 0, Extra: 
+[08-Sep-2025 21:40:02 America/Montevideo] URI completa: api/admin/users
+[08-Sep-2025 21:40:02 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 21:40:02 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 21:40:02 America/Montevideo] Usuario ID 1 encontrado: admin (estado: 1)
+[08-Sep-2025 21:40:02 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 21:40:02 America/Montevideo] === AdminController::createUser - INICIO ===
+[08-Sep-2025 21:40:02 America/Montevideo] Raw input recibido: {"name":"yjhdfg","email":"asdfasd","password":"asdasd"}
+[08-Sep-2025 21:40:02 America/Montevideo] Datos JSON parseados: {"name":"yjhdfg","email":"asdfasd","password":"asdasd"}
+[08-Sep-2025 21:40:02 America/Montevideo] Datos sanitizados - name: 'yjhdfg', email: 'asdfasd'
+[08-Sep-2025 21:40:02 America/Montevideo] === AdminService::createUser - INICIO ===
+[08-Sep-2025 21:40:02 America/Montevideo] Datos recibidos: {"name":"yjhdfg","email":"asdfasd","password":"asdasd"}
+[08-Sep-2025 21:40:02 America/Montevideo] === findUserByUsername: 'yjhdfg' ===
+[08-Sep-2025 21:40:02 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 21:40:02 America/Montevideo] === findUserByEmail: 'asdfasd' ===
+[08-Sep-2025 21:40:02 America/Montevideo] Email NO encontrado
+[08-Sep-2025 21:40:02 America/Montevideo] Procediendo a insertar usuario: yjhdfg
+[08-Sep-2025 21:40:02 America/Montevideo] === AdminRepository::insertUser - INICIO ===
+[08-Sep-2025 21:40:02 America/Montevideo] Datos recibidos: {"name":"yjhdfg","email":"asdfasd","password":"asdasd"}
+[08-Sep-2025 21:40:02 America/Montevideo] Username a insertar: 'yjhdfg'
+[08-Sep-2025 21:40:02 America/Montevideo] Email a insertar: 'asdfasd'
+[08-Sep-2025 21:40:02 America/Montevideo] === findUserByUsername: 'yjhdfg' ===
+[08-Sep-2025 21:40:02 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 21:40:02 America/Montevideo] === findUserByEmail: 'asdfasd' ===
+[08-Sep-2025 21:40:02 America/Montevideo] Email NO encontrado
+[08-Sep-2025 21:40:02 America/Montevideo] Verificaciones completadas - Usuario y email disponibles
+[08-Sep-2025 21:40:03 America/Montevideo] Password hasheado correctamente
+[08-Sep-2025 21:40:03 America/Montevideo] Statement preparado correctamente
+[08-Sep-2025 21:40:03 America/Montevideo] Ejecutando INSERT...
+[08-Sep-2025 21:40:03 America/Montevideo] ERROR EXCEPTION en createUser: Incorrect integer value: 'activo' for column 'estado' at row 1
+[08-Sep-2025 21:40:03 America/Montevideo] === AdminService::createUser - ERROR ===
+[08-Sep-2025 21:40:03 America/Montevideo] Resultado del service: {"success":false,"message":"Error al crear usuario: Incorrect integer value: 'activo' for column 'estado' at row 1"}
+[08-Sep-2025 21:40:03 America/Montevideo] Respuesta enviada con código: 400
+[08-Sep-2025 21:40:03 America/Montevideo] === AdminController::createUser - FIN ===
+[08-Sep-2025 21:43:45 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 21:43:45 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 21:43:45 America/Montevideo] Usuario ID 1 encontrado: admin (estado: activo)
+[08-Sep-2025 21:43:45 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 21:43:46 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 21:43:46 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[08-Sep-2025 21:43:46 America/Montevideo] URI completa: api/admin/users
+[08-Sep-2025 21:43:46 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 21:43:46 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 21:43:46 America/Montevideo] Usuario ID 1 encontrado: admin (estado: activo)
+[08-Sep-2025 21:43:46 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 21:43:46 America/Montevideo] === AdminController::listUsers - INICIO ===
+[08-Sep-2025 21:43:46 America/Montevideo] Usuarios obtenidos: 2
+[08-Sep-2025 21:43:46 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[08-Sep-2025 21:43:46 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 21:43:46 America/Montevideo] Method: GET, Op: messages, ID: 0, Extra: 
+[08-Sep-2025 21:43:46 America/Montevideo] URI completa: api/admin/messages
+[08-Sep-2025 21:43:46 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 21:43:46 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 21:43:46 America/Montevideo] Usuario ID 1 encontrado: admin (estado: activo)
+[08-Sep-2025 21:43:46 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 21:43:46 America/Montevideo] === AdminController::listMessages - INICIO ===
+[08-Sep-2025 21:43:46 America/Montevideo] Mensajes obtenidos: 0
+[08-Sep-2025 21:43:46 America/Montevideo] === AdminController::listMessages - SUCCESS ===
+[08-Sep-2025 21:43:46 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 21:43:46 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[08-Sep-2025 21:43:46 America/Montevideo] URI completa: api/admin/users
+[08-Sep-2025 21:43:46 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 21:43:46 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 21:43:46 America/Montevideo] Usuario ID 1 encontrado: admin (estado: activo)
+[08-Sep-2025 21:43:46 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 21:43:46 America/Montevideo] === AdminController::listUsers - INICIO ===
+[08-Sep-2025 21:43:46 America/Montevideo] Usuarios obtenidos: 2
+[08-Sep-2025 21:43:46 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[08-Sep-2025 21:43:47 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 21:43:47 America/Montevideo] Method: GET, Op: messages, ID: 0, Extra: 
+[08-Sep-2025 21:43:47 America/Montevideo] URI completa: api/admin/messages
+[08-Sep-2025 21:43:47 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 21:43:47 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 21:43:47 America/Montevideo] Usuario ID 1 encontrado: admin (estado: activo)
+[08-Sep-2025 21:43:47 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 21:43:47 America/Montevideo] === AdminController::listMessages - INICIO ===
+[08-Sep-2025 21:43:47 America/Montevideo] Mensajes obtenidos: 0
+[08-Sep-2025 21:43:47 America/Montevideo] === AdminController::listMessages - SUCCESS ===
+[08-Sep-2025 21:45:49 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 21:45:49 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 21:45:49 America/Montevideo] Usuario ID 1 encontrado: admin (estado: activo)
+[08-Sep-2025 21:45:49 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 21:45:49 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 21:45:49 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 21:45:49 America/Montevideo] Usuario ID 1 encontrado: admin (estado: activo)
+[08-Sep-2025 21:45:49 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 21:45:49 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[08-Sep-2025 21:45:50 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 21:45:50 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 21:45:50 America/Montevideo] Usuario ID 1 encontrado: admin (estado: activo)
+[08-Sep-2025 21:45:50 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 21:45:58 America/Montevideo] Login intentado: admin / admin123
+[08-Sep-2025 21:45:58 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:45:58 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 21:45:58 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:45:58 America/Montevideo] Identifier: admin
+[08-Sep-2025 21:45:58 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:45:58 America/Montevideo] Estado del usuario: activo
+[08-Sep-2025 21:45:58 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:45:58 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[08-Sep-2025 21:45:58 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:45:58 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:45:58 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:45:58 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:45:58 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 21:45:58 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:45:58 America/Montevideo] Identifier: admin
+[08-Sep-2025 21:45:58 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:45:58 America/Montevideo] Estado del usuario: activo
+[08-Sep-2025 21:45:58 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:45:58 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[08-Sep-2025 21:45:59 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:45:59 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:45:59 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:46:05 America/Montevideo] Login intentado: admin@dmw.com / admin123
+[08-Sep-2025 21:46:05 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:46:05 America/Montevideo] Intentando login para: admin@dmw.com
+[08-Sep-2025 21:46:05 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:46:05 America/Montevideo] Identifier: admin@dmw.com
+[08-Sep-2025 21:46:05 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 21:46:05 America/Montevideo] === FIN verifyCredentials (usuario no existe) ===
+[08-Sep-2025 21:46:05 America/Montevideo] Login fallido: Usuario no existe
+[08-Sep-2025 21:46:05 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:46:05 America/Montevideo] Intentando login para: admin@dmw.com
+[08-Sep-2025 21:46:05 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:46:05 America/Montevideo] Identifier: admin@dmw.com
+[08-Sep-2025 21:46:05 America/Montevideo] Usuario NO encontrado
+[08-Sep-2025 21:46:05 America/Montevideo] === FIN verifyCredentials (usuario no existe) ===
+[08-Sep-2025 21:46:05 America/Montevideo] Login fallido: Usuario no existe
+[08-Sep-2025 21:46:10 America/Montevideo] Login intentado: admin@draftosaurus.com / admin123
+[08-Sep-2025 21:46:10 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:46:10 America/Montevideo] Intentando login para: admin@draftosaurus.com
+[08-Sep-2025 21:46:10 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:46:10 America/Montevideo] Identifier: admin@draftosaurus.com
+[08-Sep-2025 21:46:10 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:46:10 America/Montevideo] Estado del usuario: activo
+[08-Sep-2025 21:46:10 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:46:10 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[08-Sep-2025 21:46:11 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:46:11 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:46:11 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:46:11 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:46:11 America/Montevideo] Intentando login para: admin@draftosaurus.com
+[08-Sep-2025 21:46:11 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:46:11 America/Montevideo] Identifier: admin@draftosaurus.com
+[08-Sep-2025 21:46:11 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:46:11 America/Montevideo] Estado del usuario: activo
+[08-Sep-2025 21:46:11 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:46:11 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[08-Sep-2025 21:46:12 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:46:12 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:46:12 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:46:43 America/Montevideo] Login intentado: admin@draftosaurus.com / admin123
+[08-Sep-2025 21:46:43 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:46:43 America/Montevideo] Intentando login para: admin@draftosaurus.com
+[08-Sep-2025 21:46:43 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:46:43 America/Montevideo] Identifier: admin@draftosaurus.com
+[08-Sep-2025 21:46:43 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:46:43 America/Montevideo] Estado del usuario: activo
+[08-Sep-2025 21:46:43 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:46:43 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[08-Sep-2025 21:46:43 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:46:43 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:46:43 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 21:46:43 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 21:46:43 America/Montevideo] Intentando login para: admin@draftosaurus.com
+[08-Sep-2025 21:46:43 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 21:46:43 America/Montevideo] Identifier: admin@draftosaurus.com
+[08-Sep-2025 21:46:43 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 21:46:43 America/Montevideo] Estado del usuario: activo
+[08-Sep-2025 21:46:43 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 21:46:43 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[08-Sep-2025 21:46:44 America/Montevideo] Password verify: FAIL
+[08-Sep-2025 21:46:44 America/Montevideo] === FIN verifyCredentials (password incorrecta) ===
+[08-Sep-2025 21:46:44 America/Montevideo] Login fallido: Password incorrecta
+[08-Sep-2025 22:01:48 America/Montevideo] requireLogin: No hay userId en sesión
+[08-Sep-2025 22:01:52 America/Montevideo] Login intentado: admin / admin
+[08-Sep-2025 22:01:52 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 22:01:52 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 22:01:52 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 22:01:53 America/Montevideo] Identifier: admin
+[08-Sep-2025 22:01:53 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 22:01:53 America/Montevideo] Estado del usuario: activo
+[08-Sep-2025 22:01:53 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 22:01:53 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[08-Sep-2025 22:01:54 America/Montevideo] Password verify: OK
+[08-Sep-2025 22:01:54 America/Montevideo] Usuario estado final: activo
+[08-Sep-2025 22:01:54 America/Montevideo] === FIN verifyCredentials (success) ===
+[08-Sep-2025 22:01:54 America/Montevideo] Login exitoso para usuario ID: 1
+[08-Sep-2025 22:01:54 America/Montevideo] === FIN AuthService::login (success) ===
+[08-Sep-2025 22:01:54 America/Montevideo] === INICIO AuthService::login ===
+[08-Sep-2025 22:01:54 America/Montevideo] Intentando login para: admin
+[08-Sep-2025 22:01:54 America/Montevideo] === INICIO verifyCredentials ===
+[08-Sep-2025 22:01:54 America/Montevideo] Identifier: admin
+[08-Sep-2025 22:01:54 America/Montevideo] Usuario encontrado: admin
+[08-Sep-2025 22:01:54 America/Montevideo] Estado del usuario: activo
+[08-Sep-2025 22:01:54 America/Montevideo] Usuario activo, verificando contraseña...
+[08-Sep-2025 22:01:54 America/Montevideo] Hash en BD: $2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q
+[08-Sep-2025 22:01:54 America/Montevideo] Password verify: OK
+[08-Sep-2025 22:01:54 America/Montevideo] Usuario estado final: activo
+[08-Sep-2025 22:01:54 America/Montevideo] === FIN verifyCredentials (success) ===
+[08-Sep-2025 22:01:54 America/Montevideo] Login exitoso para usuario ID: 1
+[08-Sep-2025 22:01:54 America/Montevideo] === FIN AuthService::login (success) ===
+[08-Sep-2025 22:01:55 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 22:01:55 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[08-Sep-2025 22:01:55 America/Montevideo] URI completa: api/admin/users
+[08-Sep-2025 22:01:55 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 22:01:55 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 22:01:55 America/Montevideo] Usuario ID 1 encontrado: admin (estado: activo)
+[08-Sep-2025 22:01:55 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 22:01:55 America/Montevideo] === AdminController::listUsers - INICIO ===
+[08-Sep-2025 22:01:55 America/Montevideo] Usuarios obtenidos: 2
+[08-Sep-2025 22:01:55 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[08-Sep-2025 22:01:55 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 22:01:55 America/Montevideo] Method: GET, Op: messages, ID: 0, Extra: 
+[08-Sep-2025 22:01:55 America/Montevideo] URI completa: api/admin/messages
+[08-Sep-2025 22:01:55 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 22:01:55 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 22:01:55 America/Montevideo] Usuario ID 1 encontrado: admin (estado: activo)
+[08-Sep-2025 22:01:55 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 22:01:55 America/Montevideo] === AdminController::listMessages - INICIO ===
+[08-Sep-2025 22:01:55 America/Montevideo] Mensajes obtenidos: 3
+[08-Sep-2025 22:01:55 America/Montevideo] === AdminController::listMessages - SUCCESS ===
+[08-Sep-2025 22:01:55 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 22:01:55 America/Montevideo] Method: GET, Op: users, ID: 0, Extra: 
+[08-Sep-2025 22:01:55 America/Montevideo] URI completa: api/admin/users
+[08-Sep-2025 22:01:55 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 22:01:55 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 22:01:55 America/Montevideo] Usuario ID 1 encontrado: admin (estado: activo)
+[08-Sep-2025 22:01:55 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 22:01:55 America/Montevideo] === AdminController::listUsers - INICIO ===
+[08-Sep-2025 22:01:55 America/Montevideo] Usuarios obtenidos: 2
+[08-Sep-2025 22:01:55 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[08-Sep-2025 22:01:55 America/Montevideo] === API ADMIN ROUTE ===
+[08-Sep-2025 22:01:55 America/Montevideo] Method: GET, Op: messages, ID: 0, Extra: 
+[08-Sep-2025 22:01:55 America/Montevideo] URI completa: api/admin/messages
+[08-Sep-2025 22:01:55 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[08-Sep-2025 22:01:55 America/Montevideo] === UserRepository::findById(1) ===
+[08-Sep-2025 22:01:55 America/Montevideo] Usuario ID 1 encontrado: admin (estado: activo)
+[08-Sep-2025 22:01:55 America/Montevideo] Usuario 1 está activo
+[08-Sep-2025 22:01:55 America/Montevideo] === AdminController::listMessages - INICIO ===
+[08-Sep-2025 22:01:55 America/Montevideo] Mensajes obtenidos: 3
+[08-Sep-2025 22:01:55 America/Montevideo] === AdminController::listMessages - SUCCESS ===

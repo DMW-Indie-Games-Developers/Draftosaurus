@@ -74,3 +74,8 @@ CREATE TABLE IF NOT EXISTS contacto (
   mensaje     TEXT NOT NULL,
   fecha_envio DATETIME DEFAULT CURRENT_TIMESTAMP
 );
+
+INSERT INTO contacto (nombre, email, asunto, mensaje) VALUES
+('Juan Pérez','juan@example.com','Consulta sobre el juego','¿Cómo puedo unirme a una partida?'),
+('Ana Gómez','ana@example.com','Error en la web','No puedo registrarme, me da un error.'),
+('Carlos Ruiz','carlos@example.com','Sugerencia','Podrían agregar más tipos de dinosaurios.');
