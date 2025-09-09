@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/perfil.css">
+    <link rel="stylesheet" href="css/modal-custom.css">
+</head>
+
+<body>
+    <div class="container d-flex flex-column align-items-center justify-content-center" style="min-height: 100vh;">
+        <div class="profile-card w-100" style="max-width: 400px;">
+            <div class="profile-header mb-3">
+                <div class="avatar-container position-relative d-flex align-items-center justify-content-center">
+                    <img src="img/isotipoOficial.png" alt="Avatar" class="profile-avatar" id="avatar-img">
+                    <input type="file" id="avatar-input" accept="image/*" style="display:none">
+                    <div id="edit-avatar-overlay"
+                        class="edit-avatar-overlay d-flex align-items-center justify-content-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                            class="bi bi-pencil" viewBox="0 0 16 16">
+                            <path
+                                d="M12.146.854a.5.5 0 0 1 .708 0l2.292 2.292a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zm.708-.708A1.5 1.5 0 0 0 12.146.146l-10 10a1.5 1.5 0 0 0-.33.5l-2 5a1.5 1.5 0 0 0 1.95 1.95l5-2a1.5 1.5 0 0 0 .5-.33l10-10a1.5 1.5 0 0 0 0-2.121l-2.292-2.292z" />
+                        </svg>
+                    </div>
+                </div>
+                <div>
+                    <h2 class="mb-0" id="user-name">User 01</h2>
+                    <p><strong>Puntos totales:</strong> <span id="user-puntos">0</span></p>
+                    <p class="mb-0"><strong>Partidas jugadas:</strong> <span id="user-jugadas">0</span></p>
+                    <p><strong>Partidas ganadas:</strong> <span id="user-ganadas">0</span></p>
+                    <div id="user-info"></div>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-custom mt-4" id="crear-partida-btn">Crear Partida</button>
+        <!-- Modal Crear Partida -->
+        <div class="modal fade" id="modalCrearPartida" tabindex="-1" aria-labelledby="modalCrearPartidaLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content draftosaurus-modal">
+                    <div class="modal-header draftosaurus-modal">
+                        <h5 class="modal-title draftosaurus-modal" id="modalCrearPartidaLabel">Crear Partida</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body draftosaurus-modal">
+                        <div class="d-flex justify-content-center mb-3 gap-3">
+                            <button class="btn btn-outline-light rounded-pill px-4" id="btnInvitado">Invitado</button>
+                            <button class="btn btn-outline-light rounded-pill px-4" id="btnUsers">Usuario</button>
+                        </div>
+                        <div id="loginJugador2" class="d-none">
+                            <div class="text-center mb-2 login-title">Inicio Sesión Jugador 2</div>
+                            <form id="formLoginJugador2">
+                                <div class="mb-2">
+                                    <label class="form-label">Correo Electrónico</label>
+                                    <input type="email" class="form-control rounded-pill bg-dark text-light"
+                                        id="emailJugador2" required>
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" class="form-control rounded-pill bg-dark text-light"
+                                        id="passwordJugador2" required>
+                                </div>
+                                <button type="submit" class="btn btn-custom w-100 mt-2">Iniciar Sesión</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Modal Invitado: pedir un nombre anónimo -->
+        <div class="modal fade" id="modalInvitado" tabindex="-1" aria-labelledby="modalInvitadoLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content draftosaurus-modal">
+                    <div class="modal-header draftosaurus-modal">
+                        <h5 class="modal-title draftosaurus-modal" id="modalInvitadoLabel">Jugador Invitado</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body draftosaurus-modal">
+                        <p class="modal-info">Ingresa un nombre para el jugador invitado (opcional: se mostrará en el
+                            tablero).</p>
+                        <form id="formInvitado">
+                            <div class="mb-2">
+                                <label class="form-label">Nombre</label>
+                                <input type="text" class="form-control rounded-pill bg-dark text-light" id="guestName"
+                                    placeholder="Anónimo" maxlength="30">
+                            </div>
+                            <button type="submit" class="btn btn-custom w-100 mt-2">Iniciar como Invitado</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-custom footer-btn" id="btn-logout">Cerrar Sesión</button>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/perfil.js"></script>
+</body>
+
+</html>
