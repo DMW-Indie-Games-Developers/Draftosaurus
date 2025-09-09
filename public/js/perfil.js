@@ -22,6 +22,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   /* 3. Pintar datos */
   if (el('user-name')) el('user-name').textContent = data.username;
   if (el('user-id')) el('user-id').textContent = `#${data.id}`;
+  if (el('user-puntos')) el('user-puntos').textContent = data.puntuacion_total ?? 0;
+  if (el('user-jugadas')) el('user-jugadas').textContent = data.partidas_jugadas ?? 0;
+  if (el('user-ganadas')) el('user-ganadas').textContent = data.partidas_ganadas ?? 0;
   if (el('user-info')) {
     let html = `<p><strong>Email:</strong> ${data.email}</p>`;
     if (data.created_at) html += `<p><strong>Fecha:</strong> ${new Date(data.created_at).toLocaleDateString()}</p>`;

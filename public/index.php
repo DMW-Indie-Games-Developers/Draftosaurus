@@ -90,16 +90,23 @@ try {
                 exit;
             }
 
-            /* 2) JSON propio (logueado) */
-            if ($method === 'GET' && $uri[1] === 'me') {
-                try {
-                    $user = AuthHelper::requireActiveUser();
-                    echo json_encode($controller->getPerfil($user['id']));
-                } catch (Exception $e) {
-                    // requireActiveUser ya respondió
-                }
-                exit;
-            }
+            /* 2) JSON propio (logueado) – /perfil/me */
+if ($method === 'GET' && ($uri[1] ?? '') === 'me') {
+    $user = AuthHelper::requireActiveUser(); // ya devuelve el usuario logueado
+    header('Content-Type: application/json');
+    echo json_encode([
+        'success' => true,
+        'id' => $user['id'],
+        'username' => $user['username'],
+        'email' => $user['email'],
+        'avatar' => $user['avatar'] ?? 'img/isotipoOficial.png',
+        'puntuacion_total' => $user['puntuacion_total'] ?? 0,
+        'partidas_jugadas' => $user['partidas_jugadas'] ?? 0,
+        'partidas_ganadas' => $user['partidas_ganadas'] ?? 0,
+        'created_at' => $user['created_at']
+    ]);
+    exit;
+}
 
             /* 3) JSON ajeno (opcional, público) */
             if ($method === 'GET' && isset($uri[1]) && is_numeric($uri[1])) {
