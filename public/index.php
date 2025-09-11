@@ -1,4 +1,9 @@
 <?php
+
+// --- AÑADE ESTAS LÍNEAS PARA DEPURAR ---
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+// -----------------------------------------
 /* ---------- 1.  Silenciar CUALQUIER output ---------- */
 ob_start();          // bufferiza todo
 ini_set('display_errors', 0);   // no imprime warnings al browser
@@ -17,6 +22,11 @@ if ($_SERVER['REQUEST_URI'] === '/index.html') {
 // ✅ Redirigir /home.php → /home
 if ($_SERVER['REQUEST_URI'] === '/home.php') {
     header('Location: /home', true, 301);
+    exit;
+}
+
+if ($_SERVER['REQUEST_URI'] === '/ranking.php') {
+    header('Location: /ranking', true, 301);
     exit;
 }
 

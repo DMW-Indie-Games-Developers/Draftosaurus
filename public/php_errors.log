@@ -3615,3 +3615,279 @@
 [09-Sep-2025 12:17:52 America/Montevideo] === UserRepository::findById(3) ===
 [09-Sep-2025 12:17:52 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
 [09-Sep-2025 12:17:52 America/Montevideo] Usuario 3 está activo
+[09-Sep-2025 19:04:13 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[09-Sep-2025 19:04:13 America/Montevideo] === UserRepository::findById(3) ===
+[09-Sep-2025 19:04:13 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[09-Sep-2025 19:04:13 America/Montevideo] Usuario 3 está activo
+[09-Sep-2025 19:04:13 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[09-Sep-2025 19:04:13 America/Montevideo] === UserRepository::findById(3) ===
+[09-Sep-2025 19:04:13 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[09-Sep-2025 19:04:13 America/Montevideo] Usuario 3 está activo
+[09-Sep-2025 19:04:13 America/Montevideo] requireLogin: Usuario 3 validado correctamente
+[09-Sep-2025 19:04:13 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[09-Sep-2025 19:04:13 America/Montevideo] === UserRepository::findById(3) ===
+[09-Sep-2025 19:04:13 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[09-Sep-2025 19:04:13 America/Montevideo] Usuario 3 está activo
+[09-Sep-2025 19:12:33 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[09-Sep-2025 19:12:33 America/Montevideo] === UserRepository::findById(3) ===
+[09-Sep-2025 19:12:33 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[09-Sep-2025 19:12:33 America/Montevideo] Usuario 3 está activo
+[09-Sep-2025 19:12:33 America/Montevideo] requireLogin: Usuario 3 validado correctamente
+[09-Sep-2025 19:12:33 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[09-Sep-2025 19:12:33 America/Montevideo] === UserRepository::findById(3) ===
+[09-Sep-2025 19:12:33 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[09-Sep-2025 19:12:33 America/Montevideo] Usuario 3 está activo
+[09-Sep-2025 19:14:09 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[09-Sep-2025 19:14:09 America/Montevideo] === UserRepository::findById(3) ===
+[09-Sep-2025 19:14:09 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[09-Sep-2025 19:14:09 America/Montevideo] Usuario 3 está activo
+[09-Sep-2025 19:14:09 America/Montevideo] requireLogin: Usuario 3 validado correctamente
+[09-Sep-2025 19:14:09 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[09-Sep-2025 19:14:09 America/Montevideo] === UserRepository::findById(3) ===
+[09-Sep-2025 19:14:09 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[09-Sep-2025 19:14:09 America/Montevideo] Usuario 3 está activo
+[09-Sep-2025 19:14:09 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[09-Sep-2025 19:14:09 America/Montevideo] === UserRepository::findById(3) ===
+[09-Sep-2025 19:14:09 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[09-Sep-2025 19:14:09 America/Montevideo] Usuario 3 está activo
+[09-Sep-2025 19:14:09 America/Montevideo] requireLogin: Usuario 3 validado correctamente
+[09-Sep-2025 19:14:09 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[09-Sep-2025 19:14:09 America/Montevideo] === UserRepository::findById(3) ===
+[09-Sep-2025 19:14:09 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[09-Sep-2025 19:14:09 America/Montevideo] Usuario 3 está activo
+[09-Sep-2025 19:14:09 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[09-Sep-2025 19:14:09 America/Montevideo] === UserRepository::findById(3) ===
+[09-Sep-2025 19:14:09 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[09-Sep-2025 19:14:09 America/Montevideo] Usuario 3 está activo
+[09-Sep-2025 19:14:09 America/Montevideo] requireLogin: Usuario 3 validado correctamente
+[09-Sep-2025 19:14:09 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[09-Sep-2025 19:14:09 America/Montevideo] === UserRepository::findById(3) ===
+[09-Sep-2025 19:14:09 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[09-Sep-2025 19:14:09 America/Montevideo] Usuario 3 está activo
+[09-Sep-2025 19:14:13 America/Montevideo] PHP Warning:  require_once(C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public/../upload-avatar.php): Failed to open stream: No such file or directory in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public\index.php on line 87
+[09-Sep-2025 19:14:13 America/Montevideo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public/../upload-avatar.php' (include_path='.;C:\php\pear') in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public\index.php:87
+Stack trace:
+#0 {main}
+  thrown in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public\index.php on line 87
+[09-Sep-2025 19:15:06 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[09-Sep-2025 19:15:06 America/Montevideo] === UserRepository::findById(3) ===
+[09-Sep-2025 19:15:06 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[09-Sep-2025 19:15:06 America/Montevideo] Usuario 3 está activo
+[09-Sep-2025 19:15:06 America/Montevideo] requireLogin: Usuario 3 validado correctamente
+[09-Sep-2025 19:15:06 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[09-Sep-2025 19:15:06 America/Montevideo] === UserRepository::findById(3) ===
+[09-Sep-2025 19:15:06 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[09-Sep-2025 19:15:06 America/Montevideo] Usuario 3 está activo
+[09-Sep-2025 19:15:07 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[09-Sep-2025 19:15:07 America/Montevideo] === UserRepository::findById(3) ===
+[09-Sep-2025 19:15:07 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[09-Sep-2025 19:15:07 America/Montevideo] Usuario 3 está activo
+[09-Sep-2025 19:15:07 America/Montevideo] requireLogin: Usuario 3 validado correctamente
+[09-Sep-2025 19:15:07 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[09-Sep-2025 19:15:07 America/Montevideo] === UserRepository::findById(3) ===
+[09-Sep-2025 19:15:07 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[09-Sep-2025 19:15:07 America/Montevideo] Usuario 3 está activo
+[09-Sep-2025 19:15:10 America/Montevideo] PHP Warning:  require_once(C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public/../upload-avatar.php): Failed to open stream: No such file or directory in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public\index.php on line 87
+[09-Sep-2025 19:15:10 America/Montevideo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public/../upload-avatar.php' (include_path='.;C:\php\pear') in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public\index.php:87
+Stack trace:
+#0 {main}
+  thrown in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public\index.php on line 87
+[09-Sep-2025 19:15:47 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[09-Sep-2025 19:15:47 America/Montevideo] === UserRepository::findById(3) ===
+[09-Sep-2025 19:15:47 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[09-Sep-2025 19:15:47 America/Montevideo] Usuario 3 está activo
+[09-Sep-2025 19:16:03 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[09-Sep-2025 19:16:03 America/Montevideo] === UserRepository::findById(3) ===
+[09-Sep-2025 19:16:03 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[09-Sep-2025 19:16:03 America/Montevideo] Usuario 3 está activo
+[09-Sep-2025 19:16:03 America/Montevideo] requireLogin: Usuario 3 validado correctamente
+[09-Sep-2025 19:16:03 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[09-Sep-2025 19:16:03 America/Montevideo] === UserRepository::findById(3) ===
+[09-Sep-2025 19:16:03 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[09-Sep-2025 19:16:03 America/Montevideo] Usuario 3 está activo
+[09-Sep-2025 19:16:14 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[09-Sep-2025 19:16:14 America/Montevideo] === UserRepository::findById(3) ===
+[09-Sep-2025 19:16:14 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[09-Sep-2025 19:16:14 America/Montevideo] Usuario 3 está activo
+[09-Sep-2025 19:16:14 America/Montevideo] requireLogin: Usuario 3 validado correctamente
+[09-Sep-2025 19:16:14 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[09-Sep-2025 19:16:14 America/Montevideo] === UserRepository::findById(3) ===
+[09-Sep-2025 19:16:14 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[09-Sep-2025 19:16:14 America/Montevideo] Usuario 3 está activo
+[10-Sep-2025 20:32:26 America/Montevideo] Login intentado: le@le.com / lelo123
+[10-Sep-2025 20:32:26 America/Montevideo] === INICIO AuthService::login ===
+[10-Sep-2025 20:32:26 America/Montevideo] Intentando login para: le@le.com
+[10-Sep-2025 20:32:26 America/Montevideo] === INICIO verifyCredentials ===
+[10-Sep-2025 20:32:26 America/Montevideo] Identifier: le@le.com
+[10-Sep-2025 20:32:26 America/Montevideo] Usuario encontrado: 24K
+[10-Sep-2025 20:32:26 America/Montevideo] Estado del usuario: activo
+[10-Sep-2025 20:32:26 America/Montevideo] Usuario activo, verificando contraseña...
+[10-Sep-2025 20:32:26 America/Montevideo] Hash en BD: $2y$12$ASFkdawQgPhmV.v.LLSXrepPMzM53FJbxyUvLcrHANIulXsbi9vWO
+[10-Sep-2025 20:32:27 America/Montevideo] Password verify: OK
+[10-Sep-2025 20:32:27 America/Montevideo] Usuario estado final: activo
+[10-Sep-2025 20:32:27 America/Montevideo] === FIN verifyCredentials (success) ===
+[10-Sep-2025 20:32:27 America/Montevideo] Login exitoso para usuario ID: 3
+[10-Sep-2025 20:32:27 America/Montevideo] === FIN AuthService::login (success) ===
+[10-Sep-2025 20:32:27 America/Montevideo] === INICIO AuthService::login ===
+[10-Sep-2025 20:32:27 America/Montevideo] Intentando login para: le@le.com
+[10-Sep-2025 20:32:27 America/Montevideo] === INICIO verifyCredentials ===
+[10-Sep-2025 20:32:27 America/Montevideo] Identifier: le@le.com
+[10-Sep-2025 20:32:27 America/Montevideo] Usuario encontrado: 24K
+[10-Sep-2025 20:32:27 America/Montevideo] Estado del usuario: activo
+[10-Sep-2025 20:32:27 America/Montevideo] Usuario activo, verificando contraseña...
+[10-Sep-2025 20:32:27 America/Montevideo] Hash en BD: $2y$12$ASFkdawQgPhmV.v.LLSXrepPMzM53FJbxyUvLcrHANIulXsbi9vWO
+[10-Sep-2025 20:32:28 America/Montevideo] Password verify: OK
+[10-Sep-2025 20:32:28 America/Montevideo] Usuario estado final: activo
+[10-Sep-2025 20:32:28 America/Montevideo] === FIN verifyCredentials (success) ===
+[10-Sep-2025 20:32:28 America/Montevideo] Login exitoso para usuario ID: 3
+[10-Sep-2025 20:32:28 America/Montevideo] === FIN AuthService::login (success) ===
+[10-Sep-2025 20:32:28 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[10-Sep-2025 20:32:28 America/Montevideo] === UserRepository::findById(3) ===
+[10-Sep-2025 20:32:28 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[10-Sep-2025 20:32:28 America/Montevideo] Usuario 3 está activo
+[10-Sep-2025 20:32:28 America/Montevideo] requireLogin: Usuario 3 validado correctamente
+[10-Sep-2025 20:32:28 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[10-Sep-2025 20:32:28 America/Montevideo] === UserRepository::findById(3) ===
+[10-Sep-2025 20:32:28 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[10-Sep-2025 20:32:28 America/Montevideo] Usuario 3 está activo
+[10-Sep-2025 20:46:34 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[10-Sep-2025 20:46:34 America/Montevideo] === UserRepository::findById(3) ===
+[10-Sep-2025 20:46:34 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[10-Sep-2025 20:46:34 America/Montevideo] Usuario 3 está activo
+[10-Sep-2025 20:46:34 America/Montevideo] requireLogin: Usuario 3 validado correctamente
+[10-Sep-2025 20:46:34 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[10-Sep-2025 20:46:34 America/Montevideo] === UserRepository::findById(3) ===
+[10-Sep-2025 20:46:34 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[10-Sep-2025 20:46:34 America/Montevideo] Usuario 3 está activo
+[10-Sep-2025 21:11:22 America/Montevideo] requireLogin: No hay userId en sesión
+[10-Sep-2025 21:11:34 America/Montevideo] Login intentado: le@le.com / lelo123
+[10-Sep-2025 21:11:34 America/Montevideo] === INICIO AuthService::login ===
+[10-Sep-2025 21:11:34 America/Montevideo] Intentando login para: le@le.com
+[10-Sep-2025 21:11:34 America/Montevideo] === INICIO verifyCredentials ===
+[10-Sep-2025 21:11:34 America/Montevideo] Identifier: le@le.com
+[10-Sep-2025 21:11:34 America/Montevideo] Usuario encontrado: 24K
+[10-Sep-2025 21:11:34 America/Montevideo] Estado del usuario: activo
+[10-Sep-2025 21:11:34 America/Montevideo] Usuario activo, verificando contraseña...
+[10-Sep-2025 21:11:34 America/Montevideo] Hash en BD: $2y$12$ASFkdawQgPhmV.v.LLSXrepPMzM53FJbxyUvLcrHANIulXsbi9vWO
+[10-Sep-2025 21:11:35 America/Montevideo] Password verify: OK
+[10-Sep-2025 21:11:35 America/Montevideo] Usuario estado final: activo
+[10-Sep-2025 21:11:35 America/Montevideo] === FIN verifyCredentials (success) ===
+[10-Sep-2025 21:11:35 America/Montevideo] Login exitoso para usuario ID: 3
+[10-Sep-2025 21:11:35 America/Montevideo] === FIN AuthService::login (success) ===
+[10-Sep-2025 21:11:35 America/Montevideo] === INICIO AuthService::login ===
+[10-Sep-2025 21:11:35 America/Montevideo] Intentando login para: le@le.com
+[10-Sep-2025 21:11:35 America/Montevideo] === INICIO verifyCredentials ===
+[10-Sep-2025 21:11:35 America/Montevideo] Identifier: le@le.com
+[10-Sep-2025 21:11:35 America/Montevideo] Usuario encontrado: 24K
+[10-Sep-2025 21:11:35 America/Montevideo] Estado del usuario: activo
+[10-Sep-2025 21:11:35 America/Montevideo] Usuario activo, verificando contraseña...
+[10-Sep-2025 21:11:35 America/Montevideo] Hash en BD: $2y$12$ASFkdawQgPhmV.v.LLSXrepPMzM53FJbxyUvLcrHANIulXsbi9vWO
+[10-Sep-2025 21:11:35 America/Montevideo] Password verify: OK
+[10-Sep-2025 21:11:35 America/Montevideo] Usuario estado final: activo
+[10-Sep-2025 21:11:35 America/Montevideo] === FIN verifyCredentials (success) ===
+[10-Sep-2025 21:11:35 America/Montevideo] Login exitoso para usuario ID: 3
+[10-Sep-2025 21:11:35 America/Montevideo] === FIN AuthService::login (success) ===
+[10-Sep-2025 21:11:35 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[10-Sep-2025 21:11:35 America/Montevideo] === UserRepository::findById(3) ===
+[10-Sep-2025 21:11:35 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[10-Sep-2025 21:11:35 America/Montevideo] Usuario 3 está activo
+[10-Sep-2025 21:11:35 America/Montevideo] requireLogin: Usuario 3 validado correctamente
+[10-Sep-2025 21:11:35 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[10-Sep-2025 21:11:35 America/Montevideo] === UserRepository::findById(3) ===
+[10-Sep-2025 21:11:35 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[10-Sep-2025 21:11:35 America/Montevideo] Usuario 3 está activo
+[10-Sep-2025 21:11:39 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[10-Sep-2025 21:11:39 America/Montevideo] === UserRepository::findById(3) ===
+[10-Sep-2025 21:11:39 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[10-Sep-2025 21:11:39 America/Montevideo] Usuario 3 está activo
+[10-Sep-2025 21:11:39 America/Montevideo] requireLogin: Usuario 3 validado correctamente
+[10-Sep-2025 21:11:57 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[10-Sep-2025 21:11:57 America/Montevideo] === UserRepository::findById(3) ===
+[10-Sep-2025 21:11:57 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[10-Sep-2025 21:11:57 America/Montevideo] Usuario 3 está activo
+[10-Sep-2025 21:11:57 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[10-Sep-2025 21:11:57 America/Montevideo] === UserRepository::findById(3) ===
+[10-Sep-2025 21:11:57 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[10-Sep-2025 21:11:57 America/Montevideo] Usuario 3 está activo
+[10-Sep-2025 21:11:57 America/Montevideo] requireLogin: Usuario 3 validado correctamente
+[10-Sep-2025 21:11:57 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[10-Sep-2025 21:11:57 America/Montevideo] === UserRepository::findById(3) ===
+[10-Sep-2025 21:11:57 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[10-Sep-2025 21:11:57 America/Montevideo] Usuario 3 está activo
+[10-Sep-2025 21:13:19 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[10-Sep-2025 21:13:19 America/Montevideo] === UserRepository::findById(3) ===
+[10-Sep-2025 21:13:19 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[10-Sep-2025 21:13:19 America/Montevideo] Usuario 3 está activo
+[10-Sep-2025 21:13:19 America/Montevideo] requireLogin: Usuario 3 validado correctamente
+[10-Sep-2025 21:14:40 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[10-Sep-2025 21:14:40 America/Montevideo] === UserRepository::findById(3) ===
+[10-Sep-2025 21:14:40 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[10-Sep-2025 21:14:40 America/Montevideo] Usuario 3 está activo
+[10-Sep-2025 21:14:40 America/Montevideo] requireLogin: Usuario 3 validado correctamente
+[10-Sep-2025 21:14:40 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[10-Sep-2025 21:14:40 America/Montevideo] === UserRepository::findById(3) ===
+[10-Sep-2025 21:14:40 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[10-Sep-2025 21:14:40 America/Montevideo] Usuario 3 está activo
+[10-Sep-2025 23:01:23 America/Montevideo] PHP Notice:  session_start(): ps_files_cleanup_dir: opendir(C:\Windows\Temp) failed: No error (0) in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 15
+[10-Sep-2025 23:24:30 America/Montevideo] PHP Notice:  session_start(): ps_files_cleanup_dir: opendir(C:\Windows\Temp) failed: No error (0) in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 15
+[10-Sep-2025 23:39:15 America/Montevideo] PHP Warning:  require_once(C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public/../../ranking.php): Failed to open stream: No such file or directory in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public\index.php on line 244
+[10-Sep-2025 23:39:15 America/Montevideo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public/../../ranking.php' (include_path='.;C:\php\pear') in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public\index.php:244
+Stack trace:
+#0 {main}
+  thrown in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public\index.php on line 244
+[10-Sep-2025 23:49:34 America/Montevideo] PHP Warning:  require_once(C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public/../../ranking.php): Failed to open stream: No such file or directory in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public\index.php on line 244
+[10-Sep-2025 23:49:34 America/Montevideo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public/../../ranking.php' (include_path='.;C:\php\pear') in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public\index.php:244
+Stack trace:
+#0 {main}
+  thrown in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public\index.php on line 244
+[10-Sep-2025 23:50:00 America/Montevideo] PHP Warning:  require_once(C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public/../../ranking.php): Failed to open stream: No such file or directory in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public\index.php on line 244
+[10-Sep-2025 23:50:00 America/Montevideo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public/../../ranking.php' (include_path='.;C:\php\pear') in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public\index.php:244
+Stack trace:
+#0 {main}
+  thrown in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public\index.php on line 244
+[10-Sep-2025 23:50:02 America/Montevideo] PHP Warning:  require_once(C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public/../../ranking.php): Failed to open stream: No such file or directory in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public\index.php on line 244
+[10-Sep-2025 23:50:02 America/Montevideo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public/../../ranking.php' (include_path='.;C:\php\pear') in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public\index.php:244
+Stack trace:
+#0 {main}
+  thrown in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public\index.php on line 244
+[10-Sep-2025 23:50:02 America/Montevideo] PHP Warning:  require_once(C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public/../../ranking.php): Failed to open stream: No such file or directory in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public\index.php on line 244
+[10-Sep-2025 23:50:02 America/Montevideo] PHP Fatal error:  Uncaught Error: Failed opening required 'C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public/../../ranking.php' (include_path='.;C:\php\pear') in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public\index.php:244
+Stack trace:
+#0 {main}
+  thrown in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\public\index.php on line 244
+[11-Sep-2025 12:53:36 America/Montevideo] Login intentado: le@le.com / lelo123
+[11-Sep-2025 12:53:36 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 12:53:36 America/Montevideo] Intentando login para: le@le.com
+[11-Sep-2025 12:53:36 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 12:53:36 America/Montevideo] Identifier: le@le.com
+[11-Sep-2025 12:53:36 America/Montevideo] Usuario encontrado: 24K
+[11-Sep-2025 12:53:36 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 12:53:36 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 12:53:36 America/Montevideo] Hash en BD: $2y$12$ASFkdawQgPhmV.v.LLSXrepPMzM53FJbxyUvLcrHANIulXsbi9vWO
+[11-Sep-2025 12:53:37 America/Montevideo] Password verify: OK
+[11-Sep-2025 12:53:37 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 12:53:37 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 12:53:37 America/Montevideo] Login exitoso para usuario ID: 3
+[11-Sep-2025 12:53:37 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 12:53:37 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 12:53:37 America/Montevideo] Intentando login para: le@le.com
+[11-Sep-2025 12:53:37 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 12:53:37 America/Montevideo] Identifier: le@le.com
+[11-Sep-2025 12:53:37 America/Montevideo] Usuario encontrado: 24K
+[11-Sep-2025 12:53:37 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 12:53:37 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 12:53:37 America/Montevideo] Hash en BD: $2y$12$ASFkdawQgPhmV.v.LLSXrepPMzM53FJbxyUvLcrHANIulXsbi9vWO
+[11-Sep-2025 12:53:37 America/Montevideo] Password verify: OK
+[11-Sep-2025 12:53:37 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 12:53:37 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 12:53:37 America/Montevideo] Login exitoso para usuario ID: 3
+[11-Sep-2025 12:53:37 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 12:53:37 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[11-Sep-2025 12:53:37 America/Montevideo] === UserRepository::findById(3) ===
+[11-Sep-2025 12:53:37 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[11-Sep-2025 12:53:37 America/Montevideo] Usuario 3 está activo
+[11-Sep-2025 12:53:37 America/Montevideo] requireLogin: Usuario 3 validado correctamente
+[11-Sep-2025 12:53:38 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[11-Sep-2025 12:53:38 America/Montevideo] === UserRepository::findById(3) ===
+[11-Sep-2025 12:53:38 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
+[11-Sep-2025 12:53:38 America/Montevideo] Usuario 3 está activo
