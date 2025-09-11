@@ -1848,6 +1848,7 @@
 [08-Sep-2025 19:56:18 America/Montevideo] === AdminController::getUser(3) - INICIO ===
 [08-Sep-2025 19:56:18 America/Montevideo] Usuario 3 encontrado y enviado
 [08-Sep-2025 19:56:18 America/Montevideo] === AdminController::getUser - FIN ===
+<<<<<<< Updated upstream
 [08-Sep-2025 20:48:05 America/Montevideo] Login intentado: admin / admin
 [08-Sep-2025 20:48:05 America/Montevideo] === INICIO AuthService::login ===
 [08-Sep-2025 20:48:05 America/Montevideo] Intentando login para: admin
@@ -3891,3 +3892,41 @@ Stack trace:
 [11-Sep-2025 12:53:38 America/Montevideo] === UserRepository::findById(3) ===
 [11-Sep-2025 12:53:38 America/Montevideo] Usuario ID 3 encontrado: 24K (estado: activo)
 [11-Sep-2025 12:53:38 America/Montevideo] Usuario 3 está activo
+=======
+[11-Sep-2025 13:30:25 America/Montevideo] Login intentado: martin@martin.com / martin
+[11-Sep-2025 13:30:25 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 13:30:25 America/Montevideo] Intentando login para: martin@martin.com
+[11-Sep-2025 13:30:25 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 13:30:25 America/Montevideo] Identifier: martin@martin.com
+[11-Sep-2025 13:30:25 America/Montevideo] Usuario encontrado: martin123
+[11-Sep-2025 13:30:25 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 13:30:25 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 13:30:25 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[11-Sep-2025 13:30:26 America/Montevideo] Password verify: OK
+[11-Sep-2025 13:30:26 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 13:30:26 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 13:30:26 America/Montevideo] Login exitoso para usuario ID: 1
+[11-Sep-2025 13:30:26 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 13:30:26 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 13:30:26 America/Montevideo] Intentando login para: martin@martin.com
+[11-Sep-2025 13:30:26 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 13:30:26 America/Montevideo] Identifier: martin@martin.com
+[11-Sep-2025 13:30:26 America/Montevideo] Usuario encontrado: martin123
+[11-Sep-2025 13:30:26 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 13:30:26 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 13:30:26 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[11-Sep-2025 13:30:26 America/Montevideo] Password verify: OK
+[11-Sep-2025 13:30:26 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 13:30:26 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 13:30:26 America/Montevideo] Login exitoso para usuario ID: 1
+[11-Sep-2025 13:30:26 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 13:30:26 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 13:30:26 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 13:30:26 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 13:30:26 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 13:30:26 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 13:30:26 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 13:30:26 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 13:30:26 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 13:30:26 America/Montevideo] Usuario 1 está activo
+>>>>>>> Stashed changes
