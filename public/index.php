@@ -1,4 +1,9 @@
 <?php
+
+// --- AÑADE ESTAS LÍNEAS PARA DEPURAR ---
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
+// -----------------------------------------
 /* ---------- 1.  Silenciar CUALQUIER output ---------- */
 ob_start();          // bufferiza todo
 ini_set('display_errors', 0);   // no imprime warnings al browser
@@ -17,6 +22,11 @@ if ($_SERVER['REQUEST_URI'] === '/index.html') {
 // ✅ Redirigir /home.php → /home
 if ($_SERVER['REQUEST_URI'] === '/home.php') {
     header('Location: /home', true, 301);
+    exit;
+}
+
+if ($_SERVER['REQUEST_URI'] === '/ranking.php') {
+    header('Location: /ranking', true, 301);
     exit;
 }
 
@@ -44,6 +54,9 @@ require_once __DIR__ . '/../api/repositories/TableroRepository.php';
 require_once __DIR__ . '/../api/controllers/PerfilController.php';
 require_once __DIR__ . '/../api/repositories/PerfilRepository.php';
 require_once __DIR__ . '/../api/services/PerfilService.php';
+require_once __DIR__ . '/../api/repositories/RankingRepository.php';
+require_once __DIR__ . '/../api/services/RankingService.php';
+require_once __DIR__ . '/../api/controllers/RankingController.php';
 
 AuthHelper::iniciarSesion();
 
@@ -91,6 +104,7 @@ try {
             }
 
             /* 2) JSON propio (logueado) – /perfil/me */
+<<<<<<< Updated upstream
 if ($method === 'GET' && ($uri[1] ?? '') === 'me') {
     $user = AuthHelper::requireActiveUser(); // ya devuelve el usuario logueado
     header('Content-Type: application/json');
@@ -107,6 +121,24 @@ if ($method === 'GET' && ($uri[1] ?? '') === 'me') {
     ]);
     exit;
 }
+=======
+            if ($method === 'GET' && ($uri[1] ?? '') === 'me') {
+                $user = AuthHelper::requireActiveUser(); // ya devuelve el usuario logueado
+                header('Content-Type: application/json');
+                echo json_encode([
+                    'success' => true,
+                    'id' => $user['id'],
+                    'username' => $user['username'],
+                    'email' => $user['email'],
+                    'avatar' => $user['avatar'] ?? 'img/isotipoOficial.png',
+                    'puntuacion_total' => $user['puntuacion_total'] ?? 0,
+                    'partidas_jugadas' => $user['partidas_jugadas'] ?? 0,
+                    'partidas_ganadas' => $user['partidas_ganadas'] ?? 0,
+                    'created_at' => $user['created_at']
+                ]);
+                exit;
+            }
+>>>>>>> Stashed changes
 
             /* 3) JSON ajeno (opcional, público) */
             if ($method === 'GET' && isset($uri[1]) && is_numeric($uri[1])) {
@@ -147,6 +179,12 @@ if ($method === 'GET' && ($uri[1] ?? '') === 'me') {
             http_response_code(405);
             echo json_encode(['success' => false, 'message' => 'Método no permitido']);
             break;
+
+        case 'misPartidas':
+            AuthHelper::requireActiveUser();          // solo logueados
+            $controller = new TableroController();
+            $controller->obtenerMisPartidas();
+            exit;   
 
         case 'register':
             if ($method === 'POST') {
@@ -218,6 +256,7 @@ if ($method === 'GET' && ($uri[1] ?? '') === 'me') {
         case 'tablero':
             require_once __DIR__ . '/../tablero.php';
             exit;
+            
         case 'debug-session':
             session_start();
             echo json_encode([
@@ -226,9 +265,163 @@ if ($method === 'GET' && ($uri[1] ?? '') === 'me') {
                 'userId' => $_SESSION['userId'] ?? null
             ]);
             exit;
+<<<<<<< Updated upstream
+             // --- AÑADIR ESTE NUEVO CASE PARA LA PÁGINA DEL RANKING ---
+        case 'ranking':
+            require_once __DIR__ . '/../ranking.php';
+            exit;
+        // --------------------------------------------------------
+        // --- AÑADIR ESTE IF PARA EL ENDPOINT DE LA API ---
+            if ($sub === 'ranking' && $method === 'GET') {
+                $controller = new RankingController();
+                $controller->showRanking();
+                exit;
+            }
+            // ------------------------------------------------
+=======
+
+        /* ---------- NUEVO: Servir archivos de avatar ---------- */
+        case 'uploads':
+            if (isset($uri[1]) && $uri[1] === 'avatars' && isset($uri[2])) {
+                $filename = $uri[2];
+                $filepath = __DIR__ . '/../public/uploads/avatars/' . $filename;
+                
+                if (file_exists($filepath) && strpos(realpath($filepath), realpath(__DIR__ . '/../public/uploads/avatars/')) === 0) {
+                    $mimeType = mime_content_type($filepath);
+                    header('Content-Type: ' . $mimeType);
+                    header('Content-Length: ' . filesize($filepath));
+                    readfile($filepath);
+                    exit;
+                }
+            }
+            http_response_code(404);
+            echo json_encode(['success' => false, 'message' => 'Archivo no encontrado']);
+            break;
+>>>>>>> Stashed changes
             
         case 'api':
             $sub = $uri[1] ?? '';
+
+            /* ---------- NUEVO: Upload de avatar ---------- */
+            if ($sub === 'upload_avatar.php' && $method === 'POST') {
+                try {
+                    $user = AuthHelper::requireActiveUser();
+                    $userId = $user['id'];
+                    
+                    if (!isset($_FILES['avatar']) || $_FILES['avatar']['error'] !== UPLOAD_ERR_OK) {
+                        throw new Exception('No se recibió ningún archivo válido');
+                    }
+                    
+                    $file = $_FILES['avatar'];
+                    
+                    // Validar tipo de archivo
+                    $allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+                    if (!in_array($file['type'], $allowedTypes)) {
+                        throw new Exception('Formato de archivo no soportado. Use JPEG, PNG, WEBP o GIF.');
+                    }
+                    
+                    // Validar tamaño (3MB máximo)
+                    $maxSize = 3 * 1024 * 1024; // 3MB
+                    if ($file['size'] > $maxSize) {
+                        throw new Exception('El archivo es demasiado grande. Máximo 3MB.');
+                    }
+                    
+                    // Crear directorio si no existe
+                    $uploadDir = __DIR__ . '/../public/uploads/avatars/';
+                    if (!is_dir($uploadDir)) {
+                        if (!mkdir($uploadDir, 0755, true)) {
+                            throw new Exception('No se pudo crear el directorio de avatares');
+                        }
+                    }
+                    
+                    // Generar nombre único para el archivo
+                    $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+                    $filename = 'avatar_' . $userId . '_' . time() . '.' . $extension;
+                    $filepath = $uploadDir . $filename;
+                    
+                    // Mover archivo
+                    if (!move_uploaded_file($file['tmp_name'], $filepath)) {
+                        throw new Exception('Error al guardar el archivo');
+                    }
+                    
+                    // URL pública del avatar
+                    $avatarUrl = '/uploads/avatars/' . $filename;
+                    
+                    // Actualizar en base de datos
+                    $controller = new PerfilController();
+                    $result = $controller->updateAvatar($userId, $avatarUrl);
+                    
+                    if ($result['success']) {
+                        echo json_encode([
+                            'success' => true, 
+                            'message' => 'Avatar actualizado correctamente',
+                            'avatarUrl' => $avatarUrl
+                        ]);
+                    } else {
+                        // Eliminar archivo si no se pudo guardar en BD
+                        if (file_exists($filepath)) {
+                            unlink($filepath);
+                        }
+                        echo json_encode($result);
+                    }
+                    
+                } catch (Exception $e) {
+                    http_response_code(400);
+                    echo json_encode([
+                        'success' => false, 
+                        'message' => $e->getMessage()
+                    ]);
+                }
+                exit;
+            }
+            
+            // NUEVO: Routing para tablero
+            if ($sub === 'tablero') {
+                $controller = new TableroController();
+                $action = $uri[2] ?? '';
+                
+                switch ($action) {
+                    case 'guardarEstadoPartida':
+                        if ($method === 'POST') {
+                            $controller->guardarEstadoPartida();
+                            exit;
+                        }
+                        break;
+                        
+                    case 'cargarPartida':
+                        if ($method === 'GET') {
+                            $controller->cargarPartida();
+                            exit;
+                        }
+                        break;
+                        
+                    case 'crearPartida':
+                        if ($method === 'POST') {
+                            $controller->crearPartida();
+                            exit;
+                        }
+                        break;
+                        
+                    case 'obtenerPartidasEnProgreso':
+                        if ($method === 'GET') {
+                            $controller->obtenerPartidasEnProgreso();
+                            exit;
+                        }
+                        break;
+                        
+                    case 'validarJugada':
+                        if ($method === 'POST') {
+                            $controller->validarJugada();
+                            exit;
+                        }
+                        break;
+                }
+                
+                http_response_code(404);
+                echo json_encode(['error' => 'Endpoint tablero no encontrado']);
+                exit;
+            }
+            
             if ($sub === 'admin') {
                 $controller = new AdminController();
                 $op    = $uri[2] ?? '';      // users | messages
@@ -305,6 +498,9 @@ if ($method === 'GET' && ($uri[1] ?? '') === 'me') {
                 echo json_encode(['error' => 'Ruta admin no encontrada']);
                 exit;
             }
+            
+            http_response_code(404);
+            echo json_encode(['error' => 'API endpoint no encontrado']);
             break;
 
         default:
