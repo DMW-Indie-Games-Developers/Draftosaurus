@@ -44,6 +44,9 @@ require_once __DIR__ . '/../api/repositories/TableroRepository.php';
 require_once __DIR__ . '/../api/controllers/PerfilController.php';
 require_once __DIR__ . '/../api/repositories/PerfilRepository.php';
 require_once __DIR__ . '/../api/services/PerfilService.php';
+require_once __DIR__ . '/../api/repositories/RankingRepository.php';
+require_once __DIR__ . '/../api/services/RankingService.php';
+require_once __DIR__ . '/../api/controllers/RankingController.php';
 
 AuthHelper::iniciarSesion();
 
@@ -226,6 +229,18 @@ if ($method === 'GET' && ($uri[1] ?? '') === 'me') {
                 'userId' => $_SESSION['userId'] ?? null
             ]);
             exit;
+             // --- AÑADIR ESTE NUEVO CASE PARA LA PÁGINA DEL RANKING ---
+        case 'ranking':
+            require_once __DIR__ . '/../ranking.php';
+            exit;
+        // --------------------------------------------------------
+        // --- AÑADIR ESTE IF PARA EL ENDPOINT DE LA API ---
+            if ($sub === 'ranking' && $method === 'GET') {
+                $controller = new RankingController();
+                $controller->showRanking();
+                exit;
+            }
+            // ------------------------------------------------
             
         case 'api':
             $sub = $uri[1] ?? '';
