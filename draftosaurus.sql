@@ -29,34 +29,33 @@ VALUES
 ('admin','admin@draftosaurus.com','$2y$12$7Yi9tBJek0gSZPqAIy7Xn.9gvbGcx0dVRZFETRFhADJVU31dt4.6q','admin',1), -- Contraseña admin
 ('test','test@draftosaurus.com','$2y$12$6GPrYxJ.VRfuGoZNvNke8eg9BkIebd.9k7msOjuQWDjjkikGNtr.y','usuario',1); -- contraseña test
 
--- draftosaurus.partidas definition
 
 CREATE TABLE `partidas` (
   `id` int NOT NULL AUTO_INCREMENT,
   `jugador1_id` varchar(50) DEFAULT NULL,
   `jugador2_id` varchar(50) DEFAULT NULL,
   `jugadorActivo` tinyint(1) DEFAULT NULL,
-  `ronda` tinyint(1) DEFAULT '1',
-  `turno` tinyint(1) DEFAULT '1',
-  `mano1` json NOT NULL,
-  `mano2` json NOT NULL,
+  `ronda` tinyint(1) DEFAULT 1,
+  `turno` tinyint(1) DEFAULT 1,
+  `mano1` json NOT NULL,          -- << sin DEFAULT
+  `mano2` json NOT NULL,          -- << sin DEFAULT
   `jugadorQueTiroDado` tinyint(1) DEFAULT NULL,
   `restriccion` tinyint(1) DEFAULT NULL,
   `recintos` text,
   `ganador` tinyint DEFAULT NULL,
-  `puntos_j1` int DEFAULT '0',
-  `puntos_j2` int DEFAULT '0',
-  `ultimo_jugador` tinyint DEFAULT '1',
+  `puntos_j1` int DEFAULT 0,
+  `puntos_j2` int DEFAULT 0,
+  `ultimo_jugador` tinyint DEFAULT 1,
   `created_at` datetime DEFAULT CURRENT_TIMESTAMP,
   `updated_at` datetime DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `estado_partida` varchar(20) DEFAULT 'activa',
   `name_invitado` varchar(100) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  CONSTRAINT `partidas_chk_1` CHECK ((`jugadorActivo` in (1,2))),
-  CONSTRAINT `partidas_chk_2` CHECK ((`ronda` between 1 and 5)),
-  CONSTRAINT `partidas_chk_3` CHECK ((`turno` between 1 and 3)),
-  CONSTRAINT `partidas_chk_4` CHECK ((`restriccion` between 1 and 6))
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  CONSTRAINT `partidas_chk_1` CHECK (`jugadorActivo` in (1,2)),
+  CONSTRAINT `partidas_chk_2` CHECK (`ronda` between 1 and 5),
+  CONSTRAINT `partidas_chk_3` CHECK (`turno` between 1 and 3),
+  CONSTRAINT `partidas_chk_4` CHECK (`restriccion` between 1 and 6)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
 
 CREATE TABLE jugadas (
