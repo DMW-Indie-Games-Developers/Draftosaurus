@@ -28,15 +28,24 @@
                     </div>
                 </div>
                 <div>
-                    <h2 class="mb-0" id="user-name">User 01</h2>
+                    <h2 class="mb-0" id="user-name">Usuario</h2>
                     <p><strong>Puntos totales:</strong> <span id="user-puntos">0</span></p>
                     <p class="mb-0"><strong>Partidas jugadas:</strong> <span id="user-jugadas">0</span></p>
                     <p><strong>Partidas ganadas:</strong> <span id="user-ganadas">0</span></p>
-                    <div id="user-info"></div>
+                    <div id="user-info">
+                        <p class="mb-0"><strong>Email:</strong> martin@martin.com</p>
+                        <p class="mb-0"><strong>Fecha de creación:</strong> 27/8/2025</p>
+                        <p class="mb-0"><strong>Última actualización:</strong> 11/9/2025</p>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- BOTONES -->
         <button class="btn btn-custom mt-4" id="crear-partida-btn">Crear Partida</button>
+        <button class="btn btn-custom mt-2" id="btn-mis-partidas">Ver partidas guardadas</button>
+        <button class="btn btn-custom footer-btn" id="btn-logout">Cerrar Sesión</button>
+
         <!-- Modal Crear Partida -->
         <div class="modal fade" id="modalCrearPartida" tabindex="-1" aria-labelledby="modalCrearPartidaLabel"
             aria-hidden="true">
@@ -71,7 +80,8 @@
                 </div>
             </div>
         </div>
-        <!-- Modal Invitado: pedir un nombre anónimo -->
+
+        <!-- Modal Invitado -->
         <div class="modal fade" id="modalInvitado" tabindex="-1" aria-labelledby="modalInvitadoLabel"
             aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered">
@@ -95,8 +105,9 @@
                 </div>
             </div>
         </div>
-        <button class="btn btn-custom footer-btn" id="btn-logout">Cerrar Sesión</button>
+
     </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
     <script src="js/perfil.js"></script>
 </body>

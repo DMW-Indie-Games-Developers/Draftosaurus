@@ -1,23 +1,23 @@
 <?php
 // upload-avatar.php
 // Recibe multipart/form-data con 'avatar' (file) y 'userId' (optional)
-// Valida el archivo, lo guarda en uploads/avatars/ y devuelve JSON { success, avatarUrl }
+// Valida el archivo, lo guarda en public/uploads/avatars/ y devuelve JSON { success, avatarUrl }
 
 header('Content-Type: application/json');
 
-// Límite de tamaño (3 MB)
+// LÃ­mite de tamaÃ±o (3 MB)
 $maxSize = 3 * 1024 * 1024;
 
 try {
     if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
         http_response_code(405);
-        echo json_encode(['success' => false, 'message' => 'Método no permitido.']);
+        echo json_encode(['success' => false, 'message' => 'MÃ©todo no permitido.']);
         exit;
     }
 
     if (!isset($_FILES['avatar'])) {
         http_response_code(400);
-        echo json_encode(['success' => false, 'message' => 'No se recibió el archivo avatar.']);
+        echo json_encode(['success' => false, 'message' => 'No se recibiÃ³ el archivo avatar.']);
         exit;
     }
 
@@ -31,11 +31,11 @@ try {
 
     if ($file['size'] > $maxSize) {
         http_response_code(400);
-        echo json_encode(['success' => false, 'message' => 'El archivo excede el tamaño máximo de 3 MB.']);
+        echo json_encode(['success' => false, 'message' => 'El archivo excede el tamaÃ±o mÃ¡ximo de 3 MB.']);
         exit;
     }
 
-    // Validar tipo MIME real con fallbacks (evita dependencia estricta de la extensión fileinfo)
+    // Validar tipo MIME real con fallbacks
     $mime = null;
     if (class_exists('finfo')) {
         $finfo = new finfo(FILEINFO_MIME_TYPE);
@@ -46,6 +46,7 @@ try {
         $imgInfo = @getimagesize($file['tmp_name']);
         $mime = $imgInfo['mime'] ?? null;
     }
+
     $allowed = [
         'image/jpeg' => 'jpg',
         'image/png' => 'png',
@@ -55,43 +56,48 @@ try {
 
     if (!array_key_exists($mime, $allowed)) {
         http_response_code(400);
-        echo json_encode(['success' => false, 'message' => 'Tipo de archivo no permitido. Solo imágenes.']);
+        echo json_encode(['success' => false, 'message' => 'Tipo de archivo no permitido. Solo imÃ¡genes.']);
         exit;
     }
 
-    // UserId opcional (para construir nombre de archivo)
+    // UserId opcional
     $userId = isset($_POST['userId']) ? preg_replace('/[^0-9]/', '', $_POST['userId']) : null;
 
+    // Ruta donde se VA A GUARDAR el archivo (dentro de /public)
+    $uploadDir = __DIR__ . '/../public/uploads/avatars';
+
     // Crear carpeta si no existe
-    $uploadDir = __DIR__ . DIRECTORY_SEPARATOR . 'uploads' . DIRECTORY_SEPARATOR . 'avatars';
-    if (!is_dir($uploadDir)) {
-        if (!mkdir($uploadDir, 0755, true)) {
-            http_response_code(500);
-            echo json_encode(['success' => false, 'message' => 'No se pudo crear carpeta de subida.']);
-            exit;
-        }
+    if (!is_dir($uploadDir) && !mkdir($uploadDir, 0755, true)) {
+        http_response_code(500);
+        echo json_encode(['success' => false, 'message' => 'No se pudo crear carpeta de subida.']);
+        exit;
     }
 
-    // Generar nombre único
+    // Generar nombre Ãºnico
     $ext = $allowed[$mime];
     $base = $userId ? ('user_' . $userId) : 'avatar';
     $filename = $base . '_' . time() . '_' . bin2hex(random_bytes(4)) . '.' . $ext;
+
+    // Ruta completa del archivo
     $target = $uploadDir . DIRECTORY_SEPARATOR . $filename;
 
+    // Mover el archivo subido
     if (!move_uploaded_file($file['tmp_name'], $target)) {
         http_response_code(500);
         echo json_encode(['success' => false, 'message' => 'No se pudo guardar el archivo.']);
         exit;
     }
 
-    // Opcional: establecer permisos
+    // Permisos seguros
     @chmod($target, 0644);
 
-    // URL accesible desde la web (ruta relativa) - coincide con la carpeta donde guardamos
+    // URL pÃºblica (desde la raÃ­z del sitio)
     $avatarUrl = '/uploads/avatars/' . $filename;
 
+    // Responder al cliente
     echo json_encode(['success' => true, 'avatarUrl' => $avatarUrl]);
     exit;
+
 } catch (Exception $e) {
     http_response_code(500);
     echo json_encode(['success' => false, 'message' => 'Error interno.', 'detail' => $e->getMessage()]);

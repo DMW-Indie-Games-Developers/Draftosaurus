@@ -104,24 +104,6 @@ try {
             }
 
             /* 2) JSON propio (logueado) – /perfil/me */
-<<<<<<< Updated upstream
-if ($method === 'GET' && ($uri[1] ?? '') === 'me') {
-    $user = AuthHelper::requireActiveUser(); // ya devuelve el usuario logueado
-    header('Content-Type: application/json');
-    echo json_encode([
-        'success' => true,
-        'id' => $user['id'],
-        'username' => $user['username'],
-        'email' => $user['email'],
-        'avatar' => $user['avatar'] ?? 'img/isotipoOficial.png',
-        'puntuacion_total' => $user['puntuacion_total'] ?? 0,
-        'partidas_jugadas' => $user['partidas_jugadas'] ?? 0,
-        'partidas_ganadas' => $user['partidas_ganadas'] ?? 0,
-        'created_at' => $user['created_at']
-    ]);
-    exit;
-}
-=======
             if ($method === 'GET' && ($uri[1] ?? '') === 'me') {
                 $user = AuthHelper::requireActiveUser(); // ya devuelve el usuario logueado
                 header('Content-Type: application/json');
@@ -138,7 +120,6 @@ if ($method === 'GET' && ($uri[1] ?? '') === 'me') {
                 ]);
                 exit;
             }
->>>>>>> Stashed changes
 
             /* 3) JSON ajeno (opcional, público) */
             if ($method === 'GET' && isset($uri[1]) && is_numeric($uri[1])) {
@@ -181,10 +162,19 @@ if ($method === 'GET' && ($uri[1] ?? '') === 'me') {
             break;
 
         case 'misPartidas':
-            AuthHelper::requireActiveUser();          // solo logueados
-            $controller = new TableroController();
-            $controller->obtenerMisPartidas();
-            exit;   
+            try {
+                $user = AuthHelper::requireActiveUser();
+                $controller = new TableroController();
+                $controller->obtenerPartidasEnProgreso(); // Cambiado de obtenerMisPartidas
+                exit;
+            } catch (Exception $e) {
+                http_response_code(401);
+                echo json_encode([
+                    'success' => false, 
+                    'message' => 'No autorizado'
+                ]);
+                exit;
+            }
 
         case 'register':
             if ($method === 'POST') {
@@ -265,21 +255,12 @@ if ($method === 'GET' && ($uri[1] ?? '') === 'me') {
                 'userId' => $_SESSION['userId'] ?? null
             ]);
             exit;
-<<<<<<< Updated upstream
-             // --- AÑADIR ESTE NUEVO CASE PARA LA PÁGINA DEL RANKING ---
+            
+        // --- AÑADIR ESTE NUEVO CASE PARA LA PÁGINA DEL RANKING ---
         case 'ranking':
             require_once __DIR__ . '/../ranking.php';
             exit;
-        // --------------------------------------------------------
-        // --- AÑADIR ESTE IF PARA EL ENDPOINT DE LA API ---
-            if ($sub === 'ranking' && $method === 'GET') {
-                $controller = new RankingController();
-                $controller->showRanking();
-                exit;
-            }
-            // ------------------------------------------------
-=======
-
+            
         /* ---------- NUEVO: Servir archivos de avatar ---------- */
         case 'uploads':
             if (isset($uri[1]) && $uri[1] === 'avatars' && isset($uri[2])) {
@@ -297,7 +278,6 @@ if ($method === 'GET' && ($uri[1] ?? '') === 'me') {
             http_response_code(404);
             echo json_encode(['success' => false, 'message' => 'Archivo no encontrado']);
             break;
->>>>>>> Stashed changes
             
         case 'api':
             $sub = $uri[1] ?? '';
@@ -370,6 +350,21 @@ if ($method === 'GET' && ($uri[1] ?? '') === 'me') {
                     echo json_encode([
                         'success' => false, 
                         'message' => $e->getMessage()
+                    ]);
+                }
+                exit;
+            }
+            
+            /* ---------- NUEVO: Endpoint para Ranking ---------- */
+            if ($sub === 'ranking' && $method === 'GET') {
+                try {
+                    $controller = new RankingController();
+                    $controller->showRanking();
+                } catch (Exception $e) {
+                    http_response_code(500);
+                    echo json_encode([
+                        'success' => false, 
+                        'message' => 'Error al obtener el ranking: ' . $e->getMessage()
                     ]);
                 }
                 exit;

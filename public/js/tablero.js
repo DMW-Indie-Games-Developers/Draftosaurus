@@ -4,13 +4,167 @@ if (!localStorage.getItem('userId')) {
   localStorage.clear();
   location.replace('/login');
 }
-/* -------------------------------------------------- */
 
-/* ------ Nombres reales ------ */
-const jugadorActualNombre = localStorage.getItem('jugadorActual') || 'Yo';
-const rivalNombre         = localStorage.getItem('rival')         || 'Rival';
-/* ---------------------------- */
+/* ------ Nombres reales (variables para poder actualizarlas) ------ */
+let jugadorActualNombre = localStorage.getItem('jugadorActual') || 'Yo';
+let rivalNombre = localStorage.getItem('rival') || 'Rival';
 
+/* ------ VARIABLES GLOBALES (movidas FUERA del DOMContentLoaded) ------ */
+let draggedDino = null;
+let jugadorQueTiroDado = Math.random() < 0.5 ? 1 : 2;
+let jugadorActivo = jugadorQueTiroDado;
+let restriccionActual = null;
+let turno = 1;
+let ronda = 1;
+let ID_PARTIDA = null;
+const TOTAL_RONDAS = 4;
+
+let manos = { 1: [], 2: [] };
+let colocadosEnTurno = 0;
+let puntuacionesJugadores = { 1: {}, 2: {} };
+
+const especies = ['dino1', 'dino2', 'dino3', 'dino4', 'dino5', 'trex'];
+const restricciones = {
+  1: "Zona izquierda",
+  2: "Zona derecha", 
+  3: "Zona boscosa",
+  4: "Recinto vacío",
+  5: "Recinto sin T-REX",
+  6: "Sin restricción"
+};
+
+/* ------ FUNCIONES GLOBALES ------ */
+function generarMano() {
+  return Array.from({ length: 6 }, () => especies[Math.floor(Math.random() * especies.length)]);
+}
+
+function renderMano(jugador) {
+  const grid = document.querySelector('.dino-grid');
+  grid.innerHTML = '';
+  manos[jugador].forEach((esp, idx) => {
+    const img = document.createElement('img');
+    img.src = `/img/imagen_Tablero/${esp}.png`;
+    img.className = 'dino-img';
+    img.draggable = true;
+    img.dataset.especie = esp;
+    img.dataset.index = idx;
+    grid.appendChild(img);
+
+    img.addEventListener('dragstart', e => {
+      draggedDino = { especie: esp, index: idx, jugador: jugadorActivo };
+      img.classList.add('dragging');
+      e.dataTransfer.setData('text/plain', esp);
+    });
+    img.addEventListener('dragend', () => img.classList.remove('dragging'));
+  });
+}
+
+function actualizarUI() {
+  const nombreTurno = jugadorActivo === 1 ? jugadorActualNombre : rivalNombre;
+  const dinoPanelTitle = document.getElementById('dino-panel-title');
+  const turnoText = document.getElementById('turno-text');
+  const dadoBtn = document.getElementById('tirar-dado-btn');
+  
+  dinoPanelTitle.textContent = `Tus Dinosaurios - ${nombreTurno}`;
+  renderMano(jugadorActivo);
+  actualizarPuntuacionJugadorActivo();
+  actualizarPuntuacionesVisualesRecintos();
+  actualizarVisibilidadDinos();
+
+  if (restriccionActual === null) {
+    turnoText.textContent = `Ronda ${ronda} - Turno ${turno} - ${nombreTurno} debe tirar dado`;
+  } else if (jugadorActivo === jugadorQueTiroDado) {
+    turnoText.textContent = `Ronda ${ronda} - Turno ${turno} - ${nombreTurno} debe colocar (SIN restricciones)`;
+  } else {
+    turnoText.textContent = `Ronda ${ronda} - Turno ${turno} - ${nombreTurno} debe colocar (CON restricción: ${restricciones[restriccionActual]})`;
+  }
+
+  dadoBtn.style.display = restriccionActual === null ? 'inline-block' : 'none';
+}
+
+function actualizarPuntuacionJugadorActivo() {
+  const playerScoreElement = document.querySelector('.player-score');
+  const recintos = document.querySelectorAll('.recinto');
+  let total = 0;
+  recintos.forEach(r => {
+    total += puntuacionesJugadores[jugadorActivo][r.id] || 0;
+  });
+  playerScoreElement.textContent = total;
+}
+
+function actualizarPuntuacionesVisualesRecintos() {
+  const recintos = document.querySelectorAll('.recinto');
+  recintos.forEach(r => {
+    const p = puntuacionesJugadores[jugadorActivo][r.id] || 0;
+    r.querySelector('.recinto-score').textContent = p;
+  });
+}
+
+function actualizarVisibilidadDinos() {
+  document.querySelectorAll('.dino-in-recinto').forEach(dino => {
+    dino.style.display = parseInt(dino.dataset.jugador) === jugadorActivo ? 'block' : 'none';
+  });
+}
+
+/* ---------- Función que restaura el estado ---------- */
+async function cargarPartidaYRestaurar(idPartida){
+  try {
+    const r = await fetch(`/api/tablero/cargarPartida?id=${idPartida}`, { credentials: 'include' });
+    const { success, data: p, message } = await r.json();
+    if (!success) { alert(message); return; }
+
+    console.log('Datos recibidos:', p); // Para debug
+
+    // Actualizar nombres con los datos reales de la partida
+    jugadorActualNombre = p.jugador1;
+    rivalNombre = p.jugador2;
+
+    // variables globales - AHORA SÍ PUEDEN ACCEDERSE
+    ID_PARTIDA = p.id;
+    ronda = p.ronda;
+    turno = p.turno;
+    jugadorActivo = p.jugadorActivo;
+    jugadorQueTiroDado = p.jugadorQueTiroDado;
+    restriccionActual = p.restriccion;
+    
+    // AHORA SÍ FUNCIONA porque manos está en scope global
+    manos[1] = p.mano1.dinosaurios || p.mano1;
+    manos[2] = p.mano2.dinosaurios || p.mano2;
+
+    // limpiar tablero
+    document.querySelectorAll('.dino-in-recinto').forEach(d => d.remove());
+
+    // volcar fichas
+    p.colocaciones.forEach(({ recinto, jugador, especie }) => {
+      const r = document.getElementById(recinto);
+      if (!r) return;
+      const img = document.createElement('img');
+      img.src = `/img/imagen_Tablero/${especie}.png`;
+      img.className = 'dino-in-recinto';
+      img.dataset.especie = especie;
+      img.dataset.jugador = jugador;
+      img.style.pointerEvents = 'none';
+      r.appendChild(img);
+    });
+
+    actualizarUI();
+    alert(`Partida ${p.id} cargada. ¡A continuar!\n\nJugadores: ${jugadorActualNombre} vs ${rivalNombre}`);
+  } catch (e) {
+    console.error('Error completo:', e);
+    alert('Error al cargar partida: ' + e.message);
+  }
+}
+
+/* ---------- Al cargar: si hay partidaId en localStorage → restaurar ---------- */
+(function(){
+  const partidaId = localStorage.getItem('partidaId');
+  if (partidaId) {
+    cargarPartidaYRestaurar(+partidaId);
+    localStorage.removeItem('partidaId');
+  }
+})();
+
+/* ------ RESTO DEL CÓDIGO VA DENTRO DEL DOMContentLoaded ------ */
 document.addEventListener('DOMContentLoaded', function () {
   const recintos = document.querySelectorAll('.recinto');
   const rulesBtn = document.querySelector('.rules-btn');
@@ -20,58 +174,6 @@ document.addEventListener('DOMContentLoaded', function () {
   const dadoBtn = document.getElementById('tirar-dado-btn');
   const dadoImg = document.getElementById('dado-img');
   const restriccionText = document.getElementById('restriccion-text');
-  const turnoText = document.getElementById('turno-text');
-
-  const mano1 = document.querySelector('.dino-grid');
-  const dinoPanelTitle = document.getElementById('dino-panel-title');
-  const playerScoreElement = document.querySelector('.player-score');
-
-  let draggedDino = null;
-  let jugadorQueTiroDado = Math.random() < 0.5 ? 1 : 2;
-  let jugadorActivo = jugadorQueTiroDado;
-  let restriccionActual = null;
-  let turno = 1;
-  let ronda = 1;
-  const TOTAL_RONDAS = 4;
-
-  let manos = { 1: [], 2: [] };
-  let colocadosEnTurno = 0;
-  let puntuacionesJugadores = { 1: {}, 2: {} };
-
-  const especies = ['dino1', 'dino2', 'dino3', 'dino4', 'dino5', 'trex'];
-  const restricciones = {
-    1: "Zona izquierda",
-    2: "Zona derecha",
-    3: "Zona boscosa",
-    4: "Recinto vacío",
-    5: "Recinto sin T-REX",
-    6: "Sin restricción"
-  };
-
-  function generarMano() {
-    return Array.from({ length: 6 }, () => especies[Math.floor(Math.random() * especies.length)]);
-  }
-
-  function renderMano(jugador) {
-    const grid = mano1;
-    grid.innerHTML = '';
-    manos[jugador].forEach((esp, idx) => {
-      const img = document.createElement('img');
-      img.src = `/img/imagen_Tablero/${esp}.png`;
-      img.className = 'dino-img';
-      img.draggable = true;
-      img.dataset.especie = esp;
-      img.dataset.index = idx;
-      grid.appendChild(img);
-
-      img.addEventListener('dragstart', e => {
-        draggedDino = { especie: esp, index: idx, jugador: jugadorActivo };
-        img.classList.add('dragging');
-        e.dataTransfer.setData('text/plain', esp);
-      });
-      img.addEventListener('dragend', () => img.classList.remove('dragging'));
-    });
-  }
 
   function iniciarRonda() {
     if (turno === 1) {
@@ -89,46 +191,6 @@ document.addEventListener('DOMContentLoaded', function () {
     actualizarUI();
   }
 
-  function actualizarUI() {
-    const nombreTurno = jugadorActivo === 1 ? jugadorActualNombre : rivalNombre;
-    dinoPanelTitle.textContent = `Tus Dinosaurios - ${nombreTurno}`;
-    renderMano(jugadorActivo);
-    actualizarPuntuacionJugadorActivo();
-    actualizarPuntuacionesVisualesRecintos();
-    actualizarVisibilidadDinos();
-
-    if (restriccionActual === null) {
-      turnoText.textContent = `Ronda ${ronda} - Turno ${turno} - ${nombreTurno} debe tirar dado`;
-    } else if (jugadorActivo === jugadorQueTiroDado) {
-      turnoText.textContent = `Ronda ${ronda} - Turno ${turno} - ${nombreTurno} debe colocar (SIN restricciones)`;
-    } else {
-      turnoText.textContent = `Ronda ${ronda} - Turno ${turno} - ${nombreTurno} debe colocar (CON restricción: ${restricciones[restriccionActual]})`;
-    }
-
-    dadoBtn.style.display = restriccionActual === null ? 'inline-block' : 'none';
-  }
-
-  function actualizarPuntuacionJugadorActivo() {
-    let total = 0;
-    recintos.forEach(r => {
-      total += puntuacionesJugadores[jugadorActivo][r.id] || 0;
-    });
-    playerScoreElement.textContent = total;
-  }
-
-  function actualizarPuntuacionesVisualesRecintos() {
-    recintos.forEach(r => {
-      const p = puntuacionesJugadores[jugadorActivo][r.id] || 0;
-      r.querySelector('.recinto-score').textContent = p;
-    });
-  }
-
-  function actualizarVisibilidadDinos() {
-    document.querySelectorAll('.dino-in-recinto').forEach(dino => {
-      dino.style.display = parseInt(dino.dataset.jugador) === jugadorActivo ? 'block' : 'none';
-    });
-  }
-
   function tirarDado() {
     if (restriccionActual !== null) return;
     const valor = Math.floor(Math.random() * 6) + 1;
@@ -137,8 +199,6 @@ document.addEventListener('DOMContentLoaded', function () {
     restriccionText.textContent = restricciones[valor];
     actualizarUI();
   }
-
-  dadoBtn.addEventListener('click', tirarDado);
 
   function colocarDino(recinto, especie) {
     const dinoClone = document.createElement('img');
@@ -150,7 +210,6 @@ document.addEventListener('DOMContentLoaded', function () {
     recinto.appendChild(dinoClone);
 
     manos[jugadorActivo].splice(draggedDino.index, 1);
-
     colocadosEnTurno++;
 
     if (colocadosEnTurno === 2) {
@@ -257,40 +316,6 @@ document.addEventListener('DOMContentLoaded', function () {
     );
   }
 
-  recintos.forEach(recinto => {
-    recinto.addEventListener('dragover', e => {
-      e.preventDefault();
-      recinto.classList.add('highlight');
-    });
-    recinto.addEventListener('dragleave', () => recinto.classList.remove('highlight'));
-    recinto.addEventListener('drop', e => {
-      e.preventDefault();
-      recinto.classList.remove('highlight');
-
-      if (!draggedDino || draggedDino.jugador !== jugadorActivo) return;
-      const tipoRecinto = recinto.dataset.tipo;
-      const especieDino = draggedDino.especie;
-
-      if (restriccionActual === null) {
-        alert("Primero debe tirar el dado.");
-        return;
-      }
-
-      if (puedeColocarDino(recinto, tipoRecinto, especieDino)) {
-        colocarDino(recinto, especieDino);
-      } else {
-        const recintosValidos = Array.from(recintos).filter(r =>
-          puedeColocarDino(r, r.dataset.tipo, especieDino)
-        );
-        const nombres = recintosValidos.map(r => r.dataset.nombre).join(', ');
-        const mensaje = jugadorActivo === jugadorQueTiroDado
-          ? `No puedes colocar aquí por las reglas del recinto.\n\nRecintos válidos: ${nombres || 'Ninguno disponible'}`
-          : `No puedes colocar aquí por la restricción del dado: ${restricciones[restriccionActual]}\n\nRecintos válidos: ${nombres || 'Ninguno disponible'}`;
-        alert(mensaje);
-      }
-    });
-  });
-
   function puedeColocarDino(recinto, tipoRecinto, especieDino) {
     const dinosauriosEnRecinto = Array.from(recinto.querySelectorAll('.dino-in-recinto'))
       .filter(d => parseInt(d.dataset.jugador) === jugadorActivo);
@@ -332,6 +357,85 @@ document.addEventListener('DOMContentLoaded', function () {
       default: return true;
     }
   }
+
+  // Event listeners
+  dadoBtn.addEventListener('click', tirarDado);
+
+  recintos.forEach(recinto => {
+    recinto.addEventListener('dragover', e => {
+      e.preventDefault();
+      recinto.classList.add('highlight');
+    });
+    recinto.addEventListener('dragleave', () => recinto.classList.remove('highlight'));
+    recinto.addEventListener('drop', e => {
+      e.preventDefault();
+      recinto.classList.remove('highlight');
+
+      if (!draggedDino || draggedDino.jugador !== jugadorActivo) return;
+      const tipoRecinto = recinto.dataset.tipo;
+      const especieDino = draggedDino.especie;
+
+      if (restriccionActual === null) {
+        alert("Primero debe tirar el dado.");
+        return;
+      }
+
+      if (puedeColocarDino(recinto, tipoRecinto, especieDino)) {
+        colocarDino(recinto, especieDino);
+      } else {
+        const recintosValidos = Array.from(recintos).filter(r =>
+          puedeColocarDino(r, r.dataset.tipo, especieDino)
+        );
+        const nombres = recintosValidos.map(r => r.dataset.nombre).join(', ');
+        const mensaje = jugadorActivo === jugadorQueTiroDado
+          ? `No puedes colocar aquí por las reglas del recinto.\n\nRecintos válidos: ${nombres || 'Ninguno disponible'}`
+          : `No puedes colocar aquí por la restricción del dado: ${restricciones[restriccionActual]}\n\nRecintos válidos: ${nombres || 'Ninguno disponible'}`;
+        alert(mensaje);
+      }
+    });
+  });
+
+  /* ---------- Botón Guardar partida ---------- */
+  document.getElementById('btn-guardar')?.addEventListener('click', async () => {
+    const colocaciones = [];
+    document.querySelectorAll('.recinto').forEach(r => {
+      r.querySelectorAll('.dino-in-recinto').forEach(d => {
+        colocaciones.push({
+          recinto: r.id,
+          jugador: parseInt(d.dataset.jugador),
+          especie: d.dataset.especie
+        });
+      });
+    });
+
+    const payload = {
+      id: ID_PARTIDA || 0,
+      ronda: ronda,
+      turno: turno,
+      jugadorActivo: jugadorActivo,
+      jugadorQueTiroDado: jugadorQueTiroDado,
+      restriccion: restriccionActual,
+      mano1: manos[1],
+      mano2: manos[2],
+      colocaciones: colocaciones
+    };
+
+    try {
+      const res = await fetch('/api/tablero/guardarEstadoPartida', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      });
+
+      const data = await res.json();
+      if (data.success && data.id) {
+        ID_PARTIDA = data.id; // Guardar el ID para futuras actualizaciones
+      }
+      alert(data.message || 'Partida guardada');
+    } catch (e) {
+      alert('Error al guardar: ' + e.message);
+    }
+  });
 
   iniciarRonda();
 });
