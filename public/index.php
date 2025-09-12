@@ -142,9 +142,19 @@ try {
             break;
 
         case 'misPartidas':
-            $user = AuthHelper::requireActiveUser();   // ya responde 401 si no hay sesión
-            (new TableroController())->obtenerMisPartidas();
-            exit; 
+            try {
+                $user = AuthHelper::requireActiveUser();
+                $controller = new TableroController();
+                $controller->obtenerPartidasEnProgreso(); // Cambiado de obtenerMisPartidas
+                exit;
+            } catch (Exception $e) {
+                http_response_code(401);
+                echo json_encode([
+                    'success' => false, 
+                    'message' => 'No autorizado'
+                ]);
+                exit;
+            }
 
         case 'register':
             if ($method === 'POST') {
