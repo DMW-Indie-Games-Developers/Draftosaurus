@@ -1,9 +1,4 @@
 <?php
-
-// --- AÑADE ESTAS LÍNEAS PARA DEPURAR ---
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-// -----------------------------------------
 /* ---------- 1.  Silenciar CUALQUIER output ---------- */
 ob_start();          // bufferiza todo
 ini_set('display_errors', 0);   // no imprime warnings al browser
@@ -22,11 +17,6 @@ if ($_SERVER['REQUEST_URI'] === '/index.html') {
 // ✅ Redirigir /home.php → /home
 if ($_SERVER['REQUEST_URI'] === '/home.php') {
     header('Location: /home', true, 301);
-    exit;
-}
-
-if ($_SERVER['REQUEST_URI'] === '/ranking.php') {
-    header('Location: /ranking', true, 301);
     exit;
 }
 
@@ -54,9 +44,6 @@ require_once __DIR__ . '/../api/repositories/TableroRepository.php';
 require_once __DIR__ . '/../api/controllers/PerfilController.php';
 require_once __DIR__ . '/../api/repositories/PerfilRepository.php';
 require_once __DIR__ . '/../api/services/PerfilService.php';
-require_once __DIR__ . '/../api/repositories/RankingRepository.php';
-require_once __DIR__ . '/../api/services/RankingService.php';
-require_once __DIR__ . '/../api/controllers/RankingController.php';
 
 AuthHelper::iniciarSesion();
 
@@ -103,42 +90,16 @@ try {
                 exit;
             }
 
-            /* 2) JSON propio (logueado) – /perfil/me */
-<<<<<<< Updated upstream
-if ($method === 'GET' && ($uri[1] ?? '') === 'me') {
-    $user = AuthHelper::requireActiveUser(); // ya devuelve el usuario logueado
-    header('Content-Type: application/json');
-    echo json_encode([
-        'success' => true,
-        'id' => $user['id'],
-        'username' => $user['username'],
-        'email' => $user['email'],
-        'avatar' => $user['avatar'] ?? 'img/isotipoOficial.png',
-        'puntuacion_total' => $user['puntuacion_total'] ?? 0,
-        'partidas_jugadas' => $user['partidas_jugadas'] ?? 0,
-        'partidas_ganadas' => $user['partidas_ganadas'] ?? 0,
-        'created_at' => $user['created_at']
-    ]);
-    exit;
-}
-=======
-            if ($method === 'GET' && ($uri[1] ?? '') === 'me') {
-                $user = AuthHelper::requireActiveUser(); // ya devuelve el usuario logueado
-                header('Content-Type: application/json');
-                echo json_encode([
-                    'success' => true,
-                    'id' => $user['id'],
-                    'username' => $user['username'],
-                    'email' => $user['email'],
-                    'avatar' => $user['avatar'] ?? 'img/isotipoOficial.png',
-                    'puntuacion_total' => $user['puntuacion_total'] ?? 0,
-                    'partidas_jugadas' => $user['partidas_jugadas'] ?? 0,
-                    'partidas_ganadas' => $user['partidas_ganadas'] ?? 0,
-                    'created_at' => $user['created_at']
-                ]);
+            /* 2) JSON propio (logueado) */
+            if ($method === 'GET' && $uri[1] === 'me') {
+                try {
+                    $user = AuthHelper::requireActiveUser();
+                    echo json_encode($controller->getPerfil($user['id']));
+                } catch (Exception $e) {
+                    // requireActiveUser ya respondió
+                }
                 exit;
             }
->>>>>>> Stashed changes
 
             /* 3) JSON ajeno (opcional, público) */
             if ($method === 'GET' && isset($uri[1]) && is_numeric($uri[1])) {
@@ -181,10 +142,9 @@ if ($method === 'GET' && ($uri[1] ?? '') === 'me') {
             break;
 
         case 'misPartidas':
-            AuthHelper::requireActiveUser();          // solo logueados
-            $controller = new TableroController();
-            $controller->obtenerMisPartidas();
-            exit;   
+            $user = AuthHelper::requireActiveUser();   // ya responde 401 si no hay sesión
+            (new TableroController())->obtenerMisPartidas();
+            exit; 
 
         case 'register':
             if ($method === 'POST') {
@@ -265,20 +225,6 @@ if ($method === 'GET' && ($uri[1] ?? '') === 'me') {
                 'userId' => $_SESSION['userId'] ?? null
             ]);
             exit;
-<<<<<<< Updated upstream
-             // --- AÑADIR ESTE NUEVO CASE PARA LA PÁGINA DEL RANKING ---
-        case 'ranking':
-            require_once __DIR__ . '/../ranking.php';
-            exit;
-        // --------------------------------------------------------
-        // --- AÑADIR ESTE IF PARA EL ENDPOINT DE LA API ---
-            if ($sub === 'ranking' && $method === 'GET') {
-                $controller = new RankingController();
-                $controller->showRanking();
-                exit;
-            }
-            // ------------------------------------------------
-=======
 
         /* ---------- NUEVO: Servir archivos de avatar ---------- */
         case 'uploads':
@@ -297,7 +243,6 @@ if ($method === 'GET' && ($uri[1] ?? '') === 'me') {
             http_response_code(404);
             echo json_encode(['success' => false, 'message' => 'Archivo no encontrado']);
             break;
->>>>>>> Stashed changes
             
         case 'api':
             $sub = $uri[1] ?? '';

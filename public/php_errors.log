@@ -3930,3 +3930,782 @@ Stack trace:
 [11-Sep-2025 13:30:26 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
 [11-Sep-2025 13:30:26 America/Montevideo] Usuario 1 está activo
 >>>>>>> Stashed changes
+[11-Sep-2025 18:53:12 America/Montevideo] PHP Parse error:  syntax error, unexpected token "<<", expecting "case" or "default" or "}" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 107
+[11-Sep-2025 18:53:14 America/Montevideo] PHP Parse error:  syntax error, unexpected token "<<", expecting "case" or "default" or "}" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 107
+[11-Sep-2025 18:53:16 America/Montevideo] PHP Parse error:  syntax error, unexpected token "<<", expecting "case" or "default" or "}" in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 107
+[11-Sep-2025 18:56:33 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 18:56:33 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 18:56:33 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 18:56:33 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 18:56:33 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 18:56:33 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 18:56:33 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 18:56:33 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 18:56:33 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 18:59:47 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 18:59:47 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 18:59:47 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 18:59:47 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 18:59:48 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 18:59:48 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 18:59:48 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 18:59:48 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 18:59:48 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 19:10:11 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:10:11 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:10:11 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:10:11 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:10:11 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 19:11:44 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:11:44 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:11:44 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:11:44 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:11:44 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:11:44 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:11:44 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:11:44 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:11:44 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 19:14:54 America/Montevideo] Login intentado: martin@martin.com / martin
+[11-Sep-2025 19:14:54 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 19:14:54 America/Montevideo] Intentando login para: martin@martin.com
+[11-Sep-2025 19:14:54 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 19:14:54 America/Montevideo] Identifier: martin@martin.com
+[11-Sep-2025 19:14:54 America/Montevideo] Usuario encontrado: martin123
+[11-Sep-2025 19:14:54 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 19:14:54 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 19:14:54 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[11-Sep-2025 19:14:54 America/Montevideo] Password verify: OK
+[11-Sep-2025 19:14:54 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 19:14:54 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 19:14:54 America/Montevideo] Login exitoso para usuario ID: 1
+[11-Sep-2025 19:14:54 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 19:14:54 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 19:14:54 America/Montevideo] Intentando login para: martin@martin.com
+[11-Sep-2025 19:14:54 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 19:14:54 America/Montevideo] Identifier: martin@martin.com
+[11-Sep-2025 19:14:54 America/Montevideo] Usuario encontrado: martin123
+[11-Sep-2025 19:14:54 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 19:14:54 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 19:14:54 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[11-Sep-2025 19:14:54 America/Montevideo] Password verify: OK
+[11-Sep-2025 19:14:54 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 19:14:54 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 19:14:54 America/Montevideo] Login exitoso para usuario ID: 1
+[11-Sep-2025 19:14:54 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 19:14:55 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:14:55 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:14:55 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:14:55 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:14:55 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 19:20:18 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:20:18 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:20:18 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:20:18 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:20:18 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 19:20:18 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:20:18 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:20:18 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:20:18 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:20:22 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:20:22 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:20:22 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:20:22 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:20:22 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:20:22 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:20:22 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:20:22 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:26:09 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:26:09 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:26:09 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:26:09 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:26:09 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 19:26:10 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:26:10 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:26:10 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:26:10 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:26:10 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 19:26:11 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:26:11 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:26:11 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:26:11 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:26:11 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 19:26:11 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:26:11 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:26:11 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:26:11 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:26:11 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 19:26:11 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:26:11 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:26:11 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:26:11 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:26:11 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 19:26:12 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:26:12 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:26:12 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:26:12 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:26:12 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 19:26:20 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:26:20 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:26:20 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:26:20 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:26:20 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 19:26:21 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:26:21 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:26:21 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:26:21 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:26:21 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 19:26:21 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:26:21 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:26:21 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:26:21 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:26:21 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 19:26:21 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:26:21 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:26:21 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:26:21 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:26:21 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 19:26:24 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:26:24 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:26:24 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:26:24 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:26:24 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:26:24 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:26:24 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:26:24 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:26:24 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 19:26:50 America/Montevideo] Login intentado: martin@martin.com / martin
+[11-Sep-2025 19:26:50 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 19:26:50 America/Montevideo] Intentando login para: martin@martin.com
+[11-Sep-2025 19:26:50 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 19:26:50 America/Montevideo] Identifier: martin@martin.com
+[11-Sep-2025 19:26:50 America/Montevideo] Usuario encontrado: martin123
+[11-Sep-2025 19:26:50 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 19:26:50 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 19:26:50 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[11-Sep-2025 19:26:51 America/Montevideo] Password verify: OK
+[11-Sep-2025 19:26:51 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 19:26:51 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 19:26:51 America/Montevideo] Login exitoso para usuario ID: 1
+[11-Sep-2025 19:26:51 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 19:26:51 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 19:26:51 America/Montevideo] Intentando login para: martin@martin.com
+[11-Sep-2025 19:26:51 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 19:26:51 America/Montevideo] Identifier: martin@martin.com
+[11-Sep-2025 19:26:51 America/Montevideo] Usuario encontrado: martin123
+[11-Sep-2025 19:26:51 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 19:26:51 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 19:26:51 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[11-Sep-2025 19:26:51 America/Montevideo] Password verify: OK
+[11-Sep-2025 19:26:51 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 19:26:51 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 19:26:51 America/Montevideo] Login exitoso para usuario ID: 1
+[11-Sep-2025 19:26:51 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 19:26:51 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:26:51 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:26:51 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:26:51 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:26:51 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 19:27:13 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:27:13 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:27:13 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:27:13 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:27:13 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 19:27:13 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:27:13 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:27:13 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:27:13 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:27:13 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 19:27:24 America/Montevideo] Login intentado: martin@martin.com / martin
+[11-Sep-2025 19:27:24 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 19:27:24 America/Montevideo] Intentando login para: martin@martin.com
+[11-Sep-2025 19:27:24 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 19:27:24 America/Montevideo] Identifier: martin@martin.com
+[11-Sep-2025 19:27:24 America/Montevideo] Usuario encontrado: martin123
+[11-Sep-2025 19:27:24 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 19:27:24 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 19:27:24 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[11-Sep-2025 19:27:25 America/Montevideo] Password verify: OK
+[11-Sep-2025 19:27:25 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 19:27:25 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 19:27:25 America/Montevideo] Login exitoso para usuario ID: 1
+[11-Sep-2025 19:27:25 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 19:27:25 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 19:27:25 America/Montevideo] Intentando login para: martin@martin.com
+[11-Sep-2025 19:27:25 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 19:27:25 America/Montevideo] Identifier: martin@martin.com
+[11-Sep-2025 19:27:25 America/Montevideo] Usuario encontrado: martin123
+[11-Sep-2025 19:27:25 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 19:27:25 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 19:27:25 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[11-Sep-2025 19:27:25 America/Montevideo] Password verify: OK
+[11-Sep-2025 19:27:25 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 19:27:25 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 19:27:25 America/Montevideo] Login exitoso para usuario ID: 1
+[11-Sep-2025 19:27:25 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 19:27:25 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:27:25 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:27:25 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:27:25 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:27:25 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 19:27:47 America/Montevideo] PHP Parse error:  syntax error, unexpected token "<", expecting end of file in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 500
+[11-Sep-2025 19:27:47 America/Montevideo] PHP Parse error:  syntax error, unexpected token "<", expecting end of file in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 500
+[11-Sep-2025 19:27:49 America/Montevideo] PHP Parse error:  syntax error, unexpected token "<", expecting end of file in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 500
+[11-Sep-2025 19:28:23 America/Montevideo] PHP Parse error:  syntax error, unexpected token "<", expecting end of file in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\public\index.php on line 500
+[11-Sep-2025 19:29:03 America/Montevideo] Login intentado: martin@martin.com / martin
+[11-Sep-2025 19:29:03 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 19:29:03 America/Montevideo] Intentando login para: martin@martin.com
+[11-Sep-2025 19:29:03 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 19:29:03 America/Montevideo] Identifier: martin@martin.com
+[11-Sep-2025 19:29:03 America/Montevideo] Usuario encontrado: martin123
+[11-Sep-2025 19:29:03 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 19:29:03 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 19:29:03 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[11-Sep-2025 19:29:04 America/Montevideo] Password verify: OK
+[11-Sep-2025 19:29:04 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 19:29:04 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 19:29:04 America/Montevideo] Login exitoso para usuario ID: 1
+[11-Sep-2025 19:29:04 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 19:29:04 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 19:29:04 America/Montevideo] Intentando login para: martin@martin.com
+[11-Sep-2025 19:29:04 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 19:29:04 America/Montevideo] Identifier: martin@martin.com
+[11-Sep-2025 19:29:04 America/Montevideo] Usuario encontrado: martin123
+[11-Sep-2025 19:29:04 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 19:29:04 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 19:29:04 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[11-Sep-2025 19:29:04 America/Montevideo] Password verify: OK
+[11-Sep-2025 19:29:04 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 19:29:04 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 19:29:04 America/Montevideo] Login exitoso para usuario ID: 1
+[11-Sep-2025 19:29:04 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 19:29:04 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:29:04 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:29:04 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:29:04 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:29:04 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 19:32:52 America/Montevideo] Login intentado: martin@martin.com / martin
+[11-Sep-2025 19:32:52 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 19:32:52 America/Montevideo] Intentando login para: martin@martin.com
+[11-Sep-2025 19:32:52 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 19:32:52 America/Montevideo] Identifier: martin@martin.com
+[11-Sep-2025 19:32:52 America/Montevideo] Usuario encontrado: martin123
+[11-Sep-2025 19:32:52 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 19:32:52 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 19:32:52 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[11-Sep-2025 19:32:52 America/Montevideo] Password verify: OK
+[11-Sep-2025 19:32:52 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 19:32:52 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 19:32:52 America/Montevideo] Login exitoso para usuario ID: 1
+[11-Sep-2025 19:32:52 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 19:32:52 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 19:32:52 America/Montevideo] Intentando login para: martin@martin.com
+[11-Sep-2025 19:32:52 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 19:32:52 America/Montevideo] Identifier: martin@martin.com
+[11-Sep-2025 19:32:52 America/Montevideo] Usuario encontrado: martin123
+[11-Sep-2025 19:32:52 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 19:32:52 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 19:32:52 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[11-Sep-2025 19:32:52 America/Montevideo] Password verify: OK
+[11-Sep-2025 19:32:52 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 19:32:52 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 19:32:52 America/Montevideo] Login exitoso para usuario ID: 1
+[11-Sep-2025 19:32:52 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 19:32:52 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:32:52 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:32:52 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:32:52 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:32:52 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 19:32:52 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:32:52 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:32:52 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:32:52 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:32:52 America/Montevideo] PHP Notice:  session_start(): ps_files_cleanup_dir: opendir(C:\Windows\Temp) failed: No error (0) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\api\helpers\AuthHelper.php on line 15
+[11-Sep-2025 19:33:02 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:33:02 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:33:02 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:33:02 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:57:05 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:57:05 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:57:05 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:57:05 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:57:05 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:57:05 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:57:05 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:57:05 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:57:05 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 19:57:05 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:57:05 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:57:05 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:57:05 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:57:28 America/Montevideo] Login intentado: martin@martin.com / martin
+[11-Sep-2025 19:57:28 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 19:57:28 America/Montevideo] Intentando login para: martin@martin.com
+[11-Sep-2025 19:57:28 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 19:57:28 America/Montevideo] Identifier: martin@martin.com
+[11-Sep-2025 19:57:28 America/Montevideo] Usuario encontrado: martin123
+[11-Sep-2025 19:57:28 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 19:57:28 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 19:57:28 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[11-Sep-2025 19:57:29 America/Montevideo] Password verify: OK
+[11-Sep-2025 19:57:29 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 19:57:29 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 19:57:29 America/Montevideo] Login exitoso para usuario ID: 1
+[11-Sep-2025 19:57:29 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 19:57:29 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 19:57:29 America/Montevideo] Intentando login para: martin@martin.com
+[11-Sep-2025 19:57:29 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 19:57:29 America/Montevideo] Identifier: martin@martin.com
+[11-Sep-2025 19:57:29 America/Montevideo] Usuario encontrado: martin123
+[11-Sep-2025 19:57:29 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 19:57:29 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 19:57:29 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[11-Sep-2025 19:57:29 America/Montevideo] Password verify: OK
+[11-Sep-2025 19:57:29 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 19:57:29 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 19:57:29 America/Montevideo] Login exitoso para usuario ID: 1
+[11-Sep-2025 19:57:29 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 19:57:29 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:57:29 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:57:29 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:57:29 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 19:57:29 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 19:57:29 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 19:57:29 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 19:57:29 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 19:57:29 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:03:29 America/Montevideo] Login intentado: martin@martin.com / martin
+[11-Sep-2025 20:03:29 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 20:03:29 America/Montevideo] Intentando login para: martin@martin.com
+[11-Sep-2025 20:03:29 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 20:03:29 America/Montevideo] Identifier: martin@martin.com
+[11-Sep-2025 20:03:29 America/Montevideo] Usuario encontrado: martin123
+[11-Sep-2025 20:03:29 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 20:03:29 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 20:03:29 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[11-Sep-2025 20:03:30 America/Montevideo] Password verify: OK
+[11-Sep-2025 20:03:30 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 20:03:30 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 20:03:30 America/Montevideo] Login exitoso para usuario ID: 1
+[11-Sep-2025 20:03:30 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 20:03:30 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 20:03:30 America/Montevideo] Intentando login para: martin@martin.com
+[11-Sep-2025 20:03:30 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 20:03:30 America/Montevideo] Identifier: martin@martin.com
+[11-Sep-2025 20:03:30 America/Montevideo] Usuario encontrado: martin123
+[11-Sep-2025 20:03:30 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 20:03:30 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 20:03:30 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[11-Sep-2025 20:03:30 America/Montevideo] Password verify: OK
+[11-Sep-2025 20:03:30 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 20:03:30 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 20:03:30 America/Montevideo] Login exitoso para usuario ID: 1
+[11-Sep-2025 20:03:30 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 20:03:30 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:03:30 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:03:30 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:03:30 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:03:30 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 20:03:30 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:03:30 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:03:30 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:03:30 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:08:56 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:08:56 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:08:56 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:08:56 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:08:56 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:08:56 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:08:56 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:08:56 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:08:56 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 20:08:56 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:08:56 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:08:56 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:08:56 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:12:57 America/Montevideo] Login intentado: martin@martin.com / martin
+[11-Sep-2025 20:12:57 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 20:12:57 America/Montevideo] Intentando login para: martin@martin.com
+[11-Sep-2025 20:12:57 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 20:12:57 America/Montevideo] Identifier: martin@martin.com
+[11-Sep-2025 20:12:57 America/Montevideo] Usuario encontrado: martin123
+[11-Sep-2025 20:12:57 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 20:12:57 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 20:12:57 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[11-Sep-2025 20:12:57 America/Montevideo] Password verify: OK
+[11-Sep-2025 20:12:57 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 20:12:57 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 20:12:57 America/Montevideo] Login exitoso para usuario ID: 1
+[11-Sep-2025 20:12:57 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 20:12:57 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 20:12:57 America/Montevideo] Intentando login para: martin@martin.com
+[11-Sep-2025 20:12:57 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 20:12:57 America/Montevideo] Identifier: martin@martin.com
+[11-Sep-2025 20:12:57 America/Montevideo] Usuario encontrado: martin123
+[11-Sep-2025 20:12:57 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 20:12:57 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 20:12:57 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[11-Sep-2025 20:12:58 America/Montevideo] Password verify: OK
+[11-Sep-2025 20:12:58 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 20:12:58 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 20:12:58 America/Montevideo] Login exitoso para usuario ID: 1
+[11-Sep-2025 20:12:58 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 20:12:58 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:12:58 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:12:58 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:12:58 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:12:58 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 20:12:58 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:12:58 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:12:58 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:12:58 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:13:12 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:13:12 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:13:12 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:13:12 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:13:12 America/Montevideo] Guardando estado partida para usuario: {"id":1,"username":"martin123","email":"martin@martin.com","password":"$2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG","avatar":"\/uploads\/avatars\/avatar_1_1757629982.png","created_at":"2025-08-27 20:34:01","updated_at":"2025-09-11 19:33:02","partidas_jugadas":0,"partidas_ganadas":0,"puntuacion_total":0,"rol":"usuario","estado":"activo","display_name":null,"name_invitado":null}
+[11-Sep-2025 20:13:12 America/Montevideo] Datos recibidos: {"id":0,"ronda":1,"turno":1,"jugadorActivo":1,"jugadorQueTiroDado":1,"restriccion":null,"mano1":["trex","dino1","trex","dino4","dino4","dino2"],"mano2":["dino3","dino3","dino3","dino4","dino5","dino5"],"colocaciones":[]}
+[11-Sep-2025 20:13:12 America/Montevideo] Creando nueva partida minimal
+[11-Sep-2025 20:13:15 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:13:15 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:13:15 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:13:15 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:13:15 America/Montevideo] Guardando estado partida para usuario: {"id":1,"username":"martin123","email":"martin@martin.com","password":"$2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG","avatar":"\/uploads\/avatars\/avatar_1_1757629982.png","created_at":"2025-08-27 20:34:01","updated_at":"2025-09-11 19:33:02","partidas_jugadas":0,"partidas_ganadas":0,"puntuacion_total":0,"rol":"usuario","estado":"activo","display_name":null,"name_invitado":null}
+[11-Sep-2025 20:13:15 America/Montevideo] Datos recibidos: {"id":14,"ronda":1,"turno":1,"jugadorActivo":1,"jugadorQueTiroDado":1,"restriccion":null,"mano1":["trex","dino1","trex","dino4","dino4","dino2"],"mano2":["dino3","dino3","dino3","dino4","dino5","dino5"],"colocaciones":[]}
+[11-Sep-2025 20:13:15 America/Montevideo] Actualizando partida existente con ID: 14
+[11-Sep-2025 20:13:23 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:13:23 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:13:23 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:13:23 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:13:23 America/Montevideo] Guardando estado partida para usuario: {"id":1,"username":"martin123","email":"martin@martin.com","password":"$2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG","avatar":"\/uploads\/avatars\/avatar_1_1757629982.png","created_at":"2025-08-27 20:34:01","updated_at":"2025-09-11 19:33:02","partidas_jugadas":0,"partidas_ganadas":0,"puntuacion_total":0,"rol":"usuario","estado":"activo","display_name":null,"name_invitado":null}
+[11-Sep-2025 20:13:23 America/Montevideo] Datos recibidos: {"id":14,"ronda":1,"turno":1,"jugadorActivo":1,"jugadorQueTiroDado":1,"restriccion":null,"mano1":["trex","dino1","trex","dino4","dino4","dino2"],"mano2":["dino3","dino3","dino3","dino4","dino5","dino5"],"colocaciones":[]}
+[11-Sep-2025 20:13:23 America/Montevideo] Actualizando partida existente con ID: 14
+[11-Sep-2025 20:22:29 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:22:29 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:22:29 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:22:29 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:22:29 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:22:29 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:22:29 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:22:29 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:22:29 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 20:22:29 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:22:29 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:22:29 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:22:29 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:22:32 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:22:32 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:22:32 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:22:32 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:22:32 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:22:32 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:22:32 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:22:32 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:22:37 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:22:37 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:22:37 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:22:37 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:22:37 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 20:22:37 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:22:37 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:22:37 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:22:37 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:22:38 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:22:38 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:22:38 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:22:38 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:22:38 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:22:38 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:22:38 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:22:38 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:22:57 America/Montevideo] Login intentado: martin@martin.com / martin
+[11-Sep-2025 20:22:57 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 20:22:57 America/Montevideo] Intentando login para: martin@martin.com
+[11-Sep-2025 20:22:57 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 20:22:57 America/Montevideo] Identifier: martin@martin.com
+[11-Sep-2025 20:22:57 America/Montevideo] Usuario encontrado: martin123
+[11-Sep-2025 20:22:57 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 20:22:57 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 20:22:57 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[11-Sep-2025 20:22:57 America/Montevideo] Password verify: OK
+[11-Sep-2025 20:22:57 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 20:22:57 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 20:22:57 America/Montevideo] Login exitoso para usuario ID: 1
+[11-Sep-2025 20:22:57 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 20:22:57 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 20:22:57 America/Montevideo] Intentando login para: martin@martin.com
+[11-Sep-2025 20:22:57 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 20:22:57 America/Montevideo] Identifier: martin@martin.com
+[11-Sep-2025 20:22:57 America/Montevideo] Usuario encontrado: martin123
+[11-Sep-2025 20:22:57 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 20:22:57 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 20:22:57 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[11-Sep-2025 20:22:58 America/Montevideo] Password verify: OK
+[11-Sep-2025 20:22:58 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 20:22:58 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 20:22:58 America/Montevideo] Login exitoso para usuario ID: 1
+[11-Sep-2025 20:22:58 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 20:22:58 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:22:58 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:22:58 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:22:58 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:22:58 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 20:22:58 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:22:58 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:22:58 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:22:58 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:23:00 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:23:00 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:23:00 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:23:00 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:23:00 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:23:00 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:23:00 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:23:00 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:24:17 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:24:17 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:24:17 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:24:17 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:24:17 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 20:24:17 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:24:17 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:24:17 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:24:17 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:24:19 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:24:19 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:24:19 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:24:19 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:24:19 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:24:19 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:24:19 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:24:19 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:24:46 America/Montevideo] Login intentado: martin@martin.com / martin
+[11-Sep-2025 20:24:46 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 20:24:46 America/Montevideo] Intentando login para: martin@martin.com
+[11-Sep-2025 20:24:46 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 20:24:46 America/Montevideo] Identifier: martin@martin.com
+[11-Sep-2025 20:24:46 America/Montevideo] Usuario encontrado: martin123
+[11-Sep-2025 20:24:46 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 20:24:46 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 20:24:46 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[11-Sep-2025 20:24:46 America/Montevideo] Password verify: OK
+[11-Sep-2025 20:24:46 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 20:24:46 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 20:24:46 America/Montevideo] Login exitoso para usuario ID: 1
+[11-Sep-2025 20:24:46 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 20:24:46 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 20:24:46 America/Montevideo] Intentando login para: martin@martin.com
+[11-Sep-2025 20:24:46 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 20:24:46 America/Montevideo] Identifier: martin@martin.com
+[11-Sep-2025 20:24:46 America/Montevideo] Usuario encontrado: martin123
+[11-Sep-2025 20:24:46 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 20:24:46 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 20:24:46 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[11-Sep-2025 20:24:46 America/Montevideo] Password verify: OK
+[11-Sep-2025 20:24:46 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 20:24:46 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 20:24:46 America/Montevideo] Login exitoso para usuario ID: 1
+[11-Sep-2025 20:24:46 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 20:24:46 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:24:46 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:24:46 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:24:46 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:24:46 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 20:24:46 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:24:46 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:24:46 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:24:46 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:24:48 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:24:48 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:24:48 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:24:48 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:24:48 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:24:48 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:24:48 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:24:48 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:25:04 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:25:04 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:25:04 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:25:04 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:25:04 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 20:25:04 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:25:04 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:25:04 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:25:04 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:25:04 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:25:04 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:25:04 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:25:04 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:25:04 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 20:25:05 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:25:05 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:25:05 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:25:05 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:25:05 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:25:05 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:25:05 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:25:05 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:25:05 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 20:25:05 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:25:05 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:25:05 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:25:05 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:25:05 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:25:05 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:25:05 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:25:05 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:25:05 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 20:25:05 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:25:05 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:25:05 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:25:05 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:25:05 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:25:05 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:25:05 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:25:05 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:25:05 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 20:25:05 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:25:05 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:25:05 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:25:05 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:25:05 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:25:05 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:25:05 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:25:05 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:25:05 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 20:25:06 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:25:06 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:25:06 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:25:06 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:25:06 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:25:06 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:25:06 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:25:06 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:25:06 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 20:25:06 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:25:06 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:25:06 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:25:06 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:25:06 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:25:06 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:25:06 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:25:06 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:25:06 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 20:25:06 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:25:06 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:25:06 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:25:06 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:27:42 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:27:42 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:27:42 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:27:42 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:27:42 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:27:42 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:27:42 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:27:42 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:27:42 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 20:27:42 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:27:42 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:27:42 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:27:42 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:35:58 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:35:58 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:35:58 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:35:58 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:35:58 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 20:35:58 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:35:58 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:35:58 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:35:58 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:35:59 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:35:59 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:35:59 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:35:59 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:35:59 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 20:35:59 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:35:59 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:35:59 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:35:59 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:36:03 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:36:03 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:36:03 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:36:03 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:36:03 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:36:03 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:36:03 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:36:03 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:36:07 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:36:07 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:36:07 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:36:07 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:36:07 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:36:07 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:36:07 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:36:07 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:36:21 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:36:21 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:36:21 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:36:21 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:36:21 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:36:21 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:36:21 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:36:21 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:36:35 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:36:35 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:36:35 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:36:35 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:36:35 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:36:35 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:36:35 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:36:35 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:39:20 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:39:20 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:39:20 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:39:20 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:39:20 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:39:20 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:39:20 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:39:20 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:44:25 America/Montevideo] Login intentado: martin@martin.com / martin
+[11-Sep-2025 20:44:25 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 20:44:25 America/Montevideo] Intentando login para: martin@martin.com
+[11-Sep-2025 20:44:25 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 20:44:25 America/Montevideo] Identifier: martin@martin.com
+[11-Sep-2025 20:44:25 America/Montevideo] Usuario encontrado: martin123
+[11-Sep-2025 20:44:25 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 20:44:25 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 20:44:25 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[11-Sep-2025 20:44:26 America/Montevideo] Password verify: OK
+[11-Sep-2025 20:44:26 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 20:44:26 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 20:44:26 America/Montevideo] Login exitoso para usuario ID: 1
+[11-Sep-2025 20:44:26 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 20:44:26 America/Montevideo] === INICIO AuthService::login ===
+[11-Sep-2025 20:44:26 America/Montevideo] Intentando login para: martin@martin.com
+[11-Sep-2025 20:44:26 America/Montevideo] === INICIO verifyCredentials ===
+[11-Sep-2025 20:44:26 America/Montevideo] Identifier: martin@martin.com
+[11-Sep-2025 20:44:26 America/Montevideo] Usuario encontrado: martin123
+[11-Sep-2025 20:44:26 America/Montevideo] Estado del usuario: activo
+[11-Sep-2025 20:44:26 America/Montevideo] Usuario activo, verificando contraseña...
+[11-Sep-2025 20:44:26 America/Montevideo] Hash en BD: $2y$12$X0hnFYQmIBE5ByJPMCjdB.r8XMwE0Ru2ihTGPE8C3VKcxtPMVs6YG
+[11-Sep-2025 20:44:26 America/Montevideo] Password verify: OK
+[11-Sep-2025 20:44:26 America/Montevideo] Usuario estado final: activo
+[11-Sep-2025 20:44:26 America/Montevideo] === FIN verifyCredentials (success) ===
+[11-Sep-2025 20:44:26 America/Montevideo] Login exitoso para usuario ID: 1
+[11-Sep-2025 20:44:26 America/Montevideo] === FIN AuthService::login (success) ===
+[11-Sep-2025 20:44:26 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:44:26 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:44:26 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:44:26 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:44:26 America/Montevideo] requireLogin: Usuario 1 validado correctamente
+[11-Sep-2025 20:44:26 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:44:26 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:44:26 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:44:26 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:44:28 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:44:28 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:44:28 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:44:28 America/Montevideo] Usuario 1 está activo
+[11-Sep-2025 20:44:28 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[11-Sep-2025 20:44:28 America/Montevideo] === UserRepository::findById(1) ===
+[11-Sep-2025 20:44:28 America/Montevideo] Usuario ID 1 encontrado: martin123 (estado: activo)
+[11-Sep-2025 20:44:28 America/Montevideo] Usuario 1 está activo

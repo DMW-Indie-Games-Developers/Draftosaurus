@@ -81,7 +81,7 @@ class TableroController
             error_log("Guardando estado partida para usuario: " . json_encode($user));
             error_log("Datos recibidos: " . json_encode($data));
 
-            // Validar que tengamos datos mÃ­nimos
+            // Validar que tengamos datos mínimos
             if (empty($data)) {
                 $this->sendResponse([
                     'success' => false,

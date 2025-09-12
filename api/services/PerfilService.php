@@ -13,7 +13,7 @@ class PerfilService {
         if (!$user) {
             return ['error' => 'Usuario no encontrado'];
         }
-        // Aquí puedes agregar lógica extra si lo necesitas
+        // AquÃ­ puedes agregar lÃ³gica extra si lo necesitas
         return $user;
     }
 
