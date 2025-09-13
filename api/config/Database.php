@@ -20,7 +20,7 @@ class Database {
     /** Configuración de conexión (ajusta a tu entorno local). */
     private string $host = "localhost";   // Host del servidor MySQL
     private string $user = "root";        // Usuario de la base de datos
-    private string $password = "root";  // Contraseña del usuario
+    private string $password = "";  // Contraseña del usuario
     private string $dbname = "draftosaurus"; // Nombre de la base de datos
 
     /**
