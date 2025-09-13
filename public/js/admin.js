@@ -449,13 +449,16 @@ async function loadMessages() {
 
         msgs.forEach(m => {
             const tr = document.createElement("tr");
-            tr.innerHTML = `
+        tr.innerHTML = `
         <td>${m.id}</td>
         <td>${m.nombre || 'N/A'}</td>
         <td>${m.email || 'N/A'}</td>
         <td>${m.asunto || 'N/A'}</td>
         <td>${(m.mensaje || 'N/A').substring(0, 50)}${m.mensaje && m.mensaje.length > 50 ? '...' : ''}</td>
         <td>${m.fecha_envio || 'N/A'}</td>`;
+
+        tr.style.cursor = 'pointer';
+        tr.addEventListener('click', () => openMessageModal(m));
             tbody.appendChild(tr);
         });
 
@@ -465,4 +468,15 @@ async function loadMessages() {
         console.error('Error cargando mensajes:', error);
         alert('Error al cargar mensajes: ' + error.message);
     }
+    // Abrir modal con detalles del mensaje
+function openMessageModal(mensaje) {
+  document.getElementById('msgNombre').textContent = mensaje.nombre || 'N/A';
+  document.getElementById('msgEmail').textContent = mensaje.email || 'N/A';
+  document.getElementById('msgAsunto').textContent = mensaje.asunto || 'N/A';
+  document.getElementById('msgFecha').textContent = mensaje.fecha_envio || 'N/A';
+  document.getElementById('msgMensaje').textContent = mensaje.mensaje || 'N/A';
+
+  const modal = new bootstrap.Modal(document.getElementById('viewMessageModal'));
+  modal.show();
+}
 }
