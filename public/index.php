@@ -57,6 +57,10 @@ require_once __DIR__ . '/../api/services/PerfilService.php';
 require_once __DIR__ . '/../api/repositories/RankingRepository.php';
 require_once __DIR__ . '/../api/services/RankingService.php';
 require_once __DIR__ . '/../api/controllers/RankingController.php';
+require_once __DIR__ . '/../api/controllers/ContactoController.php';
+require_once __DIR__ . '/../api/repositories/ContactoRepository.php';
+require_once __DIR__ . '/../api/services/ContactoService.php';
+require_once __DIR__ . '/../api/models/Contacto.php';
 
 AuthHelper::iniciarSesion();
 
@@ -352,6 +356,43 @@ try {
                         'message' => $e->getMessage()
                     ]);
                 }
+                exit;
+            }
+
+            /* ---------- NUEVO: Endpoint de contacto ---------- */
+            if ($sub === 'models' && isset($uri[2]) && $uri[2] === 'contacto') {
+                $controller = new ContactoController();
+                
+                if ($method === 'POST') {
+                    // POST /api/models/contacto - Crear mensaje
+                    $controller->crear();
+                    exit;
+                }
+                
+                if ($method === 'GET') {
+                    if (isset($uri[3]) && is_numeric($uri[3])) {
+                        // GET /api/models/contacto/{id} - Obtener mensaje específico
+                        $controller->obtener((int)$uri[3]);
+                        exit;
+                    } elseif (isset($uri[3]) && $uri[3] === 'estadisticas') {
+                        // GET /api/models/contacto/estadisticas - Estadísticas
+                        $controller->estadisticas();
+                        exit;
+                    } else {
+                        // GET /api/models/contacto - Listar mensajes
+                        $controller->listar();
+                        exit;
+                    }
+                }
+                
+                if ($method === 'DELETE' && isset($uri[3]) && is_numeric($uri[3])) {
+                    // DELETE /api/models/contacto/{id} - Eliminar mensaje
+                    $controller->eliminar((int)$uri[3]);
+                    exit;
+                }
+                
+                http_response_code(404);
+                echo json_encode(['success' => false, 'message' => 'Endpoint no encontrado']);
                 exit;
             }
             
