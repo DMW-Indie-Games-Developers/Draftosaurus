@@ -10,7 +10,8 @@
  *  - Uso de la extensión mysqli para conectarse a MySQL.
  *  - Manejo básico de errores de conexión y configuración de charset (utf8).
  */
-class Database {
+class Database
+{
     /**
      * Instancia única de la clase (Singleton).
      * - ?Database: puede ser Database o null antes de inicializarse.
@@ -20,7 +21,7 @@ class Database {
     /** Configuración de conexión (ajusta a tu entorno local). */
     private string $host = "localhost";   // Host del servidor MySQL
     private string $user = "root";        // Usuario de la base de datos
-    private string $password = "mysql";  // Contraseña del usuario
+    private string $password = "root";  // Contraseña del usuario
     private string $dbname = "draftosaurus"; // Nombre de la base de datos
 
     /**
@@ -33,7 +34,8 @@ class Database {
      * Aquí se establece la conexión a la base de datos.
      * Si hay un error de conexión, se lanza una Exception con un mensaje claro.
      */
-    private function __construct() {
+    private function __construct()
+    {
         // Crea la conexión usando credenciales definidas arriba
         $this->conn = new mysqli($this->host, $this->user, $this->password, $this->dbname);
 

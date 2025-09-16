@@ -28,37 +28,38 @@
 
     <!-- TABLERO -->
     <div class="tablero">
-      <div class="recinto" id="recinto-1" data-tipo="bosque-semejanza" data-nombre="Bosque de la Semejanza" data-zona="izquierda" data-ambiente="boscoso">
+      <!-- CAMBIO PRINCIPAL: IDs corregidos para coincidir con el JavaScript -->
+      <div class="recinto" id="bosque-semejanza" data-tipo="bosque-semejanza" data-nombre="Bosque de la Semejanza" data-zona="izquierda" data-ambiente="boscoso">
         <div class="recinto-score">0</div>
         <div class="recinto-name"></div>
       </div>
 
-      <div class="recinto" id="recinto-2" data-tipo="trio-frondoso" data-nombre="Trío Frondoso" data-zona="izquierda" data-ambiente="boscoso">
+      <div class="recinto" id="trio-frondoso" data-tipo="trio-frondoso" data-nombre="Trío Frondoso" data-zona="izquierda" data-ambiente="boscoso">
         <div class="recinto-score">0</div>
         <div class="recinto-name"></div>
       </div>
 
-      <div class="recinto" id="recinto-3" data-tipo="pradera-amor" data-nombre="Pradera del Amor" data-zona="izquierda" data-ambiente="rocoso">
+      <div class="recinto" id="pradera-amor" data-tipo="pradera-amor" data-nombre="Pradera del Amor" data-zona="izquierda" data-ambiente="rocoso">
         <div class="recinto-score">0</div>
         <div class="recinto-name"></div>
       </div>
 
-      <div class="recinto" id="recinto-4" data-tipo="rey-selva" data-nombre="Rey de la Selva" data-zona="derecha" data-ambiente="boscoso">
+      <div class="recinto" id="rey-selva" data-tipo="rey-selva" data-nombre="Rey de la Selva" data-zona="derecha" data-ambiente="boscoso">
         <div class="recinto-score">0</div>
         <div class="recinto-name"></div>
       </div>
 
-      <div class="recinto" id="recinto-5" data-tipo="prado-diferencia" data-nombre="El Prado de la Diferencia" data-zona="derecha" data-ambiente="rocoso">
+      <div class="recinto" id="prado-diferencia" data-tipo="prado-diferencia" data-nombre="El Prado de la Diferencia" data-zona="derecha" data-ambiente="rocoso">
         <div class="recinto-score">0</div>
         <div class="recinto-name"></div>
       </div>
 
-      <div class="recinto" id="recinto-6" data-tipo="rio" data-nombre="Río" data-zona="centro" data-ambiente="neutral">
+      <div class="recinto" id="rio" data-tipo="rio" data-nombre="Río" data-zona="centro" data-ambiente="neutral">
         <div class="recinto-score">0</div>
         <div class="recinto-name"></div>
       </div>
 
-      <div class="recinto" id="recinto-7" data-tipo="isla-solitario" data-nombre="Isla Solitaria" data-zona="derecha" data-ambiente="rocoso">
+      <div class="recinto" id="isla-solitario" data-tipo="isla-solitario" data-nombre="Isla Solitaria" data-zona="derecha" data-ambiente="rocoso">
         <div class="recinto-score">0</div>
         <div class="recinto-name"></div>
       </div>
@@ -86,7 +87,7 @@
   </div>
   <button id="btn-guardar" class="btn-flotante">Guardar partida</button>
   <!-- BOTÓN DE REGLAS -->
-  <button class="rules-btn">?</button>
+  <button class="rules-btn" id="btn-ayuda">?</button>
 
   <!-- MODAL DE REGLAS -->
   <div class="rules-modal" id="rules-modal">

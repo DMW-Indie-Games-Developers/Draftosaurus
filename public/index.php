@@ -286,6 +286,37 @@ try {
         case 'api':
             $sub = $uri[1] ?? '';
 
+            /* ---------- RUTAS DIRECTAS DE TABLERO ---------- */
+            if ($sub === 'crearPartida' && $method === 'POST') {
+                $controller = new TableroController();
+                $controller->crearPartida();
+                exit;
+            }
+            
+            if ($sub === 'guardarEstadoPartida' && $method === 'POST') {
+                $controller = new TableroController();
+                $controller->guardarEstadoPartida();
+                exit;
+            }
+            
+            if ($sub === 'cargarPartida' && $method === 'GET') {
+                $controller = new TableroController();
+                $controller->cargarPartida();
+                exit;
+            }
+            
+            if ($sub === 'finalizarPartida' && $method === 'POST') {
+                $controller = new TableroController();
+                $controller->finalizarPartida();
+                exit;
+            }
+            
+            if ($sub === 'obtenerPuntuaciones' && $method === 'POST') {
+                $controller = new TableroController();
+                $controller->obtenerPuntuaciones();
+                exit;
+            }
+
             /* ---------- NUEVO: Upload de avatar ---------- */
             if ($sub === 'upload_avatar.php' && $method === 'POST') {
                 try {
@@ -411,7 +442,7 @@ try {
                 exit;
             }
             
-            // NUEVO: Routing para tablero
+            // ROUTING para tablero (versión anidada)
             if ($sub === 'tablero') {
                 $controller = new TableroController();
                 $action = $uri[2] ?? '';
@@ -438,6 +469,13 @@ try {
                         }
                         break;
                         
+                    case 'finalizarPartida':
+                        if ($method === 'POST') {
+                            $controller->finalizarPartida();
+                            exit;
+                        }
+                        break;
+                        
                     case 'obtenerPartidasEnProgreso':
                         if ($method === 'GET') {
                             $controller->obtenerPartidasEnProgreso();
@@ -448,6 +486,13 @@ try {
                     case 'validarJugada':
                         if ($method === 'POST') {
                             $controller->validarJugada();
+                            exit;
+                        }
+                        break;
+                        
+                    case 'obtenerPuntuaciones':
+                        if ($method === 'POST') {
+                            $controller->obtenerPuntuaciones();
                             exit;
                         }
                         break;

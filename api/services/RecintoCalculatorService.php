@@ -99,7 +99,7 @@ class RecintoCalculatorService
         $detalles = [];
         
         foreach ($cuentaEspecies as $especie => $cantidad) {
-            $parejas = floor($cantidad / 2);
+            $parejas = (int) floor($cantidad / 2);  // ✅ CAST EXPLÍCITO A INT
             $puntosPareja = $parejas * $config['puntos_por_pareja'];
             $puntos += $puntosPareja;
             
@@ -109,7 +109,7 @@ class RecintoCalculatorService
         }
         
         error_log("Pradera Amor: " . implode(', ', $detalles) . " = $puntos puntos total");
-        return $puntos;
+        return $puntos;  // ✅ AHORA DEVUELVE INT GARANTIZADO
     }
 
     /**

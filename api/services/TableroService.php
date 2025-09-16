@@ -108,7 +108,12 @@ class TableroService
             if (!$partida) {
                 throw new Exception('Partida no encontrada');
             }
-            error_log("Partida cargada");
+            error_log("Partida cargada: " . json_encode([
+                'id' => $partida['id'],
+                'jugador1' => $partida['jugador1'],
+                'jugador2' => $partida['jugador2'],
+                'recintos_count' => count($partida['recintos'])
+            ]));
 
             // 2. Validar acceso
             if (!$this->validarAccesoPartida($partidaId, $userId)) {
@@ -116,16 +121,53 @@ class TableroService
             }
             error_log("Acceso validado");
 
-            // 3. Calcular puntuaciones usando el nuevo servicio
+            // 3. Verificar que hay dinosaurios colocados
             $recintos = $partida['recintos'] ?? [];
-            $puntos = $this->puntuacionService->calcularPuntuacionesFinales($recintos);
-            error_log("Puntos calculados: " . json_encode($puntos));
+            $totalDinosaurios = 0;
+            foreach ($recintos as $recintoData) {
+                if (isset($recintoData['dinosaurios'])) {
+                    $totalDinosaurios += count($recintoData['dinosaurios']);
+                }
+            }
+            
+            error_log("Total de dinosaurios en la partida: $totalDinosaurios");
+            
+            if ($totalDinosaurios === 0) {
+                error_log("ADVERTENCIA: No hay dinosaurios colocados en la partida");
+                // Continuar con la finalización pero con puntos 0-0
+            }
 
-            // 4. Determinar ganador
+            // 4. Calcular puntuaciones usando el nuevo servicio
+            error_log("Iniciando cálculo de puntuaciones...");
+            error_log("Estructura de recintos: " . json_encode($recintos, JSON_PRETTY_PRINT));
+            
+            $puntos = $this->puntuacionService->calcularPuntuacionesFinales($recintos);
+            error_log("Puntos calculados por el servicio: " . json_encode($puntos));
+
+            // 5. Validar que los puntos son válidos
+            if (!is_array($puntos) || count($puntos) < 2) {
+                error_log("ERROR: Puntos inválidos, usando valores por defecto");
+                $puntos = [0, 0];
+            }
+
+            // 6. Determinar ganador
             $ganador = $this->puntuacionService->determinarGanador($puntos);
             error_log("Ganador determinado: $ganador");
 
-            // 5. Finalizar partida en BD
+            // 7. Obtener nombres de jugadores
+            $nombreJ1 = $partida['jugador1'] ?? 'Jugador 1';
+            $nombreJ2 = $partida['jugador2'] ?? 'Invitado';
+            
+            $nombreGanador = null;
+            if ($ganador === 1) {
+                $nombreGanador = $nombreJ1;
+            } elseif ($ganador === 2) {
+                $nombreGanador = $nombreJ2;
+            }
+            
+            error_log("Nombre del ganador: " . ($nombreGanador ?? 'Empate'));
+
+            // 8. Finalizar partida en BD
             $stmt = $this->conn->prepare("
                 UPDATE partidas 
                 SET estado_partida = 'finalizada',
@@ -143,41 +185,50 @@ class TableroService
             if (!$resultadoFinalizar) {
                 throw new Exception('Error al finalizar partida en base de datos: ' . $stmt->error);
             }
-            error_log("Partida finalizada en BD con ganador: $ganador");
+            error_log("Partida finalizada en BD con ganador: $ganador, puntos: [{$puntos[0]}, {$puntos[1]}]");
 
-            // 6. Actualizar estadísticas del jugador 1
-            $this->actualizarEstadisticasJugador($userId, $puntos[0], $ganador === 1);
-
-            // 7. Actualizar estadísticas del jugador 2 si es usuario registrado
+            // 9. Obtener información completa del jugador
             $partidaCompleta = $this->repository->obtenerEstadoCompletoPartida($partidaId);
+            
+            // 10. Actualizar estadísticas del jugador 1
+            if ($partidaCompleta['jugador1_id']) {
+                $this->actualizarEstadisticasJugador($partidaCompleta['jugador1_id'], $puntos[0], $ganador === 1);
+                error_log("Estadísticas actualizadas para jugador 1 (ID: {$partidaCompleta['jugador1_id']})");
+            }
+
+            // 11. Actualizar estadísticas del jugador 2 si es usuario registrado
             if ($partidaCompleta['jugador2_id']) {
                 $this->actualizarEstadisticasJugador($partidaCompleta['jugador2_id'], $puntos[1], $ganador === 2);
+                error_log("Estadísticas actualizadas para jugador 2 (ID: {$partidaCompleta['jugador2_id']})");
             }
 
             $this->conn->commit();
             error_log("Transacción completada exitosamente");
             
-            // Preparar respuesta
-            $nombreJ1 = $partida['jugador1'] ?? 'Jugador 1';
-            $nombreJ2 = $partida['jugador2'] ?? 'Invitado';
-
-            $nombreGanador = null;
-            if ($ganador === 1) {
-                $nombreGanador = $nombreJ1;
-            } elseif ($ganador === 2) {
-                $nombreGanador = $nombreJ2;
-            }
-
-            return [
+            // 12. Preparar respuesta completa
+            $respuesta = [
                 'ganador' => $ganador, 
                 'puntos' => $puntos, 
                 'nombreGanador' => $nombreGanador,
-                'partida' => $partida
+                'nombreJ1' => $nombreJ1,
+                'nombreJ2' => $nombreJ2,
+                'partida' => $partida,
+                'totalDinosaurios' => $totalDinosaurios
             ];
+            
+            error_log("Respuesta final: " . json_encode([
+                'ganador' => $respuesta['ganador'],
+                'puntos' => $respuesta['puntos'],
+                'nombreGanador' => $respuesta['nombreGanador'],
+                'totalDinosaurios' => $respuesta['totalDinosaurios']
+            ]));
+            
+            return $respuesta;
 
         } catch (Exception $e) {
             $this->conn->rollback();
             error_log("Error en finalización: " . $e->getMessage());
+            error_log("Stack trace: " . $e->getTraceAsString());
             throw $e;
         }
     }
@@ -258,12 +309,22 @@ class TableroService
         $config = $this->puntuacionService->getConfigRecinto($recintoId);
         if (!$config) return 0;
 
+        // Crear estructura de recintos para el cálculo
         $recintos = [$recintoId => ['dinosaurios' => $dinosaurios]];
-        $dinosPorJugador = $this->agruparDinosauriosPorJugador($dinosaurios);
         
-        $puntosRecinto = $this->puntuacionService->calcularPuntosRecinto($config, $dinosPorJugador, $recintos);
+        // Calcular puntos para cada jugador por separado
+        $totalPuntos = 0;
         
-        return array_sum($puntosRecinto);
+        for ($jugador = 1; $jugador <= 2; $jugador++) {
+            $puntosJugador = $this->puntuacionService->calcularPuntosRecintoEspecifico(
+                $recintoId, 
+                $jugador, 
+                $recintos
+            );
+            $totalPuntos += $puntosJugador;
+        }
+        
+        return $totalPuntos;
     }
 
     private function agruparDinosauriosPorJugador(array $dinosaurios): array

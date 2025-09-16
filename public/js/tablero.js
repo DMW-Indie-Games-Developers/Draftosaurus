@@ -100,7 +100,10 @@ const configRecintos = {
 const LS_KEY = 'draftosaurus_autosave';
 
 async function autoSave() {
-  if (!ID_PARTIDA) return;
+  if (!ID_PARTIDA) {
+    console.warn('⚠️ No hay ID_PARTIDA para guardar');
+    return;
+  }
 
   const colocaciones = [...document.querySelectorAll('.dino-in-recinto')].map(d => ({
     recinto: d.parentElement.id,
@@ -135,7 +138,7 @@ async function autoSave() {
     if (result.success) {
       localStorage.setItem(LS_KEY, JSON.stringify({ ...payload, ts: Date.now() }));
       localStorage.setItem('partidaIdActual', ID_PARTIDA.toString());
-      console.log('✅ Partida guardada automáticamente');
+      console.log('✅ Partida guardada automáticamente - ID:', ID_PARTIDA);
     } else {
       console.error('❌ Error guardando partida:', result.error);
     }
@@ -469,7 +472,8 @@ function validarFinDeJuego() {
   return dinosJ1 >= TOTAL_DINOSAURIOS || dinosJ2 >= TOTAL_DINOSAURIOS;
 }
 
-function determinarGanador() {
+/* ===== FUNCIÓN AUXILIAR PARA DETERMINAR GANADOR LOCAL ===== */
+function determinarGanadorLocal() {
   const puntosJ1 = calcularPuntuacionTotal(1);
   const puntosJ2 = calcularPuntuacionTotal(2);
 
@@ -543,7 +547,10 @@ function actualizarUI() {
   }
 
   renderMano(jugadorActivo);
-  actualizarPuntuaciones();
+  // CALCULAR PUNTUACIONES ANTES DE CUALQUIER MODIFICACIÓN
+  const puntosFinalesJ1 = calcularPuntuacionTotal(1);
+  const puntosFinalesJ2 = calcularPuntuacionTotal(2);
+  console.log(`Puntos finales calculados ANTES de procesar: J1=${puntosFinalesJ1}, J2=${puntosFinalesJ2}`);
   actualizarPuntuacionJugadorActivo();
   actualizarPuntuacionesVisualesRecintos();
   actualizarVisibilidadDinos();
@@ -587,7 +594,9 @@ function actualizarVisibilidadDinos() {
 
 /* ===== INICIALIZAR PARTIDA ===== */
 
-function inicializarPartidaNueva() {
+async function inicializarPartidaNueva() {
+  console.log('🆕 Inicializando partida nueva...');
+
   jugadorActualNombre = localStorage.getItem('jugadorActual') || 'Jugador 1';
   rivalNombre = localStorage.getItem('rival') || 'Jugador 2';
   ronda = 1; turno = 1;
@@ -603,6 +612,30 @@ function inicializarPartidaNueva() {
     puntuacionesJugadores[2][recinto.id] = 0;
   });
 
+  // ✅ CREAR NUEVA PARTIDA EN EL SERVIDOR Y ASIGNAR ID_PARTIDA
+  try {
+    const response = await fetch('/api/tablero/crearPartida', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({
+        jugador1: jugadorActualNombre,
+        jugador2: rivalNombre
+      })
+    });
+
+    const result = await response.json();
+    if (result.success && result.partidaId) {
+      ID_PARTIDA = result.partidaId;
+      localStorage.setItem('partidaIdActual', ID_PARTIDA.toString());
+      console.log('✅ Partida nueva creada con ID:', ID_PARTIDA);
+    } else {
+      console.error('❌ Error creando partida:', result.error);
+    }
+  } catch (error) {
+    console.error('❌ Error creando partida:', error);
+  }
+
   localStorage.removeItem('esPartidaNueva');
   actualizarUI();
 }
@@ -617,7 +650,7 @@ async function cargarPartidaYRestaurar(idPartida) {
   }
 
   try {
-    console.log('📄 Cargando partida ID:', idPartida);
+    console.log('🔄 Cargando partida ID:', idPartida);
 
     const response = await fetch(`/api/tablero/cargarPartida?id=${idPartida}`, {
       credentials: 'include',
@@ -638,6 +671,10 @@ async function cargarPartidaYRestaurar(idPartida) {
 
     const partida = data.data;
 
+    // ✅ ASIGNAR ID_PARTIDA CORRECTAMENTE
+    ID_PARTIDA = partida.id;
+    console.log('✅ ID_PARTIDA asignado:', ID_PARTIDA);
+
     // Establecer nombres
     jugadorActualNombre = partida.jugador1 || 'Jugador 1';
     rivalNombre = partida.jugador2 || partida.name_invitado || 'Invitado';
@@ -645,7 +682,7 @@ async function cargarPartidaYRestaurar(idPartida) {
     localStorage.setItem('rival', rivalNombre);
 
     // Establecer estado del juego
-    ID_PARTIDA = partida.id;
+    console.log('✅ Partida cargada correctamente');
     ronda = partida.ronda || 1;
     turno = partida.turno || 1;
     jugadorActivo = partida.jugadorActivo || 1;
@@ -682,8 +719,9 @@ async function cargarPartidaYRestaurar(idPartida) {
       if (restriccionText) restriccionText.textContent = restricciones[restriccionActual];
     }
 
+    // ✅ GUARDAR ID_PARTIDA EN LOCALSTORAGE
     localStorage.setItem('partidaIdActual', ID_PARTIDA.toString());
-    console.log('✅ Partida cargada correctamente');
+    console.log('✅ Partida cargada correctamente con ID:', ID_PARTIDA);
     actualizarUI();
 
   } catch (error) {
@@ -705,16 +743,18 @@ async function cargarPartidaYRestaurar(idPartida) {
   // 2. Verificar localStorage
   const lsPartidaACargar = localStorage.getItem('partidaACargar');
   const lsPartidaId = localStorage.getItem('partidaId');
+  const lsPartidaIdActual = localStorage.getItem('partidaIdActual');
   const lsAutosave = localStorage.getItem(LS_KEY);
 
   console.log('🔍 Buscando partida a cargar:', {
     queryId,
     lsPartidaACargar,
     lsPartidaId,
+    lsPartidaIdActual,
     lsAutosave: !!lsAutosave
   });
 
-  // 3. Prioridad: query string > partidaACargar > partidaId > autosave
+  // 3. Prioridad: query string > partidaACargar > partidaIdActual > partidaId > autosave
   let partidaIdACargar = null;
 
   if (queryId && !isNaN(queryId)) {
@@ -723,6 +763,9 @@ async function cargarPartidaYRestaurar(idPartida) {
   } else if (lsPartidaACargar && !isNaN(lsPartidaACargar)) {
     partidaIdACargar = parseInt(lsPartidaACargar);
     console.log('💾 Usando partidaACargar:', partidaIdACargar);
+  } else if (lsPartidaIdActual && !isNaN(lsPartidaIdActual)) {
+    partidaIdACargar = parseInt(lsPartidaIdActual);
+    console.log('🆔 Usando partidaIdActual:', partidaIdACargar);
   } else if (lsPartidaId && !isNaN(lsPartidaId)) {
     partidaIdACargar = parseInt(lsPartidaId);
     console.log('💿 Usando partidaId:', partidaIdACargar);
@@ -731,7 +774,7 @@ async function cargarPartidaYRestaurar(idPartida) {
       const data = JSON.parse(lsAutosave);
       if (data.id && !isNaN(data.id)) {
         partidaIdACargar = parseInt(data.id);
-        console.log('📄 Usando ID de autosave:', partidaIdACargar);
+        console.log('🔄 Usando ID de autosave:', partidaIdACargar);
       }
     } catch (e) {
       console.warn('⚠️ Error parsing autosave:', e);
@@ -741,7 +784,7 @@ async function cargarPartidaYRestaurar(idPartida) {
   // 4. Cargar partida o inicializar nueva
   if (partidaIdACargar) {
     await cargarPartidaYRestaurar(partidaIdACargar);
-    // Limpiar flags de carga
+    // Limpiar flags de carga (excepto partidaIdActual)
     localStorage.removeItem('partidaACargar');
     localStorage.removeItem('partidaId');
   } else {
@@ -749,6 +792,210 @@ async function cargarPartidaYRestaurar(idPartida) {
     await inicializarPartidaNueva();
   }
 })();
+
+/* ===== FUNCIÓN DE FINALIZACIÓN CORREGIDA ===== */
+async function mostrarResultadosFinal() {
+  console.log('🏁 Iniciando finalización de partida...');
+  console.log('🆔 ID_PARTIDA actual:', ID_PARTIDA);
+
+  try {
+    // ASEGURAR QUE LAS PUNTUACIONES ESTÉN ACTUALIZADAS
+    actualizarPuntuaciones();
+
+    // PREPARAR DATOS PARA EL SERVIDOR
+    const colocaciones = [...document.querySelectorAll('.dino-in-recinto')].map(d => ({
+      recinto: d.parentElement.id,
+      jugador: parseInt(d.dataset.jugador),
+      especie: d.dataset.especie
+    }));
+
+    console.log('📊 Colocaciones finales:', colocaciones);
+
+    // GUARDAR ESTADO FINAL ANTES DE FINALIZAR
+    if (ID_PARTIDA) {
+      const estadoFinal = {
+        id: ID_PARTIDA,
+        partidaId: ID_PARTIDA,
+        ronda,
+        turno,
+        jugadorActivo,
+        jugadorQueTiroDado,
+        restriccion: restriccionActual,
+        colocadosEnTurno,
+        mano1: manos[1],
+        mano2: manos[2],
+        colocaciones,
+        jugador2: rivalNombre
+      };
+
+      // Guardar estado final
+      try {
+        const saveResponse = await fetch('/api/tablero/guardarEstadoPartida', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(estadoFinal),
+          credentials: 'include'
+        });
+        const saveResult = await saveResponse.json();
+        console.log('✅ Estado final guardado:', saveResult.success);
+      } catch (e) {
+        console.warn('⚠️ Error guardando estado final:', e);
+      }
+    }
+
+    const puntosLocalesJ1 = calcularPuntuacionTotal(1);
+    const puntosLocalesJ2 = calcularPuntuacionTotal(2);
+    console.log(`Puntos calculados localmente: J1=${puntosLocalesJ1}, J2=${puntosLocalesJ2}`);
+
+    let resultado = null;
+
+    if (ID_PARTIDA) {
+      console.log('🎯 Finalizando partida ID:', ID_PARTIDA);
+
+      try {
+        const response = await fetch('/api/tablero/finalizarPartida', {
+          method: 'POST',
+          credentials: 'include',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            partidaId: ID_PARTIDA
+          })
+        });
+
+        const data = await response.json();
+        console.log('📊 Respuesta del servidor:', data);
+
+        if (data.success) {
+          // Usar datos del servidor
+          const puntos = data.puntos || [puntosLocalesJ1, puntosLocalesJ2];
+          const nombreGanador = data.nombreGanador;
+
+          resultado = {
+            puntos: puntos,
+            ganador: nombreGanador,
+            esServidor: true
+          };
+
+          console.log('✅ Usando puntuación del servidor:', resultado);
+        } else {
+          console.error('❌ Error del servidor:', data.error);
+          throw new Error(data.error || 'Error finalizando partida');
+        }
+
+      } catch (error) {
+        console.error('❌ Error finalizando partida:', error);
+        // Fallback: usar cálculo local si falla el servidor
+        resultado = determinarGanadorLocal();
+        resultado.esServidor = false;
+        console.log('⚠️ Usando cálculo local como fallback:', resultado);
+      }
+    } else {
+      // Si no hay ID_PARTIDA, usar cálculo local
+      console.warn('⚠️ No hay ID_PARTIDA, usando cálculo local');
+      resultado = determinarGanadorLocal();
+      resultado.esServidor = false;
+      console.log('🔧 Usando cálculo local (sin ID_PARTIDA):', resultado);
+    }
+
+    // LIMPIAR DATOS DESPUÉS DE FINALIZAR
+    localStorage.removeItem(LS_KEY);
+    localStorage.removeItem('partidaIdActual');
+    localStorage.removeItem('partidaACargar');
+
+    // MOSTRAR MODAL MEJORADO
+    mostrarModalResultados(resultado);
+
+  } catch (error) {
+    console.error('❌ Error al finalizar partida:', error);
+    alert(`¡Juego terminado!\n\n${jugadorActualNombre} vs ${rivalNombre}\n\nGracias por jugar.`);
+    location.href = '/perfil';
+  }
+}
+
+// MODAL DE RESULTADOS MEJORADO
+function mostrarModalResultados(resultado) {
+  const puntosJ1 = resultado.puntos[0] || 0;
+  const puntosJ2 = resultado.puntos[1] || 0;
+
+  let estadoGanador = '';
+  let iconoGanador = '';
+
+  if (resultado.ganador) {
+    estadoGanador = `Ganador: ${resultado.ganador}`;
+    iconoGanador = '🏆';
+    if (resultado.empate === 'menos_trex') {
+      estadoGanador += ` (desempate por menos T-Rex)`;
+    }
+  } else {
+    estadoGanador = `¡Empate perfecto!`;
+    iconoGanador = '🤝';
+  }
+
+  const modalHTML = `
+    <div class="modal fade" id="modalResultados" tabindex="-1" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content draftosaurus-modal text-center">
+          <div class="modal-header">
+            <h4 class="modal-title w-100">${iconoGanador} ¡Partida Finalizada!</h4>
+          </div>
+          <div class="modal-body">
+            <div class="mb-4">
+              <h5>${estadoGanador}</h5>
+            </div>
+            
+            <div class="row text-center mb-4">
+              <div class="col-6">
+                <div class="card bg-dark border-primary">
+                  <div class="card-body">
+                    <h6 class="card-title">${jugadorActualNombre}</h6>
+                    <h3 class="text-primary">${puntosJ1}</h3>
+                    <small class="text-muted">puntos</small>
+                  </div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="card bg-dark border-secondary">
+                  <div class="card-body">
+                    <h6 class="card-title">${rivalNombre}</h6>
+                    <h3 class="text-secondary">${puntosJ2}</h3>
+                    <small class="text-muted">puntos</small>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            ${resultado.esServidor ?
+      '<small class="text-success">Puntuación guardada en tu perfil</small>' :
+      '<small class="text-warning">Puntuación calculada localmente</small>'
+    }
+            
+            <div class="mt-3">
+              <small class="text-muted">Gracias por jugar Draftosaurus</small>
+            </div>
+          </div>
+          <div class="modal-footer justify-content-center">
+            <button type="button" class="btn btn-custom" onclick="irAPerfil()">
+              Ver mi Perfil
+            </button>
+            <button type="button" class="btn btn-outline-light" onclick="nuevaPartida()">
+              Nueva Partida
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+
+  // Eliminar modal existente y crear nuevo
+  const existingModal = document.getElementById('modalResultados');
+  if (existingModal) existingModal.remove();
+
+  document.body.insertAdjacentHTML('beforeend', modalHTML);
+  const modal = new bootstrap.Modal(document.getElementById('modalResultados'), {
+    backdrop: 'static',
+    keyboard: false
+  });
+  modal.show();
+}
 
 /* ===== RESTO DEL FLUJO DE JUEGO ===== */
 
@@ -791,13 +1038,17 @@ document.addEventListener('DOMContentLoaded', () => {
       dadoImg.src = "/img/dado/dado.png";
 
       turno++;
+      // ✅ VALIDACIÓN CRÍTICA: Si turno > 3, nueva ronda
       if (turno > 3) {
         ronda++;
+        turno = 1; // Reset turno
+        
+        // ✅ VALIDACIÓN: Si ronda > 4, finalizar
         if (ronda > TOTAL_RONDAS || validarFinDeJuego()) {
           mostrarResultadosFinal();
           return;
         }
-        turno = 1;
+        
         manos[1] = generarMano();
         manos[2] = generarMano();
       } else {
@@ -816,183 +1067,6 @@ document.addEventListener('DOMContentLoaded', () => {
       jugadorActivo = jugadorActivo === 1 ? 2 : 1;
     }
     actualizarUI();
-  }
-
-  /* ===== FUNCIÓN DE FINALIZACIÓN CORREGIDA ===== */
-  async function mostrarResultadosFinal() {
-    console.log('🏁 Iniciando finalización de partida...');
-
-    try {
-      localStorage.removeItem(LS_KEY);
-      localStorage.removeItem('partidaIdActual');
-      localStorage.removeItem('partidaACargar');
-
-      // ✅ ASEGURAR QUE LAS PUNTUACIONES ESTÉN ACTUALIZADAS
-      actualizarPuntuaciones();
-
-      // ✅ DEBUG: Mostrar estado actual del tablero
-      console.log('📊 Estado actual del tablero:');
-      const estadoRecintos = {};
-      document.querySelectorAll('.recinto').forEach(recinto => {
-        const dinos = [...recinto.querySelectorAll('.dino-in-recinto')].map(d => ({
-          especie: d.dataset.especie,
-          jugador: parseInt(d.dataset.jugador)
-        }));
-        if (dinos.length > 0) {
-          estadoRecintos[recinto.id] = dinos;
-        }
-      });
-      console.log('Estado recintos:', estadoRecintos);
-
-      const puntosLocalesJ1 = calcularPuntuacionTotal(1);
-      const puntosLocalesJ2 = calcularPuntuacionTotal(2);
-      console.log(`Puntos calculados localmente: J1=${puntosLocalesJ1}, J2=${puntosLocalesJ2}`);
-
-      let resultado = null;
-
-      if (ID_PARTIDA) {
-        console.log('🏁 Finalizando partida ID:', ID_PARTIDA);
-
-        try {
-          const response = await fetch('/api/tablero/finalizarPartida', {
-            method: 'POST',
-            credentials: 'include',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              partidaId: ID_PARTIDA,
-              puntosJ1: puntosLocalesJ1,
-              puntosJ2: puntosLocalesJ2
-            })
-          });
-
-          const data = await response.json();
-          console.log('📊 Respuesta del servidor:', data);
-
-          if (data.success) {
-            // ✅ Usar datos del servidor
-            const puntos = data.puntos || [puntosLocalesJ1, puntosLocalesJ2];
-            const nombreGanador = data.nombreGanador;
-
-            resultado = {
-              puntos: puntos,
-              ganador: nombreGanador,
-              esServidor: true
-            };
-
-            console.log('✅ Usando puntuación del servidor:', resultado);
-          } else {
-            console.error('❌ Error del servidor:', data.error);
-            throw new Error(data.error || 'Error finalizando partida');
-          }
-
-        } catch (error) {
-          console.error('❌ Error finalizando partida:', error);
-          // Fallback: usar cálculo local si falla el servidor
-          resultado = determinarGanador();
-          resultado.esServidor = false;
-          console.log('⚠️ Usando cálculo local como fallback:', resultado);
-        }
-      } else {
-        // Si no hay ID_PARTIDA, usar cálculo local
-        resultado = determinarGanador();
-        resultado.esServidor = false;
-        console.log('🔧 Usando cálculo local (sin ID_PARTIDA):', resultado);
-      }
-
-      // ✅ MOSTRAR MODAL MEJORADO EN LUGAR DE ALERT
-      mostrarModalResultados(resultado);
-
-    } catch (error) {
-      console.error('❌ Error al finalizar partida:', error);
-      alert(`¡Juego terminado!\n\n${jugadorActualNombre} vs ${rivalNombre}\n\nGracias por jugar.`);
-      location.href = '/perfil';
-    }
-  }
-
-  /* ===== MODAL DE RESULTADOS MEJORADO ===== */
-  function mostrarModalResultados(resultado) {
-    const puntosJ1 = resultado.puntos[0];
-    const puntosJ2 = resultado.puntos[1];
-
-    let estadoGanador = '';
-    let iconoGanador = '';
-
-    if (resultado.ganador) {
-      estadoGanador = `🏆 Ganador: ${resultado.ganador}`;
-      iconoGanador = '🏆';
-      if (resultado.empate === 'menos_trex') {
-        estadoGanador += ` (desempate por menos T-Rex)`;
-      }
-    } else {
-      estadoGanador = `🤝 ¡Empate perfecto!`;
-      iconoGanador = '🤝';
-    }
-
-    const modalHTML = `
-      <div class="modal fade" id="modalResultados" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-          <div class="modal-content draftosaurus-modal text-center">
-            <div class="modal-header">
-              <h4 class="modal-title w-100">${iconoGanador} ¡Partida Finalizada!</h4>
-            </div>
-            <div class="modal-body">
-              <div class="mb-4">
-                <h5>${estadoGanador}</h5>
-              </div>
-              
-              <div class="row text-center mb-4">
-                <div class="col-6">
-                  <div class="card bg-dark border-primary">
-                    <div class="card-body">
-                      <h6 class="card-title">${jugadorActualNombre}</h6>
-                      <h3 class="text-primary">${puntosJ1}</h3>
-                      <small class="text-muted">puntos</small>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-6">
-                  <div class="card bg-dark border-secondary">
-                    <div class="card-body">
-                      <h6 class="card-title">${rivalNombre}</h6>
-                      <h3 class="text-secondary">${puntosJ2}</h3>
-                      <small class="text-muted">puntos</small>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              ${resultado.esServidor ?
-        '<small class="text-success">✅ Puntuación guardada en tu perfil</small>' :
-        '<small class="text-warning">⚠️ Puntuación calculada localmente</small>'
-      }
-              
-              <div class="mt-3">
-                <small class="text-muted">Gracias por jugar Draftosaurus</small>
-              </div>
-            </div>
-            <div class="modal-footer justify-content-center">
-              <button type="button" class="btn btn-custom" onclick="irAPerfil()">
-                Ver mi Perfil
-              </button>
-              <button type="button" class="btn btn-outline-light" onclick="nuevaPartida()">
-                Nueva Partida
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    `;
-
-    // Eliminar modal existente y crear nuevo
-    const existingModal = document.getElementById('modalResultados');
-    if (existingModal) existingModal.remove();
-
-    document.body.insertAdjacentHTML('beforeend', modalHTML);
-    const modal = new bootstrap.Modal(document.getElementById('modalResultados'), {
-      backdrop: 'static',
-      keyboard: false
-    });
-    modal.show();
   }
 
   /* ===== FUNCIONES GLOBALES PARA EL MODAL ===== */
@@ -1088,32 +1162,27 @@ function mostrarAyudaReglas() {
   `;
 
   alert(mensaje);
-}
 
-/* ===== FUNCIÓN PARA ENVIAR PUNTUACIONES AL SERVIDOR (OPCIONAL) ===== */
+  // CÓDIGO TEMPORAL PARA DEBUG
+  setTimeout(() => {
+    console.log('IDs de recintos disponibles:');
+    document.querySelectorAll('.recinto').forEach(r => console.log(r.id));
 
-async function enviarPuntuacionAlServidor() {
-  if (!ID_PARTIDA) return;
+    // Limpiar dinosaurios existentes
+    document.querySelectorAll('.dino-in-recinto').forEach(d => d.remove());
 
-  try {
-    const response = await fetch('/api/tablero/obtenerPuntuaciones', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        partidaId: ID_PARTIDA,
-        puntosJ1: calcularPuntuacionTotal(1),
-        puntosJ2: calcularPuntuacionTotal(2)
-      }),
-      credentials: 'include'
-    });
-
-    const data = await response.json();
-    if (data.success) {
-      console.log('✅ Puntuaciones enviadas al servidor:', data.puntos);
+    // Intentar colocar dinosaurio en bosque-semejanza
+    const bosque = document.getElementById('bosque-semejanza');
+    if (bosque) {
+      const dino = document.createElement('img');
+      dino.src = '/img/imagen_Tablero/dino1.png';
+      dino.className = 'dino-in-recinto';
+      dino.dataset.especie = 'dino1';
+      dino.dataset.jugador = '1';
+      bosque.appendChild(dino);
+      console.log('Dinosaurio colocado en bosque-semejanza');
     } else {
-      console.error('❌ Error al enviar puntuaciones:', data.error);
+      console.log('No se encontró el recinto bosque-semejanza');
     }
-  } catch (error) {
-    console.error('❌ Error al enviar puntuaciones:', error);
-  }
+  }, 3000);
 }
