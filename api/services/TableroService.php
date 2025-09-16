@@ -2,204 +2,281 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../repositories/TableroRepository.php';
+require_once __DIR__ . '/../services/PuntuacionService.php';
+require_once __DIR__ . '/../config/Database.php';
 
 class TableroService
 {
     private TableroRepository $repository;
+    private PuntuacionService $puntuacionService;
+    private mysqli $conn;
+
+    private const TOTAL_RONDAS = 4;
+    private const ESPECIES = ['dino1', 'dino2', 'dino3', 'dino4', 'dino5', 'trex'];
 
     public function __construct()
     {
         $this->repository = new TableroRepository();
+        $this->puntuacionService = new PuntuacionService();
+        $db = Database::getInstance();
+        $this->conn = $db->getConnection();
     }
 
-    /* ----------  CREAR PARTIDA COMPLETA  ---------- */
-    public function crearPartida(string $jugador1, ?string $jugador2, array $config): int
+    /* ===== CREAR PARTIDA ===== */
+    public function crearPartida(int $jugador1, ?int $jugador2, ?string $name_invitado): int
     {
-        $datosPartida = [
-            'jugador1'          => $jugador1,
-            'jugador2'          => $jugador2 ?? 'CPU',
-            'jugadorActivo'     => 1,
-            'ronda'             => 1,
-            'turno'             => 1,
-            'jugadorQueTiroDado'=> 0,
-            'restriccion'       => null,
-            'mano1'             => $this->generarManoInicial(),
-            'mano2'             => $this->generarManoInicial(),
-            'estado'            => $this->inicializarRecintos()
+        $mano1 = $this->generarManoInicial();
+        $mano2 = $this->generarManoInicial();
+
+        $datos = [
+            'jugador1' => $jugador1,
+            'jugador2' => $jugador2,
+            'name_invitado' => $name_invitado,
+            'jugadorActivo' => rand(1, 2),
+            'jugadorQueTiroDado' => 0,
+            'ronda' => 1,
+            'turno' => 1,
+            'mano1' => $mano1,
+            'mano2' => $mano2,
+            'restriccion' => null,
+            'estado' => $this->inicializarRecintos()
         ];
-
-        return $this->repository->crearPartidaMinimal($datosPartida);
-    }
-
-    /* ----------  CREAR PARTIDA MINIMAL  ---------- */
-    public function crearPartidaMinimal(array $datos): int
-    {
-        $this->validarDatosPartida($datos);
-
-        // Garantizar que los JSON siempre sean arrays
-        foreach (['mano1', 'mano2', 'estado'] as $k) {
-            if (!isset($datos[$k]) || !is_array($datos[$k])) {
-                $datos[$k] = [];
-            }
-        }
 
         return $this->repository->crearPartidaMinimal($datos);
     }
 
-    /* ----------  GUARDAR ESTADO  ---------- */
-    public function guardarEstadoPartida(array $datos): bool
+    /* ===== CARGAR PARTIDA ===== */
+    public function cargarPartida(int $partidaId): ?array
     {
-        $idPartida = (int)($datos['id'] ?? 0);
-        if ($idPartida <= 0) {
-            throw new InvalidArgumentException("ID de partida inválido");
-        }
+        $raw = $this->repository->obtenerEstadoCompletoPartida($partidaId);
+        if (!$raw) return null;
 
-        // Preparar el array que le enviaremos al repository
-        $estadoCompleto = [
-            'recintos'              => $datos['colocaciones'] ?? $datos['recintos'] ?? $datos['estado'] ?? [],
-            'ronda_actual'          => (int)($datos['ronda']          ?? 1),
-            'turno_actual'          => (int)($datos['turno']          ?? 1),
-            'jugador_activo'        => (int)($datos['jugadorActivo']  ?? 1),
-            'jugador_que_tiro_dado' => (int)($datos['jugadorQueTiroDado'] ?? 0),
-            'restriccion_actual'    => $datos['restriccion'] ?? null,
-            'mano_jugador1'         => $datos['mano1'] ?? [],
-            'mano_jugador2'         => $datos['mano2'] ?? [],
-            'ultimo_jugador'        => $datos['ultimo_jugador'] ?? null
-        ];
-
-        return $this->repository->guardarEstadoPartida($idPartida, $estadoCompleto);
-    }
-
-    /* ----------  CARGAR PARTIDA  ---------- */
-    public function cargarPartida(int $idPartida): ?array
-    {
-        if ($idPartida <= 0) return null;
-
-        $partida = $this->repository->obtenerEstadoCompletoPartida($idPartida);
-        if (!$partida) return null;
-
-        // Normalizar las manos para el formato que espera el frontend
-        $mano1 = $this->normalizarMano($partida['mano_jugador1']);
-        $mano2 = $this->normalizarMano($partida['mano_jugador2']);
-
-        // Traducir al formato que espera el frontend
-        return [
-            'id'                    => $partida['id'],
-            'jugador1'              => $partida['jugador1'],
-            'jugador2'              => $partida['jugador2'],
-            'jugadorActivo'         => $partida['jugador_activo'],
-            'ronda'                 => $partida['ronda_actual'],
-            'turno'                 => $partida['turno_actual'],
-            'jugadorQueTiroDado'    => $partida['jugador_que_tiro_dado'],
-            'restriccion'           => $partida['restriccion_actual'],
-            'colocaciones'          => $partida['recintos'],   // nombre frontend
-            'mano1'                 => $mano1,
-            'mano2'                 => $mano2,
-            'ultimo_jugador'        => $partida['ultimo_jugador'],
-            'created_at'            => $partida['created_at'],
-            'updated_at'            => $partida['updated_at']
-        ];
-    }
-
-    /* ----------  OBTENER PARTIDAS EN PROGRESO  ---------- */
-    public function obtenerPartidasEnProgreso(string $jugador): array
-    {
-        return $this->repository->obtenerPartidasEnProgreso($jugador);
-    }
-
-    /* ----------  VALIDAR ACCESO  ---------- */
-    public function validarAccesoPartida(int $idPartida, string $jugador): bool
-    {
-        return $this->repository->validarAccesoPartida($idPartida, $jugador);
-    }
-
-    /* ----------  VALIDAR JUGADA  ---------- */
-    public function validarJugada(array $datos): array
-    {
-        $errors = [];
-
-        if (empty($datos['recinto']))   $errors[] = "Debe seleccionar un recinto";
-        if (empty($datos['dinosaurio']))$errors[] = "Debe seleccionar un dinosaurio";
+        $nombreJ1 = $raw['jugador1'] ?? 'Jugador 1';
+        $nombreJ2 = $raw['jugador2'] ?? $raw['name_invitado'] ?? 'Invitado';
 
         return [
-            'valid'  => empty($errors),
-            'errors' => $errors,
-            'data'   => $datos
+            'id'                     => $raw['id'],
+            'jugador1'               => $nombreJ1,
+            'jugador2'               => $nombreJ2,
+            'name_invitado'          => $raw['name_invitado'],
+            'ronda'                  => $raw['ronda_actual'] ?? 1,
+            'turno'                  => $raw['turno_actual'] ?? 1,
+            'jugadorActivo'          => $raw['jugador_activo'] ?? 1,
+            'jugadorQueTiroDado'     => $raw['jugador_que_tiro_dado'] ?? 0,
+            'restriccion'            => $raw['restriccion_actual'] ?? null,
+            'colocadosEnTurno'       => 0,
+            'mano1'                  => $raw['mano_jugador1'] ?? [],
+            'mano2'                  => $raw['mano_jugador2'] ?? [],
+            'recintos'               => $raw['recintos'] ?? [],
+            'estado_partida'         => $raw['estado_partida'] ?? 'activa',
         ];
     }
 
-    /* ----------  FINALIZAR PARTIDA  ---------- */
-    public function finalizarPartida(int $idPartida, array $resultadoFinal): bool
+    /* ===== GUARDAR ESTADO PARTIDA ===== */
+    public function guardarEstadoPartida(int $partidaId, array $datos): bool
     {
-        return $this->repository->finalizarPartida($idPartida, $resultadoFinal);
+        return $this->repository->guardarEstadoPartida($partidaId, $datos);
     }
 
-    /* -------------------------------------------------------------- */
-    /*  MÉTODOS AUXILIARES PRIVADOS                                   */
-    /* -------------------------------------------------------------- */
-    private function validarDatosPartida(array $datos): void
+    /* ===== OBTENER PARTIDAS EN PROGRESO ===== */
+    public function obtenerPartidasEnProgreso(int $userId): array
     {
-        $required = ['jugador1', 'jugador2', 'jugadorActivo', 'ronda', 'turno'];
-        foreach ($required as $f) {
-            if (!isset($datos[$f])) {
-                throw new InvalidArgumentException("Campo requerido faltante: $f");
+        return $this->repository->obtenerPartidasEnProgreso($userId);
+    }
+
+    /* ===== VALIDAR ACCESO ===== */
+    public function validarAccesoPartida(int $partidaId, int $userId): bool
+    {
+        return $this->repository->validarAccesoPartida($partidaId, $userId);
+    }
+
+    /* ===== ELIMINAR PARTIDA ===== */
+    public function eliminarPartida(int $partidaId): bool
+    {
+        return $this->repository->eliminarPartida($partidaId);
+    }
+
+    /* ===== FINALIZAR PARTIDA SIMPLE ===== */
+    public function finalizarPartidaSimple(int $partidaId, int $userId): array
+    {
+        error_log("Iniciando finalización simple de partida $partidaId para usuario $userId");
+        
+        $this->conn->begin_transaction();
+        try {
+            // 1. Cargar partida
+            $partida = $this->cargarPartida($partidaId);
+            if (!$partida) {
+                throw new Exception('Partida no encontrada');
             }
-        }
+            error_log("Partida cargada");
 
-        if (!in_array($datos['jugadorActivo'], [1, 2], true)) {
-            throw new InvalidArgumentException("jugadorActivo debe ser 1 o 2");
+            // 2. Validar acceso
+            if (!$this->validarAccesoPartida($partidaId, $userId)) {
+                throw new Exception('No tienes permiso para finalizar esta partida');
+            }
+            error_log("Acceso validado");
+
+            // 3. Calcular puntuaciones usando el nuevo servicio
+            $recintos = $partida['recintos'] ?? [];
+            $puntos = $this->puntuacionService->calcularPuntuacionesFinales($recintos);
+            error_log("Puntos calculados: " . json_encode($puntos));
+
+            // 4. Determinar ganador
+            $ganador = $this->puntuacionService->determinarGanador($puntos);
+            error_log("Ganador determinado: $ganador");
+
+            // 5. Finalizar partida en BD
+            $stmt = $this->conn->prepare("
+                UPDATE partidas 
+                SET estado_partida = 'finalizada',
+                    ganador = ?,
+                    puntos_j1 = ?,
+                    puntos_j2 = ?,
+                    fecha_finalizacion = NOW(),
+                    updated_at = NOW()
+                WHERE id = ?
+            ");
+            
+            $stmt->bind_param("iiii", $ganador, $puntos[0], $puntos[1], $partidaId);
+            $resultadoFinalizar = $stmt->execute();
+            
+            if (!$resultadoFinalizar) {
+                throw new Exception('Error al finalizar partida en base de datos: ' . $stmt->error);
+            }
+            error_log("Partida finalizada en BD con ganador: $ganador");
+
+            // 6. Actualizar estadísticas del jugador 1
+            $this->actualizarEstadisticasJugador($userId, $puntos[0], $ganador === 1);
+
+            // 7. Actualizar estadísticas del jugador 2 si es usuario registrado
+            $partidaCompleta = $this->repository->obtenerEstadoCompletoPartida($partidaId);
+            if ($partidaCompleta['jugador2_id']) {
+                $this->actualizarEstadisticasJugador($partidaCompleta['jugador2_id'], $puntos[1], $ganador === 2);
+            }
+
+            $this->conn->commit();
+            error_log("Transacción completada exitosamente");
+            
+            // Preparar respuesta
+            $nombreJ1 = $partida['jugador1'] ?? 'Jugador 1';
+            $nombreJ2 = $partida['jugador2'] ?? 'Invitado';
+
+            $nombreGanador = null;
+            if ($ganador === 1) {
+                $nombreGanador = $nombreJ1;
+            } elseif ($ganador === 2) {
+                $nombreGanador = $nombreJ2;
+            }
+
+            return [
+                'ganador' => $ganador, 
+                'puntos' => $puntos, 
+                'nombreGanador' => $nombreGanador,
+                'partida' => $partida
+            ];
+
+        } catch (Exception $e) {
+            $this->conn->rollback();
+            error_log("Error en finalización: " . $e->getMessage());
+            throw $e;
         }
-        $dado = $datos['jugadorQueTiroDado'] ?? 0;
-        if (!in_array($dado, [0, 1, 2], true)) {
-            throw new InvalidArgumentException("jugadorQueTiroDado debe ser 0, 1 o 2");
+    }
+
+    /* ===== CALCULAR PUNTUACIONES (DELEGACIÓN) ===== */
+    public function calcularPuntuacionesFinales(array $recintos): array
+    {
+        return $this->puntuacionService->calcularPuntuacionesFinales($recintos);
+    }
+
+    public function determinarGanador(array $puntosCalculados): int
+    {
+        return $this->puntuacionService->determinarGanador($puntosCalculados);
+    }
+
+    /* ===== MÉTODOS PRIVADOS ===== */
+    private function inicializarRecintos(): array
+    {
+        $recintos = [];
+        $configRecintos = $this->puntuacionService->getAllConfigRecintos();
+        
+        foreach ($configRecintos as $id => $config) {
+            $recintos[$id] = ['dinosaurios' => []];
         }
+        return $recintos;
     }
 
     private function generarManoInicial(): array
     {
-        return [
-            'dinosaurios'      => [],
-            'cartas_especiales'=> []
-        ];
+        $mano = [];
+        for ($i = 0; $i < 6; $i++) {
+            $mano[] = self::ESPECIES[array_rand(self::ESPECIES)];
+        }
+        return $mano;
     }
 
-    private function inicializarRecintos(): array
+    private function actualizarEstadisticasJugador(int $jugadorId, int $puntos, bool $esGanador): void
     {
-        return [
-            'recinto1' => [],
-            'recinto2' => [],
-            'recinto3' => [],
-            'recinto4' => []
-        ];
+        $stmt = $this->conn->prepare("
+            UPDATE users 
+            SET puntuacion_total = puntuacion_total + ?,
+                partidas_ganadas = partidas_ganadas + ?,
+                partidas_jugadas = partidas_jugadas + 1,
+                updated_at = NOW()
+            WHERE id = ?
+        ");
+        
+        $ganadas = $esGanador ? 1 : 0;
+        $stmt->bind_param("iii", $puntos, $ganadas, $jugadorId);
+        $stmt->execute();
+        
+        error_log("Estadísticas actualizadas para jugador ID: $jugadorId");
     }
 
-    /**
-     * Normaliza el formato de una mano para que sea compatible con el frontend
-     * Si recibe un array simple, lo convierte al formato esperado
-     * Si ya tiene el formato correcto, lo devuelve tal como está
-     */
-    private function normalizarMano(array $mano): array
+    // Métodos adicionales requeridos por el controlador
+    public function getPartida(int $partidaId): ?array
     {
-        // Si la mano ya tiene el formato esperado (con claves 'dinosaurios' y 'cartas_especiales')
-        if (isset($mano['dinosaurios']) || isset($mano['cartas_especiales'])) {
-            return [
-                'dinosaurios'       => $mano['dinosaurios'] ?? [],
-                'cartas_especiales' => $mano['cartas_especiales'] ?? []
-            ];
-        }
+        return $this->cargarPartida($partidaId);
+    }
 
-        // Si es un array simple (formato antiguo), lo convertimos
-        if (is_array($mano) && !empty($mano) && !isset($mano['dinosaurios'])) {
-            return [
-                'dinosaurios'       => $mano,
-                'cartas_especiales' => []
-            ];
-        }
+    public function guardarPartida(int $partidaId, array $datos): bool
+    {
+        return $this->guardarEstadoPartida($partidaId, $datos);
+    }
 
-        // Si está vacío o es null, devolvemos estructura vacía
-        return [
-            'dinosaurios'       => [],
-            'cartas_especiales' => []
-        ];
+    public function validarFinDeJuego(array $partida): bool
+    {
+        return isset($partida['ronda']) && $partida['ronda'] > self::TOTAL_RONDAS;
+    }
+
+    public function validarJugada(array $partida, array $jugada): bool
+    {
+        return true; // Implementar lógica de validación si es necesaria
+    }
+
+    public function calcularPuntuacionRecinto(string $recintoId, array $dinosaurios): int
+    {
+        $config = $this->puntuacionService->getConfigRecinto($recintoId);
+        if (!$config) return 0;
+
+        $recintos = [$recintoId => ['dinosaurios' => $dinosaurios]];
+        $dinosPorJugador = $this->agruparDinosauriosPorJugador($dinosaurios);
+        
+        $puntosRecinto = $this->puntuacionService->calcularPuntosRecinto($config, $dinosPorJugador, $recintos);
+        
+        return array_sum($puntosRecinto);
+    }
+
+    private function agruparDinosauriosPorJugador(array $dinosaurios): array
+    {
+        $dinosPorJugador = [1 => [], 2 => []];
+        
+        foreach ($dinosaurios as $dino) {
+            $jugador = (int)$dino['jugador'];
+            if (isset($dinosPorJugador[$jugador])) {
+                $dinosPorJugador[$jugador][] = $dino['especie'];
+            }
+        }
+        
+        return $dinosPorJugador;
     }
 }

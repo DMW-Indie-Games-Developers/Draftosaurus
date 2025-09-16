@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug - Cálculo de Puntuaciones</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 2rem;
+            border-radius: 0 0 20px 20px;
+            margin-bottom: 2rem;
+        }
+
+        .card {
+            border-radius: 15px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1.5rem;
+            border: none;
+        }
+
+        .card-header {
+            border-radius: 15px 15px 0 0 !important;
+            font-weight: 600;
+        }
+
+        .dino-card {
+            transition: transform 0.3s;
+        }
+
+        .dino-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            border: none;
+            border-radius: 50px;
+            padding: 10px 25px;
+        }
+
+        .debug-section {
+            background-color: #f1f8ff;
+            border-left: 4px solid #2575fc;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .recinto {
+            background-color: #e9ecef;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 10px;
+        }
+
+        .resultado {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #198754;
+        }
+
+        .especie-tag {
+            display: inline-block;
+            padding: 3px 10px;
+            border-radius: 20px;
+            margin: 3px;
+            font-size: 0.85rem;
+            background-color: #dee2e6;
+        }
+
+        .trex {
+            background-color: #ffc107;
+            color: #000;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header text-center">
+            <h1>Debug - Cálculo de Puntuaciones</h1>
+            <p class="lead">Herramienta para diagnosticar problemas con el cálculo de puntuaciones</p>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        Simulación de Recintos
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <label class="form-label">Selecciona un recinto:</label>
+                            <select class="form-select" id="recinto-select">
+                                <option value="bosque-semejanza">Bosque de la Semejanza</option>
+                                <option value="prado-diferencia">Prado de la Diferencia</option>
+                                <option value="pradera-amor">Pradera del Amor</option>
+                                <option value="trio-frondoso">Trío Frondoso</option>
+                                <option value="rey-selva">Rey de la Selva</option>
+                                <option value="isla-solitario">Isla Solitaria</option>
+                                <option value="rio">Río</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Selecciona dinosaurios para el Jugador 1:</label>
+                            <div>
+                                <button class="btn btn-sm btn-outline-primary me-1 mb-1"
+                                    onclick="addDino(1, 'dino1')">Dino 1</button>
+                                <button class="btn btn-sm btn-outline-primary me-1 mb-1"
+                                    onclick="addDino(1, 'dino2')">Dino 2</button>
+                                <button class="btn btn-sm btn-outline-primary me-1 mb-1"
+                                    onclick="addDino(1, 'dino3')">Dino 3</button>
+                                <button class="btn btn-sm btn-outline-primary me-1 mb-1"
+                                    onclick="addDino(1, 'dino4')">Dino 4</button>
+                                <button class="btn btn-sm btn-outline-primary me-1 mb-1"
+                                    onclick="addDino(1, 'dino5')">Dino 5</button>
+                                <button class="btn btn-sm btn-outline-warning me-1 mb-1"
+                                    onclick="addDino(1, 'trex')">T-Rex</button>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label">Selecciona dinosaurios para el Jugador 2:</label>
+                            <div>
+                                <button class="btn btn-sm btn-outline-success me-1 mb-1"
+                                    onclick="addDino(2, 'dino1')">Dino 1</button>
+                                <button class="btn btn-sm btn-outline-success me-1 mb-1"
+                                    onclick="addDino(2, 'dino2')">Dino 2</button>
+                                <button class="btn btn-sm btn-outline-success me-1 mb-1"
+                                    onclick="addDino(2, 'dino3')">Dino 3</button>
+                                <button class="btn btn-sm btn-outline-success me-1 mb-1"
+                                    onclick="addDino(2, 'dino4')">Dino 4</button>
+                                <button class="btn btn-sm btn-outline-success me-1 mb-1"
+                                    onclick="addDino(2, 'dino5')">Dino 5</button>
+                                <button class="btn btn-sm btn-outline-warning me-1 mb-1"
+                                    onclick="addDino(2, 'trex')">T-Rex</button>
+                            </div>
+                        </div>
+
+                        <div class="recinto" id="recinto-display">
+                            <h5>Recinto: <span id="recinto-name">Bosque de la Semejanza</span></h5>
+                            <div class="mb-2">Dinosaurios Jugador 1: <span id="dinos-j1"></span></div>
+                            <div class="mb-2">Dinosaurios Jugador 2: <span id="dinos-j2"></span></div>
+                        </div>
+
+                        <button class="btn btn-primary w-100 mt-3" onclick="calcularPuntos()">Calcular Puntos</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-header bg-info text-white">
+                        Resultados del Cálculo
+                    </div>
+                    <div class="card-body">
+                        <div class="debug-section">
+                            <h6>Puntos calculados:</h6>
+                            <div>Jugador 1: <span id="puntos-j1" class="resultado">0</span></div>
+                            <div>Jugador 2: <span id="puntos-j2" class="resultado">0</span></div>
+                        </div>
+
+                        <div class="debug-section">
+                            <h6>Detalles del cálculo:</h6>
+                            <pre id="detalles-calculo" style="white-space: pre-wrap; font-size: 0.8rem;"></pre>
+                        </div>
+
+                        <div class="debug-section">
+                            <h6>Posibles problemas detectados:</h6>
+                            <ul id="problemas-lista">
+                                <li>Esperando cálculo...</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-header bg-warning text-dark">
+                        Configuración de Prueba
+                    </div>
+                    <div class="card-body">
+                        <button class="btn btn-outline-primary w-100 mb-2" onclick="cargarEjemplo(1)">Cargar Ejemplo 1
+                            (Semejanza)</button>
+                        <button class="btn btn-outline-primary w-100 mb-2" onclick="cargarEjemplo(2)">Cargar Ejemplo 2
+                            (Diferencia)</button>
+                        <button class="btn btn-outline-primary w-100 mb-2" onclick="cargarEjemplo(3)">Cargar Ejemplo 3
+                            (Parejas)</button>
+                        <button class="btn btn-outline-primary w-100" onclick="cargarEjemplo(4)">Cargar Ejemplo 4
+                            (T-Rex)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Datos de ejemplo para probar
+        const ejemplos = {
+            1: {
+                recinto: 'bosque-semejanza',
+                j1: ['dino1', 'dino1', 'dino1'],
+                j2: ['dino2', 'dino2']
+            },
+            2: {
+                recinto: 'prado-diferencia',
+                j1: ['dino1', 'dino2', 'dino3'],
+                j2: ['dino1', 'dino1']
+            },
+            3: {
+                recinto: 'pradera-amor',
+                j1: ['dino1', 'dino1', 'dino2', 'dino2', 'dino3'],
+                j2: ['dino1', 'dino1', 'dino1']
+            },
+            4: {
+                recinto: 'rey-selva',
+                j1: ['trex'],
+                j2: ['dino1']
+            }
+        };
+
+        // Estructura para almacenar los dinosaurios por recinto y jugador
+        let recintosData = {
+            'bosque-semejanza': { j1: [], j2: [] },
+            'prado-diferencia': { j1: [], j2: [] },
+            'pradera-amor': { j1: [], j2: [] },
+            'trio-frondoso': { j1: [], j2: [] },
+            'rey-selva': { j1: [], j2: [] },
+            'isla-solitario': { j1: [], j2: [] },
+            'rio': { j1: [], j2: [] }
+        };
+
+        // Configuración de recintos (igual que en tablero.js)
+        const configRecintos = {
+            'bosque-semejanza': {
+                nombre: 'El Bosque de la Semejanza',
+                tipo: 'semejanza',
+                puntosPorDino: { 1: 1, 2: 3, 3: 6, 4: 10, 5: 15, 6: 21 }
+            },
+            'prado-diferencia': {
+                nombre: 'El Prado de la Diferencia',
+                tipo: 'diferencia',
+                puntosPorDino: { 1: 1, 2: 3, 3: 6, 4: 10, 5: 15, 6: 21 }
+            },
+            'pradera-amor': {
+                nombre: 'La Pradera del Amor',
+                tipo: 'parejas',
+                puntosPorPareja: 5
+            },
+            'trio-frondoso': {
+                nombre: 'El Trío Frondoso',
+                tipo: 'trio',
+                puntosExactos: 7
+            },
+            'rey-selva': {
+                nombre: 'El Rey de la Selva',
+                tipo: 'rey',
+                puntosGanador: 7
+            },
+            'isla-solitario': {
+                nombre: 'La Isla Solitaria',
+                tipo: 'solitario',
+                puntosSolitario: 7
+            },
+            'rio': {
+                nombre: 'El Río',
+                tipo: 'rio',
+                puntosPorDino: 1
+            }
+        };
+
+        // Actualizar visualización del recinto seleccionado
+        document.getElementById('recinto-select').addEventListener('change', function () {
+            document.getElementById('recinto-name').textContent = configRecintos[this.value].nombre;
+            actualizarVistaRecinto();
+        });
+
+        // Añadir dinosaurio a un jugador
+        function addDino(jugador, especie) {
+            const recinto = document.getElementById('recinto-select').value;
+            recintosData[recinto][`j${jugador}`].push(especie);
+            actualizarVistaRecinto();
+        }
+
+        // Actualizar la visualización del recinto
+        function actualizarVistaRecinto() {
+            const recinto = document.getElementById('recinto-select').value;
+            const j1 = recintosData[recinto].j1;
+            const j2 = recintosData[recinto].j2;
+
+            document.getElementById('dinos-j1').innerHTML = j1.map(d =>
+                `<span class="especie-tag ${d === 'trex' ? 'trex' : ''}">${d}</span>`
+            ).join('');
+
+            document.getElementById('dinos-j2').innerHTML = j2.map(d =>
+                `<span class="especie-tag ${d === 'trex' ? 'trex' : ''}">${d}</span>`
+            ).join('');
+        }
+
+        // Calcular puntos para el recinto actual
+        function calcularPuntos() {
+            const recintoId = document.getElementById('recinto-select').value;
+            const config = configRecintos[recintoId];
+            const j1 = recintosData[recintoId].j1;
+            const j2 = recintosData[recintoId].j2;
+
+            let puntosJ1 = 0;
+            let puntosJ2 = 0;
+            let detalles = '';
+
+            // Calcular puntos según el tipo de recinto
+            switch (config.tipo) {
+                case 'semejanza':
+                    puntosJ1 = calcularSemejanza(j1, config);
+                    puntosJ2 = calcularSemejanza(j2, config);
+                    detalles = `Semejanza: J1 tiene ${j1.length} dinosaurios (${new Set(j1).size} especies), J2 tiene ${j2.length} dinosaurios (${new Set(j2).size} especies)`;
+                    break;
+
+                case 'diferencia':
+                    puntosJ1 = calcularDiferencia(j1, config);
+                    puntosJ2 = calcularDiferencia(j2, config);
+                    detalles = `Diferencia: J1 tiene ${new Set(j1).size} especies diferentes, J2 tiene ${new Set(j2).size} especies diferentes`;
+                    break;
+
+                case 'parejas':
+                    puntosJ1 = calcularParejas(j1, config);
+                    puntosJ2 = calcularParejas(j2, config);
+                    detalles = `Parejas: J1 tiene ${contarParejas(j1)} parejas, J2 tiene ${contarParejas(j2)} parejas`;
+                    break;
+
+                case 'trio':
+                    puntosJ1 = j1.length === 3 ? config.puntosExactos : 0;
+                    puntosJ2 = j2.length === 3 ? config.puntosExactos : 0;
+                    detalles = `Trío: J1 tiene ${j1.length} dinosaurios, J2 tiene ${j2.length} dinosaurios`;
+                    break;
+
+                case 'rey':
+                    // Simplificación - en la realidad se necesita comparar entre jugadores
+                    puntosJ1 = j1.length === 1 ? config.puntosGanador : 0;
+                    puntosJ2 = j2.length === 1 ? config.puntosGanador : 0;
+                    detalles = `Rey: J1 tiene ${j1.length} dinosaurio(s), J2 tiene ${j2.length} dinosaurio(s)`;
+                    break;
+
+                case 'solitario':
+                    // Simplificación - en la realidad se necesita ver todo el parque
+                    puntosJ1 = j1.length === 1 ? config.puntosSolitario : 0;
+                    puntosJ2 = j2.length === 1 ? config.puntosSolitario : 0;
+                    detalles = `Solitario: J1 tiene ${j1.length} dinosaurio(s), J2 tiene ${j2.length} dinosaurio(s)`;
+                    break;
+
+                case 'rio':
+                    puntosJ1 = j1.length * config.puntosPorDino;
+                    puntosJ2 = j2.length * config.puntosPorDino;
+                    detalles = `Río: J1 tiene ${j1.length} dinosaurios, J2 tiene ${j2.length} dinosaurios`;
+                    break;
+            }
+
+            // Bonus por T-Rex (excepto en el río)
+            if (config.tipo !== 'rio') {
+                const trexBonusJ1 = j1.includes('trex') ? 1 : 0;
+                const trexBonusJ2 = j2.includes('trex') ? 1 : 0;
+
+                puntosJ1 += trexBonusJ1;
+                puntosJ2 += trexBonusJ2;
+
+                detalles += `\nBonus T-Rex: J1 ${trexBonusJ1 > 0 ? 'SÍ' : 'NO'}, J2 ${trexBonusJ2 > 0 ? 'SÍ' : 'NO'}`;
+            }
+
+            // Actualizar UI
+            document.getElementById('puntos-j1').textContent = puntosJ1;
+            document.getElementById('puntos-j2').textContent = puntosJ2;
+            document.getElementById('detalles-calculo').textContent = detalles;
+
+            // Buscar posibles problemas
+            detectarProblemas(recintoId, j1, j2, puntosJ1, puntosJ2);
+        }
+
+        // Funciones auxiliares para cálculos
+        function calcularSemejanza(dinos, config) {
+            if (dinos.length === 0) return 0;
+
+            // Contar la especie más común
+            const counts = {};
+            dinos.forEach(d => counts[d] = (counts[d] || 0) + 1);
+            const maxCount = Math.max(...Object.values(counts));
+
+            return config.puntosPorDino[maxCount] || 0;
+        }
+
+        function calcularDiferencia(dinos, config) {
+            const especiesUnicas = new Set(dinos).size;
+            return config.puntosPorDino[especiesUnicas] || 0;
+        }
+
+        function calcularParejas(dinos, config) {
+            const counts = {};
+            dinos.forEach(d => counts[d] = (counts[d] || 0) + 1);
+
+            let parejas = 0;
+            Object.values(counts).forEach(c => parejas += Math.floor(c / 2));
+
+            return parejas * config.puntosPorPareja;
+        }
+
+        function contarParejas(dinos) {
+            const counts = {};
+            dinos.forEach(d => counts[d] = (counts[d] || 0) + 1);
+
+            let parejas = 0;
+            Object.values(counts).forEach(c => parejas += Math.floor(c / 2));
+            return parejas;
+        }
+
+        // Detectar posibles problemas en el cálculo
+        function detectarProblemas(recintoId, j1, j2, puntosJ1, puntosJ2) {
+            const problemas = [];
+            const config = configRecintos[recintoId];
+
+            if (config.tipo === 'semejanza') {
+                if (j1.length > 0 && new Set(j1).size > 1 && puntosJ1 > 0) {
+                    problemas.push("¡Posible error! En Bosque de la Semejanza, solo debe puntuar si todos los dinosaurios son de la misma especie");
+                }
+            }
+
+            if (config.tipo === 'rey-selva' && (j1.length > 1 || j2.length > 1)) {
+                problemas.push("¡Atención! En Rey de la Selva solo puede haber un dinosaurio por jugador");
+            }
+
+            if (puntosJ1 === 0 && j1.length > 0) {
+                problemas.push("El Jugador 1 tiene dinosaurios pero no obtiene puntos. ¿Es esto correcto?");
+            }
+
+            if (puntosJ2 === 0 && j2.length > 0) {
+                problemas.push("El Jugador 2 tiene dinosaurios pero no obtiene puntos. ¿Es esto correcto?");
+            }
+
+            if (problemas.length === 0) {
+                problemas.push("No se detectaron problemas evidentes en el cálculo");
+            }
+
+            const lista = document.getElementById('problemas-lista');
+            lista.innerHTML = '';
+            problemas.forEach(p => {
+                const li = document.createElement('li');
+                li.textContent = p;
+                lista.appendChild(li);
+            });
+        }
+
+        // Cargar ejemplos predefinidos
+        function cargarEjemplo(num) {
+            const ejemplo = ejemplos[num];
+            document.getElementById('recinto-select').value = ejemplo.recinto;
+            document.getElementById('recinto-name').textContent = configRecintos[ejemplo.recinto].nombre;
+
+            // Reiniciar datos
+            for (const key in recintosData) {
+                recintosData[key].j1 = [];
+                recintosData[key].j2 = [];
+            }
+
+            // Cargar datos del ejemplo
+            recintosData[ejemplo.recinto].j1 = [...ejemplo.j1];
+            recintosData[ejemplo.recinto].j2 = [...ejemplo.j2];
+
+            actualizarVistaRecinto();
+            calcularPuntos();
+        }
+
+        // Inicializar
+        actualizarVistaRecinto();
+    </script>
+</body>
+
+</html>

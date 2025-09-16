@@ -11,49 +11,54 @@
 <body>
   <div class="main-layout">
 
+    <!--  Sidebar derecha: DADO + TURNOS  -->
     <div class="sidebar right">
       <h4>Dado</h4>
       <img src="img/dado/dado.png" alt="Dado" class="dado-img" id="dado-img">
       <button id="tirar-dado-btn">Tirar Dado</button>
       <p id="restriccion-text">Esperando...</p>
+
+      <!--  TURNOS  -->
+      <div id="jugador-info">
+        <img id="tablero-avatar" src="img/isotipoOficial.png" alt="Avatar" class="rounded-circle" width="50"
+          height="50">
+        <h3 id="turno-text">Ronda 1 - Turno 1 - Jugador 1</h3>
+      </div>
     </div>
 
     <!-- TABLERO -->
     <div class="tablero">
-      <div class="recinto" id="recinto-1" data-tipo="bosque-semenjanza" data-nombre="Bosque de la Semejanza"
-        data-zona="izquierda" data-ambiente="boscoso">
+      <div class="recinto" id="recinto-1" data-tipo="bosque-semejanza" data-nombre="Bosque de la Semejanza" data-zona="izquierda" data-ambiente="boscoso">
         <div class="recinto-score">0</div>
         <div class="recinto-name"></div>
       </div>
 
-      <div class="recinto" id="recinto-2" data-tipo="trio-frondoso" data-nombre="Trío Frondoso" data-zona="izquierda"
-        data-ambiente="boscoso">
+      <div class="recinto" id="recinto-2" data-tipo="trio-frondoso" data-nombre="Trío Frondoso" data-zona="izquierda" data-ambiente="boscoso">
         <div class="recinto-score">0</div>
         <div class="recinto-name"></div>
       </div>
 
-      <div class="recinto" id="recinto-3" data-tipo="pradera-amor" data-nombre="Pradera del Amor" data-zona="izquierda">
+      <div class="recinto" id="recinto-3" data-tipo="pradera-amor" data-nombre="Pradera del Amor" data-zona="izquierda" data-ambiente="rocoso">
         <div class="recinto-score">0</div>
         <div class="recinto-name"></div>
       </div>
 
-      <div class="recinto" id="recinto-4" data-tipo="rey-selva" data-nombre="Rey de la Selva" data-zona="derecha">
+      <div class="recinto" id="recinto-4" data-tipo="rey-selva" data-nombre="Rey de la Selva" data-zona="derecha" data-ambiente="boscoso">
         <div class="recinto-score">0</div>
         <div class="recinto-name"></div>
       </div>
 
-      <div class="recinto" id="recinto-5" data-tipo="prado-diferencia" data-nombre="El Prado de la Diferencia"
-        data-zona="derecha">
+      <div class="recinto" id="recinto-5" data-tipo="prado-diferencia" data-nombre="El Prado de la Diferencia" data-zona="derecha" data-ambiente="rocoso">
         <div class="recinto-score">0</div>
         <div class="recinto-name"></div>
       </div>
 
-      <div class="recinto" id="recinto-6" data-tipo="rio" data-nombre="Río" data-zona="centro">
+      <div class="recinto" id="recinto-6" data-tipo="rio" data-nombre="Río" data-zona="centro" data-ambiente="neutral">
         <div class="recinto-score">0</div>
         <div class="recinto-name"></div>
       </div>
 
-      <div class="recinto" id="recinto-7" data-tipo="isla-solitario" data-nombre="Isla Solitaria" data-zona="derecha">
+      <div class="recinto" id="recinto-7" data-tipo="isla-solitario" data-nombre="Isla Solitaria" data-zona="derecha" data-ambiente="rocoso">
         <div class="recinto-score">0</div>
         <div class="recinto-name"></div>
       </div>
@@ -75,12 +80,7 @@
       <div class="score-bajo-dinos">
         Tus Puntos: <span class="player-score">0</span>
       </div>
-
-      <!-- INFORMACIÓN DE TURNOS AQUÍ -->
-      <div id="jugador-info" style="margin-top: 20px;">
-        <h3 id="turno-text">Ronda 1 - Turno 1 - Jugador 1</h3>
-        <button id="pasar-turno-btn" disabled>Pasar Turno</button>
-      </div>
+      <!--  Se ELIMINÓ el duplicado de jugador-info  -->
     </div>
 
   </div>

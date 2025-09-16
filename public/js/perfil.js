@@ -13,20 +13,32 @@ document.addEventListener('DOMContentLoaded', function () {
   fetch(`/perfil/me`, { credentials: 'include' })
     .then(r => r.json())
     .then(data => {
+      console.log('Datos del perfil recibidos:', data); // Debug
+
       if (data.error) {
         if (el('user-name')) el('user-name').textContent = 'Usuario no encontrado';
         if (el('user-id')) el('user-id').textContent = '';
         return;
       }
 
+      // Información básica del usuario
       if (el('user-name')) el('user-name').textContent = data.username || '';
       if (el('user-id')) el('user-id').textContent = data.id ? `#${data.id}` : '';
 
-      // Mostrar info adicional si existe
+      // ✅ ESTADÍSTICAS DEL JUEGO desde la tabla users
+      if (el('user-puntos')) el('user-puntos').textContent = data.puntuacion_total || 0;
+      if (el('user-jugadas')) el('user-jugadas').textContent = data.partidas_jugadas || 0;
+      if (el('user-ganadas')) el('user-ganadas').textContent = data.partidas_ganadas || 0;
+
+      // Información adicional (email, fechas)
       if (el('user-info')) {
         let infoHtml = `<p><strong>Email:</strong> ${data.email || ''}</p>`;
-        if (data.created_at) infoHtml += `<p><strong>Fecha de creación:</strong> ${new Date(data.created_at).toLocaleDateString()}</p>`;
-        if (data.updated_at) infoHtml += `<p><strong>Última actualización:</strong> ${new Date(data.updated_at).toLocaleDateString()}</p>`;
+        if (data.created_at) {
+          infoHtml += `<p><strong>Fecha de creación:</strong> ${new Date(data.created_at).toLocaleDateString()}</p>`;
+        }
+        if (data.updated_at) {
+          infoHtml += `<p><strong>Última actualización:</strong> ${new Date(data.updated_at).toLocaleDateString()}</p>`;
+        }
         el('user-info').innerHTML = infoHtml;
       }
 
@@ -69,7 +81,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const prev = btn ? btn.textContent : null;
     if (btn) btn.textContent = 'Subiendo...';
 
-    // Cambio importante: usar la ruta correcta
     fetch('/api/upload_avatar.php', {
       method: 'POST',
       body: fd,
@@ -79,7 +90,6 @@ document.addEventListener('DOMContentLoaded', function () {
       .then(res => {
         if (btn) btn.textContent = prev;
         if (res.success && res.avatarUrl) {
-          // Actualizar imagen inmediatamente
           const avatarImg = el('avatar-img');
           if (avatarImg) avatarImg.src = res.avatarUrl;
           alert('Avatar actualizado correctamente');
@@ -94,70 +104,13 @@ document.addEventListener('DOMContentLoaded', function () {
       });
   });
 
-  // Inicializar modales y botones (si existen)
-  const modalCrearEl = el('modalCrearPartida');
-  const modalCrear = modalCrearEl ? new bootstrap.Modal(modalCrearEl) : null;
-  on('crear-partida-btn', 'click', () => { if (modalCrear) modalCrear.show(); });
+  // ✅ CORREGIDO: El botón "Crear Partida" ahora verifica partidas guardadas
+  on('crear-partida-btn', 'click', verificarPartidaAntesDeCrear);
 
-  // NUEVA FUNCIONALIDAD: Ver partidas guardadas
+  // Ver partidas guardadas
   on('btn-mis-partidas', 'click', mostrarPartidasGuardadas);
 
-  on('btnInvitado', 'click', () => {
-    const mEl = el('modalInvitado');
-    if (!mEl) return;
-    const m = new bootstrap.Modal(mEl);
-    m.show();
-    const loginBox = el('loginJugador2');
-    if (loginBox) loginBox.classList.add('d-none');
-  });
-
-  on('btnUsers', 'click', () => {
-    const loginBox = el('loginJugador2');
-    if (loginBox) loginBox.classList.remove('d-none');
-    if (modalCrear) modalCrear.show();
-  });
-
-  // Formulario invitado
-  on('formInvitado', 'submit', function (e) {
-    e.preventDefault();
-    const nameInput = el('guestName');
-    const name = nameInput ? (nameInput.value || '').trim() : '';
-    const finalName = name || 'Invitado';
-    localStorage.setItem('userId2', 'guest_' + Date.now());
-    localStorage.setItem('userName2', finalName);
-    const instMain = modalCrearEl ? bootstrap.Modal.getInstance(modalCrearEl) : null;
-    if (instMain) instMain.hide();
-    const instInv = el('modalInvitado') ? bootstrap.Modal.getInstance(el('modalInvitado')) : null;
-    if (instInv) instInv.hide();
-    window.location.href = '/tablero';
-  });
-
-  // Login jugador 2
-  on('formLoginJugador2', 'submit', function (e) {
-    e.preventDefault();
-    const email = el('emailJugador2') ? el('emailJugador2').value.trim() : '';
-    const password = el('passwordJugador2') ? el('passwordJugador2').value : '';
-
-    fetch('/login', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ identifier: email, password }),
-      credentials: 'include'
-    })
-      .then(r => r.json())
-      .then(res => {
-        if (res.success && res.user && res.user.id) {
-          localStorage.setItem('userId2', res.user.id);
-          localStorage.setItem('userName2', res.user.username);
-          window.location.href = '/tablero';
-        } else {
-          alert('Login fallido: ' + (res.message || 'Credenciales incorrectas'));
-        }
-      })
-      .catch(() => alert('Error de red'));
-  });
-
-  // Botón de cerrar sesión corregido
+  // Botón de cerrar sesión
   on('btn-logout', 'click', async function (e) {
     e.preventDefault();
     try {
@@ -175,28 +128,215 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     } catch (error) {
       console.error('Error:', error);
-      // Limpiar localStorage de todas formas
       localStorage.clear();
       window.location.href = '/home';
     }
   });
 
-  // FUNCIONES PARA MANEJO DE PARTIDAS GUARDADAS
-  function mostrarPartidasGuardadas() {
-    fetch('/misPartidas', {
-      credentials: 'include',
-      headers: {
-        'Content-Type': 'application/json'
-      }
-    })
-      .then(r => r.json())
-      .then(partidas => {
-        if (partidas.success === false) {
-          alert(partidas.message || 'Error al cargar partidas');
-          return;
+  /* ===== FUNCIÓN PRINCIPAL: VERIFICAR PARTIDA ANTES DE CREAR ===== */
+  async function verificarPartidaAntesDeCrear() {
+    console.log('Verificando si hay partidas guardadas...');
+
+    try {
+      // 1. Verificar localStorage primero (más rápido)
+      const partidaActual = localStorage.getItem('partidaIdActual');
+      const autosave = localStorage.getItem('draftosaurus_autosave');
+
+      console.log('LS partidaActual:', partidaActual);
+      console.log('LS autosave:', autosave ? 'Sí' : 'No');
+
+      if (partidaActual || autosave) {
+        let partidaInfo = null;
+
+        if (autosave) {
+          try {
+            const data = JSON.parse(autosave);
+            partidaInfo = {
+              id: data.partidaId || partidaActual,
+              ronda_actual: data.ronda_actual || 1,
+              turno_actual: data.turno_actual || 1,
+              jugador1: localStorage.getItem('jugadorActual') || 'Tú',
+              jugador2: data.jugador2 || localStorage.getItem('rival') || 'Invitado',
+              updated_at: new Date(data.ts || Date.now()).toISOString()
+            };
+          } catch (e) {
+            console.warn('Error parsing autosave:', e);
+            partidaInfo = {
+              id: partidaActual,
+              jugador1: localStorage.getItem('jugadorActual') || 'Tú',
+              jugador2: localStorage.getItem('rival') || 'Invitado',
+              ronda_actual: 1,
+              turno_actual: 1,
+              updated_at: new Date().toISOString()
+            };
+          }
         }
 
-        mostrarModalPartidas(partidas);
+        mostrarModalReanudacion(partidaInfo);
+        return;
+      }
+
+      // 2. Si no hay en localStorage, consultar servidor
+      const response = await fetch('/api/tablero/obtenerPartidasEnProgreso', {
+        credentials: 'include',
+        headers: { 'Content-Type': 'application/json' }
+      });
+
+      const data = await response.json();
+      console.log('Partidas del servidor:', data);
+
+      if (data.success && data.partidas && data.partidas.length > 0) {
+        // Hay partidas en el servidor, mostrar modal de reanudación
+        mostrarModalReanudacion(data.partidas[0]); // Mostrar la más reciente
+      } else {
+        // No hay partidas, ir directo a crear nueva
+        mostrarModalCrearPartida();
+      }
+
+    } catch (error) {
+      console.error('Error verificando partidas:', error);
+      // En caso de error, permitir crear partida nueva
+      mostrarModalCrearPartida();
+    }
+  }
+
+  /* ===== MODAL DE REANUDACIÓN ===== */
+  function mostrarModalReanudacion(partida) {
+    console.log('Mostrando modal de reanudación para:', partida);
+
+    const fechaGuardado = partida.updated_at || new Date().toISOString();
+    const ronda = partida.ronda_actual || partida.ronda || 1;
+    const turno = partida.turno_actual || partida.turno || 1;
+
+    // ✅ MEJORADO: Mostrar el nombre real del invitado
+    const nombreJugador1 = partida.jugador1 || 'Tú';
+    const nombreJugador2 = partida.jugador2 || partida.name_invitado || 'Invitado';
+    const esInvitadoPersonalizado = nombreJugador2 !== 'Invitado' && nombreJugador2 !== 'CPU';
+
+    const modalHTML = `
+      <div class="modal fade" id="modalReanudacion" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content draftosaurus-modal">
+            <div class="modal-header">
+              <h5 class="modal-title">¿Reanudar partida guardada?</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body text-center">
+              <div class="mb-3">
+                <strong>Partida #${partida.id}</strong>
+              </div>
+              <div class="mb-2">
+                <span class="badge ${esInvitadoPersonalizado ? 'bg-info' : 'bg-secondary'}">
+                  ${nombreJugador1} vs ${nombreJugador2}
+                </span>
+                ${esInvitadoPersonalizado ? '<br><small class="text-muted">(Jugador invitado)</small>' : ''}
+              </div>
+              <div class="mb-2">
+                <small class="text-muted">
+                  Guardada: ${new Date(fechaGuardado).toLocaleDateString()} 
+                  ${new Date(fechaGuardado).toLocaleTimeString()}
+                </small>
+              </div>
+              <div class="mb-3">
+                <small>Ronda: ${ronda} | Turno: ${turno}</small>
+              </div>
+              <p>¿Quieres continuar esta partida con <strong>${nombreJugador2}</strong> o crear una nueva?</p>
+            </div>
+            <div class="modal-footer d-flex justify-content-center gap-3">
+              <button class="btn btn-custom" onclick="reanudarPartidaExistente(${partida.id})">
+                Continuar con ${nombreJugador2}
+              </button>
+              <button class="btn btn-outline-light" onclick="crearPartidaNuevaDespuesModal()">
+                Crear nueva partida
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
+
+    // Eliminar modal existente si existe
+    const existingModal = document.getElementById('modalReanudacion');
+    if (existingModal) existingModal.remove();
+
+    // Agregar nuevo modal
+    document.body.insertAdjacentHTML('beforeend', modalHTML);
+    const modal = new bootstrap.Modal(document.getElementById('modalReanudacion'));
+    modal.show();
+
+    // Limpiar modal al cerrarse
+    document.getElementById('modalReanudacion').addEventListener('hidden.bs.modal', function () {
+      this.remove();
+    });
+  }
+
+  /* ===== FUNCIONES GLOBALES PARA LOS BOTONES DEL MODAL ===== */
+  window.reanudarPartidaExistente = function (partidaId) {
+    console.log('Reanudando partida ID:', partidaId);
+
+    // ✅ CORREGIDO: usar partidaACargar para que tablero.js lo reconozca
+    localStorage.setItem('partidaACargar', partidaId.toString());
+
+    const modal = bootstrap.Modal.getInstance(document.getElementById('modalReanudacion'));
+    if (modal) modal.hide();
+
+    window.location.href = '/tablero';
+  };
+
+  window.crearPartidaNuevaDespuesModal = function () {
+    console.log('Creando nueva partida después de cerrar modal');
+
+    // ✅ LIMPIAR todas las referencias a partidas anteriores
+    localStorage.removeItem('partidaIdActual');
+    localStorage.removeItem('partidaACargar');
+    localStorage.removeItem('partidaId');
+    localStorage.removeItem('draftosaurus_autosave');
+    localStorage.removeItem('esPartidaNueva');
+
+    const modal = bootstrap.Modal.getInstance(document.getElementById('modalReanudacion'));
+    if (modal) modal.hide();
+
+    // Pequeño delay para evitar conflictos entre modales
+    setTimeout(() => {
+      mostrarModalCrearPartida();
+    }, 300);
+  };
+
+  /* ===== FUNCIÓN PARA MOSTRAR EL MODAL DE CREAR PARTIDA ===== */
+  function mostrarModalCrearPartida() {
+    const modalCrear = new bootstrap.Modal(document.getElementById('modalCrearPartida'));
+    modalCrear.show();
+  }
+
+  /* ===== FUNCIONES PARA MANEJO DE PARTIDAS GUARDADAS ===== */
+  function mostrarPartidasGuardadas() {
+    console.log('Cargando partidas guardadas...');
+
+    fetch('/misPartidas', {
+      credentials: 'include',
+      headers: { 'Content-Type': 'application/json' }
+    })
+      .then(r => r.text())
+      .then(text => {
+        console.log('Response text:', text);
+        try {
+          const partidas = JSON.parse(text);
+          console.log('Partidas parseadas:', partidas);
+
+          if (partidas.success === false) {
+            alert(partidas.message || 'Error al cargar partidas');
+            return;
+          }
+
+          const partidasArray = Array.isArray(partidas) ? partidas : (partidas.data || []);
+          console.log('Array de partidas a mostrar:', partidasArray);
+
+          mostrarModalPartidas(partidasArray);
+
+        } catch (e) {
+          console.error('Error parsing JSON:', e);
+          alert('Error procesando respuesta del servidor');
+        }
       })
       .catch(err => {
         console.error('Error cargando partidas:', err);
@@ -205,42 +345,36 @@ document.addEventListener('DOMContentLoaded', function () {
   }
 
   function mostrarModalPartidas(partidas) {
-    // Crear modal dinámicamente
+    console.log('Mostrando modal con partidas:', partidas);
+
     const modalHTML = `
-            <div class="modal fade" id="modalPartidas" tabindex="-1">
-                <div class="modal-dialog modal-lg">
-                    <div class="modal-content draftosaurus-modal">
-                        <div class="modal-header draftosaurus-modal">
-                            <h5 class="modal-title">Mis Partidas Guardadas</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                        </div>
-                        <div class="modal-body draftosaurus-modal">
-                            <div id="partidas-list">
-                                ${generarListaPartidas(partidas)}
-                            </div>
-                        </div>
-                        <div class="modal-footer draftosaurus-modal">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        </div>
-                    </div>
-                </div>
+      <div class="modal fade" id="modalPartidas" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content draftosaurus-modal">
+            <div class="modal-header">
+              <h5 class="modal-title">Mis Partidas Guardadas</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-        `;
+            <div class="modal-body">
+              <div id="partidas-list">
+                ${generarListaPartidas(partidas)}
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    `;
 
-    // Eliminar modal anterior si existe
     const existingModal = document.getElementById('modalPartidas');
-    if (existingModal) {
-      existingModal.remove();
-    }
+    if (existingModal) existingModal.remove();
 
-    // Insertar nuevo modal
     document.body.insertAdjacentHTML('beforeend', modalHTML);
-
-    // Mostrar modal
     const modal = new bootstrap.Modal(document.getElementById('modalPartidas'));
     modal.show();
 
-    // Limpiar modal al cerrarse
     document.getElementById('modalPartidas').addEventListener('hidden.bs.modal', function () {
       this.remove();
     });
@@ -251,43 +385,58 @@ document.addEventListener('DOMContentLoaded', function () {
       return '<p class="text-center text-muted">No tienes partidas guardadas</p>';
     }
 
-    return partidas.map(partida => `
-            <div class="card mb-3 bg-dark text-light">
-                <div class="card-body">
-                    <div class="row align-items-center">
-                        <div class="col-md-8">
-                            <h6 class="card-title mb-1">Partida #${partida.id}</h6>
-                            <p class="card-text mb-1">
-                                <small class="text-muted">
-                                    Guardada: ${new Date(partida.fecha_guardado).toLocaleDateString()} 
-                                    ${new Date(partida.fecha_guardado).toLocaleTimeString()}
-                                </small>
-                            </p>
-                            <p class="card-text mb-0">
-                                <small>Ronda: ${partida.ronda_actual || 1} | Turno: ${partida.turno_actual || 1}</small>
-                            </p>
-                        </div>
-                        <div class="col-md-4 text-end">
-                            <button class="btn btn-custom btn-sm me-2" onclick="cargarPartida(${partida.id})">
-                                Cargar
-                            </button>
-                            <button class="btn btn-outline-danger btn-sm" onclick="eliminarPartida(${partida.id})">
-                                Eliminar
-                            </button>
-                        </div>
-                    </div>
-                </div>
+    return partidas.map(partida => {
+      const fechaGuardado = partida.fecha_guardado || partida.updated_at || new Date().toISOString();
+      const ronda = partida.ronda_actual || partida.ronda || 1;
+      const turno = partida.turno_actual || partida.turno || 1;
+      const jugador2 = partida.jugador2 || partida.name_invitado || 'Invitado';
+
+      return `
+        <div class="card mb-3 bg-dark text-light">
+          <div class="card-body">
+            <div class="row align-items-center">
+              <div class="col-md-8">
+                <h6 class="card-title mb-1">Partida #${partida.id}</h6>
+                <p class="card-text mb-1">
+                  <small class="text-muted">
+                    ${partida.jugador1} vs ${jugador2}
+                  </small>
+                </p>
+                <p class="card-text mb-1">
+                  <small class="text-muted">
+                    Guardada: ${new Date(fechaGuardado).toLocaleDateString()} 
+                    ${new Date(fechaGuardado).toLocaleTimeString()}
+                  </small>
+                </p>
+                <p class="card-text mb-0">
+                  <small>Ronda: ${ronda} | Turno: ${turno}</small>
+                </p>
+              </div>
+              <div class="col-md-4 text-end">
+                <button class="btn btn-custom btn-sm me-2" onclick="cargarPartida(${partida.id})">
+                  Cargar
+                </button>
+                <button class="btn btn-outline-danger btn-sm" onclick="eliminarPartida(${partida.id})">
+                  Eliminar
+                </button>
+              </div>
             </div>
-        `).join('');
+          </div>
+        </div>
+      `;
+    }).join('');
   }
 
-  // Funciones globales para los botones
+  /* ===== FUNCIONES GLOBALES PARA MANEJO DE PARTIDAS ===== */
   window.cargarPartida = function (partidaId) {
     if (confirm('¿Cargar esta partida? Se perderá cualquier progreso no guardado.')) {
-      // Guardar ID de partida a cargar
-      localStorage.setItem('partidaACargar', partidaId);
+      console.log('Cargando partida ID:', partidaId);
 
-      // Cerrar modal y redirigir
+      // ✅ CORREGIDO: limpiar localStorage y usar partidaACargar
+      localStorage.removeItem('partidaIdActual');
+      localStorage.removeItem('draftosaurus_autosave');
+      localStorage.setItem('partidaACargar', partidaId.toString());
+
       const modal = bootstrap.Modal.getInstance(document.getElementById('modalPartidas'));
       if (modal) modal.hide();
 
@@ -297,20 +446,27 @@ document.addEventListener('DOMContentLoaded', function () {
 
   window.eliminarPartida = function (partidaId) {
     if (confirm('¿Eliminar esta partida permanentemente?')) {
+      console.log('Eliminando partida ID:', partidaId);
+
       fetch(`/api/tablero/eliminarPartida`, {
         method: 'POST',
         credentials: 'include',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ partidaId: partidaId })
       })
         .then(r => r.json())
         .then(res => {
+          console.log('Respuesta eliminar:', res);
           if (res.success) {
             alert('Partida eliminada correctamente');
-            // Recargar lista de partidas
-            mostrarPartidasGuardadas();
+
+            // ✅ LIMPIAR localStorage si se elimina la partida actual
+            if (localStorage.getItem('partidaIdActual') === partidaId.toString()) {
+              localStorage.removeItem('partidaIdActual');
+              localStorage.removeItem('draftosaurus_autosave');
+            }
+
+            mostrarPartidasGuardadas(); // Recargar lista
           } else {
             alert(res.message || 'Error al eliminar partida');
           }
@@ -321,4 +477,142 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
   };
+
+  /* ===== FUNCIÓN CREAR PARTIDA ===== */
+  window.crearPartida = async function (esInvitado, nombreJugador2) {
+    try {
+      const userResponse = await fetch('/perfil/me', { credentials: 'include' });
+      const userData = await userResponse.json();
+
+      if (!userData.success) {
+        alert('Error al obtener datos del usuario');
+        return;
+      }
+
+      const nombreJugador1 = userData.username;
+
+      const res = await fetch('/api/crearPartida', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          esInvitado,
+          nombre_jugador2: nombreJugador2 || 'Invitado',
+          total_rondas: 4
+        }),
+        credentials: 'include'
+      });
+
+      const data = await res.json();
+
+      if (data.success) {
+        // Cerrar modales si están abiertos
+        const modalCrear = bootstrap.Modal.getInstance(el('modalCrearPartida'));
+        const modalInvitado = bootstrap.Modal.getInstance(el('modalInvitado'));
+        if (modalCrear) modalCrear.hide();
+        if (modalInvitado) modalInvitado.hide();
+
+        // ✅ GUARDAR información necesaria (partidaACargar para carga inmediata)
+        const idPartida = data.id ?? data.partidaId;
+        if (!idPartida) {
+          alert('El servidor no devolvió un ID de partida');
+          return;
+        }
+        localStorage.setItem('partidaACargar', idPartida.toString());
+        localStorage.setItem('jugadorActual', nombreJugador1);
+        localStorage.setItem('rival', nombreJugador2 || 'Invitado');
+        localStorage.setItem('esPartidaNueva', 'true');
+
+        console.log('Partida creada:', {
+          id: data.id,
+          jugador1: nombreJugador1,
+          jugador2: nombreJugador2 || 'Invitado'
+        });
+
+        window.location.href = '/tablero';
+      } else {
+        alert('Error al crear partida: ' + (data.message || 'Desconocido'));
+      }
+    } catch (err) {
+      console.error('Error creando partida:', err);
+      alert('Error de red al crear partida');
+    }
+  };
+
+  /* ===== EVENTOS DE MODALES EXISTENTES ===== */
+  const btnInvitado = document.getElementById('btnInvitado');
+  const btnUsers = document.getElementById('btnUsers');
+  const formInvitado = document.getElementById('formInvitado');
+  const formLoginJugador2 = document.getElementById('formLoginJugador2');
+
+  if (btnInvitado) {
+    btnInvitado.addEventListener('click', () => {
+      const modal = new bootstrap.Modal(document.getElementById('modalInvitado'));
+      modal.show();
+    });
+  }
+
+  if (btnUsers) {
+    btnUsers.addEventListener('click', () => {
+      const loginBox = document.getElementById('loginJugador2');
+      if (loginBox) loginBox.classList.remove('d-none');
+    });
+  }
+
+  if (formInvitado) {
+    formInvitado.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const nameInput = document.getElementById('guestName');
+      const nombre = nameInput ? (nameInput.value || '').trim() || 'Invitado' : 'Invitado';
+      crearPartida(true, nombre);
+    });
+  }
+
+  if (formLoginJugador2) {
+    formLoginJugador2.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const email = document.getElementById('emailJugador2')?.value.trim();
+      const password = document.getElementById('passwordJugador2')?.value;
+
+      if (!email || !password) {
+        alert('Completa email y contraseña');
+        return;
+      }
+
+      try {
+        const res = await fetch('/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ identifier: email, password }),
+          credentials: 'include'
+        });
+
+        const data = await res.json();
+
+        if (data.success && data.user?.username) {
+          crearPartida(false, data.user.username);
+        } else {
+          alert('Login fallido: ' + (data.message || 'Credenciales incorrectas'));
+        }
+      } catch (err) {
+        console.error('Error login jugador 2:', err);
+        alert('Error de red al iniciar sesión');
+      }
+    });
+  }
+
+  /* ===== FUNCIÓN DE VERIFICACIÓN AL CARGAR LA PÁGINA ===== */
+
+  // ✅ VERIFICAR automáticamente si hay partidas al cargar el perfil
+  // Esto es opcional - solo se ejecuta si el usuario no ha interactuado aún
+  setTimeout(() => {
+    const partidaActual = localStorage.getItem('partidaIdActual');
+    const autosave = localStorage.getItem('draftosaurus_autosave');
+
+    if ((partidaActual || autosave) && !document.getElementById('modalReanudacion')) {
+      console.log('Hay partida guardada, pero no se ha mostrado modal aún');
+      // Podrías mostrar una notificación sutil aquí en lugar de modal automático
+      // verificarPartidaAntesDeCrear();
+    }
+  }, 2000);
+
 });

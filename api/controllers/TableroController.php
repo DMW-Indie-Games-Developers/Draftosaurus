@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 require_once __DIR__ . '/../services/TableroService.php';
 require_once __DIR__ . '/../helpers/AuthHelper.php';
+require_once __DIR__ . '/../config/Database.php';
 
 class TableroController
 {
@@ -13,246 +14,390 @@ class TableroController
         $this->service = new TableroService();
     }
 
-    /* ----------  auxiliar  ---------- */
+    /* ===== MÉTODOS AUXILIARES ===== */
+
     private function getInput(): array
     {
         $raw = file_get_contents('php://input');
         $data = json_decode($raw, true);
-        
+
         if (json_last_error() !== JSON_ERROR_NONE) {
             error_log("Error decodificando JSON: " . json_last_error_msg());
             error_log("Datos recibidos: " . $raw);
             return [];
         }
-        
+
         return $data ?? [];
     }
 
     private function sendResponse(array $response, int $httpCode = 200): void
     {
         http_response_code($httpCode);
+        header('Content-Type: application/json');
         echo json_encode($response);
     }
 
-    /* ----------  endpoints  ---------- */
-
+    /* ===== CREAR PARTIDA ===== */
     public function crearPartida(): void
     {
         try {
             $user = AuthHelper::requireActiveUser();
-            $data = $this->getInput();
-            
-            error_log("Creando partida para usuario: " . json_encode($user));
-            error_log("Datos recibidos: " . json_encode($data));
-            
-            $config = [
-                'nombre_jugador1' => $data['nombre_jugador1'] ?? $user['username'],
-                'nombre_jugador2' => $data['nombre_jugador2'] ?? 'Rival',
-                'total_rondas' => $data['total_rondas'] ?? 4,
-            ];
+            $input = $this->getInput();
 
-            $id = $this->service->crearPartida(
-                $user['username'],
-                $data['jugador2'] ?? null,
-                $config
-            );
+            $jugador1_id = $user['id'];
+            $esInvitado = $input['esInvitado'] ?? false;
+            $nombreJugador2 = $input['nombre_jugador2'] ?? 'Invitado';
+
+            $jugador2_id = null;
+            $name_invitado = null;
+
+            if ($esInvitado) {
+                $name_invitado = $nombreJugador2;
+            } else {
+                // Si no es invitado, buscar el ID del usuario por nombre
+                $jugador2_id = $this->buscarUsuarioPorNombre($nombreJugador2);
+                if (!$jugador2_id) {
+                    throw new Exception('Usuario no encontrado: ' . $nombreJugador2);
+                }
+            }
+
+            $partidaId = $this->service->crearPartida($jugador1_id, $jugador2_id, $name_invitado);
 
             $this->sendResponse([
                 'success' => true,
-                'id' => $id,
-                'message' => 'Partida creada exitosamente',
+                'id' => $partidaId,
+                'partidaId' => $partidaId,
+                'message' => 'Partida creada con éxito'
             ]);
-            
-        } catch (Throwable $e) {
-            error_log("Error al crear partida: " . $e->getMessage());
-            $this->sendResponse([
-                'success' => false,
-                'message' => 'Error al crear partida: ' . $e->getMessage(),
-            ], 500);
+
+        } catch (Exception $e) {
+            $this->sendResponse(['success' => false, 'error' => $e->getMessage()], 500);
         }
     }
 
-    public function guardarEstadoPartida(): void
+    /* ===== GUARDAR ESTADO PARTIDA ===== */
+    public function guardarPartida(): void
     {
         try {
             $user = AuthHelper::requireActiveUser();
-            $data = $this->getInput();
+            $datos = $this->getInput();
             
-            error_log("Guardando estado partida para usuario: " . json_encode($user));
-            error_log("Datos recibidos: " . json_encode($data));
+            $partidaId = (int) ($datos['id'] ?? $datos['partidaId'] ?? 0);
 
-            // Validar que tengamos datos mínimos
-            if (empty($data)) {
-                $this->sendResponse([
-                    'success' => false,
-                    'message' => 'No se recibieron datos para guardar'
-                ], 400);
-                return;
+            if (!$partidaId) {
+                throw new Exception('ID de partida no proporcionado');
             }
 
-            $idPartida = (int)($data['id'] ?? 0);
-            
-            // Si es partida nueva (id === 0 o no existe) creamos una nueva
-            if ($idPartida === 0) {
-                error_log("Creando nueva partida minimal");
-                
-                $datosPartida = [
-                    'jugador1' => $user['username'],
-                    'jugador2' => $data['jugador2'] ?? 'CPU',
-                    'jugadorActivo' => (int)($data['jugadorActivo'] ?? 1),
-                    'ronda' => (int)($data['ronda'] ?? 1),
-                    'turno' => (int)($data['turno'] ?? 1),
-                    'jugadorQueTiroDado' => (int)($data['jugadorQueTiroDado'] ?? 0),
-                    'restriccion' => $data['restriccion'] ?? null,
-                    'ultimo_jugador' => $data['ultimo_jugador'] ?? null,
-                    'mano1' => $data['mano1'] ?? [],
-                    'mano2' => $data['mano2'] ?? [],
-                    'estado' => $data['colocaciones'] ?? []
-                ];
-                
-                $nuevoId = $this->service->crearPartidaMinimal($datosPartida);
-                
-                $this->sendResponse([
-                    'success' => true,
-                    'id' => $nuevoId,
-                    'message' => 'Partida guardada exitosamente',
-                ]);
-                
+            if (!$this->service->validarAccesoPartida($partidaId, $user['id'])) {
+                throw new Exception('No tienes permiso para guardar esta partida');
+            }
+
+            // Formatear datos correctamente
+            $estadoFormateado = [
+                'recintos' => $this->formatearColocaciones($datos['colocaciones'] ?? []),
+                'ronda_actual' => $datos['ronda'] ?? 1,
+                'turno_actual' => $datos['turno'] ?? 1,
+                'jugador_activo' => $datos['jugadorActivo'] ?? 1,
+                'jugador_que_tiro_dado' => $datos['jugadorQueTiroDado'] ?? 1,
+                'restriccion_actual' => $datos['restriccion'] ?? null,
+                'mano_jugador1' => $datos['mano1'] ?? [],
+                'mano_jugador2' => $datos['mano2'] ?? [],
+                'ultimo_jugador' => $datos['jugadorActivo'] ?? 1
+            ];
+
+            $ok = $this->service->guardarEstadoPartida($partidaId, $estadoFormateado);
+
+            if ($ok) {
+                $this->sendResponse(['success' => true, 'message' => 'Partida guardada']);
             } else {
-                error_log("Actualizando partida existente con ID: $idPartida");
-                
-                // Validar acceso a la partida
-                if (!$this->service->validarAccesoPartida($idPartida, $user['username'])) {
-                    $this->sendResponse([
-                        'success' => false,
-                        'message' => 'No tienes acceso a esta partida'
-                    ], 403);
-                    return;
-                }
-                
-                $exito = $this->service->guardarEstadoPartida($data);
-                
-                $this->sendResponse([
-                    'success' => $exito,
-                    'message' => $exito ? 'Partida actualizada exitosamente' : 'Error al actualizar partida',
-                ]);
+                throw new Exception('No se pudo guardar la partida');
             }
-            
-        } catch (Throwable $e) {
-            error_log("Error al guardar estado partida: " . $e->getMessage());
-            error_log("Stack trace: " . $e->getTraceAsString());
-            
-            $this->sendResponse([
-                'success' => false,
-                'message' => 'Error al guardar estado: ' . $e->getMessage(),
-            ], 500);
+
+        } catch (Exception $e) {
+            $this->sendResponse(['success' => false, 'error' => $e->getMessage()], 500);
         }
     }
 
+    /* ===== CARGAR PARTIDA ===== */
     public function cargarPartida(): void
     {
         try {
             $user = AuthHelper::requireActiveUser();
-            $idPartida = (int)($_GET['id'] ?? 0);
 
-            error_log("Cargando partida ID: $idPartida para usuario: " . $user['username']);
+            // Intentar BODY primero (POST/PUT)
+            $datos = $this->getInput();
+            $partidaId = (int) ($datos['partidaId'] ?? 0);
 
-            if (!$idPartida) {
-                $this->sendResponse([
-                    'success' => false,
-                    'message' => 'ID de partida requerido'
-                ], 400);
-                return;
+            // Si no hay ID, probar query-string (GET)
+            if (!$partidaId) {
+                $partidaId = (int) ($_GET['id'] ?? 0);
             }
 
-            if (!$this->service->validarAccesoPartida($idPartida, $user['username'])) {
-                $this->sendResponse([
-                    'success' => false,
-                    'message' => 'No tienes acceso a esta partida'
-                ], 403);
-                return;
+            if (!$partidaId) {
+                throw new Exception('ID de partida no proporcionado');
             }
 
-            $partida = $this->service->cargarPartida($idPartida);
-
-            if ($partida) {
-                $this->sendResponse([
-                    'success' => true,
-                    'data' => $partida
-                ]);
-            } else {
-                $this->sendResponse([
-                    'success' => false,
-                    'message' => 'Partida no encontrada'
-                ], 404);
+            // Validar acceso
+            if (!$this->service->validarAccesoPartida($partidaId, $user['id'])) {
+                throw new Exception('No tienes permiso para ver esta partida');
             }
-            
-        } catch (Throwable $e) {
-            error_log("Error al cargar partida: " . $e->getMessage());
+
+            // Cargar partida
+            $partida = $this->service->cargarPartida($partidaId);
+            if (!$partida) {
+                throw new Exception('Partida no encontrada');
+            }
+
+            // Formatear colocaciones para el frontend
+            $colocaciones = $this->extraerColocacionesDeRecintos($partida['recintos'] ?? []);
+            $partida['colocaciones'] = $colocaciones;
+
             $this->sendResponse([
-                'success' => false,
-                'message' => 'Error al cargar partida: ' . $e->getMessage(),
-            ], 500);
+                'success' => true,
+                'data' => $partida
+            ]);
+
+        } catch (Exception $e) {
+            $this->sendResponse(['success' => false, 'message' => $e->getMessage()], 404);
         }
     }
 
+    /* ===== OBTENER PARTIDAS EN PROGRESO ===== */
     public function obtenerPartidasEnProgreso(): void
     {
         try {
             $user = AuthHelper::requireActiveUser();
-            $partidas = $this->service->obtenerPartidasEnProgreso($user['username']);
-
-            error_log("Partidas encontradas para " . $user['username'] . ": " . count($partidas));
-
-            $this->sendResponse([
-                'success' => true,
-                'data' => $partidas
-            ]);
+            $partidas = $this->service->obtenerPartidasEnProgreso($user['id']);
             
-        } catch (Throwable $e) {
-            error_log("Error al obtener partidas: " . $e->getMessage());
-            $this->sendResponse([
-                'success' => false,
-                'message' => 'Error al obtener partidas: ' . $e->getMessage(),
-            ], 500);
+            // Formatear partidas con nombres correctos
+            $partidasFormateadas = [];
+            foreach ($partidas as $partida) {
+                $partidasFormateadas[] = [
+                    'id' => $partida['id'],
+                    'jugador1' => $user['username'], // El usuario actual
+                    'jugador2' => $partida['name_invitado'] ?? 'Invitado',
+                    'name_invitado' => $partida['name_invitado'],
+                    'ronda_actual' => $partida['ronda'],
+                    'turno_actual' => $partida['turno'],
+                    'updated_at' => $partida['updated_at'],
+                    'estado_partida' => $partida['estado_partida']
+                ];
+            }
+            
+            $this->sendResponse(['success' => true, 'partidas' => $partidasFormateadas]);
+        } catch (Exception $e) {
+            $this->sendResponse(['success' => false, 'error' => $e->getMessage()], 500);
         }
     }
 
-    public function obtenerMisPartidas(): void
+    /* ===== FINALIZAR PARTIDA ===== */
+    public function finalizarPartida(): void
     {
         try {
             $user = AuthHelper::requireActiveUser();
-            $lista = $this->service->obtenerPartidasEnProgreso($user['username']);
+            $datos = $this->getInput();
+            $partidaId = (int) ($datos['partidaId'] ?? 0);
+
+            if (!$partidaId) {
+                throw new Exception('ID de partida no proporcionado');
+            }
+
+            if (!$this->service->validarAccesoPartida($partidaId, $user['id'])) {
+                throw new Exception('No tienes permiso para finalizar esta partida');
+            }
+
+            $resultado = $this->service->finalizarPartidaSimple($partidaId, $user['id']);
+
+            // Log para debugging
+            error_log("Partida finalizada: " . json_encode([
+                'partidaId' => $partidaId,
+                'ganador' => $resultado['ganador'],
+                'puntos' => $resultado['puntos'],
+                'nombreGanador' => $resultado['nombreGanador'] ?? null
+            ]));
 
             $this->sendResponse([
                 'success' => true,
-                'data' => $lista
+                'ganador' => $resultado['ganador'],
+                'puntos' => $resultado['puntos'],
+                'nombreGanador' => $resultado['nombreGanador'] ?? null,
+                'message' => 'Partida finalizada correctamente'
             ]);
-            
-        } catch (Throwable $e) {
-            error_log("Error al listar partidas: " . $e->getMessage());
-            $this->sendResponse([
-                'success' => false,
-                'message' => 'Error al listar partidas: ' . $e->getMessage()
-            ], 500);
+
+        } catch (Exception $e) {
+            error_log("Error finalizando partida: " . $e->getMessage());
+            $this->sendResponse(['success' => false, 'error' => $e->getMessage()], 500);
         }
     }
 
-    /* ----------  validar jugada  ---------- */
+    /* ===== ELIMINAR PARTIDA ===== */
+    public function eliminarPartida(): void
+    {
+        try {
+            $user = AuthHelper::requireActiveUser();
+            $datos = $this->getInput();
+            $partidaId = (int) ($datos['partidaId'] ?? 0);
+
+            if (!$partidaId) {
+                throw new Exception('ID de partida no proporcionado');
+            }
+
+            if (!$this->service->validarAccesoPartida($partidaId, $user['id'])) {
+                throw new Exception('No tienes permiso para eliminar esta partida');
+            }
+
+            // Verificar que la partida no esté finalizada
+            $partida = $this->service->cargarPartida($partidaId);
+            if ($partida && isset($partida['estado_partida']) && $partida['estado_partida'] === 'finalizada') {
+                throw new Exception('No se pueden eliminar partidas finalizadas');
+            }
+
+            $ok = $this->service->eliminarPartida($partidaId);
+
+            if ($ok) {
+                $this->sendResponse(['success' => true, 'message' => 'Partida eliminada correctamente']);
+            } else {
+                throw new Exception('No se pudo eliminar la partida');
+            }
+
+        } catch (Exception $e) {
+            $this->sendResponse(['success' => false, 'error' => $e->getMessage()], 500);
+        }
+    }
+
+    /* ===== OBTENER PUNTUACIONES ===== */
+    public function obtenerPuntuaciones(): void
+    {
+        try {
+            $user = AuthHelper::requireActiveUser();
+            $datos = $this->getInput();
+            $partidaId = (int)($datos['partidaId'] ?? 0);
+
+            if (!$partidaId) {
+                throw new Exception('Falta partidaId');
+            }
+
+            if (!$this->service->validarAccesoPartida($partidaId, $user['id'])) {
+                throw new Exception('Sin permisos');
+            }
+
+            $partida = $this->service->cargarPartida($partidaId);
+            if (!$partida) {
+                throw new Exception('Partida no encontrada');
+            }
+
+            $recintos = $partida['recintos'] ?? [];
+            $puntos = $this->service->calcularPuntuacionesFinales($recintos);
+
+            $this->sendResponse([
+                'success' => true,
+                'puntos' => [
+                    'jugador1' => $puntos[0],
+                    'jugador2' => $puntos[1]
+                ]
+            ]);
+
+        } catch (Exception $e) {
+            $this->sendResponse(['success' => false, 'error' => $e->getMessage()], 500);
+        }
+    }
+
+    /* ===== VALIDAR JUGADA ===== */
     public function validarJugada(): void
     {
         try {
-            $data = $this->getInput();
-            $res = $this->service->validarJugada($data);
+            $user = AuthHelper::requireActiveUser();
+            $datos = $this->getInput();
+            $partidaId = (int) ($datos['partidaId'] ?? 0);
 
-            $this->sendResponse($res);
-            
-        } catch (Throwable $e) {
-            error_log("Error al validar jugada: " . $e->getMessage());
+            if (!$this->service->validarAccesoPartida($partidaId, $user['id'])) {
+                throw new Exception('No tienes permiso para jugar en esta partida');
+            }
+
+            $partida = $this->service->cargarPartida($partidaId);
+            if (!$partida) {
+                throw new Exception('La partida no existe');
+            }
+
+            $esValida = $this->service->validarJugada($partida, $datos['jugada'] ?? []);
+
             $this->sendResponse([
-                'success' => false,
-                'message' => 'Error al validar jugada: ' . $e->getMessage(),
-            ], 500);
+                'success' => true,
+                'esValida' => $esValida
+            ]);
+
+        } catch (Exception $e) {
+            $this->sendResponse(['success' => false, 'error' => $e->getMessage()], 500);
         }
+    }
+
+    /* ===== OBTENER REGLAS ===== */
+    public function obtenerReglas(): void
+    {
+        $reglas = [
+            'objetivo' => 'Crear el parque de dinosaurios con más puntos de victoria.',
+            'rondas' => 4,
+            'turnos_por_ronda' => 6,
+            'final_de_partida' => 'La partida termina después de 4 rondas. El jugador con más puntos gana.'
+        ];
+
+        $this->sendResponse([
+            'success' => true,
+            'reglas' => $reglas
+        ]);
+    }
+
+    /* ===== MÉTODOS AUXILIARES PRIVADOS ===== */
+
+    private function buscarUsuarioPorNombre(string $nombre): ?int
+    {
+        try {
+            $db = Database::getInstance()->getConnection();
+            $stmt = $db->prepare("SELECT id FROM users WHERE username = ? AND estado = 'activo'");
+            $stmt->bind_param("s", $nombre);
+            $stmt->execute();
+            $result = $stmt->get_result()->fetch_assoc();
+            return $result ? (int)$result['id'] : null;
+        } catch (Exception $e) {
+            return null;
+        }
+    }
+
+    private function formatearColocaciones(array $colocaciones): array
+    {
+        $recintos = [];
+        
+        foreach ($colocaciones as $colocacion) {
+            $recintoId = $colocacion['recinto'];
+            if (!isset($recintos[$recintoId])) {
+                $recintos[$recintoId] = ['dinosaurios' => []];
+            }
+            
+            $recintos[$recintoId]['dinosaurios'][] = [
+                'especie' => $colocacion['especie'],
+                'jugador' => (int)$colocacion['jugador']
+            ];
+        }
+        
+        return $recintos;
+    }
+
+    private function extraerColocacionesDeRecintos(array $recintos): array
+    {
+        $colocaciones = [];
+        
+        foreach ($recintos as $recintoId => $recintoData) {
+            if (isset($recintoData['dinosaurios'])) {
+                foreach ($recintoData['dinosaurios'] as $dino) {
+                    $colocaciones[] = [
+                        'recinto' => $recintoId,
+                        'especie' => $dino['especie'],
+                        'jugador' => (int)$dino['jugador']
+                    ];
+                }
+            }
+        }
+        
+        return $colocaciones;
     }
 }
