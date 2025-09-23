@@ -21,14 +21,25 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
-      // Información básica del usuario
-      if (el('user-name')) el('user-name').textContent = data.username || '';
+      // Información básica del usuario - mostrar nickname si existe, si no username
+      const displayName = data.nickname || data.username || 'Usuario';
+      if (el('user-name')) {
+        el('user-name').textContent = displayName;
+        el('user-name').setAttribute('data-username', data.username || '');
+        el('user-name').setAttribute('data-nickname', data.nickname || '');
+      }
       if (el('user-id')) el('user-id').textContent = data.id ? `#${data.id}` : '';
 
       // ✅ ESTADÍSTICAS DEL JUEGO desde la tabla users
       if (el('user-puntos')) el('user-puntos').textContent = data.puntuacion_total || 0;
       if (el('user-jugadas')) el('user-jugadas').textContent = data.partidas_jugadas || 0;
       if (el('user-ganadas')) el('user-ganadas').textContent = data.partidas_ganadas || 0;
+
+      // Calcular ratio de victorias
+      const jugadas = data.partidas_jugadas || 0;
+      const ganadas = data.partidas_ganadas || 0;
+      const ratio = jugadas > 0 ? Math.round((ganadas / jugadas) * 100) : 0;
+      if (el('user-ratio')) el('user-ratio').textContent = ratio + '%';
 
       // Información adicional (email, fechas)
       if (el('user-info')) {
@@ -45,6 +56,9 @@ document.addEventListener('DOMContentLoaded', function () {
       // Avatar
       const avatarImg = el('avatar-img');
       if (avatarImg) avatarImg.src = data.avatar || 'img/isotipoOficial.png';
+
+      // Cargar datos de ranking
+      cargarRankingData();
     })
     .catch(err => {
       console.error('Error cargando perfil:', err);
@@ -107,8 +121,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // ✅ CORREGIDO: El botón "Crear Partida" ahora verifica partidas guardadas
   on('crear-partida-btn', 'click', verificarPartidaAntesDeCrear);
 
-  // Ver partidas guardadas
-  on('btn-mis-partidas', 'click', mostrarPartidasGuardadas);
+  // (Botón de partidas guardadas removido)
 
   // Botón de cerrar sesión
   on('btn-logout', 'click', async function (e) {
@@ -579,7 +592,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       try {
-        const res = await fetch('/login', {
+        const res = await fetch('/verify-user', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ identifier: email, password }),
@@ -588,8 +601,10 @@ document.addEventListener('DOMContentLoaded', function () {
 
         const data = await res.json();
 
-        if (data.success && data.user?.username) {
-          crearPartida(false, data.user.username);
+        if (data.success && data.user) {
+          // Usar display_name (nickname si existe, sino username)
+          const displayName = data.user.display_name || data.user.username;
+          crearPartida(false, displayName);
         } else {
           alert('Login fallido: ' + (data.message || 'Credenciales incorrectas'));
         }
@@ -598,6 +613,195 @@ document.addEventListener('DOMContentLoaded', function () {
         alert('Error de red al iniciar sesión');
       }
     });
+  }
+
+  /* ===== EDICIÓN DE NICKNAME CON DOBLE CLICK ===== */
+
+  // Doble click para editar nombre principal
+  on('user-name', 'dblclick', function() {
+    const displaySection = el('user-name-display');
+    const editSection = el('user-name-edit');
+    const userName = el('user-name');
+
+    if (displaySection && editSection && userName) {
+      displaySection.classList.add('d-none');
+      editSection.classList.remove('d-none');
+
+      const input = el('nickname-input');
+      if (input) {
+        // Mostrar el nickname actual (si existe) para editar
+        const currentNickname = userName.getAttribute('data-nickname') || '';
+        input.value = currentNickname;
+        input.focus();
+        input.select(); // Seleccionar todo el texto
+      }
+    }
+  });
+
+  // Botón cancelar edición
+  on('cancel-nickname-btn', 'click', function() {
+    const displaySection = el('user-name-display');
+    const editSection = el('user-name-edit');
+
+    if (displaySection && editSection) {
+      displaySection.classList.remove('d-none');
+      editSection.classList.add('d-none');
+    }
+  });
+
+  // Botón guardar nickname
+  on('save-nickname-btn', 'click', async function() {
+    const input = el('nickname-input');
+    const displaySection = el('user-name-display');
+    const editSection = el('user-name-edit');
+    const userName = el('user-name');
+    const saveBtn = el('save-nickname-btn');
+
+    if (!input || !displaySection || !editSection || !userName || !saveBtn) {
+      return;
+    }
+
+    const newNickname = input.value.trim();
+    const usernameData = userName.getAttribute('data-username') || '';
+
+    // Validación del lado del cliente
+    if (newNickname.length > 50) {
+      alert('El nickname no puede tener más de 50 caracteres');
+      return;
+    }
+
+    if (newNickname !== '' && newNickname.length < 2) {
+      alert('El nickname debe tener al menos 2 caracteres');
+      return;
+    }
+
+    // Validar que el nickname no sea igual al username
+    if (newNickname !== '' && newNickname === usernameData) {
+      alert('El nickname no puede ser igual a tu nombre de usuario');
+      return;
+    }
+
+    // Deshabilitar botón mientras se procesa
+    const originalText = saveBtn.textContent;
+    saveBtn.textContent = 'Guardando...';
+    saveBtn.disabled = true;
+
+    try {
+      const response = await fetch('/perfil/nickname', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        credentials: 'include',
+        body: JSON.stringify({ nickname: newNickname })
+      });
+
+      const data = await response.json();
+
+      if (data.success) {
+        // Actualizar los atributos de datos
+        const usernameData = userName.getAttribute('data-username') || '';
+        userName.setAttribute('data-nickname', newNickname);
+
+        // Mostrar nickname si existe, si no mostrar username
+        const displayName = newNickname || usernameData || 'Usuario';
+        userName.textContent = displayName;
+
+        // Ocultar sección de edición y mostrar display
+        displaySection.classList.remove('d-none');
+        editSection.classList.add('d-none');
+
+        alert('Nickname actualizado correctamente');
+      } else {
+        alert(data.message || 'Error al actualizar nickname');
+      }
+    } catch (error) {
+      console.error('Error al actualizar nickname:', error);
+      alert('Error de conexión al actualizar nickname');
+    } finally {
+      // Restaurar botón
+      saveBtn.textContent = originalText;
+      saveBtn.disabled = false;
+    }
+  });
+
+  // Permitir guardar con Enter
+  on('nickname-input', 'keypress', function(e) {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      const saveBtn = el('save-nickname-btn');
+      if (saveBtn) saveBtn.click();
+    }
+  });
+
+  /* ===== FUNCIONES DE RANKING ===== */
+
+  // Cargar datos de ranking del usuario
+  async function cargarRankingData() {
+    try {
+      // Cargar posición del usuario
+      const userRankingResponse = await fetch('/perfil/user-ranking', { credentials: 'include' });
+      const userRankingData = await userRankingResponse.json();
+
+      if (userRankingData.success) {
+        // Actualizar posición del usuario
+        if (el('user-position')) el('user-position').textContent = userRankingData.position;
+        if (el('total-players')) el('total-players').textContent = userRankingData.total_players;
+
+        // Calcular puntos necesarios para subir
+        if (userRankingData.next_player_points) {
+          const currentPoints = parseInt(el('user-puntos')?.textContent || 0);
+          const pointsNeeded = userRankingData.next_player_points - currentPoints + 1;
+          if (el('points-needed')) el('points-needed').textContent = pointsNeeded;
+
+          // Calcular progreso (asumiendo que necesita X puntos para subir)
+          const progress = Math.min((currentPoints / userRankingData.next_player_points) * 100, 95);
+          const progressBar = el('rank-progress');
+          if (progressBar) progressBar.style.width = progress + '%';
+        } else {
+          // Es el #1, no hay siguiente
+          if (el('points-needed')) el('points-needed').textContent = '¡Eres el #1!';
+          const progressBar = el('rank-progress');
+          if (progressBar) progressBar.style.width = '100%';
+        }
+      }
+
+      // Cargar top 3 jugadores
+      const rankingResponse = await fetch('/perfil/ranking?limit=3', { credentials: 'include' });
+      const rankingData = await rankingResponse.json();
+
+      if (rankingData.success && rankingData.ranking) {
+        mostrarTop3(rankingData.ranking);
+      }
+
+    } catch (error) {
+      console.error('Error cargando ranking:', error);
+    }
+  }
+
+  // Mostrar top 3 jugadores
+  function mostrarTop3(topPlayers) {
+    const container = el('top-players-list');
+    if (!container) return;
+
+    const medals = ['🥇', '🥈', '🥉'];
+    const html = topPlayers.map((player, index) => `
+      <div class="d-flex justify-content-between align-items-center mb-2 p-2 bg-dark rounded">
+        <div class="d-flex align-items-center">
+          <span class="me-2">${medals[index] || '#' + player.position}</span>
+          <img src="${player.avatar || 'img/isotipoOficial.png'}" alt="Avatar"
+               class="rounded-circle me-2" style="width: 30px; height: 30px; object-fit: cover;">
+          <span class="text-light">${player.display_name}</span>
+        </div>
+        <div class="text-end">
+          <small class="text-warning fw-bold">${player.puntuacion_total} pts</small>
+          <br>
+          <small class="text-muted">${player.partidas_ganadas}/${player.partidas_jugadas}</small>
+        </div>
+      </div>
+    `).join('');
+
+    container.innerHTML = html;
   }
 
   /* ===== FUNCIÓN DE VERIFICACIÓN AL CARGAR LA PÁGINA ===== */

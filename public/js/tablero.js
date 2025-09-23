@@ -1,9 +1,246 @@
 /* =====  tablero.js - SISTEMA COMPLETO CON VALIDACIÓN DE REGLAS  ===== */
 
-/* ------ Bloqueo frontal: sin sesión → login ------ */
+/* ------ VALIDACIONES ANTI-TRAMPA ------ */
+
+// 1. Bloqueo frontal: sin sesión → login
 if (!localStorage.getItem('userId')) {
   localStorage.clear();
   location.replace('/login');
+}
+
+// 2. Prevenir navegación hacia atrás durante el juego
+let partidaEnCurso = false;
+let estadoPartidaGuardado = false;
+
+// Función para prevenir salida accidental/intencional
+function prevenirSalidaAccidental() {
+  window.addEventListener('beforeunload', function(e) {
+    if (partidaEnCurso && !estadoPartidaGuardado) {
+      let message = '¿Estás seguro de que quieres salir? Se perderá el progreso de la partida.';
+
+      // Mensaje más estricto durante jugadas críticas
+      if (jugadaCritica) {
+        message = '🚫 ATENCIÓN: No puedes salir durante una jugada crítica. Se perderá el progreso.';
+      }
+
+      e.returnValue = message;
+      return message;
+    }
+  });
+
+  // Manejo del botón "Atrás" del navegador
+  window.addEventListener('popstate', function(e) {
+    if (partidaEnCurso) {
+      let mensaje = '¿Quieres abandonar la partida? Se perderá el progreso actual.';
+
+      // Protección extra durante jugadas críticas
+      if (jugadaCritica) {
+        alert('🚫 No puedes salir durante una jugada crítica. Espera a completar la acción.');
+        history.pushState(null, null, window.location.pathname);
+        return;
+      }
+
+      const confirmar = confirm(mensaje);
+      if (confirmar) {
+        // Limpiar datos de partida y permitir salida
+        localStorage.removeItem('partidaIdActual');
+        localStorage.removeItem('draftosaurus_autosave');
+        partidaEnCurso = false;
+        history.back();
+      } else {
+        // Mantener en la página actual
+        history.pushState(null, null, window.location.pathname);
+      }
+    }
+  });
+
+  // Agregar estado al historial para detectar navegación
+  history.pushState(null, null, window.location.pathname);
+}
+
+// 3. Validar integridad de la partida al cargar
+function validarIntegridadPartida() {
+  console.log('🛡️ Validando integridad de la partida...');
+
+  const partidaId = localStorage.getItem('partidaIdActual');
+  const partidaACargar = localStorage.getItem('partidaACargar');
+  const autosave = localStorage.getItem('draftosaurus_autosave');
+
+  // Si tenemos una partida a cargar, permitir que se ejecute la carga
+  if (partidaACargar || partidaId) {
+    console.log('🔄 Partida a cargar detectada, saltando validación inicial:', {
+      partidaACargar,
+      partidaId
+    });
+    return true;
+  }
+
+  // Solo validar autosave si no hay partida para cargar
+  if (!autosave) {
+    console.warn('❌ No hay datos de partida válidos');
+    if (confirm('No se encontraron datos de partida válidos. ¿Volver al perfil?')) {
+      window.location.href = '/perfil';
+    }
+    return false;
+  }
+
+  // Validar estructura del autosave
+  try {
+    const data = JSON.parse(autosave);
+    if (!data.ronda_actual || !data.turno_actual || !data.manos) {
+      console.warn('❌ Datos de autosave corruptos');
+      localStorage.removeItem('draftosaurus_autosave');
+
+      // Si tenemos partidaId pero autosave corrupto, intentar cargar desde servidor
+      if (partidaId) {
+        console.log('🔄 Intentando cargar desde servidor debido a autosave corrupto');
+        return true;
+      }
+
+      return false;
+    }
+  } catch (e) {
+    console.warn('❌ Error al parsear autosave:', e);
+    localStorage.removeItem('draftosaurus_autosave');
+
+    // Si tenemos partidaId pero autosave corrupto, intentar cargar desde servidor
+    if (partidaId) {
+      console.log('🔄 Intentando cargar desde servidor debido a error de parsing');
+      return true;
+    }
+
+    return false;
+  }
+
+  console.log('✅ Integridad de partida validada');
+  return true;
+}
+
+// 4. Anti-refresh durante jugadas críticas
+let jugadaCritica = false;
+
+function marcarJugadaCritica(critica = true) {
+  jugadaCritica = critica;
+  if (critica) {
+    console.log('🔒 Jugada crítica iniciada - anti-refresh activado');
+  } else {
+    console.log('🔓 Jugada crítica finalizada');
+  }
+}
+
+// 5. Función para marcar partida como guardada
+function marcarPartidaGuardada() {
+  estadoPartidaGuardado = true;
+  console.log('💾 Partida marcada como guardada');
+}
+
+// 6. Función para deshabilitar dinosaurios si no se tiró el dado
+function deshabilitarDinosauriosSinDado() {
+  const dinosPanel = document.querySelector('.dino-panel');
+  const dinosImages = document.querySelectorAll('.dino-selectable, .dino-grid img');
+
+  if (!dinosPanel) return;
+
+  // Limpiar overlay existente
+  const existingOverlay = dinosPanel.querySelector('.dino-panel-overlay');
+  if (existingOverlay) {
+    existingOverlay.remove();
+  }
+
+  if (restriccionActual === null) {
+    // 🚫 DESHABILITAR: No se tiró el dado
+    console.log('🚫 Dinosaurios deshabilitados - dado no tirado');
+
+    // Agregar clase CSS de deshabilitado
+    dinosPanel.classList.add('disabled');
+    dinosPanel.style.pointerEvents = 'none';
+    dinosPanel.title = '🎲 Primero debes tirar el dado';
+
+    // Crear overlay visual con transición
+    const overlay = document.createElement('div');
+    overlay.className = 'dino-panel-overlay';
+    overlay.style.opacity = '0';
+    overlay.innerHTML = `
+      <div class="icon">🎲</div>
+      <div>TIRA EL DADO PRIMERO</div>
+      <div style="font-size: 12px; margin-top: 5px;">Los dinosaurios están bloqueados</div>
+    `;
+    dinosPanel.appendChild(overlay);
+
+    // Transición suave del overlay
+    setTimeout(() => {
+      overlay.style.transition = 'opacity 0.3s ease';
+      overlay.style.opacity = '1';
+    }, 50);
+
+    // Deshabilitar individualmente cada dinosaurio
+    dinosImages.forEach(dino => {
+      dino.classList.add('disabled');
+      dino.style.filter = 'grayscale(100%) brightness(0.3)';
+      dino.style.cursor = 'not-allowed';
+      dino.style.pointerEvents = 'none';
+      dino.draggable = false;
+
+      // Remover eventos existentes
+      dino.removeEventListener('dragstart', handleDragStart);
+      dino.removeEventListener('click', handleDinoClick);
+    });
+
+  } else {
+    // ✅ HABILITAR: Ya se tiró el dado
+    console.log('✅ Dinosaurios habilitados - dado ya tirado');
+
+    // Remover clase CSS de deshabilitado
+    dinosPanel.classList.remove('disabled');
+    dinosPanel.style.pointerEvents = 'auto';
+    dinosPanel.title = '';
+
+    // Habilitar individualmente cada dinosaurio
+    dinosImages.forEach(dino => {
+      dino.classList.remove('disabled');
+      dino.style.filter = 'none';
+      dino.style.cursor = 'grab';
+      dino.style.pointerEvents = 'auto';
+      dino.draggable = true;
+
+      // Re-agregar eventos
+      dino.addEventListener('dragstart', handleDragStart);
+      dino.addEventListener('click', handleDinoClick);
+    });
+  }
+}
+
+// Función auxiliar para manejar drag start
+function handleDragStart(e) {
+  if (restriccionActual === null) {
+    e.preventDefault();
+    alert('🎲 Primero debes tirar el dado antes de arrastrar dinosaurios');
+    console.warn('🚫 Intento de drag sin tirar dado - BLOQUEADO');
+    return false;
+  }
+
+  // Extraer información del elemento
+  const img = e.target;
+  const especie = img.dataset.especie || img.getAttribute('data-especie');
+  const index = Array.from(img.parentNode.children).indexOf(img);
+
+  draggedDino = { especie, index, jugador: jugadorActivo };
+  img.classList.add('dragging');
+  e.dataTransfer.setData('text/plain', especie);
+  highlightRecintos(especie);
+}
+
+// Función auxiliar para manejar click en dinosaurio
+function handleDinoClick(e) {
+  if (restriccionActual === null) {
+    e.preventDefault();
+    alert('🎲 Primero debes tirar el dado antes de seleccionar dinosaurios');
+    console.warn('🚫 Intento de click sin tirar dado - BLOQUEADO');
+    return false;
+  }
+
+  // Aquí se puede agregar lógica adicional de click si es necesaria
+  console.log('✅ Click en dinosaurio permitido:', e.target.dataset.especie);
 }
 
 /* ------ Nombres reales ------ */
@@ -34,6 +271,16 @@ const restricciones = {
   4: "Recinto vacío",
   5: "Recinto sin T-REX",
   6: "Sin restricción"
+};
+
+/* ------ PROPIEDADES FÍSICAS DE LOS DINOSAURIOS ------ */
+const propiedadesFisicas = {
+  'dino1': { nombre: 'Compsognathus', masa: 2.5 },     // kg
+  'dino2': { nombre: 'Velociraptor', masa: 15.0 },     // kg
+  'dino3': { nombre: 'Parasaurolophus', masa: 3500.0 }, // kg
+  'dino4': { nombre: 'Triceratops', masa: 6000.0 },    // kg
+  'dino5': { nombre: 'Brontosaurus', masa: 15000.0 },  // kg
+  'trex': { nombre: 'Tyrannosaurus Rex', masa: 7000.0 } // kg
 };
 
 /* ------ CONFIGURACIÓN DE RECINTOS ------ */
@@ -102,6 +349,12 @@ const LS_KEY = 'draftosaurus_autosave';
 async function autoSave() {
   if (!ID_PARTIDA) {
     console.warn('⚠️ No hay ID_PARTIDA para guardar');
+    return;
+  }
+
+  // No guardar si la partida ya terminó
+  if (ronda > TOTAL_RONDAS) {
+    console.warn('⚠️ No se puede guardar: partida terminada (ronda > TOTAL_RONDAS)');
     return;
   }
 
@@ -442,6 +695,96 @@ function contarEspecieEnParque(especie, jugador) {
     .length;
 }
 
+/* ===== FUNCIONES DE PESO ===== */
+
+function calcularPesoRecinto(recintoId) {
+  const recinto = document.getElementById(recintoId);
+  if (!recinto) return 0;
+
+  const dinosauriosEnRecinto = [...recinto.querySelectorAll('.dino-in-recinto')];
+  let pesoTotal = 0;
+
+  dinosauriosEnRecinto.forEach(dino => {
+    const especie = dino.dataset.especie;
+    const propiedades = propiedadesFisicas[especie];
+    if (propiedades) {
+      pesoTotal += propiedades.masa;
+    }
+  });
+
+  return pesoTotal;
+}
+
+function formatearPeso(peso) {
+  if (peso === 0) return '0kg';
+
+  if (peso >= 1000) {
+    return `${(peso / 1000).toFixed(1)}t`; // Toneladas
+  } else {
+    return `${peso.toFixed(1)}kg`; // Kilogramos
+  }
+}
+
+function calcularPesoTotalJugador(jugador) {
+  const dinosauriosJugador = [...document.querySelectorAll('.dino-in-recinto')]
+    .filter(d => +d.dataset.jugador === jugador);
+
+  let pesoTotal = 0;
+  dinosauriosJugador.forEach(dino => {
+    const especie = dino.dataset.especie;
+    const propiedades = propiedadesFisicas[especie];
+    if (propiedades) {
+      pesoTotal += propiedades.masa;
+    }
+  });
+
+  return pesoTotal;
+}
+
+function obtenerRecintoMasPesado() {
+  const recintos = Object.keys(configRecintos);
+  let pesoMaximo = 0;
+  let detalleRecinto = null;
+
+  console.log('🔍 Analizando recintos:', recintos);
+
+  recintos.forEach(recintoId => {
+    const recinto = document.getElementById(recintoId);
+    if (!recinto) {
+      console.log(`⚠️ No se encontró el recinto: ${recintoId}`);
+      return;
+    }
+
+    const peso = calcularPesoRecinto(recintoId);
+    const config = configRecintos[recintoId];
+    const dinosaurios = [...recinto.querySelectorAll('.dino-in-recinto')];
+
+    console.log(`📊 ${recintoId}: ${formatearPeso(peso)} (${dinosaurios.length} dinosaurios)`);
+
+    if (peso > pesoMaximo) {
+      pesoMaximo = peso;
+
+      detalleRecinto = {
+        id: recintoId,
+        nombre: config ? config.nombre : recintoId,
+        peso: peso,
+        pesoFormateado: formatearPeso(peso),
+        dinosaurios: dinosaurios.map(dino => ({
+          especie: dino.dataset.especie,
+          jugador: dino.dataset.jugador,
+          nombre: propiedadesFisicas[dino.dataset.especie]?.nombre || dino.dataset.especie,
+          masa: propiedadesFisicas[dino.dataset.especie]?.masa || 0
+        }))
+      };
+
+      console.log(`🏆 Nuevo líder: ${detalleRecinto.nombre} con ${formatearPeso(peso)}`);
+    }
+  });
+
+  console.log('🏋️ Recinto ganador final:', detalleRecinto);
+  return detalleRecinto;
+}
+
 function actualizarPuntuaciones() {
   console.log('🔄 Actualizando puntuaciones...');
   [1, 2].forEach(jugador => {
@@ -521,9 +864,24 @@ function renderMano(jugador) {
     img.draggable = true;
     img.dataset.especie = esp;
     img.dataset.index = idx;
+
+    // Agregar tooltip con información de peso
+    const propiedades = propiedadesFisicas[esp];
+    if (propiedades) {
+      img.title = `${propiedades.nombre} - ${formatearPeso(propiedades.masa)}`;
+    }
+
     grid.appendChild(img);
 
     img.addEventListener('dragstart', e => {
+      // 🛡️ VALIDACIÓN: No permitir drag si no se tiró el dado
+      if (restriccionActual === null) {
+        e.preventDefault();
+        alert('🎲 Primero debes tirar el dado antes de arrastrar dinosaurios');
+        console.warn('🚫 Intento de drag sin tirar dado - BLOQUEADO');
+        return false;
+      }
+
       draggedDino = { especie: esp, index: idx, jugador: jugadorActivo };
       img.classList.add('dragging');
       e.dataTransfer.setData('text/plain', esp);
@@ -568,20 +926,83 @@ function actualizarUI() {
   }
 
   dadoBtn.style.display = restriccionActual === null ? 'inline-block' : 'none';
+
+  // 🛡️ VALIDACIÓN: Deshabilitar dinosaurios si no se tiró el dado
+  deshabilitarDinosauriosSinDado();
+
   if (!draggedDino) clearHighlight();
 }
 
 function actualizarPuntuacionJugadorActivo() {
-  const total = calcularPuntuacionTotal(jugadorActivo);
-  document.querySelector('.player-score').textContent = total;
+  // Actualizar ambos jugadores, no solo el activo
+  actualizarPuntuacionesAmbosJugadores();
+}
+
+function actualizarPuntuacionesAmbosJugadores() {
+  // Actualizar jugador 1
+  const totalJ1 = calcularPuntuacionTotal(1);
+  const pesoJ1 = calcularPesoTotalJugador(1);
+  const puntosJ1Element = document.getElementById('puntos-j1');
+  const nombreJ1Element = document.getElementById('nombre-j1');
+
+  if (puntosJ1Element) {
+    puntosJ1Element.textContent = totalJ1;
+    puntosJ1Element.title = `Puntos: ${totalJ1}\nPeso total: ${formatearPeso(pesoJ1)}`;
+  }
+
+  if (nombreJ1Element) {
+    nombreJ1Element.textContent = jugadorActualNombre;
+  }
+
+  // Actualizar jugador 2
+  const totalJ2 = calcularPuntuacionTotal(2);
+  const pesoJ2 = calcularPesoTotalJugador(2);
+  const puntosJ2Element = document.getElementById('puntos-j2');
+  const nombreJ2Element = document.getElementById('nombre-j2');
+
+  if (puntosJ2Element) {
+    puntosJ2Element.textContent = totalJ2;
+    puntosJ2Element.title = `Puntos: ${totalJ2}\nPeso total: ${formatearPeso(pesoJ2)}`;
+  }
+
+  if (nombreJ2Element) {
+    nombreJ2Element.textContent = rivalNombre;
+  }
+
+  // Resaltar jugador activo
+  const rowJ1 = puntosJ1Element?.parentElement;
+  const rowJ2 = puntosJ2Element?.parentElement;
+
+  if (rowJ1 && rowJ2) {
+    rowJ1.classList.toggle('jugador-activo', jugadorActivo === 1);
+    rowJ2.classList.toggle('jugador-activo', jugadorActivo === 2);
+  }
 }
 
 function actualizarPuntuacionesVisualesRecintos() {
   document.querySelectorAll('.recinto').forEach(r => {
-    const p = puntuacionesJugadores[jugadorActivo][r.id] || 0;
+    const peso = calcularPesoRecinto(r.id);
     const scoreElement = r.querySelector('.recinto-score');
     if (scoreElement) {
-      scoreElement.textContent = p;
+      scoreElement.textContent = formatearPeso(peso);
+
+      // Agregar tooltip con información detallada
+      const dinosauriosEnRecinto = [...r.querySelectorAll('.dino-in-recinto')];
+      if (dinosauriosEnRecinto.length > 0) {
+        let tooltipText = `Peso total: ${formatearPeso(peso)}\n\nDinosaurios:\n`;
+        dinosauriosEnRecinto.forEach(dino => {
+          const especie = dino.dataset.especie;
+          const jugador = dino.dataset.jugador;
+          const nombreJugador = jugador == 1 ? jugadorActualNombre : rivalNombre;
+          const props = propiedadesFisicas[especie];
+          if (props) {
+            tooltipText += `• ${props.nombre} (${nombreJugador}): ${formatearPeso(props.masa)}\n`;
+          }
+        });
+        scoreElement.title = tooltipText;
+      } else {
+        scoreElement.title = `Recinto vacío - ${formatearPeso(peso)}`;
+      }
     }
   });
 }
@@ -637,6 +1058,10 @@ async function inicializarPartidaNueva() {
   }
 
   localStorage.removeItem('esPartidaNueva');
+
+  // 🛡️ VALIDACIÓN INICIAL: Aplicar restricciones al iniciar
+  deshabilitarDinosauriosSinDado();
+
   actualizarUI();
 }
 
@@ -652,18 +1077,26 @@ async function cargarPartidaYRestaurar(idPartida) {
   try {
     console.log('🔄 Cargando partida ID:', idPartida);
 
+    console.log('📡 Enviando petición GET a:', `/api/tablero/cargarPartida?id=${idPartida}`);
     const response = await fetch(`/api/tablero/cargarPartida?id=${idPartida}`, {
       credentials: 'include',
       headers: { 'Content-Type': 'application/json' }
     });
 
+    console.log('📨 Respuesta recibida:', {
+      status: response.status,
+      statusText: response.statusText,
+      ok: response.ok,
+      headers: Object.fromEntries(response.headers.entries())
+    });
+
     if (!response.ok) {
       console.error('❌ Error HTTP:', response.status, response.statusText);
-      throw new Error(`Error HTTP: ${response.status}`);
+      throw new Error(`Error HTTP: ${response.status} - ${response.statusText}`);
     }
 
     const data = await response.json();
-    console.log('📦 Datos cargados:', data);
+    console.log('📦 Datos cargados desde servidor:', data);
 
     if (!data.success) {
       throw new Error(data.message || 'Error al cargar partida');
@@ -722,12 +1155,32 @@ async function cargarPartidaYRestaurar(idPartida) {
     // ✅ GUARDAR ID_PARTIDA EN LOCALSTORAGE
     localStorage.setItem('partidaIdActual', ID_PARTIDA.toString());
     console.log('✅ Partida cargada correctamente con ID:', ID_PARTIDA);
+
+    // Actualizar pesos después de restaurar colocaciones
+    actualizarPuntuacionesVisualesRecintos();
+    actualizarPuntuacionesAmbosJugadores();
+
+    // 🛡️ VALIDACIÓN: Aplicar restricciones visuales según estado del dado
+    deshabilitarDinosauriosSinDado();
+
     actualizarUI();
 
   } catch (error) {
     console.error('❌ Error cargando partida:', error);
-    alert('Error al cargar la partida. Se iniciará una nueva.');
-    await inicializarPartidaNueva();
+    console.error('Stack trace:', error.stack);
+    console.error('Partida ID que falló:', idPartida);
+
+    // Limpiar datos corruptos
+    localStorage.removeItem('partidaACargar');
+    localStorage.removeItem('draftosaurus_autosave');
+
+    const continuar = confirm(`Error al cargar la partida ${idPartida}:\n${error.message}\n\n¿Iniciar una nueva partida?`);
+
+    if (continuar) {
+      await inicializarPartidaNueva();
+    } else {
+      window.location.href = '/perfil';
+    }
   }
 }
 
@@ -783,12 +1236,21 @@ async function cargarPartidaYRestaurar(idPartida) {
 
   // 4. Cargar partida o inicializar nueva
   if (partidaIdACargar) {
-    await cargarPartidaYRestaurar(partidaIdACargar);
-    // Limpiar flags de carga (excepto partidaIdActual)
-    localStorage.removeItem('partidaACargar');
-    localStorage.removeItem('partidaId');
+    console.log(`🔄 Intentando cargar partida ID: ${partidaIdACargar}`);
+    try {
+      await cargarPartidaYRestaurar(partidaIdACargar);
+      console.log(`✅ Partida ${partidaIdACargar} cargada exitosamente`);
+
+      // Limpiar flags de carga (excepto partidaIdActual)
+      localStorage.removeItem('partidaACargar');
+      localStorage.removeItem('partidaId');
+    } catch (error) {
+      console.error(`❌ Error fatal cargando partida ${partidaIdACargar}:`, error);
+      console.error('Redirigiendo a partida nueva...');
+      await inicializarPartidaNueva();
+    }
   } else {
-    console.log('🆕 Iniciando partida nueva');
+    console.log('🆕 No hay partida para cargar, iniciando partida nueva');
     await inicializarPartidaNueva();
   }
 })();
@@ -877,6 +1339,8 @@ async function mostrarResultadosFinal() {
           };
 
           console.log('✅ Usando puntuación del servidor:', resultado);
+          console.log('🎯 Puntos del servidor:', puntos);
+          console.log('🏆 Ganador del servidor:', nombreGanador);
         } else {
           console.error('❌ Error del servidor:', data.error);
           throw new Error(data.error || 'Error finalizando partida');
@@ -898,37 +1362,118 @@ async function mostrarResultadosFinal() {
     }
 
     // LIMPIAR DATOS DESPUÉS DE FINALIZAR
+    console.log('🧹 Limpiando datos de localStorage después de finalizar...');
     localStorage.removeItem(LS_KEY);
     localStorage.removeItem('partidaIdActual');
     localStorage.removeItem('partidaACargar');
+    localStorage.removeItem('partidaId');
+    localStorage.removeItem('esPartidaNueva');
+
+    // También limpiar ID_PARTIDA global para evitar referencias a partida finalizada
+    console.log(`🏁 Partida ${ID_PARTIDA} finalizada - limpiando ID_PARTIDA global`);
+    ID_PARTIDA = null;
 
     // MOSTRAR MODAL MEJORADO
-    mostrarModalResultados(resultado);
+    console.log('📋 A punto de mostrar modal con resultado:', resultado);
+
+    try {
+      mostrarModalResultados(resultado);
+      console.log('✅ Modal llamado exitosamente');
+    } catch (modalError) {
+      console.error('❌ Error al llamar mostrarModalResultados:', modalError);
+      console.error('Stack trace modal:', modalError.stack);
+      // Fallback: alert con información
+      alert(`¡Partida Finalizada!\n\n${resultado.ganador ? 'Ganador: ' + resultado.ganador : 'Empate'}\n\nPuntos: ${resultado.puntos[0]} vs ${resultado.puntos[1]}`);
+    }
 
   } catch (error) {
     console.error('❌ Error al finalizar partida:', error);
-    alert(`¡Juego terminado!\n\n${jugadorActualNombre} vs ${rivalNombre}\n\nGracias por jugar.`);
-    location.href = '/perfil';
+    console.error('Stack trace:', error.stack);
+
+    // Fallback: mostrar modal con cálculo local
+    console.log('🔧 Usando fallback con cálculo local de puntos');
+    const puntosLocalesJ1 = calcularPuntuacionTotal(1);
+    const puntosLocalesJ2 = calcularPuntuacionTotal(2);
+
+    const resultadoFallback = {
+      puntos: [puntosLocalesJ1, puntosLocalesJ2],
+      ganador: puntosLocalesJ1 > puntosLocalesJ2 ? jugadorActualNombre :
+               puntosLocalesJ2 > puntosLocalesJ1 ? rivalNombre : null,
+      esServidor: false
+    };
+
+    mostrarModalResultados(resultadoFallback);
   }
+
+  // 🛡️ VALIDACIÓN ANTI-TRAMPA: Marcar partida como finalizada y guardada
+  marcarPartidaGuardada();
+  partidaEnCurso = false;
+  console.log('🛡️ Partida finalizada - protecciones desactivadas');
 }
 
 // MODAL DE RESULTADOS MEJORADO
 function mostrarModalResultados(resultado) {
-  const puntosJ1 = resultado.puntos[0] || 0;
-  const puntosJ2 = resultado.puntos[1] || 0;
+  console.log('🎯 INICIO mostrarModalResultados con resultado:', resultado);
+  console.log('🔍 Tipo de resultado:', typeof resultado);
+  console.log('🔍 Propiedades resultado:', Object.keys(resultado || {}));
+
+  // Asegurar que tenemos puntos válidos
+  let puntosJ1 = 0;
+  let puntosJ2 = 0;
+
+  if (resultado && resultado.puntos && Array.isArray(resultado.puntos)) {
+    puntosJ1 = resultado.puntos[0] || 0;
+    puntosJ2 = resultado.puntos[1] || 0;
+  } else {
+    // Fallback: calcular puntos localmente si no vienen del servidor
+    console.warn('⚠️ No se recibieron puntos válidos del servidor, calculando localmente');
+    puntosJ1 = calcularPuntuacionTotal(1);
+    puntosJ2 = calcularPuntuacionTotal(2);
+  }
+
+  console.log(`📊 Puntos finales a mostrar: J1=${puntosJ1}, J2=${puntosJ2}`);
+
+  // Obtener información del recinto más pesado
+  const recintoMasPesado = obtenerRecintoMasPesado();
+  console.log('🏋️ Recinto más pesado completo:', recintoMasPesado);
+
+  if (recintoMasPesado) {
+    console.log('🏋️ ID:', recintoMasPesado.id);
+    console.log('🏋️ Nombre:', recintoMasPesado.nombre);
+    console.log('🏋️ Peso:', recintoMasPesado.peso);
+    console.log('🏋️ Dinosaurios:', recintoMasPesado.dinosaurios);
+  }
+
+  // Obtener pesos totales de cada jugador
+  const pesoTotalJ1 = calcularPesoTotalJugador(1);
+  const pesoTotalJ2 = calcularPesoTotalJugador(2);
+  console.log(`⚖️ Pesos totales: J1=${formatearPeso(pesoTotalJ1)}, J2=${formatearPeso(pesoTotalJ2)}`);
 
   let estadoGanador = '';
   let iconoGanador = '';
 
-  if (resultado.ganador) {
-    estadoGanador = `Ganador: ${resultado.ganador}`;
+  // Determinar ganador basado en los puntos finales
+  if (puntosJ1 > puntosJ2) {
+    estadoGanador = `Ganador: ${jugadorActualNombre}`;
     iconoGanador = '🏆';
-    if (resultado.empate === 'menos_trex') {
-      estadoGanador += ` (desempate por menos T-Rex)`;
-    }
+  } else if (puntosJ2 > puntosJ1) {
+    estadoGanador = `Ganador: ${rivalNombre}`;
+    iconoGanador = '🏆';
   } else {
-    estadoGanador = `¡Empate perfecto!`;
-    iconoGanador = '🤝';
+    // En caso de empate, verificar criterio de desempate
+    const trexJ1 = contarEspecieEnParque('trex', 1);
+    const trexJ2 = contarEspecieEnParque('trex', 2);
+
+    if (trexJ1 < trexJ2) {
+      estadoGanador = `Ganador: ${jugadorActualNombre} (desempate por menos T-Rex)`;
+      iconoGanador = '🏆';
+    } else if (trexJ2 < trexJ1) {
+      estadoGanador = `Ganador: ${rivalNombre} (desempate por menos T-Rex)`;
+      iconoGanador = '🏆';
+    } else {
+      estadoGanador = `¡Empate perfecto!`;
+      iconoGanador = '🤝';
+    }
   }
 
   const modalHTML = `
@@ -950,6 +1495,9 @@ function mostrarModalResultados(resultado) {
                     <h6 class="card-title">${jugadorActualNombre}</h6>
                     <h3 class="text-primary">${puntosJ1}</h3>
                     <small class="text-muted">puntos</small>
+                    <div class="mt-1">
+                      <small class="text-info">⚖️ ${formatearPeso(pesoTotalJ1)}</small>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -959,16 +1507,40 @@ function mostrarModalResultados(resultado) {
                     <h6 class="card-title">${rivalNombre}</h6>
                     <h3 class="text-secondary">${puntosJ2}</h3>
                     <small class="text-muted">puntos</small>
+                    <div class="mt-1">
+                      <small class="text-info">⚖️ ${formatearPeso(pesoTotalJ2)}</small>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
 
+            ${recintoMasPesado && recintoMasPesado.peso > 0 ? `
+            <div class="mt-4 p-3 bg-dark border border-warning rounded">
+              <h6 class="text-warning mb-2">🏋️ Recinto Más Pesado</h6>
+              <div class="text-center">
+                <strong class="text-light">${recintoMasPesado.nombre || recintoMasPesado.id}</strong><br>
+                <span class="text-info fs-5">${recintoMasPesado.pesoFormateado}</span>
+              </div>
+              ${recintoMasPesado.dinosaurios && recintoMasPesado.dinosaurios.length > 0 ? `
+              <div class="mt-2">
+                <small class="text-muted">Dinosaurios:</small><br>
+                ${recintoMasPesado.dinosaurios.map(dino => {
+                  const nombreJugador = dino.jugador == 1 ? jugadorActualNombre : rivalNombre;
+                  return `<span class="badge bg-secondary me-1 mb-1">
+                    ${dino.nombre} (${nombreJugador}) - ${formatearPeso(dino.masa)}
+                  </span>`;
+                }).join('')}
+              </div>
+              ` : ''}
+            </div>
+            ` : ''}
+
             ${resultado.esServidor ?
       '<small class="text-success">Puntuación guardada en tu perfil</small>' :
       '<small class="text-warning">Puntuación calculada localmente</small>'
     }
-            
+
             <div class="mt-3">
               <small class="text-muted">Gracias por jugar Draftosaurus</small>
             </div>
@@ -990,16 +1562,83 @@ function mostrarModalResultados(resultado) {
   if (existingModal) existingModal.remove();
 
   document.body.insertAdjacentHTML('beforeend', modalHTML);
-  const modal = new bootstrap.Modal(document.getElementById('modalResultados'), {
-    backdrop: 'static',
-    keyboard: false
-  });
-  modal.show();
+  console.log('📝 HTML del modal insertado en DOM');
+
+  try {
+    // Intentar mostrar con Bootstrap
+    console.log('🔧 Verificando Bootstrap...');
+    if (typeof bootstrap !== 'undefined' && bootstrap.Modal) {
+      console.log('✅ Bootstrap disponible, creando modal...');
+      const modal = new bootstrap.Modal(document.getElementById('modalResultados'), {
+        backdrop: 'static',
+        keyboard: false
+      });
+      modal.show();
+      console.log('✅ Modal mostrado con Bootstrap');
+    } else {
+      throw new Error('Bootstrap no disponible');
+    }
+  } catch (modalError) {
+    console.error('❌ Error mostrando modal Bootstrap:', modalError);
+
+    // Fallback: mostrar modal manualmente
+    const modalElement = document.getElementById('modalResultados');
+    if (modalElement) {
+      modalElement.style.display = 'block';
+      modalElement.classList.add('show');
+      modalElement.setAttribute('aria-modal', 'true');
+      modalElement.setAttribute('role', 'dialog');
+
+      // Agregar backdrop manualmente
+      const backdrop = document.createElement('div');
+      backdrop.className = 'modal-backdrop fade show';
+      backdrop.id = 'modal-backdrop-manual';
+      document.body.appendChild(backdrop);
+
+      console.log('✅ Modal mostrado manualmente como fallback');
+    } else {
+      console.error('❌ No se pudo encontrar el elemento modal');
+      // Último recurso: alert con los puntos
+      alert(`¡Partida Finalizada!\n\n${estadoGanador}\n\n${jugadorActualNombre}: ${puntosJ1} puntos\n${rivalNombre}: ${puntosJ2} puntos`);
+    }
+  }
+
+  console.log('🏁 FIN mostrarModalResultados - función completada');
 }
+
+/* ===== FUNCIÓN DE PRUEBA PARA MODAL (TEMPORAL) ===== */
+window.testModal = function() {
+  console.log('🧪 PROBANDO MODAL DIRECTAMENTE...');
+
+  const resultadoPrueba = {
+    puntos: [29, 23],
+    ganador: "martin",
+    esServidor: true
+  };
+
+  console.log('🎯 Llamando mostrarModalResultados con:', resultadoPrueba);
+  mostrarModalResultados(resultadoPrueba);
+};
+
+console.log('🔧 Función testModal() disponible - úsala en la consola escribiendo: testModal()');
 
 /* ===== RESTO DEL FLUJO DE JUEGO ===== */
 
 document.addEventListener('DOMContentLoaded', () => {
+  // 🛡️ ACTIVAR VALIDACIONES ANTI-TRAMPA
+  console.log('🛡️ Iniciando validaciones de seguridad...');
+
+  // Validar integridad de datos al cargar
+  if (!validarIntegridadPartida()) {
+    return; // Salir si los datos no son válidos
+  }
+
+  // Activar protecciones contra navegación
+  prevenirSalidaAccidental();
+  partidaEnCurso = true;
+
+  console.log('✅ Validaciones de seguridad activadas');
+
   cargarAvatarUsuario();
 
   const recintos = document.querySelectorAll('.recinto');
@@ -1009,15 +1648,93 @@ document.addEventListener('DOMContentLoaded', () => {
 
   async function tirarDado() {
     if (restriccionActual !== null) return;
+
+    // 🛡️ VALIDACIÓN ANTI-TRAMPA: Marcar como jugada crítica
+    marcarJugadaCritica(true);
+
+    // No permitir tirar dado si la partida ya terminó
+    if (ronda > TOTAL_RONDAS) {
+      console.warn('⚠️ No se puede tirar dado: partida terminada');
+      marcarJugadaCritica(false); // Desactivar protección
+      mostrarResultadosFinal();
+      return;
+    }
+
     const valor = Math.floor(Math.random() * 6) + 1;
     dadoImg.src = `/img/dado/dado${valor}.png`;
     restriccionActual = valor;
     restriccionText.textContent = restricciones[valor];
     actualizarUI();
     await autoSave();
+
+    // 🛡️ VALIDACIÓN ANTI-TRAMPA: Desactivar protección después del dado
+    marcarJugadaCritica(false);
   }
 
   async function colocarDino(recinto, especie) {
+    // 🛡️ VALIDACIÓN ANTI-TRAMPA: Marcar como jugada crítica
+    marcarJugadaCritica(true);
+
+    // 🛡️ VALIDACIÓN BACKEND: Verificar con el servidor antes de colocar
+    try {
+      // Validar que tenemos datos requeridos
+      if (!ID_PARTIDA) {
+        console.error('❌ ERROR: No hay ID_PARTIDA para validación');
+        alert('Error: Datos de partida no disponibles');
+        marcarJugadaCritica(false);
+        return;
+      }
+
+      const datosValidacion = {
+        partidaId: parseInt(ID_PARTIDA),
+        restriccion: restriccionActual,
+        recintoId: recinto.id || '',
+        especie: especie || ''
+      };
+
+      console.log('🛡️ Enviando validación backend:', datosValidacion);
+
+      const validacionBackend = await fetch('/api/tablero/validarColocacionDino', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify(datosValidacion),
+        credentials: 'include'
+      });
+
+      if (!validacionBackend.ok) {
+        console.error('❌ HTTP Error:', validacionBackend.status);
+        throw new Error(`HTTP ${validacionBackend.status}: ${validacionBackend.statusText}`);
+      }
+
+      const validacionResult = await validacionBackend.json();
+      console.log('📨 Respuesta validación backend:', validacionResult);
+
+      if (!validacionResult.success || !validacionResult.esValida) {
+        console.error('🚫 VALIDACIÓN BACKEND FALLIDA:', validacionResult);
+        alert(validacionResult.mensaje || '🚫 No se puede colocar el dinosaurio');
+        marcarJugadaCritica(false);
+        return;
+      }
+
+      console.log('✅ VALIDACIÓN BACKEND EXITOSA:', validacionResult.mensaje);
+    } catch (error) {
+      console.error('❌ ERROR COMPLETO en validación backend:', error);
+      console.error('Stack trace:', error.stack);
+
+      // Tolerancia a fallos: Si hay error de conectividad, usar validación local
+      if (restriccionActual === null) {
+        alert('🎲 Primero debes tirar el dado antes de colocar dinosaurios (validación local)');
+        marcarJugadaCritica(false);
+        return;
+      }
+
+      console.warn('⚠️ Usando validación local debido a error de conectividad');
+      // Continuar con la colocación usando validación local
+    }
+
     const dinoClone = document.createElement('img');
     dinoClone.src = `/img/imagen_Tablero/${especie}.png`;
     dinoClone.className = 'dino-in-recinto';
@@ -1025,6 +1742,17 @@ document.addEventListener('DOMContentLoaded', () => {
     dinoClone.dataset.jugador = jugadorActivo;
     dinoClone.style.pointerEvents = 'none';
     recinto.appendChild(dinoClone);
+
+    // Actualizar inmediatamente el peso de este recinto
+    const peso = calcularPesoRecinto(recinto.id);
+    const scoreElement = recinto.querySelector('.recinto-score');
+    if (scoreElement) {
+      scoreElement.textContent = formatearPeso(peso);
+    }
+
+    // Actualizar puntuaciones inmediatamente
+    actualizarPuntuaciones();
+    actualizarPuntuacionesAmbosJugadores();
 
     manos[jugadorActivo].splice(draggedDino.index, 1);
     colocadosEnTurno++;
@@ -1042,13 +1770,14 @@ document.addEventListener('DOMContentLoaded', () => {
       if (turno > 3) {
         ronda++;
         turno = 1; // Reset turno
-        
+
         // ✅ VALIDACIÓN: Si ronda > 4, finalizar
         if (ronda > TOTAL_RONDAS || validarFinDeJuego()) {
+          console.log('🏁 Finalizando partida: ronda=', ronda, 'TOTAL_RONDAS=', TOTAL_RONDAS);
           mostrarResultadosFinal();
           return;
         }
-        
+
         manos[1] = generarMano();
         manos[2] = generarMano();
       } else {
@@ -1062,11 +1791,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
       jugadorQueTiroDado = ultimo;
       jugadorActivo = jugadorQueTiroDado;
-      await autoSave();
+
+      // Solo guardar si la partida no ha terminado
+      if (ronda <= TOTAL_RONDAS) {
+        await autoSave();
+      }
     } else {
       jugadorActivo = jugadorActivo === 1 ? 2 : 1;
     }
     actualizarUI();
+
+    // 🛡️ VALIDACIÓN ANTI-TRAMPA: Desactivar protección después de colocar dinosaurio
+    marcarJugadaCritica(false);
   }
 
   /* ===== FUNCIONES GLOBALES PARA EL MODAL ===== */
@@ -1075,11 +1811,44 @@ document.addEventListener('DOMContentLoaded', () => {
   };
 
   window.nuevaPartida = function () {
-    // Limpiar todo el estado
+    console.log('🆕 Iniciando nueva partida - limpiando estado...');
+
+    // Limpiar TODOS los datos de localStorage relacionados con partidas
     localStorage.removeItem(LS_KEY);
     localStorage.removeItem('partidaIdActual');
     localStorage.removeItem('partidaACargar');
     localStorage.removeItem('partidaId');
+    localStorage.removeItem('esPartidaNueva');
+    localStorage.removeItem('userAvatar'); // Opcional: mantener avatar
+
+    // Limpiar variables globales del juego
+    ID_PARTIDA = null;
+    ronda = 1;
+    turno = 1;
+    jugadorActivo = 1;
+    jugadorQueTiroDado = 1;
+    restriccionActual = null;
+    colocadosEnTurno = 0;
+    manos = { 1: [], 2: [] };
+    puntuacionesJugadores = { 1: {}, 2: {} };
+
+    // Limpiar el tablero visual
+    document.querySelectorAll('.dino-in-recinto').forEach(dino => dino.remove());
+
+    // Cerrar modal si está abierto
+    const modal = document.getElementById('modalResultados');
+    if (modal) {
+      modal.remove();
+    }
+
+    // Eliminar backdrop manual si existe
+    const backdrop = document.getElementById('modal-backdrop-manual');
+    if (backdrop) {
+      backdrop.remove();
+    }
+
+    console.log('✅ Estado limpiado completamente');
+    console.log('🔄 Redirigiendo a perfil...');
 
     location.href = '/perfil'; // Ir al perfil para crear nueva partida
   };
@@ -1108,8 +1877,18 @@ document.addEventListener('DOMContentLoaded', () => {
       const tipoRecinto = recinto.dataset.tipo;
       const especieDino = draggedDino.especie;
 
+      // 🛡️ VALIDACIÓN CRÍTICA: No permitir colocar dinosaurios sin tirar dado
       if (restriccionActual === null) {
-        alert("Primero debe tirar el dado.");
+        alert("🎲 ATENCIÓN: Primero debe tirar el dado antes de colocar dinosaurios.");
+        console.warn('🚫 Intento de colocar dinosaurio sin tirar dado - BLOQUEADO');
+        return;
+      }
+
+      // 🛡️ VALIDACIÓN ADICIONAL: Verificar estado visual de los dinosaurios
+      const dinosPanel = document.querySelector('.dino-panel');
+      if (dinosPanel && dinosPanel.style.pointerEvents === 'none') {
+        alert("🚫 Los dinosaurios están deshabilitados. Tira el dado primero.");
+        console.warn('🚫 Intento de colocar dinosaurio con panel deshabilitado - BLOQUEADO');
         return;
       }
 

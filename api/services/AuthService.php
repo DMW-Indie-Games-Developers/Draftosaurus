@@ -52,11 +52,11 @@ class AuthService
             return ['success' => false, 'message' => 'El email ya está registrado.'];
         }
 
-        // 3. Hashear contraseña
-        $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+        // 3. Crear usuario y hashear contraseña
+        $user = new User($username, $email, $password);
+        $user->hashPassword();
 
-        // 4. Crear usuario
-        $newUser = $this->userRepository->createUser($username, $email, $hashedPassword);
+        $newUser = $this->userRepository->createUser($user);
         if (!$newUser) {
             return ['success' => false, 'message' => 'No se pudo completar el registro. Inténtalo de nuevo.'];
         }
@@ -64,7 +64,7 @@ class AuthService
         return [
             'success' => true,
             'message' => 'Registro exitoso.',
-            'user' => $newUser
+            'user' => $newUser->toArray()
         ];
     }
 
@@ -74,11 +74,11 @@ class AuthService
      * Si no, devuelve false.
      * NUEVA: También valida el estado del usuario.
      */
-    private function verifyCredentials(string $identifier, string $plainPassword): array|false
+    private function verifyCredentials(string $identifier, string $plainPassword): User|false
     {
         error_log("=== INICIO verifyCredentials ===");
         error_log("Identifier: $identifier");
-        
+
         $user = $this->userRepository->findByUsernameOrEmail($identifier);
 
         if (!$user) {
@@ -87,36 +87,26 @@ class AuthService
             return false;
         }
 
-        error_log("Usuario encontrado: " . ($user['username'] ?? 'sin username'));
-        error_log("Estado del usuario: " . ($user['estado'] ?? 'sin estado'));
+        error_log("Usuario encontrado: " . $user->getUsername());
+        error_log("Estado del usuario: " . $user->getEstado());
 
         // NUEVA VALIDACIÓN: Verificar si el usuario está suspendido
-        if (isset($user['estado']) && $user['estado'] === 'suspendido') {
+        if (!$user->isActive()) {
             error_log("ACCESO DENEGADO: Usuario suspendido");
             error_log("=== FIN verifyCredentials (usuario suspendido) ===");
             return false;
         }
 
         error_log("Usuario activo, verificando contraseña...");
-        error_log("Hash en BD: " . ($user['password'] ?? 'sin password'));
 
-        if (!password_verify($plainPassword, $user['password'])) {
+        if (!$user->verifyPassword($plainPassword)) {
             error_log("Password verify: FAIL");
             error_log("=== FIN verifyCredentials (password incorrecta) ===");
             return false;
         }
 
-        // Importante: removemos el hash de la contraseña antes de devolver los datos.
-        unset($user['password']);
-
-        // Convertimos los tipos de datos numéricos
-        $user['id'] = (int) $user['id'];
-        $user['partidas_jugadas'] = (int) ($user['partidas_jugadas'] ?? 0);
-        $user['partidas_ganadas'] = (int) ($user['partidas_ganadas'] ?? 0);
-        $user['puntuacion_total'] = (int) ($user['puntuacion_total'] ?? 0);
-
         error_log("Password verify: OK");
-        error_log("Usuario estado final: " . $user['estado']);
+        error_log("Usuario estado final: " . $user->getEstado());
         error_log("=== FIN verifyCredentials (success) ===");
 
         return $user;
@@ -136,37 +126,37 @@ class AuthService
         if ($user === false) {
             // Necesitamos ser más específicos sobre por qué falló
             $userExists = $this->userRepository->findByUsernameOrEmail($identifier);
-            
+
             if (!$userExists) {
                 error_log("Login fallido: Usuario no existe");
                 return ['success' => false, 'message' => 'Credenciales incorrectas.'];
             }
-            
-            if (isset($userExists['estado']) && $userExists['estado'] === 'suspendido') {
+
+            if (!$userExists->isActive()) {
                 error_log("Login fallido: Usuario suspendido");
                 return [
-                    'success' => false, 
+                    'success' => false,
                     'message' => 'Tu cuenta ha sido suspendida. Contacta al administrador.',
                     'code' => 'ACCOUNT_SUSPENDED'
                 ];
             }
-            
+
             error_log("Login fallido: Password incorrecta");
             return ['success' => false, 'message' => 'Credenciales incorrectas.'];
         }
 
-        error_log("Login exitoso para usuario ID: " . $user['id']);
+        error_log("Login exitoso para usuario ID: " . $user->getId());
         error_log("=== FIN AuthService::login (success) ===");
 
         return [
             'success' => true,
             'message' => 'Login exitoso.',
             'user' => [
-                'id'       => $user['id'],
-                'username' => $user['username'],
-                'email'    => $user['email'],
-                'rol'      => $user['rol'],
-                'estado'   => $user['estado'], // Incluir estado en respuesta
+                'id'       => $user->getId(),
+                'username' => $user->getUsername(),
+                'email'    => $user->getEmail(),
+                'rol'      => $user->getRol(),
+                'estado'   => $user->getEstado(),
             ]
         ];
     }
@@ -178,20 +168,50 @@ class AuthService
     public function validateUserStatus(int $userId): array
     {
         error_log("=== Validando estado de usuario ID: $userId ===");
-        
+
         $user = $this->userRepository->findById($userId);
-        
+
         if (!$user) {
             error_log("Usuario $userId no encontrado");
             return ['valid' => false, 'reason' => 'USER_NOT_FOUND'];
         }
-        
-        if ($user['estado'] === 'suspendido') {
+
+        if (!$user->isActive()) {
             error_log("Usuario $userId está suspendido");
             return ['valid' => false, 'reason' => 'ACCOUNT_SUSPENDED'];
         }
-        
+
         error_log("Usuario $userId está activo");
-        return ['valid' => true, 'user' => $user];
+        return ['valid' => true, 'user' => $user->toArray()];
+    }
+
+    /**
+     * Verificar credenciales para jugador 2 sin cambiar sesión
+     */
+    public function checkUserCredentials($identifier, $password)
+    {
+        error_log("=== Verificando credenciales para jugador 2: $identifier ===");
+
+        // Usar el método privado existente
+        $user = $this->verifyCredentials($identifier, $password);
+
+        if (!$user) {
+            return [
+                'success' => false,
+                'message' => 'Credenciales incorrectas'
+            ];
+        }
+
+        error_log("Credenciales verificadas correctamente para jugador 2: $identifier");
+        return [
+            'success' => true,
+            'user' => [
+                'id' => $user->getId(),
+                'username' => $user->getUsername(),
+                'email' => $user->getEmail(),
+                'nickname' => $user->getNickname(),
+                'display_name' => $user->getDisplayName()
+            ]
+        ];
     }
 }

@@ -19,11 +19,20 @@ class TableroController
     private function getInput(): array
     {
         $raw = file_get_contents('php://input');
+
+        // Si no hay datos, devolver array vacío sin error
+        if (empty(trim($raw))) {
+            error_log("⚠️ ADVERTENCIA: Petición sin cuerpo recibida");
+            return [];
+        }
+
         $data = json_decode($raw, true);
 
         if (json_last_error() !== JSON_ERROR_NONE) {
-            error_log("Error decodificando JSON: " . json_last_error_msg());
-            error_log("Datos recibidos: " . $raw);
+            error_log("❌ Error decodificando JSON: " . json_last_error_msg());
+            error_log("Datos recibidos (length=" . strlen($raw) . "): " . substr($raw, 0, 200));
+            error_log("Método HTTP: " . ($_SERVER['REQUEST_METHOD'] ?? 'unknown'));
+            error_log("Content-Type: " . ($_SERVER['CONTENT_TYPE'] ?? 'unknown'));
             return [];
         }
 
@@ -146,6 +155,18 @@ class TableroController
             if ($restriccion !== null && ($restriccion < 1 || $restriccion > 6)) {
                 error_log("❌ Restricción inválida: $restriccion");
                 throw new Exception("Restricción inválida: $restriccion. Debe estar entre 1 y 6 o ser null.");
+            }
+
+            // 🛡️ VALIDACIÓN ANTI-TRAMPA: No se pueden guardar colocaciones sin dado
+            $colocaciones = $datos['colocaciones'] ?? [];
+            $colocadosEnTurno = $datos['colocadosEnTurno'] ?? 0;
+
+            if (count($colocaciones) > 0 && $restriccion === null && $colocadosEnTurno > 0) {
+                error_log("❌ TRAMPA DETECTADA: Intento de colocar dinosaurios sin tirar el dado");
+                error_log("Restricción: " . var_export($restriccion, true));
+                error_log("Colocaciones: " . count($colocaciones));
+                error_log("Colocados en turno: $colocadosEnTurno");
+                throw new Exception("🚫 TRAMPA DETECTADA: No se pueden colocar dinosaurios sin haber tirado el dado.");
             }
 
             error_log("✅ Validaciones pasadas: ronda=$ronda, turno=$turno, jugadorActivo=$jugadorActivo");
@@ -427,6 +448,105 @@ class TableroController
         } catch (Exception $e) {
             $this->sendResponse(['success' => false, 'error' => $e->getMessage()], 500);
         }
+    }
+
+    /* ===== VALIDAR COLOCACIÓN DE DINOSAURIO ===== */
+    public function validarColocacionDino(): void
+    {
+        error_log("=== INICIO validarColocacionDino ===");
+        error_log("Método: " . ($_SERVER['REQUEST_METHOD'] ?? 'unknown'));
+        error_log("Content-Type: " . ($_SERVER['CONTENT_TYPE'] ?? 'unknown'));
+
+        try {
+            $user = AuthHelper::requireActiveUser();
+            error_log("✅ Usuario autenticado: " . $user['id']);
+
+            $datos = $this->getInput();
+            error_log("Datos recibidos para validación: " . json_encode($datos));
+
+            // Validaciones de datos requeridos
+            if (empty($datos)) {
+                error_log("❌ ERROR: Datos vacíos en validación");
+                $this->sendResponse([
+                    'success' => false,
+                    'esValida' => false,
+                    'mensaje' => 'Datos de validación no proporcionados',
+                    'codigo' => 'DATOS_VACIOS'
+                ], 400);
+                return;
+            }
+
+            $partidaId = (int) ($datos['partidaId'] ?? 0);
+            $restriccion = $datos['restriccion'] ?? null;
+            $recintoId = $datos['recintoId'] ?? '';
+            $especie = $datos['especie'] ?? '';
+
+            if (!$partidaId) {
+                error_log("❌ ERROR: ID de partida no proporcionado");
+                $this->sendResponse([
+                    'success' => false,
+                    'esValida' => false,
+                    'mensaje' => 'ID de partida no proporcionado',
+                    'codigo' => 'PARTIDA_ID_FALTANTE'
+                ], 400);
+                return;
+            }
+
+            if (!$this->service->validarAccesoPartida($partidaId, $user['id'])) {
+                error_log("❌ ERROR: Sin permisos para partida $partidaId");
+                $this->sendResponse([
+                    'success' => false,
+                    'esValida' => false,
+                    'mensaje' => 'No tienes permiso para jugar en esta partida',
+                    'codigo' => 'SIN_PERMISOS'
+                ], 403);
+                return;
+            }
+
+            // 🛡️ VALIDACIÓN PRINCIPAL: Debe haber tirado el dado
+            if ($restriccion === null) {
+                error_log("❌ COLOCACIÓN DENEGADA: No se ha tirado el dado (partidaId=$partidaId)");
+                $this->sendResponse([
+                    'success' => false,
+                    'esValida' => false,
+                    'mensaje' => '🎲 Primero debes tirar el dado antes de colocar dinosaurios',
+                    'codigo' => 'DADO_NO_TIRADO'
+                ]);
+                return;
+            }
+
+            // Validar restricción del dado (1-6)
+            if ($restriccion < 1 || $restriccion > 6) {
+                error_log("❌ RESTRICCIÓN INVÁLIDA: $restriccion");
+                $this->sendResponse([
+                    'success' => false,
+                    'esValida' => false,
+                    'mensaje' => 'Restricción del dado inválida',
+                    'codigo' => 'RESTRICCION_INVALIDA'
+                ]);
+                return;
+            }
+
+            error_log("✅ COLOCACIÓN VÁLIDA: Dado tirado (restricción=$restriccion), recinto=$recintoId, especie=$especie");
+
+            $this->sendResponse([
+                'success' => true,
+                'esValida' => true,
+                'mensaje' => 'Colocación válida'
+            ]);
+
+        } catch (Exception $e) {
+            error_log("❌ ERROR CRÍTICO validando colocación: " . $e->getMessage());
+            error_log("Stack trace: " . $e->getTraceAsString());
+            $this->sendResponse([
+                'success' => false,
+                'esValida' => false,
+                'error' => $e->getMessage(),
+                'codigo' => 'ERROR_INTERNO'
+            ], 500);
+        }
+
+        error_log("=== FIN validarColocacionDino ===");
     }
 
     /* ===== OBTENER REGLAS ===== */

@@ -107,19 +107,20 @@ body {
 
 .recinto-score {
   position: absolute;
-  top: -5px;
-  right: -5px;
+  top: -8px;
+  right: -8px;
   background: rgba(0, 0, 0, 0.8);
   color: white;
   border-radius: 50%;
-  width: 25px;
-  height: 25px;
+  width: 35px;
+  height: 35px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: bold;
   border: 2px solid #fff;
+  line-height: 1;
 }
 
 /* Panel dinosaurios */
@@ -134,6 +135,7 @@ body {
   margin: 20px auto;
   border: 1px solid rgba(255, 255, 255, 0.1);
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  position: relative; /* 🛡️ Necesario para el overlay */
 }
 
 .dino-panel h4 {
@@ -283,11 +285,24 @@ body {
 
 .score-bajo-dinos {
   margin-top: 12px;
-  font-size: 22px;
+  font-size: 18px;
   font-weight: bold;
   color: #fff;
   text-align: center;
   text-shadow: 0 0 4px #000;
+}
+
+.score-row {
+  margin: 5px 0;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background: rgba(0, 0, 0, 0.3);
+  transition: background-color 0.3s;
+}
+
+.score-row.jugador-activo {
+  background: rgba(142, 45, 226, 0.5);
+  border: 1px solid rgba(142, 45, 226, 0.8);
 }
 
 #tirar-dado-btn {
@@ -422,4 +437,95 @@ body {
   background: rgba(0, 255, 0, .08);
   border: 2px dashed #0f0;
   box-shadow: 0 0 12px #0f0;
+}
+
+/* 🛡️ ESTILOS PARA DINOSAURIOS DESHABILITADOS */
+.dino-panel.disabled {
+  opacity: 0.4;
+  pointer-events: none;
+  position: relative;
+}
+
+.dino-panel.disabled::before {
+  content: "🎲 TIRA EL DADO PRIMERO";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.8);
+  color: #ff4444;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(255, 68, 68, 0.8);
+  border-radius: 10px;
+  z-index: 10;
+  animation: pulse-warning 2s infinite;
+}
+
+@keyframes pulse-warning {
+  0%, 100% {
+    opacity: 0.9;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.02);
+  }
+}
+
+.dino-panel .dino-grid img.disabled {
+  filter: grayscale(100%) brightness(0.3);
+  cursor: not-allowed !important;
+  transform: none !important;
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+.dino-panel .dino-grid img.disabled:hover {
+  transform: none !important;
+  background: rgba(255, 255, 255, 0.15) !important;
+  box-shadow: none !important;
+}
+
+/* Overlay para panel deshabilitado */
+.dino-panel-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: #ff4444;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(255, 68, 68, 0.8);
+  border-radius: 10px;
+  z-index: 15;
+  pointer-events: none;
+}
+
+.dino-panel-overlay .icon {
+  font-size: 48px;
+  margin-bottom: 10px;
+  animation: bounce 1.5s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
 }

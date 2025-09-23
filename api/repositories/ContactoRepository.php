@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../config/Database.php';
-require_once __DIR__ . '/../models/Contacto.php';
+require_once __DIR__ . '/../../usermodel/Contacto.php';
 
 class ContactoRepository {
     private $db;

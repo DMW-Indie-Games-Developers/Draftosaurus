@@ -149,4 +149,12 @@ class AuthController
 
         echo json_encode($result);
     }
+
+    /**
+     * Verificar credenciales sin cambiar sesión (para jugador 2)
+     */
+    public function verifyCredentials($identifier, $password)
+    {
+        return $this->authService->checkUserCredentials($identifier, $password);
+    }
 }

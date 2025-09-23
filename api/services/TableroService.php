@@ -169,22 +169,27 @@ class TableroService
 
             // 8. Finalizar partida en BD
             $stmt = $this->conn->prepare("
-                UPDATE partidas 
+                UPDATE partidas
                 SET estado_partida = 'finalizada',
                     ganador = ?,
                     puntos_j1 = ?,
                     puntos_j2 = ?,
-                    fecha_finalizacion = NOW(),
                     updated_at = NOW()
                 WHERE id = ?
             ");
             
             $stmt->bind_param("iiii", $ganador, $puntos[0], $puntos[1], $partidaId);
             $resultadoFinalizar = $stmt->execute();
-            
+
             if (!$resultadoFinalizar) {
                 throw new Exception('Error al finalizar partida en base de datos: ' . $stmt->error);
             }
+
+            $filasAfectadas = $stmt->affected_rows;
+            if ($filasAfectadas === 0) {
+                throw new Exception("No se pudo actualizar la partida. Verifique que la partida existe.");
+            }
+
             error_log("Partida finalizada en BD con ganador: $ganador, puntos: [{$puntos[0]}, {$puntos[1]}]");
 
             // 9. Obtener información completa del jugador

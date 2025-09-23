@@ -5,6 +5,10 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Draftosaurus - Tablero</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
   <link rel="stylesheet" href="css/tablero.css">
 </head>
 
@@ -79,7 +83,12 @@
 
       <!--  PUNTOS debajo de Tus Dinosaurios  -->
       <div class="score-bajo-dinos">
-        Tus Puntos: <span class="player-score">0</span>
+        <div class="score-row">
+          <span id="nombre-j1">Jugador 1</span>: <span id="puntos-j1" class="player-score">0</span>
+        </div>
+        <div class="score-row">
+          <span id="nombre-j2">Jugador 2</span>: <span id="puntos-j2" class="player-score">0</span>
+        </div>
       </div>
       <!--  Se ELIMINÓ el duplicado de jugador-info  -->
     </div>
@@ -109,6 +118,9 @@
       <button class="close-btn">Cerrar</button>
     </div>
   </div>
+
+  <!-- Bootstrap JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
   <script src="js/tablero.js"></script>
 </body>

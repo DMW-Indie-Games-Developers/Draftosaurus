@@ -26,6 +26,12 @@ class PerfilController {
         }
     }
 
+    // Endpoint para actualizar el nickname
+    public function updateNickname($userId, $nickname) {
+        $result = $this->service->updateNickname($userId, $nickname);
+        return $result; // El servicio ya devuelve el formato correcto con success y message
+    }
+
     // ✅ NUEVO: Endpoint para obtener estadísticas del usuario
     public function getEstadisticasUsuario($userId) {
         try {

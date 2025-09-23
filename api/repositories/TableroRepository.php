@@ -2,6 +2,8 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../config/Database.php';
+require_once __DIR__ . '/../../usermodel/Partida.php';
+require_once __DIR__ . '/../../usermodel/Jugada.php';
 
 class TableroRepository
 {
@@ -169,8 +171,8 @@ class TableroRepository
     {
         if (is_string($jugador)) {
             $stmt = $this->conn->prepare("
-                SELECT 
-                    p.id, p.jugador1_id, p.jugador2_id, p.ronda, p.turno, 
+                SELECT
+                    p.id, p.jugador1_id, p.jugador2_id, p.ronda, p.turno,
                     p.created_at, p.updated_at, p.name_invitado, p.estado_partida
                 FROM partidas p
                 JOIN users u1 ON p.jugador1_id = u1.id
@@ -182,8 +184,8 @@ class TableroRepository
             $stmt->bind_param("ss", $jugador, $jugador);
         } else {
             $stmt = $this->conn->prepare("
-                SELECT 
-                    id, jugador1_id, jugador2_id, ronda, turno, 
+                SELECT
+                    id, jugador1_id, jugador2_id, ronda, turno,
                     created_at, updated_at, name_invitado, estado_partida
                 FROM partidas
                 WHERE (jugador1_id = ? OR jugador2_id = ?)

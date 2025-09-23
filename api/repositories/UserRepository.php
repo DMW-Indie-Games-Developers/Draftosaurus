@@ -8,6 +8,8 @@
  * - Singleton: comparte la misma conexión (mysqli) provista por Database.
  */
 
+require_once __DIR__ . '/../../usermodel/User.php';
+
 class UserRepository
 {
     /** Instancia única del repositorio. */
@@ -37,9 +39,9 @@ class UserRepository
 
     /**
      * Busca un usuario por email.
-     * Retorna un array asociativo con los datos del usuario o null si no existe.
+     * Retorna un objeto User o null si no existe.
      */
-    public function findByEmail(string $email): ?array
+    public function findByEmail(string $email): ?User
     {
         // Se usa * para traer todos los campos de la tabla usuarios
         $query = "SELECT * FROM users WHERE email = ?";
@@ -51,20 +53,24 @@ class UserRepository
         $stmt->bind_param("s", $email);
         $stmt->execute();
         $result = $stmt->get_result();
-        $user = $result ? $result->fetch_assoc() : null;
+        $data = $result ? $result->fetch_assoc() : null;
 
         $stmt->close();
-        return $user;
+
+        if ($data) {
+            return $this->createUserFromArray($data);
+        }
+        return null;
     }
 
     /**
      * NUEVO: Busca un usuario por ID.
-     * Retorna un array asociativo con todos los datos del usuario o null si no se encuentra.
+     * Retorna un objeto User o null si no se encuentra.
      */
-    public function findById(int $id): ?array
+    public function findById(int $id): ?User
     {
         error_log("=== UserRepository::findById($id) ===");
-        
+
         $query = "SELECT * FROM users WHERE id = ?";
         $stmt = $this->conn->prepare($query);
         if (!$stmt) {
@@ -76,24 +82,25 @@ class UserRepository
         $stmt->execute();
 
         $result = $stmt->get_result();
-        $user = $result ? $result->fetch_assoc() : null;
+        $data = $result ? $result->fetch_assoc() : null;
 
         $stmt->close();
 
-        if ($user) {
-            error_log("Usuario ID $id encontrado: " . $user['username'] . " (estado: " . $user['estado'] . ")");
+        if ($data) {
+            error_log("Usuario ID $id encontrado: " . $data['username'] . " (estado: " . $data['estado'] . ")");
+            return $this->createUserFromArray($data);
         } else {
             error_log("Usuario ID $id NO encontrado");
         }
 
-        return $user;
+        return null;
     }
 
     /**
      * Busca un usuario por su username o email.
-     * Retorna un array asociativo con todos los datos del usuario o null si no se encuentra.
+     * Retorna un objeto User o null si no se encuentra.
      */
-    public function findByUsernameOrEmail(string $identifier): ?array
+    public function findByUsernameOrEmail(string $identifier): ?User
     {
         $query = "SELECT * FROM users WHERE username = ? OR email = ?";
         $stmt = $this->conn->prepare($query);
@@ -105,28 +112,30 @@ class UserRepository
         $stmt->execute();
 
         $result = $stmt->get_result();
-        $user = $result ? $result->fetch_assoc() : null;
+        $data = $result ? $result->fetch_assoc() : null;
 
         $stmt->close();
 
-        return $user;
+        if ($data) {
+            return $this->createUserFromArray($data);
+        }
+        return null;
     }
 
     /**
-     * Crea un nuevo usuario y devuelve datos básicos del registro insertado.
-     * La contraseña debe llegar ya hasheada.
+     * Crea un nuevo usuario y devuelve el objeto User creado.
      */
-    public function createUser(string $username, string $email, string $hashedPassword): array|false
+    public function createUser(User $user): User|false
     {
-        $query = "INSERT INTO users (username, email, password) VALUES (?, ?, ?)";
+        $query = "INSERT INTO users (username, email, password, nickname) VALUES (?, ?, ?, ?)";
         $stmt = $this->conn->prepare($query);
         if (!$stmt) {
             return false;
         }
 
-        $stmt->bind_param("sss", $username, $email, $hashedPassword);
+        $stmt->bind_param("ssss", $user->getUsername(), $user->getEmail(), $user->getPassword(), $user->getNickname());
         if (!$stmt->execute()) {
-            $error = $stmt->error;          // ← mensaje de MySQL
+            $error = $stmt->error;
             $stmt->close();
             throw new Exception("Error al crear usuario: $error");
         }
@@ -134,10 +143,48 @@ class UserRepository
         $insertId = $stmt->insert_id;
         $stmt->close();
 
-        return [
-            'id' => (int)$insertId,
-            'username' => $username,
-            'email' => $email
-        ];
+        $user->setId($insertId);
+        return $user;
+    }
+
+    /**
+     * Método auxiliar para crear objeto User desde array de BD
+     */
+    private function createUserFromArray(array $data): User
+    {
+        $user = new User();
+        $user->setId($data['id']);
+        $user->setUsername($data['username']);
+        $user->setEmail($data['email']);
+        $user->setPassword($data['password']);
+        $user->setNickname($data['nickname'] ?? null);
+        $user->setAvatar($data['avatar']);
+        $user->setPuntuacionTotal($data['puntuacion_total']);
+        $user->setPartidasJugadas($data['partidas_jugadas']);
+        $user->setPartidasGanadas($data['partidas_ganadas']);
+        $user->setRol($data['rol']);
+        $user->setEstado($data['estado']);
+        $user->setCreatedAt($data['created_at']);
+        $user->setUpdatedAt($data['updated_at']);
+        return $user;
+    }
+
+    /**
+     * Actualiza el nickname de un usuario
+     */
+    public function updateNickname(int $userId, ?string $nickname): bool
+    {
+        $query = "UPDATE users SET nickname = ?, updated_at = NOW() WHERE id = ?";
+        $stmt = $this->conn->prepare($query);
+
+        if (!$stmt) {
+            return false;
+        }
+
+        $stmt->bind_param("si", $nickname, $userId);
+        $result = $stmt->execute();
+        $stmt->close();
+
+        return $result;
     }
 }

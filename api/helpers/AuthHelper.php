@@ -21,7 +21,7 @@ class AuthHelper {
      */
     public static function requireLogin(): void {
         self::iniciarSesion();
-        
+
         if (!isset($_SESSION['userId'])) {
             error_log("requireLogin: No hay userId en sesión");
             header('Location: /login');
@@ -35,10 +35,10 @@ class AuthHelper {
 
         if (!$validation['valid']) {
             error_log("requireLogin: Usuario $userId no es válido - Razón: " . $validation['reason']);
-            
+
             // Destruir la sesión
             self::destroySession();
-            
+
             // Redirigir con mensaje específico
             if ($validation['reason'] === 'ACCOUNT_SUSPENDED') {
                 header('Location: /login?error=suspended');
@@ -56,7 +56,7 @@ class AuthHelper {
      */
     public static function redirectIfLogged(): void {
         self::iniciarSesion();
-        
+
         if (isset($_SESSION['userId'])) {
             $userId = $_SESSION['userId'];
             $authService = AuthService::getInstance();
@@ -89,7 +89,7 @@ class AuthHelper {
      */
     public static function usuarioCompleto(): ?array {
         self::iniciarSesion();
-        
+
         if (!isset($_SESSION['userId'])) {
             return null;
         }
@@ -112,10 +112,10 @@ class AuthHelper {
      */
     public static function destroySession(): void {
         self::iniciarSesion();
-        
+
         // Limpiar todas las variables de sesión
         $_SESSION = [];
-        
+
         // Destruir la cookie de sesión si existe
         if (ini_get('session.use_cookies')) {
             $params = session_get_cookie_params();
@@ -124,10 +124,10 @@ class AuthHelper {
                 $params['secure'], $params['httponly']
             );
         }
-        
+
         // Destruir la sesión
         session_destroy();
-        
+
         error_log("Sesión destruida completamente");
     }
 
@@ -136,7 +136,7 @@ class AuthHelper {
      */
     public static function validateSession(): array {
         self::iniciarSesion();
-        
+
         if (!isset($_SESSION['userId'])) {
             return ['valid' => false, 'reason' => 'NO_SESSION'];
         }
@@ -158,17 +158,17 @@ class AuthHelper {
      */
     public static function requireActiveUser(): array {
         $validation = self::validateSession();
-        
+
         if (!$validation['valid']) {
             http_response_code(401);
-            
+
             $message = match($validation['reason']) {
                 'NO_SESSION' => 'Sesión requerida',
                 'USER_NOT_FOUND' => 'Usuario no encontrado',
                 'ACCOUNT_SUSPENDED' => 'Cuenta suspendida',
                 default => 'Sesión inválida'
             };
-            
+
             echo json_encode([
                 'error' => $message,
                 'code' => $validation['reason']

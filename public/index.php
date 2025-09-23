@@ -60,7 +60,7 @@ require_once __DIR__ . '/../api/controllers/RankingController.php';
 require_once __DIR__ . '/../api/controllers/ContactoController.php';
 require_once __DIR__ . '/../api/repositories/ContactoRepository.php';
 require_once __DIR__ . '/../api/services/ContactoService.php';
-require_once __DIR__ . '/../api/models/Contacto.php';
+require_once __DIR__ . '/../usermodel/Contacto.php';
 
 AuthHelper::iniciarSesion();
 
@@ -97,6 +97,10 @@ try {
             require_once __DIR__ . '/../home.php';
             exit;
 
+        case 'ranking':
+            require_once __DIR__ . '/../ranking.php';
+            exit;
+
         /* ---------- Rutas API/JSON ---------- */
         case 'perfil':
             $controller = new PerfilController();
@@ -116,6 +120,7 @@ try {
                     'id' => $user['id'],
                     'username' => $user['username'],
                     'email' => $user['email'],
+                    'nickname' => $user['nickname'] ?? null,
                     'avatar' => $user['avatar'] ?? 'img/isotipoOficial.png',
                     'puntuacion_total' => $user['puntuacion_total'] ?? 0,
                     'partidas_jugadas' => $user['partidas_jugadas'] ?? 0,
@@ -147,6 +152,59 @@ try {
                 exit;
             }
 
+            /* 4) Actualizar nickname – /perfil/nickname */
+            if ($method === 'POST' && ($uri[1] ?? '') === 'nickname') {
+                $user = AuthHelper::requireActiveUser();
+                $raw = file_get_contents('php://input');
+                $data = json_decode($raw, true);
+                $nickname = $data['nickname'] ?? null;
+
+                header('Content-Type: application/json');
+                echo json_encode($controller->updateNickname($user['id'], $nickname));
+                exit;
+            }
+
+            /* 5) Obtener ranking general – /perfil/ranking */
+            if ($method === 'GET' && ($uri[1] ?? '') === 'ranking') {
+                $limit = $_GET['limit'] ?? 10;
+                $service = new PerfilService();
+                $ranking = $service->getRanking($limit);
+                header('Content-Type: application/json');
+                echo json_encode(['success' => true, 'ranking' => $ranking]);
+                exit;
+            }
+
+            /* 6) Obtener posición del usuario en ranking – /perfil/user-ranking */
+            if ($method === 'GET' && ($uri[1] ?? '') === 'user-ranking') {
+                $user = AuthHelper::requireActiveUser();
+                $service = new PerfilService();
+                $userRanking = $service->getUserRanking($user['id']);
+                header('Content-Type: application/json');
+                echo json_encode(['success' => true] + $userRanking);
+                exit;
+            }
+
+            http_response_code(405);
+            echo json_encode(['success' => false, 'message' => 'Método no permitido']);
+            break;
+
+        case 'verify-user':
+            if ($method === 'POST') {
+                $raw = file_get_contents('php://input');
+                $data = json_decode($raw, true);
+                $identifier = trim($data['identifier'] ?? '');
+                $password = $data['password'] ?? '';
+
+                if (!$identifier || !$password) {
+                    echo json_encode(['success' => false, 'message' => 'Faltan credenciales']);
+                    exit;
+                }
+
+                // Solo verificar credenciales, NO cambiar sesión
+                $result = $controller->verifyCredentials($identifier, $password);
+                echo json_encode($result);
+                exit;
+            }
             http_response_code(405);
             echo json_encode(['success' => false, 'message' => 'Método no permitido']);
             break;
@@ -493,6 +551,13 @@ try {
                     case 'obtenerPuntuaciones':
                         if ($method === 'POST') {
                             $controller->obtenerPuntuaciones();
+                            exit;
+                        }
+                        break;
+
+                    case 'validarColocacionDino':
+                        if ($method === 'POST') {
+                            $controller->validarColocacionDino();
                             exit;
                         }
                         break;

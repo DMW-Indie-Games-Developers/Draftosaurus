@@ -6,17 +6,18 @@ class PerfilRepository {
     public function findById($userId) {
         $db = Database::getInstance()->getConnection();
         $stmt = $db->prepare("
-            SELECT 
-                id, 
-                username, 
-                email, 
-                avatar, 
+            SELECT
+                id,
+                username,
+                email,
+                nickname,
+                avatar,
                 puntuacion_total,
                 partidas_jugadas,
                 partidas_ganadas,
-                created_at, 
-                updated_at 
-            FROM users 
+                created_at,
+                updated_at
+            FROM users
             WHERE id = ?
         ");
         $stmt->bind_param('i', $userId);
@@ -123,6 +124,98 @@ class PerfilRepository {
             'partidas_ganadas' => (int)$result['partidas_ganadas'],
             'promedio_puntos' => round((float)$result['promedio_puntos'], 1),
             'mejor_puntuacion' => (int)$result['mejor_puntuacion']
+        ];
+    }
+
+    public function updateNickname($userId, $nickname) {
+        $db = Database::getInstance()->getConnection();
+        $stmt = $db->prepare("UPDATE users SET nickname = ?, updated_at = NOW() WHERE id = ?");
+        $stmt->bind_param('si', $nickname, $userId);
+        return $stmt->execute();
+    }
+
+    public function nicknameExists($nickname, $excludeUserId) {
+        $db = Database::getInstance()->getConnection();
+        $stmt = $db->prepare("SELECT id FROM users WHERE nickname = ? AND id != ?");
+        $stmt->bind_param('si', $nickname, $excludeUserId);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        return $result->num_rows > 0;
+    }
+
+    public function getRanking($limit = 10) {
+        $db = Database::getInstance()->getConnection();
+        $stmt = $db->prepare("
+            SELECT
+                id,
+                username,
+                nickname,
+                CASE WHEN nickname IS NOT NULL AND nickname != '' THEN nickname ELSE username END as display_name,
+                avatar,
+                puntuacion_total,
+                partidas_jugadas,
+                partidas_ganadas,
+                CASE WHEN partidas_jugadas > 0 THEN ROUND((partidas_ganadas / partidas_jugadas) * 100, 1) ELSE 0 END as ratio_victorias
+            FROM users
+            WHERE estado = 'activo'
+            ORDER BY puntuacion_total DESC, partidas_ganadas DESC
+            LIMIT ?
+        ");
+        $stmt->bind_param('i', $limit);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        $ranking = [];
+        $position = 1;
+        while ($row = $result->fetch_assoc()) {
+            $row['position'] = $position++;
+            $ranking[] = $row;
+        }
+
+        return $ranking;
+    }
+
+    public function getUserRanking($userId) {
+        $db = Database::getInstance()->getConnection();
+
+        // Obtener la posición del usuario
+        $stmt = $db->prepare("
+            SELECT
+                COUNT(*) + 1 as position
+            FROM users
+            WHERE puntuacion_total > (
+                SELECT puntuacion_total FROM users WHERE id = ?
+            ) AND estado = 'activo'
+        ");
+        $stmt->bind_param('i', $userId);
+        $stmt->execute();
+        $result = $stmt->get_result()->fetch_assoc();
+        $userPosition = $result['position'];
+
+        // Obtener total de jugadores activos
+        $stmt = $db->prepare("SELECT COUNT(*) as total FROM users WHERE estado = 'activo'");
+        $stmt->execute();
+        $totalPlayers = $stmt->get_result()->fetch_assoc()['total'];
+
+        // Obtener datos del siguiente jugador (para calcular puntos necesarios)
+        $stmt = $db->prepare("
+            SELECT puntuacion_total
+            FROM users
+            WHERE puntuacion_total > (
+                SELECT puntuacion_total FROM users WHERE id = ?
+            ) AND estado = 'activo'
+            ORDER BY puntuacion_total ASC
+            LIMIT 1
+        ");
+        $stmt->bind_param('i', $userId);
+        $stmt->execute();
+        $nextResult = $stmt->get_result()->fetch_assoc();
+        $nextPlayerPoints = $nextResult ? $nextResult['puntuacion_total'] : null;
+
+        return [
+            'position' => $userPosition,
+            'total_players' => $totalPlayers,
+            'next_player_points' => $nextPlayerPoints
         ];
     }
 }
