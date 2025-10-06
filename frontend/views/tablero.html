@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Draftosaurus - Tablero</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/tablero.css">
+</head>
+
+<body>
+  <div class="main-layout">
+
+    <!--  Sidebar derecha: DADO + TURNOS  -->
+    <div class="sidebar right">
+      <h4>Dado</h4>
+      <img src="img/dado/dado.png" alt="Dado" class="dado-img" id="dado-img">
+      <button id="tirar-dado-btn">Tirar Dado</button>
+      <p id="restriccion-text">Esperando...</p>
+
+      <!--  TURNOS  -->
+      <div id="jugador-info">
+        <img id="tablero-avatar" src="img/isotipoOficial.png" alt="Avatar" class="rounded-circle" width="50"
+          height="50">
+        <h3 id="turno-text">Ronda 1 - Turno 1 - Jugador 1</h3>
+      </div>
+    </div>
+
+    <!-- TABLERO -->
+    <div class="tablero">
+      <!-- CAMBIO PRINCIPAL: IDs corregidos para coincidir con el JavaScript -->
+      <div class="recinto" id="bosque-semejanza" data-tipo="bosque-semejanza" data-nombre="Bosque de la Semejanza" data-zona="izquierda" data-ambiente="boscoso">
+        <div class="recinto-score">0</div>
+        <div class="recinto-name"></div>
+      </div>
+
+      <div class="recinto" id="trio-frondoso" data-tipo="trio-frondoso" data-nombre="Trío Frondoso" data-zona="izquierda" data-ambiente="boscoso">
+        <div class="recinto-score">0</div>
+        <div class="recinto-name"></div>
+      </div>
+
+      <div class="recinto" id="pradera-amor" data-tipo="pradera-amor" data-nombre="Pradera del Amor" data-zona="izquierda" data-ambiente="rocoso">
+        <div class="recinto-score">0</div>
+        <div class="recinto-name"></div>
+      </div>
+
+      <div class="recinto" id="rey-selva" data-tipo="rey-selva" data-nombre="Rey de la Selva" data-zona="derecha" data-ambiente="boscoso">
+        <div class="recinto-score">0</div>
+        <div class="recinto-name"></div>
+      </div>
+
+      <div class="recinto" id="prado-diferencia" data-tipo="prado-diferencia" data-nombre="El Prado de la Diferencia" data-zona="derecha" data-ambiente="rocoso">
+        <div class="recinto-score">0</div>
+        <div class="recinto-name"></div>
+      </div>
+
+      <div class="recinto" id="rio" data-tipo="rio" data-nombre="Río" data-zona="centro" data-ambiente="neutral">
+        <div class="recinto-score">0</div>
+        <div class="recinto-name"></div>
+      </div>
+
+      <div class="recinto" id="isla-solitario" data-tipo="isla-solitario" data-nombre="Isla Solitaria" data-zona="derecha" data-ambiente="rocoso">
+        <div class="recinto-score">0</div>
+        <div class="recinto-name"></div>
+      </div>
+    </div>
+
+    <!-- DINOSAURIOS -->
+    <div class="dino-panel">
+      <h4 id="dino-panel-title">Tus Dinosaurios - Jugador 1</h4>
+      <div class="dino-grid">
+        <img src="img/imagen_Tablero/dino1.png" class="dino-img" data-especie="dino1" draggable="true" alt="Dino 1">
+        <img src="img/imagen_Tablero/dino2.png" class="dino-img" data-especie="dino2" draggable="true" alt="Dino 2">
+        <img src="img/imagen_Tablero/dino3.png" class="dino-img" data-especie="dino3" draggable="true" alt="Dino 3">
+        <img src="img/imagen_Tablero/dino4.png" class="dino-img" data-especie="dino4" draggable="true" alt="Dino 4">
+        <img src="img/imagen_Tablero/dino5.png" class="dino-img" data-especie="dino5" draggable="true" alt="Dino 5">
+        <img src="img/imagen_Tablero/trex.png" class="dino-img" data-especie="trex" draggable="true" alt="Dino 6">
+      </div>
+
+      <!--  PUNTOS debajo de Tus Dinosaurios  -->
+      <div class="score-bajo-dinos">
+        <div class="score-row">
+          <span id="nombre-j1">Jugador 1</span>: <span id="puntos-j1" class="player-score">0</span>
+        </div>
+        <div class="score-row">
+          <span id="nombre-j2">Jugador 2</span>: <span id="puntos-j2" class="player-score">0</span>
+        </div>
+      </div>
+      <!--  Se ELIMINÓ el duplicado de jugador-info  -->
+    </div>
+
+  </div>
+  <button id="btn-guardar" class="btn-flotante">Guardar partida</button>
+  <!-- BOTÓN DE REGLAS -->
+  <button class="rules-btn" id="btn-ayuda">?</button>
+
+  <!-- MODAL DE REGLAS -->
+  <div class="rules-modal" id="rules-modal">
+    <div class="rules-content">
+      <h2>Reglas de los Recintos</h2>
+      <ul>
+        <li><strong>Isla Solitaria:</strong> Solo 1 dinosaurio. 7 puntos si es único en tu parque, 0 en caso contrario.
+        </li>
+        <li><strong>Trío Frondoso:</strong> Hasta 3 dinosaurios. 7 puntos si tiene exactamente 3 dinosaurios.</li>
+        <li><strong>Bosque de la Semejanza:</strong> Solo dinosaurios de la misma especie. Puntos según cantidad: 1=1,
+          2=3, 3=6, 4=10, 5=15, 6=21.</li>
+        <li><strong>Prado de la Diferencia:</strong> Solo dinosaurios de especies distintas. Puntos según cantidad: 1=1,
+          2=3, 3=6, 4=10, 5=15, 6=21.</li>
+        <li><strong>Pradera del Amor:</strong> 5 puntos por cada pareja de la misma especie.</li>
+        <li><strong>Río:</strong> 1 punto por cada dinosaurio.</li>
+        <li><strong>Rey de la Selva:</strong> Solo 1 dinosaurio. 7 puntos si es el único de su especie en tu parque.
+        </li>
+      </ul>
+      <button class="close-btn">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- Bootstrap JavaScript -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Config de API -->
+  <script src="js/config.js"></script>
+
+  <!-- Scripts de la aplicación -->
+  <script src="js/tablero.js"></script>
+</body>
+
+</html>
