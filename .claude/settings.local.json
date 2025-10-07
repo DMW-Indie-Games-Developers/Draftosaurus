@@ -5,7 +5,9 @@
       "Bash(cp:*)",
       "Bash(curl:*)",
       "Bash(cat:*)",
-      "Bash(git add:*)"
+      "Bash(git add:*)",
+      "Bash(php:*)",
+      "Bash(mysql:*)"
     ],
     "deny": [],
     "ask": []

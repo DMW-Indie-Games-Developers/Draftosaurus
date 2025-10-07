@@ -53,9 +53,15 @@ document.addEventListener('DOMContentLoaded', function () {
         el('user-info').innerHTML = infoHtml;
       }
 
-      // Avatar
+      // Avatar - Si viene del backend con http:// usarlo, sino usar ruta local por defecto
       const avatarImg = el('avatar-img');
-      if (avatarImg) avatarImg.src = data.avatar || 'img/isotipoOficial.png';
+      if (avatarImg) {
+        if (data.avatar && data.avatar.startsWith('http://')) {
+          avatarImg.src = data.avatar;
+        } else {
+          avatarImg.src = 'img/isotipoOficial.png';
+        }
+      }
 
       // Cargar datos de ranking
       cargarRankingData();
@@ -95,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const prev = btn ? btn.textContent : null;
     if (btn) btn.textContent = 'Subiendo...';
 
-    fetch(apiUrl('/api/upload_avatar.php'), {
+    fetch(apiUrl('/upload_avatar'), {
       method: 'POST',
       body: fd,
       credentials: 'include'
@@ -105,7 +111,10 @@ document.addEventListener('DOMContentLoaded', function () {
         if (btn) btn.textContent = prev;
         if (res.success && res.avatarUrl) {
           const avatarImg = el('avatar-img');
-          if (avatarImg) avatarImg.src = res.avatarUrl;
+          if (avatarImg) {
+            // Agregar timestamp para evitar cache
+            avatarImg.src = res.avatarUrl + '?t=' + Date.now();
+          }
           alert('Avatar actualizado correctamente');
         } else {
           alert(res.message || 'Error en la subida');

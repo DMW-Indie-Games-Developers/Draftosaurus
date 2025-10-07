@@ -1,0 +1,56 @@
+<!-- Selector de Idioma -->
+<div class="language-selector-container">
+  <select id="language-selector" class="form-select form-select-sm language-selector" aria-label="Language selector">
+    <option value="es">🇪🇸 Español</option>
+    <option value="en">🇬🇧 English</option>
+  </select>
+</div>
+
+<style>
+.language-selector-container {
+  display: inline-block;
+}
+
+.language-selector {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.language-selector:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.language-selector:focus {
+  outline: none;
+  box-shadow: 0 0 0 0.2rem rgba(255, 255, 255, 0.25);
+}
+
+.language-selector option {
+  background-color: #2c3e50;
+  color: white;
+}
+</style>
+
+<script>
+// Inicializar selector de idioma cuando se carga el componente
+document.addEventListener('DOMContentLoaded', function() {
+  const selector = document.getElementById('language-selector');
+
+  if (selector && window.i18n) {
+    // Establecer idioma actual
+    selector.value = window.i18n.getCurrentLanguage();
+
+    // Cambiar idioma al seleccionar
+    selector.addEventListener('change', function(e) {
+      window.i18n.setLanguage(e.target.value);
+    });
+  }
+});
+</script>

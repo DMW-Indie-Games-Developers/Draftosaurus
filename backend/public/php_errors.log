@@ -1,0 +1,90 @@
+[07-Oct-2025 14:38:05 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Oct-2025 14:38:05 America/Montevideo] === UserRepository::findById(4) ===
+[07-Oct-2025 14:38:05 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[07-Oct-2025 14:38:05 America/Montevideo] Usuario 4 está activo
+[07-Oct-2025 14:38:05 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Oct-2025 14:38:05 America/Montevideo] === UserRepository::findById(4) ===
+[07-Oct-2025 14:38:05 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[07-Oct-2025 14:38:05 America/Montevideo] Usuario 4 está activo
+[07-Oct-2025 14:41:01 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Oct-2025 14:41:01 America/Montevideo] === UserRepository::findById(4) ===
+[07-Oct-2025 14:41:01 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[07-Oct-2025 14:41:01 America/Montevideo] Usuario 4 está activo
+[07-Oct-2025 14:41:01 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Oct-2025 14:41:01 America/Montevideo] === UserRepository::findById(4) ===
+[07-Oct-2025 14:41:01 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[07-Oct-2025 14:41:01 America/Montevideo] Usuario 4 está activo
+[07-Oct-2025 14:46:24 America/Montevideo] Login intentado: martin@martin.com / martin123
+[07-Oct-2025 14:46:24 America/Montevideo] === INICIO AuthService::login ===
+[07-Oct-2025 14:46:24 America/Montevideo] Intentando login para: martin@martin.com
+[07-Oct-2025 14:46:24 America/Montevideo] === INICIO verifyCredentials ===
+[07-Oct-2025 14:46:24 America/Montevideo] Identifier: martin@martin.com
+[07-Oct-2025 14:46:24 America/Montevideo] Usuario encontrado: martin
+[07-Oct-2025 14:46:24 America/Montevideo] Estado del usuario: activo
+[07-Oct-2025 14:46:24 America/Montevideo] Usuario activo, verificando contraseña...
+[07-Oct-2025 14:46:24 America/Montevideo] Password verify: OK
+[07-Oct-2025 14:46:24 America/Montevideo] Usuario estado final: activo
+[07-Oct-2025 14:46:24 America/Montevideo] === FIN verifyCredentials (success) ===
+[07-Oct-2025 14:46:24 America/Montevideo] Login exitoso para usuario ID: 4
+[07-Oct-2025 14:46:24 America/Montevideo] === FIN AuthService::login (success) ===
+[07-Oct-2025 14:46:24 America/Montevideo] === INICIO AuthService::login ===
+[07-Oct-2025 14:46:24 America/Montevideo] Intentando login para: martin@martin.com
+[07-Oct-2025 14:46:24 America/Montevideo] === INICIO verifyCredentials ===
+[07-Oct-2025 14:46:24 America/Montevideo] Identifier: martin@martin.com
+[07-Oct-2025 14:46:24 America/Montevideo] Usuario encontrado: martin
+[07-Oct-2025 14:46:24 America/Montevideo] Estado del usuario: activo
+[07-Oct-2025 14:46:24 America/Montevideo] Usuario activo, verificando contraseña...
+[07-Oct-2025 14:46:25 America/Montevideo] Password verify: OK
+[07-Oct-2025 14:46:25 America/Montevideo] Usuario estado final: activo
+[07-Oct-2025 14:46:25 America/Montevideo] === FIN verifyCredentials (success) ===
+[07-Oct-2025 14:46:25 America/Montevideo] Login exitoso para usuario ID: 4
+[07-Oct-2025 14:46:25 America/Montevideo] === FIN AuthService::login (success) ===
+[07-Oct-2025 14:46:25 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Oct-2025 14:46:25 America/Montevideo] === UserRepository::findById(4) ===
+[07-Oct-2025 14:46:25 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[07-Oct-2025 14:46:25 America/Montevideo] Usuario 4 está activo
+[07-Oct-2025 14:46:25 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Oct-2025 14:46:25 America/Montevideo] === UserRepository::findById(4) ===
+[07-Oct-2025 14:46:25 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[07-Oct-2025 14:46:25 America/Montevideo] Usuario 4 está activo
+[07-Oct-2025 14:52:39 America/Montevideo] Login intentado: martin@martin.com / martin123
+[07-Oct-2025 14:52:39 America/Montevideo] === INICIO AuthService::login ===
+[07-Oct-2025 14:52:39 America/Montevideo] Intentando login para: martin@martin.com
+[07-Oct-2025 14:52:39 America/Montevideo] === INICIO verifyCredentials ===
+[07-Oct-2025 14:52:39 America/Montevideo] Identifier: martin@martin.com
+[07-Oct-2025 14:52:39 America/Montevideo] Usuario encontrado: martin
+[07-Oct-2025 14:52:39 America/Montevideo] Estado del usuario: activo
+[07-Oct-2025 14:52:39 America/Montevideo] Usuario activo, verificando contraseña...
+[07-Oct-2025 14:52:39 America/Montevideo] Password verify: OK
+[07-Oct-2025 14:52:39 America/Montevideo] Usuario estado final: activo
+[07-Oct-2025 14:52:39 America/Montevideo] === FIN verifyCredentials (success) ===
+[07-Oct-2025 14:52:39 America/Montevideo] Login exitoso para usuario ID: 4
+[07-Oct-2025 14:52:39 America/Montevideo] === FIN AuthService::login (success) ===
+[07-Oct-2025 14:52:39 America/Montevideo] === INICIO AuthService::login ===
+[07-Oct-2025 14:52:39 America/Montevideo] Intentando login para: martin@martin.com
+[07-Oct-2025 14:52:39 America/Montevideo] === INICIO verifyCredentials ===
+[07-Oct-2025 14:52:39 America/Montevideo] Identifier: martin@martin.com
+[07-Oct-2025 14:52:39 America/Montevideo] Usuario encontrado: martin
+[07-Oct-2025 14:52:39 America/Montevideo] Estado del usuario: activo
+[07-Oct-2025 14:52:39 America/Montevideo] Usuario activo, verificando contraseña...
+[07-Oct-2025 14:52:40 America/Montevideo] Password verify: OK
+[07-Oct-2025 14:52:40 America/Montevideo] Usuario estado final: activo
+[07-Oct-2025 14:52:40 America/Montevideo] === FIN verifyCredentials (success) ===
+[07-Oct-2025 14:52:40 America/Montevideo] Login exitoso para usuario ID: 4
+[07-Oct-2025 14:52:40 America/Montevideo] === FIN AuthService::login (success) ===
+[07-Oct-2025 14:52:40 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Oct-2025 14:52:40 America/Montevideo] === UserRepository::findById(4) ===
+[07-Oct-2025 14:52:40 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[07-Oct-2025 14:52:40 America/Montevideo] Usuario 4 está activo
+[07-Oct-2025 14:52:40 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Oct-2025 14:52:40 America/Montevideo] === UserRepository::findById(4) ===
+[07-Oct-2025 14:52:40 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[07-Oct-2025 14:52:40 America/Montevideo] Usuario 4 está activo
+[07-Oct-2025 16:10:48 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Oct-2025 16:10:48 America/Montevideo] === UserRepository::findById(4) ===
+[07-Oct-2025 16:10:48 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[07-Oct-2025 16:10:48 America/Montevideo] Usuario 4 está activo
+[07-Oct-2025 16:10:48 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[07-Oct-2025 16:10:48 America/Montevideo] === UserRepository::findById(4) ===
+[07-Oct-2025 16:10:48 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[07-Oct-2025 16:10:48 America/Montevideo] Usuario 4 está activo

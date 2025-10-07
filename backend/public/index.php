@@ -300,7 +300,7 @@ try {
                         throw new Exception('Error al guardar');
                     }
 
-                    $avatarUrl = '/uploads/avatars/' . $filename;
+                    $avatarUrl = 'http://localhost:4000/uploads/avatars/' . $filename;
                     $controller = new PerfilController();
                     $result = $controller->updateAvatar($userId, $avatarUrl);
 
@@ -508,14 +508,74 @@ try {
 
                 if (file_exists($filepath) && strpos(realpath($filepath), realpath(__DIR__ . '/uploads/avatars/')) === 0) {
                     $mimeType = mime_content_type($filepath);
+                    header('Access-Control-Allow-Origin: http://localhost:3000');
+                    header('Access-Control-Allow-Credentials: true');
                     header('Content-Type: ' . $mimeType);
                     header('Content-Length: ' . filesize($filepath));
+                    header('Cache-Control: public, max-age=31536000');
                     readfile($filepath);
                     exit;
                 }
             }
             http_response_code(404);
             echo json_encode(['success' => false, 'message' => 'Archivo no encontrado']);
+            break;
+
+        /* UPLOAD AVATAR (ruta directa) */
+        case 'upload_avatar':
+            if ($method === 'POST') {
+                try {
+                    $user = AuthHelper::requireActiveUser();
+                    $userId = $user['id'];
+
+                    if (!isset($_FILES['avatar']) || $_FILES['avatar']['error'] !== UPLOAD_ERR_OK) {
+                        throw new Exception('No se recibió ningún archivo válido');
+                    }
+
+                    $file = $_FILES['avatar'];
+
+                    $allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+                    if (!in_array($file['type'], $allowedTypes)) {
+                        throw new Exception('Formato no soportado');
+                    }
+
+                    $maxSize = 3 * 1024 * 1024;
+                    if ($file['size'] > $maxSize) {
+                        throw new Exception('Archivo muy grande');
+                    }
+
+                    $uploadDir = __DIR__ . '/uploads/avatars/';
+                    if (!is_dir($uploadDir)) {
+                        mkdir($uploadDir, 0755, true);
+                    }
+
+                    $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
+                    $filename = 'avatar_' . $userId . '_' . time() . '.' . $extension;
+                    $filepath = $uploadDir . $filename;
+
+                    if (!move_uploaded_file($file['tmp_name'], $filepath)) {
+                        throw new Exception('Error al guardar');
+                    }
+
+                    $avatarUrl = 'http://localhost:4000/uploads/avatars/' . $filename;
+                    $controller = new PerfilController();
+                    $result = $controller->updateAvatar($userId, $avatarUrl);
+
+                    if ($result['success']) {
+                        echo json_encode(['success' => true, 'message' => 'Avatar actualizado', 'avatarUrl' => $avatarUrl]);
+                    } else {
+                        if (file_exists($filepath)) unlink($filepath);
+                        echo json_encode($result);
+                    }
+
+                } catch (Exception $e) {
+                    http_response_code(400);
+                    echo json_encode(['success' => false, 'message' => $e->getMessage()]);
+                }
+                exit;
+            }
+            http_response_code(405);
+            echo json_encode(['success' => false, 'message' => 'Método no permitido']);
             break;
 
         default:
