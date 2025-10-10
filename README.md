@@ -2,6 +2,25 @@
 
 ## 🚀 Inicio Rápido
 
+### Configuración Inicial (Primera vez)
+
+1. **Configurar variables de entorno:**
+   ```bash
+   # Copiar el archivo de ejemplo
+   cp .env.example .env
+
+   # Editar .env con tus credenciales reales
+   # DB_HOST=localhost
+   # DB_USER=tu_usuario
+   # DB_PASSWORD=tu_contraseña
+   # DB_NAME=draftosaurus
+   ```
+
+2. **Importar la base de datos:**
+   ```bash
+   mysql -u root -p < draftosaurus.sql
+   ```
+
 ### Ejecutar el proyecto:
 
 **Windows:**

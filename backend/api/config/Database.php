@@ -18,11 +18,14 @@ class Database
      */
     private static ?Database $instance = null; // instancia única
 
-    /** Configuración de conexión (ajusta a tu entorno local). */
-    private string $host = "localhost";   // Host del servidor MySQL
-    private string $user = "root";        // Usuario de la base de datos
-    private string $password = "root";  // Contraseña del usuario
-    private string $dbname = "draftosaurus"; // Nombre de la base de datos
+    /**
+     * Configuración de conexión usando variables de entorno.
+     * Las credenciales se cargan desde el archivo .env en la raíz del proyecto.
+     */
+    private string $host;
+    private string $user;
+    private string $password;
+    private string $dbname;
 
     /**
      * Recurso de conexión de mysqli ya abierto y listo para usarse por el resto de la aplicación.
@@ -36,7 +39,16 @@ class Database
      */
     private function __construct()
     {
-        // Crea la conexión usando credenciales definidas arriba
+        // Cargar variables de entorno desde el archivo .env
+        $this->loadEnv();
+
+        // Obtener credenciales desde variables de entorno
+        $this->host = getenv('DB_HOST') ?: 'localhost';
+        $this->user = getenv('DB_USER') ?: 'root';
+        $this->password = getenv('DB_PASSWORD') ?: '';
+        $this->dbname = getenv('DB_NAME') ?: 'draftosaurus';
+
+        // Crea la conexión usando credenciales desde variables de entorno
         $this->conn = new mysqli($this->host, $this->user, $this->password, $this->dbname);
 
         // Si falla la conexión, detenemos con una excepción descriptiva
@@ -46,6 +58,46 @@ class Database
 
         // Asegura que las comunicaciones usen UTF-8 (evita problemas con acentos/ñ)
         $this->conn->set_charset("utf8");
+    }
+
+    /**
+     * Carga las variables de entorno desde el archivo .env
+     * Busca el archivo .env en el directorio raíz del proyecto
+     */
+    private function loadEnv(): void
+    {
+        // Buscar el archivo .env en la raíz del proyecto (3 niveles arriba desde /backend/api/config/)
+        $envPath = __DIR__ . '/../../../.env';
+
+        if (!file_exists($envPath)) {
+            // Si no existe .env, intentar usar valores por defecto o lanzar error
+            error_log("⚠️ Archivo .env no encontrado en: " . realpath(__DIR__ . '/../../../'));
+            return;
+        }
+
+        // Leer el archivo .env línea por línea
+        $lines = file($envPath, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+        foreach ($lines as $line) {
+            // Ignorar comentarios (líneas que empiezan con #)
+            if (strpos(trim($line), '#') === 0) {
+                continue;
+            }
+
+            // Separar clave=valor
+            if (strpos($line, '=') !== false) {
+                list($key, $value) = explode('=', $line, 2);
+                $key = trim($key);
+                $value = trim($value);
+
+                // Establecer la variable de entorno
+                if (!empty($key)) {
+                    putenv("$key=$value");
+                    $_ENV[$key] = $value;
+                    $_SERVER[$key] = $value;
+                }
+            }
+        }
     }
 
     /**
