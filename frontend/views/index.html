@@ -29,13 +29,13 @@
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#carouselExampleCaptions">Inicio</a>
+                        <a class="nav-link active" aria-current="page" href="#carouselExampleCaptions" data-i18n="nav.home">Inicio</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#info">Info</a>
+                        <a class="nav-link" href="#info" data-i18n="nav.info">Info</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#como-jugar">Como Jugar</a>
+                        <a class="nav-link" href="#como-jugar" data-i18n="nav.howToPlay">Como Jugar</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -46,31 +46,31 @@
                             <li>
                                 <a class="dropdown-item d-flex align-items-center" href="/login">
                                     <i class="bi bi-person-plus-fill me-2"></i>
-                                    Registrarse
+                                    <span data-i18n="common.register">Registrarse</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item d-flex align-items-center" href="/login">
                                     <i class="bi bi-box-arrow-in-right me-2"></i>
-                                    Login
+                                    <span data-i18n="common.login">Login</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item d-flex align-items-center" href="#como-jugar">
                                     <i class="bi bi-play-circle me-2"></i>
-                                    Como Jugar
+                                    <span data-i18n="nav.howToPlay">Como Jugar</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item d-flex align-items-center" href="/ranking">
                                     <i class="bi bi-bar-chart-line me-2"></i>
-                                    Ranking
+                                    <span data-i18n="nav.ranking">Ranking</span>
                                 </a>
                             </li>
                             <li>
                                 <a class="dropdown-item d-flex align-items-center" href="#contacto">
                                     <i class="bi bi-envelope me-2"></i>
-                                    Contacto
+                                    <span data-i18n="nav.contact">Contacto</span>
                                 </a>
                             </li>
                             <li>
@@ -80,7 +80,7 @@
                                 <a class="dropdown-item d-flex align-items-center" href="#sobre-nosotros">
                                     <img src="img/sinfondo.png" alt="DMW Logo" class="me-2"
                                         style="width: 30px; height: 30px;">
-                                    DMW
+                                    <span data-i18n="nav.dmw">DMW</span>
                                 </a>
                             </li>
                         </ul>
@@ -106,8 +106,8 @@
                 <img src="img/bannerDrafto.png" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-block">
 
-                    <h1>Draftosaurus</h1>
-                    <p>No puedes esperar a ver estos increibles Dinosaurios.</p>
+                    <h1 data-i18n="home.carousel.title">Draftosaurus</h1>
+                    <p data-i18n="home.carousel.subtitle">No puedes esperar a ver estos increibles Dinosaurios.</p>
                     <a href="/login" class="btn btn-zoom"><img src="img/botonjugar.png" alt=""></a>
                 </div>
             </div>
@@ -116,8 +116,8 @@
                 <img src="img/tablero_medieval.png" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-block">
 
-                    <h2>Dinosaurios Increibles</h2>
-                    <p>Figuras de dinosaurios de la mejor calidad.</p>
+                    <h2 data-i18n="home.carousel.slide2Title">Dinosaurios Increibles</h2>
+                    <p data-i18n="home.carousel.slide2Text">Figuras de dinosaurios de la mejor calidad.</p>
                 </div>
             </div>
 
@@ -125,8 +125,8 @@
                 <img src="img/banner_tablero.png" class="d-block w-100" alt="...">
                 <div class="carousel-caption d-block">
 
-                    <h2>Tablero Mágico</h2>
-                    <p>Increibles recintos para colocar tus dinosaurios.</p>
+                    <h2 data-i18n="home.carousel.slide3Title">Tablero Mágico</h2>
+                    <p data-i18n="home.carousel.slide3Text">Increibles recintos para colocar tus dinosaurios.</p>
                 </div>
             </div>
         </div>
@@ -134,28 +134,28 @@
         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
             data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Anterior</span>
+            <span class="visually-hidden" data-i18n="home.carousel.previous">Anterior</span>
         </button>
 
         <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
             data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Siguiente</span>
+            <span class="visually-hidden" data-i18n="home.carousel.next">Siguiente</span>
         </button>
     </div>
 
     <section id="info">
 
         <div class="container my-5">
-            <h2 class="text-center mb-4">Información del Juego: Draftosaurus</h2>
+            <h2 class="text-center mb-4" data-i18n="home.gameInfo.title">Información del Juego: Draftosaurus</h2>
             <div class="row row-cols-1 row-cols-md-3 g-4">
 
                 <div class="col">
                     <div class="card card-custom text-center shadow text-light">
                         <div class="card-body">
                             <i class="bi bi-clock-history icon-style text-primary"></i>
-                            <h3 class="card-title">Duración</h3>
-                            <p class="card-text">Aprox. 15-20 minutos por partida.</p>
+                            <h3 class="card-title" data-i18n="home.gameInfo.duration">Duración</h3>
+                            <p class="card-text" data-i18n="home.gameInfo.durationText">Aprox. 15-20 minutos por partida.</p>
                         </div>
                     </div>
                 </div>
@@ -164,8 +164,8 @@
                     <div class="card card-custom text-center shadow text-light">
                         <div class="card-body">
                             <i class="bi bi-people-fill icon-style text-success"></i>
-                            <h3 class="card-title">Número de Jugadores</h3>
-                            <p class="card-text">De 2 a 5 jugadores.</p>
+                            <h3 class="card-title" data-i18n="home.gameInfo.players">Número de Jugadores</h3>
+                            <p class="card-text" data-i18n="home.gameInfo.playersText">De 2 a 5 jugadores.</p>
                         </div>
                     </div>
                 </div>
@@ -174,8 +174,8 @@
                     <div class="card card-custom text-center shadow text-light">
                         <div class="card-body">
                             <i class="bi bi-controller icon-style text-danger"></i>
-                            <h3 class="card-title">Tipo de Juego</h3>
-                            <p class="card-text">Juego de estrategia rápida y draft de dinosaurios.</p>
+                            <h3 class="card-title" data-i18n="home.gameInfo.gameType">Tipo de Juego</h3>
+                            <p class="card-text" data-i18n="home.gameInfo.gameTypeText">Juego de estrategia rápida y draft de dinosaurios.</p>
                         </div>
                     </div>
                 </div>
@@ -185,39 +185,38 @@
     </section>
     <section id="como-jugar">
         <div class="container">
-            <h2 class="display-5 text-center mb-5 fw-bold">Cómo Jugar a Draftosaurus</h2>
+            <h2 class="display-5 text-center mb-5 fw-bold" data-i18n="home.howToPlay.title">Cómo Jugar a Draftosaurus</h2>
             <div class="row align-items-center">
                 <div class="col-md-6 mb-4">
                     <img src="img/Tablero_verano_draftosauru.png" class="img-fluid rounded shadow"
                         alt="Tablero de jugador de Draftosaurus">
                 </div>
                 <div class="col-md-6 mb-4">
-                    <h3>Construye tu Dino-Parque en 3 Sencillos Pasos</h3>
+                    <h3 data-i18n="home.howToPlay.subtitle">Construye tu Dino-Parque en 3 Sencillos Pasos</h3>
                     <ol class="list-group list-group-numbered shadow-sm">
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
-                                <div class="fw-bold">Toma tu Mano de Dinos</div>
-                                Cada jugador recibe un puñado de adorables figuras de dinosaurio.
+                                <div class="fw-bold" data-i18n="home.howToPlay.step1Title">Toma tu Mano de Dinos</div>
+                                <span data-i18n="home.howToPlay.step1Text">Cada jugador recibe un puñado de adorables figuras de dinosaurio.</span>
                             </div>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
-                                <div class="fw-bold">Elige y Pasa</div>
-                                Selecciona un dinosaurio para tu parque y pasa el resto de tu mano al siguiente jugador.
+                                <div class="fw-bold" data-i18n="home.howToPlay.step2Title">Elige y Pasa</div>
+                                <span data-i18n="home.howToPlay.step2Text">Selecciona un dinosaurio para tu parque y pasa el resto de tu mano al siguiente jugador.</span>
                             </div>
                         </li>
                         <li class="list-group-item d-flex justify-content-between align-items-start">
                             <div class="ms-2 me-auto">
-                                <div class="fw-bold">¡Coloca y Puntúa!</div>
-                                Decide dónde colocar tu dino en una de las seis zonas de tu tablero para maximizar tus
-                                puntos.
+                                <div class="fw-bold" data-i18n="home.howToPlay.step3Title">¡Coloca y Puntúa!</div>
+                                <span data-i18n="home.howToPlay.step3Text">Decide dónde colocar tu dino en una de las seis zonas de tu tablero para maximizar tus puntos.</span>
                             </div>
                         </li>
                     </ol>
                     <p class="mt-4">
-                        ¡La estrategia de colocación y las decisiones rápidas te llevarán a la victoria! <a
+                        <span data-i18n="home.howToPlay.conclusion">¡La estrategia de colocación y las decisiones rápidas te llevarán a la victoria!</span> <a
                             href="resources/Manual_Draftosaurus.pdf"
-                            class="btn btn-link text-decoration-none fw-bold p-0">Descarga el manual completo (PDF)</a>
+                            class="btn btn-link text-decoration-none fw-bold p-0" data-i18n="home.howToPlay.downloadManual">Descarga el manual completo (PDF)</a>
                     </p>
                 </div>
             </div>
@@ -225,26 +224,26 @@
     </section>
     <section id="sobre-nosotros" class="section-padding">
         <div class="container">
-            <h2 class="display-5 text-center mb-5 fw-bold">Sobre Dreams Magic Wizard</h2>
+            <h2 class="display-5 text-center mb-5 fw-bold" data-i18n="home.aboutUs.title">Sobre Dreams Magic Wizard</h2>
             <div class="row align-items-center">
                 <div class="col-md-6 mb-4">
                     <img src="img/sinfondo.png" class="img-fluid rounded shadow" alt="Logo de Dreams Magic Wizard"
                         style="max-height: 400px; object-fit: contain;">
                 </div>
                 <div class="col-md-6 mb-4">
-                    <p class="lead">
+                    <p class="lead" data-i18n="home.aboutUs.text1">
                         Dreams Magic Wizard nace como iniciativa de un equipo de cuatro estudiantes de la UTU, unidos
                         por un mismo sueño: transformar la pasión por la tecnología, la creatividad y el entretenimiento
                         virtual en una propuesta innovadora.
                     </p>
-                    <p>
+                    <p data-i18n="home.aboutUs.text2">
                         Nuestro emprendimiento surge de la convicción de que el entretenimiento digital no es solo una
                         forma de diversión, sino una poderosa herramienta de conexión social, aprendizaje y expresión. A
                         través del desarrollo de videojuegos, aplicaciones interactivas y experiencias virtuales,
                         buscamos aportar al crecimiento de la industria creativa nacional, generando oportunidades para
                         jóvenes talentos y promoviendo una visión positiva del uso de la tecnología.
                     </p>
-                    <p>
+                    <p data-i18n="home.aboutUs.text3">
                         ¡Gracias por ser parte de nuestra aventura y por permitirnos compartir nuestros sueños contigo!
                     </p>
                 </div>
@@ -255,8 +254,8 @@
     <!-- Sección "Contacto" -->
     <section id="contacto">
         <div class="container">
-            <h2 class="display-5 text-center mb-5 fw-bold">Contáctanos</h2>
-            <p class="lead text-center mb-5">¿Tienes preguntas, sugerencias o simplemente quieres saludar? ¡Nos
+            <h2 class="display-5 text-center mb-5 fw-bold" data-i18n="home.contact.title">Contáctanos</h2>
+            <p class="lead text-center mb-5" data-i18n="home.contact.subtitle">¿Tienes preguntas, sugerencias o simplemente quieres saludar? ¡Nos
                 encantaría escucharte!</p>
             <div class="row justify-content-center">
                 <div class="col-lg-8 col-md-10">
@@ -264,27 +263,27 @@
                         <div class="card-body bg-dark">
                             <form>
                                 <div class="mb-3">
-                                    <label for="nombre" class="form-label fw-bold">Nombre Completo</label>
-                                    <input type="text" class="form-control rounded" id="nombre" placeholder="Tu nombre"
-                                        required>
+                                    <label for="nombre" class="form-label fw-bold" data-i18n="home.contact.fullName">Nombre Completo</label>
+                                    <input type="text" class="form-control rounded" id="nombre" data-i18n-placeholder="home.contact.placeholders.name"
+                                        placeholder="Tu nombre" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="email" class="form-label fw-bold">Correo Electrónico</label>
-                                    <input type="email" class="form-control rounded" id="email"
+                                    <label for="email" class="form-label fw-bold" data-i18n="home.contact.email">Correo Electrónico</label>
+                                    <input type="email" class="form-control rounded" id="email" data-i18n-placeholder="home.contact.placeholders.email"
                                         placeholder="tu.email@ejemplo.com" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="asunto" class="form-label fw-bold">Asunto</label>
-                                    <input type="text" class="form-control rounded" id="asunto"
+                                    <label for="asunto" class="form-label fw-bold" data-i18n="home.contact.subject">Asunto</label>
+                                    <input type="text" class="form-control rounded" id="asunto" data-i18n-placeholder="home.contact.placeholders.subject"
                                         placeholder="Ej: Consulta sobre el juego" required>
                                 </div>
                                 <div class="mb-3">
-                                    <label for="mensaje" class="form-label fw-bold">Tu Mensaje</label>
-                                    <textarea class="form-control rounded" id="mensaje" rows="5"
+                                    <label for="mensaje" class="form-label fw-bold" data-i18n="home.contact.message">Tu Mensaje</label>
+                                    <textarea class="form-control rounded" id="mensaje" rows="5" data-i18n-placeholder="home.contact.placeholders.message"
                                         placeholder="Escribe tu mensaje aquí..." required></textarea>
                                 </div>
                                 <div class="d-grid gap-2">
-                                    <button type="submit" class="btn btn-primary btn-lg shadow">Enviar Mensaje</button>
+                                    <button type="submit" class="btn btn-primary btn-lg shadow" data-i18n="home.contact.send">Enviar Mensaje</button>
                                 </div>
                             </form>
                         </div>
@@ -299,7 +298,7 @@
     <div class="container text-center">
         <div class="row">
             <div class="col-md-6 mb-3 mb-md-0">
-                <p class="mb-0">&copy; 2025 Dreams Magic Wizard. Todos los derechos reservados.</p>
+                <p class="mb-0" data-i18n="home.footer.copyright">&copy; 2025 Dreams Magic Wizard. Todos los derechos reservados.</p>
             </div>
             <div class="col-md-6">
                 <a href="#" class="text-white me-3" aria-label="Síguenos en Twitter"><i class="bi bi-twitter"></i></a>
@@ -342,6 +341,30 @@
     <script src="js/i18n.js"></script>
 
     <!-- Scripts de la aplicación -->
+    <script>
+        // Configurar el selector de idioma
+        document.addEventListener('DOMContentLoaded', function() {
+            const languageSelector = document.getElementById('language-selector');
+            
+            if (languageSelector) {
+                // Establecer el idioma actual en el selector
+                languageSelector.value = window.i18n.getCurrentLanguage();
+                
+                // Escuchar cambios en el selector
+                languageSelector.addEventListener('change', function(e) {
+                    const newLang = e.target.value;
+                    window.i18n.setLanguage(newLang);
+                });
+            }
+            
+            // Escuchar el evento de cambio de idioma para actualizar el selector
+            window.addEventListener('languageChanged', function(e) {
+                if (languageSelector) {
+                    languageSelector.value = e.detail.lang;
+                }
+            });
+        });
+    </script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
     const contactForm = document.querySelector('#contacto form');

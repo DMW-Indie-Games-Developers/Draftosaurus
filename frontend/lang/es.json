@@ -27,14 +27,73 @@
     "board": "Tablero",
     "ranking": "Ranking",
     "admin": "Admin",
-    "language": "Idioma"
+    "language": "Idioma",
+    "info": "Info",
+    "howToPlay": "Como Jugar",
+    "contact": "Contacto",
+    "dmw": "DMW"
   },
   "home": {
     "title": "Draftosaurus",
     "subtitle": "El juego de dinosaurios más divertido",
     "playNow": "Jugar Ahora",
     "learnMore": "Conocer Más",
-    "description": "Colecciona dinosaurios y construye el mejor parque jurásico"
+    "description": "Colecciona dinosaurios y construye el mejor parque jurásico",
+    "carousel": {
+      "title": "Draftosaurus",
+      "subtitle": "No puedes esperar a ver estos increíbles Dinosaurios.",
+      "slide2Title": "Dinosaurios Increíbles",
+      "slide2Text": "Figuras de dinosaurios de la mejor calidad.",
+      "slide3Title": "Tablero Mágico",
+      "slide3Text": "Increíbles recintos para colocar tus dinosaurios.",
+      "previous": "Anterior",
+      "next": "Siguiente"
+    },
+    "gameInfo": {
+      "title": "Información del Juego: Draftosaurus",
+      "duration": "Duración",
+      "durationText": "Aprox. 15-20 minutos por partida.",
+      "players": "Número de Jugadores",
+      "playersText": "De 2 a 5 jugadores.",
+      "gameType": "Tipo de Juego",
+      "gameTypeText": "Juego de estrategia rápida y draft de dinosaurios."
+    },
+    "howToPlay": {
+      "title": "Cómo Jugar a Draftosaurus",
+      "subtitle": "Construye tu Dino-Parque en 3 Sencillos Pasos",
+      "step1Title": "Toma tu Mano de Dinos",
+      "step1Text": "Cada jugador recibe un puñado de adorables figuras de dinosaurio.",
+      "step2Title": "Elige y Pasa",
+      "step2Text": "Selecciona un dinosaurio para tu parque y pasa el resto de tu mano al siguiente jugador.",
+      "step3Title": "¡Coloca y Puntúa!",
+      "step3Text": "Decide dónde colocar tu dino en una de las seis zonas de tu tablero para maximizar tus puntos.",
+      "conclusion": "¡La estrategia de colocación y las decisiones rápidas te llevarán a la victoria!",
+      "downloadManual": "Descarga el manual completo (PDF)"
+    },
+    "aboutUs": {
+      "title": "Sobre Dreams Magic Wizard",
+      "text1": "Dreams Magic Wizard nace como iniciativa de un equipo de cuatro estudiantes de la UTU, unidos por un mismo sueño: transformar la pasión por la tecnología, la creatividad y el entretenimiento virtual en una propuesta innovadora.",
+      "text2": "Nuestro emprendimiento surge de la convicción de que el entretenimiento digital no es solo una forma de diversión, sino una poderosa herramienta de conexión social, aprendizaje y expresión. A través del desarrollo de videojuegos, aplicaciones interactivas y experiencias virtuales, buscamos aportar al crecimiento de la industria creativa nacional, generando oportunidades para jóvenes talentos y promoviendo una visión positiva del uso de la tecnología.",
+      "text3": "¡Gracias por ser parte de nuestra aventura y por permitirnos compartir nuestros sueños contigo!"
+    },
+    "contact": {
+      "title": "Contáctanos",
+      "subtitle": "¿Tienes preguntas, sugerencias o simplemente quieres saludar? ¡Nos encantaría escucharte!",
+      "fullName": "Nombre Completo",
+      "email": "Correo Electrónico",
+      "subject": "Asunto",
+      "message": "Tu Mensaje",
+      "send": "Enviar Mensaje",
+      "placeholders": {
+        "name": "Tu nombre",
+        "email": "tu.email@ejemplo.com",
+        "subject": "Ej: Consulta sobre el juego",
+        "message": "Escribe tu mensaje aquí..."
+      }
+    },
+    "footer": {
+      "copyright": "© 2025 Dreams Magic Wizard. Todos los derechos reservados."
+    }
   },
   "login": {
     "title": "Iniciar Sesión",

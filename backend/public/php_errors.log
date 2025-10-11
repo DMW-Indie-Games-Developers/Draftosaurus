@@ -88,3 +88,138 @@
 [07-Oct-2025 16:10:48 America/Montevideo] === UserRepository::findById(4) ===
 [07-Oct-2025 16:10:48 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
 [07-Oct-2025 16:10:48 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 19:58:38 America/Montevideo] ⚠️ Archivo .env no encontrado en: C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus
+[10-Oct-2025 19:59:11 America/Montevideo] ⚠️ Archivo .env no encontrado en: C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus
+[10-Oct-2025 19:59:11 America/Montevideo] Login intentado: admin / admin
+[10-Oct-2025 19:59:11 America/Montevideo] === INICIO AuthService::login ===
+[10-Oct-2025 19:59:11 America/Montevideo] Intentando login para: admin
+[10-Oct-2025 19:59:11 America/Montevideo] === INICIO verifyCredentials ===
+[10-Oct-2025 19:59:11 America/Montevideo] Identifier: admin
+[10-Oct-2025 19:59:11 America/Montevideo] Usuario encontrado: admin
+[10-Oct-2025 19:59:11 America/Montevideo] Estado del usuario: activo
+[10-Oct-2025 19:59:11 America/Montevideo] Usuario activo, verificando contraseña...
+[10-Oct-2025 19:59:12 America/Montevideo] Password verify: OK
+[10-Oct-2025 19:59:12 America/Montevideo] Usuario estado final: activo
+[10-Oct-2025 19:59:12 America/Montevideo] === FIN verifyCredentials (success) ===
+[10-Oct-2025 19:59:12 America/Montevideo] Login exitoso para usuario ID: 1
+[10-Oct-2025 19:59:12 America/Montevideo] === FIN AuthService::login (success) ===
+[10-Oct-2025 19:59:12 America/Montevideo] === INICIO AuthService::login ===
+[10-Oct-2025 19:59:12 America/Montevideo] Intentando login para: admin
+[10-Oct-2025 19:59:12 America/Montevideo] === INICIO verifyCredentials ===
+[10-Oct-2025 19:59:12 America/Montevideo] Identifier: admin
+[10-Oct-2025 19:59:12 America/Montevideo] Usuario encontrado: admin
+[10-Oct-2025 19:59:12 America/Montevideo] Estado del usuario: activo
+[10-Oct-2025 19:59:12 America/Montevideo] Usuario activo, verificando contraseña...
+[10-Oct-2025 19:59:13 America/Montevideo] Password verify: OK
+[10-Oct-2025 19:59:13 America/Montevideo] Usuario estado final: activo
+[10-Oct-2025 19:59:13 America/Montevideo] === FIN verifyCredentials (success) ===
+[10-Oct-2025 19:59:13 America/Montevideo] Login exitoso para usuario ID: 1
+[10-Oct-2025 19:59:13 America/Montevideo] === FIN AuthService::login (success) ===
+[10-Oct-2025 19:59:13 America/Montevideo] ⚠️ Archivo .env no encontrado en: C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus
+[10-Oct-2025 19:59:13 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[10-Oct-2025 19:59:13 America/Montevideo] === UserRepository::findById(1) ===
+[10-Oct-2025 19:59:13 America/Montevideo] Usuario ID 1 encontrado: admin (estado: activo)
+[10-Oct-2025 19:59:13 America/Montevideo] Usuario 1 está activo
+[10-Oct-2025 19:59:13 America/Montevideo] === AdminController::listUsers - INICIO ===
+[10-Oct-2025 19:59:13 America/Montevideo] Usuarios obtenidos: 2
+[10-Oct-2025 19:59:13 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[10-Oct-2025 19:59:13 America/Montevideo] ⚠️ Archivo .env no encontrado en: C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus
+[10-Oct-2025 19:59:13 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[10-Oct-2025 19:59:13 America/Montevideo] === UserRepository::findById(1) ===
+[10-Oct-2025 19:59:13 America/Montevideo] Usuario ID 1 encontrado: admin (estado: activo)
+[10-Oct-2025 19:59:13 America/Montevideo] Usuario 1 está activo
+[10-Oct-2025 19:59:13 America/Montevideo] === AdminController::listMessages - INICIO ===
+[10-Oct-2025 19:59:13 America/Montevideo] Mensajes obtenidos: 3
+[10-Oct-2025 19:59:13 America/Montevideo] === AdminController::listMessages - SUCCESS ===
+[10-Oct-2025 20:03:05 America/Montevideo] ⚠️ Archivo .env no encontrado en: C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus
+[10-Oct-2025 20:03:05 America/Montevideo] PHP Notice:  Only variables should be passed by reference in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\backend\api\repositories\UserRepository.php on line 136
+[10-Oct-2025 20:03:05 America/Montevideo] PHP Notice:  Only variables should be passed by reference in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\backend\api\repositories\UserRepository.php on line 136
+[10-Oct-2025 20:03:05 America/Montevideo] PHP Notice:  Only variables should be passed by reference in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\backend\api\repositories\UserRepository.php on line 136
+[10-Oct-2025 20:03:05 America/Montevideo] PHP Notice:  Only variables should be passed by reference in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\backend\api\repositories\UserRepository.php on line 136
+[10-Oct-2025 20:03:23 America/Montevideo] ⚠️ Archivo .env no encontrado en: C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus
+[10-Oct-2025 20:03:23 America/Montevideo] Login intentado: lelo.estevez24@gmail.com / lelo123
+[10-Oct-2025 20:03:23 America/Montevideo] === INICIO AuthService::login ===
+[10-Oct-2025 20:03:23 America/Montevideo] Intentando login para: lelo.estevez24@gmail.com
+[10-Oct-2025 20:03:23 America/Montevideo] === INICIO verifyCredentials ===
+[10-Oct-2025 20:03:23 America/Montevideo] Identifier: lelo.estevez24@gmail.com
+[10-Oct-2025 20:03:23 America/Montevideo] Usuario encontrado: Leandro
+[10-Oct-2025 20:03:23 America/Montevideo] Estado del usuario: activo
+[10-Oct-2025 20:03:23 America/Montevideo] Usuario activo, verificando contraseña...
+[10-Oct-2025 20:03:23 America/Montevideo] Password verify: OK
+[10-Oct-2025 20:03:23 America/Montevideo] Usuario estado final: activo
+[10-Oct-2025 20:03:23 America/Montevideo] === FIN verifyCredentials (success) ===
+[10-Oct-2025 20:03:23 America/Montevideo] Login exitoso para usuario ID: 3
+[10-Oct-2025 20:03:23 America/Montevideo] === FIN AuthService::login (success) ===
+[10-Oct-2025 20:03:23 America/Montevideo] === INICIO AuthService::login ===
+[10-Oct-2025 20:03:23 America/Montevideo] Intentando login para: lelo.estevez24@gmail.com
+[10-Oct-2025 20:03:23 America/Montevideo] === INICIO verifyCredentials ===
+[10-Oct-2025 20:03:23 America/Montevideo] Identifier: lelo.estevez24@gmail.com
+[10-Oct-2025 20:03:23 America/Montevideo] Usuario encontrado: Leandro
+[10-Oct-2025 20:03:23 America/Montevideo] Estado del usuario: activo
+[10-Oct-2025 20:03:23 America/Montevideo] Usuario activo, verificando contraseña...
+[10-Oct-2025 20:03:24 America/Montevideo] Password verify: OK
+[10-Oct-2025 20:03:24 America/Montevideo] Usuario estado final: activo
+[10-Oct-2025 20:03:24 America/Montevideo] === FIN verifyCredentials (success) ===
+[10-Oct-2025 20:03:24 America/Montevideo] Login exitoso para usuario ID: 3
+[10-Oct-2025 20:03:24 America/Montevideo] === FIN AuthService::login (success) ===
+[10-Oct-2025 20:03:24 America/Montevideo] ⚠️ Archivo .env no encontrado en: C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus
+[10-Oct-2025 20:03:24 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[10-Oct-2025 20:03:24 America/Montevideo] === UserRepository::findById(3) ===
+[10-Oct-2025 20:03:24 America/Montevideo] Usuario ID 3 encontrado: Leandro (estado: activo)
+[10-Oct-2025 20:03:24 America/Montevideo] Usuario 3 está activo
+[10-Oct-2025 20:03:24 America/Montevideo] ⚠️ Archivo .env no encontrado en: C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus
+[10-Oct-2025 20:03:24 America/Montevideo] === Validando estado de usuario ID: 3 ===
+[10-Oct-2025 20:03:24 America/Montevideo] === UserRepository::findById(3) ===
+[10-Oct-2025 20:03:24 America/Montevideo] Usuario ID 3 encontrado: Leandro (estado: activo)
+[10-Oct-2025 20:03:24 America/Montevideo] Usuario 3 está activo
+[10-Oct-2025 20:03:24 America/Montevideo] ⚠️ Archivo .env no encontrado en: C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus
+[10-Oct-2025 20:03:36 America/Montevideo] ⚠️ Archivo .env no encontrado en: C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus
+[10-Oct-2025 20:04:02 America/Montevideo] ⚠️ Archivo .env no encontrado en: C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus
+[10-Oct-2025 20:04:03 America/Montevideo] PHP Notice:  Only variables should be passed by reference in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\backend\api\repositories\UserRepository.php on line 136
+[10-Oct-2025 20:04:03 America/Montevideo] PHP Notice:  Only variables should be passed by reference in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\backend\api\repositories\UserRepository.php on line 136
+[10-Oct-2025 20:04:03 America/Montevideo] PHP Notice:  Only variables should be passed by reference in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\backend\api\repositories\UserRepository.php on line 136
+[10-Oct-2025 20:04:03 America/Montevideo] PHP Notice:  Only variables should be passed by reference in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\backend\api\repositories\UserRepository.php on line 136
+[10-Oct-2025 20:04:24 America/Montevideo] PHP Notice:  session_start(): ps_files_cleanup_dir: opendir(C:\Windows\Temp) failed: No such file or directory (2) in C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus\backend\api\helpers\AuthHelper.php on line 15
+[10-Oct-2025 20:04:25 America/Montevideo] ⚠️ Archivo .env no encontrado en: C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus
+[10-Oct-2025 20:04:25 America/Montevideo] Login intentado: pepe / lelo123
+[10-Oct-2025 20:04:25 America/Montevideo] === INICIO AuthService::login ===
+[10-Oct-2025 20:04:25 America/Montevideo] Intentando login para: pepe
+[10-Oct-2025 20:04:25 America/Montevideo] === INICIO verifyCredentials ===
+[10-Oct-2025 20:04:25 America/Montevideo] Identifier: pepe
+[10-Oct-2025 20:04:25 America/Montevideo] Usuario encontrado: pepe
+[10-Oct-2025 20:04:25 America/Montevideo] Estado del usuario: activo
+[10-Oct-2025 20:04:25 America/Montevideo] Usuario activo, verificando contraseña...
+[10-Oct-2025 20:04:25 America/Montevideo] Password verify: OK
+[10-Oct-2025 20:04:25 America/Montevideo] Usuario estado final: activo
+[10-Oct-2025 20:04:25 America/Montevideo] === FIN verifyCredentials (success) ===
+[10-Oct-2025 20:04:25 America/Montevideo] Login exitoso para usuario ID: 4
+[10-Oct-2025 20:04:25 America/Montevideo] === FIN AuthService::login (success) ===
+[10-Oct-2025 20:04:25 America/Montevideo] === INICIO AuthService::login ===
+[10-Oct-2025 20:04:25 America/Montevideo] Intentando login para: pepe
+[10-Oct-2025 20:04:25 America/Montevideo] === INICIO verifyCredentials ===
+[10-Oct-2025 20:04:25 America/Montevideo] Identifier: pepe
+[10-Oct-2025 20:04:25 America/Montevideo] Usuario encontrado: pepe
+[10-Oct-2025 20:04:25 America/Montevideo] Estado del usuario: activo
+[10-Oct-2025 20:04:25 America/Montevideo] Usuario activo, verificando contraseña...
+[10-Oct-2025 20:04:26 America/Montevideo] Password verify: OK
+[10-Oct-2025 20:04:26 America/Montevideo] Usuario estado final: activo
+[10-Oct-2025 20:04:26 America/Montevideo] === FIN verifyCredentials (success) ===
+[10-Oct-2025 20:04:26 America/Montevideo] Login exitoso para usuario ID: 4
+[10-Oct-2025 20:04:26 America/Montevideo] === FIN AuthService::login (success) ===
+[10-Oct-2025 20:04:26 America/Montevideo] ⚠️ Archivo .env no encontrado en: C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus
+[10-Oct-2025 20:04:26 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 20:04:26 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 20:04:26 America/Montevideo] Usuario ID 4 encontrado: pepe (estado: activo)
+[10-Oct-2025 20:04:26 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 20:04:26 America/Montevideo] ⚠️ Archivo .env no encontrado en: C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus
+[10-Oct-2025 20:04:26 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 20:04:26 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 20:04:26 America/Montevideo] Usuario ID 4 encontrado: pepe (estado: activo)
+[10-Oct-2025 20:04:26 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 20:04:26 America/Montevideo] ⚠️ Archivo .env no encontrado en: C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus
+[10-Oct-2025 20:04:41 America/Montevideo] ⚠️ Archivo .env no encontrado en: C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus
+[10-Oct-2025 20:04:41 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 20:04:41 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 20:04:41 America/Montevideo] Usuario ID 4 encontrado: pepe (estado: activo)
+[10-Oct-2025 20:04:41 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 20:04:55 America/Montevideo] ⚠️ Archivo .env no encontrado en: C:\Users\leand\OneDrive\Documentos\GitHub\Draftosaurus

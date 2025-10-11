@@ -20,7 +20,7 @@ class AdminRepository
     }
 
     /* ---------- USUARIOS ---------- */
-    public function findAllUsers(): array
+    public function findAllUsers(): array //AGREGAR PREPEAR A ESTA FUNCION
     {
         $res = $this->conn->query("
             SELECT id, 
