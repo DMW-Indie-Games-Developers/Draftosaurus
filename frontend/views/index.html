@@ -361,19 +361,33 @@
 
     <!-- Conectar selector de idioma -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
+        // Esperar a que i18n esté completamente cargado
+        async function initI18n() {
+            // Esperar a que window.i18n esté disponible y cargado
+            while (!window.i18n || !window.i18n.isLoaded) {
+                await new Promise(resolve => setTimeout(resolve, 100));
+            }
+
+            console.log('i18n cargado, aplicando traducciones');
+
             const languageSelector = document.getElementById('language-selector');
 
             if (languageSelector) {
+                // Establecer el valor actual
+                languageSelector.value = window.i18n.getCurrentLanguage();
+
                 // Cambiar idioma cuando se selecciona uno nuevo
                 languageSelector.addEventListener('change', function(e) {
                     const selectedLang = e.target.value;
+                    console.log('Cambiando idioma a:', selectedLang);
                     if (window.i18n) {
                         window.i18n.setLanguage(selectedLang);
                     }
                 });
             }
-        });
+        }
+
+        document.addEventListener('DOMContentLoaded', initI18n);
     </script>
 
     <!-- Scripts de la aplicación -->
