@@ -22,22 +22,27 @@ class AdminRepository
     /* ---------- USUARIOS ---------- */
     public function findAllUsers(): array
     {
-        $res = $this->conn->query("
-            SELECT id, 
-                   username AS name, 
-                   email, 
+        $stmt = $this->conn->prepare("
+            SELECT id,
+                   username AS name,
+                   email,
                    estado AS status,
                    rol
             FROM   users
             ORDER BY id DESC
         ");
-        
-        if (!$res) {
+
+        if (!$stmt) {
             error_log("Error en findAllUsers: " . $this->conn->error);
             return [];
         }
-        
-        return $res->fetch_all(MYSQLI_ASSOC);
+
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $users = $result->fetch_all(MYSQLI_ASSOC);
+        $stmt->close();
+
+        return $users;
     }
 
     public function findUser(int $id): ?array
@@ -280,22 +285,27 @@ class AdminRepository
     /* ---------- MENSAJES ---------- */
     public function findAllMessages(): array
     {
-        $res = $this->conn->query("
-            SELECT id, 
-                   nombre, 
-                   email, 
-                   asunto, 
-                   mensaje, 
+        $stmt = $this->conn->prepare("
+            SELECT id,
+                   nombre,
+                   email,
+                   asunto,
+                   mensaje,
                    fecha_envio
             FROM   contacto
             ORDER  BY fecha_envio DESC
         ");
-        
-        if (!$res) {
+
+        if (!$stmt) {
             error_log("Error en findAllMessages: " . $this->conn->error);
             return [];
         }
-        
-        return $res->fetch_all(MYSQLI_ASSOC);
+
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $messages = $result->fetch_all(MYSQLI_ASSOC);
+        $stmt->close();
+
+        return $messages;
     }
 }

@@ -34,7 +34,75 @@
     "subtitle": "The most fun dinosaur game",
     "playNow": "Play Now",
     "learnMore": "Learn More",
-    "description": "Collect dinosaurs and build the best jurassic park"
+    "description": "Collect dinosaurs and build the best jurassic park",
+    "carousel": {
+      "slide1": {
+        "title": "Draftosaurus",
+        "description": "You can't wait to see these amazing Dinosaurs."
+      },
+      "slide2": {
+        "title": "Amazing Dinosaurs",
+        "description": "Top quality dinosaur figures."
+      },
+      "slide3": {
+        "title": "Magic Board",
+        "description": "Amazing enclosures to place your dinosaurs."
+      },
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "info": {
+      "title": "Game Information: Draftosaurus",
+      "duration": {
+        "title": "Duration",
+        "text": "Approx. 15-20 minutes per game."
+      },
+      "players": {
+        "title": "Number of Players",
+        "text": "2 to 5 players."
+      },
+      "type": {
+        "title": "Game Type",
+        "text": "Quick strategy and dinosaur drafting game."
+      }
+    },
+    "howToPlay": {
+      "title": "How to Play Draftosaurus",
+      "subtitle": "Build your Dino-Park in 3 Easy Steps",
+      "step1": {
+        "title": "Take your Dino Hand",
+        "description": "Each player receives a handful of adorable dinosaur figures."
+      },
+      "step2": {
+        "title": "Choose and Pass",
+        "description": "Select a dinosaur for your park and pass the rest of your hand to the next player."
+      },
+      "step3": {
+        "title": "Place and Score!",
+        "description": "Decide where to place your dino in one of the six zones on your board to maximize your points."
+      },
+      "strategy": "Placement strategy and quick decisions will lead you to victory!",
+      "downloadManual": "Download the complete manual (PDF)"
+    },
+    "aboutUs": {
+      "title": "About Dreams Magic Wizard",
+      "description1": "Dreams Magic Wizard was born as an initiative of a team of four UTU students, united by the same dream: to transform passion for technology, creativity and virtual entertainment into an innovative proposal.",
+      "description2": "Our venture arises from the conviction that digital entertainment is not just a form of fun, but a powerful tool for social connection, learning and expression. Through the development of video games, interactive applications and virtual experiences, we seek to contribute to the growth of the national creative industry, generating opportunities for young talents and promoting a positive vision of the use of technology.",
+      "description3": "Thank you for being part of our adventure and for allowing us to share our dreams with you!"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "subtitle": "Have questions, suggestions, or just want to say hello? We'd love to hear from you!",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your.email@example.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "E.g: Question about the game",
+      "message": "Your Message",
+      "messagePlaceholder": "Write your message here...",
+      "sendButton": "Send Message"
+    }
   },
   "login": {
     "title": "Login",

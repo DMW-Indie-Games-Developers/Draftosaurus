@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Mantener toda la funcionalidad disponible
 });
 
-/* ---------- Funciones para mostrar/ocultar errores normales ---------- */
+/* ---------- Funciones para mostrar/ocultar mensajes ---------- */
 function showError(message) {
   let errorDiv = document.getElementById('login-error');
   if (!errorDiv) {
@@ -67,9 +67,47 @@ function showError(message) {
   errorDiv.style.display = 'block';
 }
 
+function showSuccess(message) {
+  let successDiv = document.getElementById('register-success');
+  if (!successDiv) {
+    successDiv = document.createElement('div');
+    successDiv.id = 'register-success';
+    successDiv.className = 'alert alert-success mt-3';
+    const registerForm = document.querySelector('.register-form');
+    if (registerForm) registerForm.appendChild(successDiv);
+  }
+  successDiv.textContent = message;
+  successDiv.style.display = 'block';
+
+  // Auto-ocultar después de 5 segundos
+  setTimeout(() => {
+    successDiv.style.display = 'none';
+  }, 5000);
+}
+
+function showRegisterError(message) {
+  let errorDiv = document.getElementById('register-error');
+  if (!errorDiv) {
+    errorDiv = document.createElement('div');
+    errorDiv.id = 'register-error';
+    errorDiv.className = 'alert alert-danger mt-3';
+    const registerForm = document.querySelector('.register-form');
+    if (registerForm) registerForm.appendChild(errorDiv);
+  }
+  errorDiv.textContent = message;
+  errorDiv.style.display = 'block';
+}
+
 function hideError() {
   const errorDiv = document.getElementById('login-error');
   if (errorDiv) errorDiv.style.display = 'none';
+}
+
+function hideRegisterError() {
+  const errorDiv = document.getElementById('register-error');
+  if (errorDiv) errorDiv.style.display = 'none';
+  const successDiv = document.getElementById('register-success');
+  if (successDiv) successDiv.style.display = 'none';
 }
 
 /* ---------- EVENTO DE LOGIN ---------- */
@@ -129,18 +167,18 @@ document.addEventListener('DOMContentLoaded', () => {
   const registerBtn = document.getElementById('btn-register');
   if (registerBtn) {
     registerBtn.addEventListener('click', async () => {
-      hideError();
+      hideRegisterError();
       const username = document.getElementById('reg-username').value.trim();
       const email = document.getElementById('reg-email').value.trim();
       const password = document.getElementById('reg-password').value;
       const confirm = document.getElementById('confirm-password').value;
 
       if (!username || !email || !password || !confirm) {
-        showError('Completa todos los campos.');
+        showRegisterError('Completa todos los campos.');
         return;
       }
       if (password !== confirm) {
-        showError('Las contraseñas no coinciden.');
+        showRegisterError('Las contraseñas no coinciden.');
         return;
       }
 
@@ -150,20 +188,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
       try {
         const { ok, json } = await postJson(`${BASE}/register`, { username, email, password });
+        console.log('Respuesta de registro:', { ok, json });
+
         if (ok && json?.success) {
-          alert('¡Registro exitoso! Ahora puedes iniciar sesión.');
+          // Mostrar mensaje de éxito
+          showSuccess('¡Registro exitoso! Ahora puedes iniciar sesión.');
+
+          // Limpiar formulario
           ['reg-username', 'reg-email', 'reg-password', 'confirm-password']
             .forEach(id => document.getElementById(id).value = '');
 
-          // Cambiar a formulario de login
-          const toggleCheckbox = document.getElementById('toggle-form');
-          if (toggleCheckbox) toggleCheckbox.checked = false;
+          // Cambiar a formulario de login después de 2 segundos
+          setTimeout(() => {
+            const toggleCheckbox = document.getElementById('toggle-form');
+            if (toggleCheckbox) toggleCheckbox.checked = false;
+          }, 2000);
         } else {
-          showError('Registro fallido: ' + (json?.message || 'Error desconocido.'));
+          showRegisterError('Registro fallido: ' + (json?.message || 'Error desconocido.'));
         }
       } catch (e) {
         console.error('Error de conexión:', e);
-        showError('Error de conexión. Verifica tu internet e intenta nuevamente.');
+        showRegisterError('Error de conexión. Verifica tu internet e intenta nuevamente.');
       } finally {
         registerBtn.innerHTML = originalHTML;
         registerBtn.disabled = false;

@@ -35,7 +35,7 @@ class AdminService
         }
         
         // Verificar si el usuario ya existe ANTES de intentar crearlo
-        $existingUser = $this->repo->findUserByUsername($data['name']);
+        // $existingUser = $this->repo->findUserByUsername($data['name']); //
         if ($existingUser) {
             error_log("ERROR: Usuario ya existe - ID: " . $existingUser['id']);
             return ['success' => false, 'message' => 'El nombre de usuario ya está en uso'];
@@ -49,7 +49,7 @@ class AdminService
         
         try {
             error_log("Procediendo a insertar usuario: " . $data['name']);
-            $id = $this->repo->insertUser($data);
+            $id = $this->repo->insertUser($data); // 
             error_log("Usuario creado exitosamente con ID: " . $id);
             error_log("=== AdminService::createUser - SUCCESS ===");
             return ['success' => true, 'id' => $id, 'message' => 'Usuario creado exitosamente'];

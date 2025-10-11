@@ -1,90 +1,771 @@
-[07-Oct-2025 14:38:05 America/Montevideo] === Validando estado de usuario ID: 4 ===
-[07-Oct-2025 14:38:05 America/Montevideo] === UserRepository::findById(4) ===
-[07-Oct-2025 14:38:05 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
-[07-Oct-2025 14:38:05 America/Montevideo] Usuario 4 está activo
-[07-Oct-2025 14:38:05 America/Montevideo] === Validando estado de usuario ID: 4 ===
-[07-Oct-2025 14:38:05 America/Montevideo] === UserRepository::findById(4) ===
-[07-Oct-2025 14:38:05 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
-[07-Oct-2025 14:38:05 America/Montevideo] Usuario 4 está activo
-[07-Oct-2025 14:41:01 America/Montevideo] === Validando estado de usuario ID: 4 ===
-[07-Oct-2025 14:41:01 America/Montevideo] === UserRepository::findById(4) ===
-[07-Oct-2025 14:41:01 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
-[07-Oct-2025 14:41:01 America/Montevideo] Usuario 4 está activo
-[07-Oct-2025 14:41:01 America/Montevideo] === Validando estado de usuario ID: 4 ===
-[07-Oct-2025 14:41:01 America/Montevideo] === UserRepository::findById(4) ===
-[07-Oct-2025 14:41:01 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
-[07-Oct-2025 14:41:01 America/Montevideo] Usuario 4 está activo
-[07-Oct-2025 14:46:24 America/Montevideo] Login intentado: martin@martin.com / martin123
-[07-Oct-2025 14:46:24 America/Montevideo] === INICIO AuthService::login ===
-[07-Oct-2025 14:46:24 America/Montevideo] Intentando login para: martin@martin.com
-[07-Oct-2025 14:46:24 America/Montevideo] === INICIO verifyCredentials ===
-[07-Oct-2025 14:46:24 America/Montevideo] Identifier: martin@martin.com
-[07-Oct-2025 14:46:24 America/Montevideo] Usuario encontrado: martin
-[07-Oct-2025 14:46:24 America/Montevideo] Estado del usuario: activo
-[07-Oct-2025 14:46:24 America/Montevideo] Usuario activo, verificando contraseña...
-[07-Oct-2025 14:46:24 America/Montevideo] Password verify: OK
-[07-Oct-2025 14:46:24 America/Montevideo] Usuario estado final: activo
-[07-Oct-2025 14:46:24 America/Montevideo] === FIN verifyCredentials (success) ===
-[07-Oct-2025 14:46:24 America/Montevideo] Login exitoso para usuario ID: 4
-[07-Oct-2025 14:46:24 America/Montevideo] === FIN AuthService::login (success) ===
-[07-Oct-2025 14:46:24 America/Montevideo] === INICIO AuthService::login ===
-[07-Oct-2025 14:46:24 America/Montevideo] Intentando login para: martin@martin.com
-[07-Oct-2025 14:46:24 America/Montevideo] === INICIO verifyCredentials ===
-[07-Oct-2025 14:46:24 America/Montevideo] Identifier: martin@martin.com
-[07-Oct-2025 14:46:24 America/Montevideo] Usuario encontrado: martin
-[07-Oct-2025 14:46:24 America/Montevideo] Estado del usuario: activo
-[07-Oct-2025 14:46:24 America/Montevideo] Usuario activo, verificando contraseña...
-[07-Oct-2025 14:46:25 America/Montevideo] Password verify: OK
-[07-Oct-2025 14:46:25 America/Montevideo] Usuario estado final: activo
-[07-Oct-2025 14:46:25 America/Montevideo] === FIN verifyCredentials (success) ===
-[07-Oct-2025 14:46:25 America/Montevideo] Login exitoso para usuario ID: 4
-[07-Oct-2025 14:46:25 America/Montevideo] === FIN AuthService::login (success) ===
-[07-Oct-2025 14:46:25 America/Montevideo] === Validando estado de usuario ID: 4 ===
-[07-Oct-2025 14:46:25 America/Montevideo] === UserRepository::findById(4) ===
-[07-Oct-2025 14:46:25 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
-[07-Oct-2025 14:46:25 America/Montevideo] Usuario 4 está activo
-[07-Oct-2025 14:46:25 America/Montevideo] === Validando estado de usuario ID: 4 ===
-[07-Oct-2025 14:46:25 America/Montevideo] === UserRepository::findById(4) ===
-[07-Oct-2025 14:46:25 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
-[07-Oct-2025 14:46:25 America/Montevideo] Usuario 4 está activo
-[07-Oct-2025 14:52:39 America/Montevideo] Login intentado: martin@martin.com / martin123
-[07-Oct-2025 14:52:39 America/Montevideo] === INICIO AuthService::login ===
-[07-Oct-2025 14:52:39 America/Montevideo] Intentando login para: martin@martin.com
-[07-Oct-2025 14:52:39 America/Montevideo] === INICIO verifyCredentials ===
-[07-Oct-2025 14:52:39 America/Montevideo] Identifier: martin@martin.com
-[07-Oct-2025 14:52:39 America/Montevideo] Usuario encontrado: martin
-[07-Oct-2025 14:52:39 America/Montevideo] Estado del usuario: activo
-[07-Oct-2025 14:52:39 America/Montevideo] Usuario activo, verificando contraseña...
-[07-Oct-2025 14:52:39 America/Montevideo] Password verify: OK
-[07-Oct-2025 14:52:39 America/Montevideo] Usuario estado final: activo
-[07-Oct-2025 14:52:39 America/Montevideo] === FIN verifyCredentials (success) ===
-[07-Oct-2025 14:52:39 America/Montevideo] Login exitoso para usuario ID: 4
-[07-Oct-2025 14:52:39 America/Montevideo] === FIN AuthService::login (success) ===
-[07-Oct-2025 14:52:39 America/Montevideo] === INICIO AuthService::login ===
-[07-Oct-2025 14:52:39 America/Montevideo] Intentando login para: martin@martin.com
-[07-Oct-2025 14:52:39 America/Montevideo] === INICIO verifyCredentials ===
-[07-Oct-2025 14:52:39 America/Montevideo] Identifier: martin@martin.com
-[07-Oct-2025 14:52:39 America/Montevideo] Usuario encontrado: martin
-[07-Oct-2025 14:52:39 America/Montevideo] Estado del usuario: activo
-[07-Oct-2025 14:52:39 America/Montevideo] Usuario activo, verificando contraseña...
-[07-Oct-2025 14:52:40 America/Montevideo] Password verify: OK
-[07-Oct-2025 14:52:40 America/Montevideo] Usuario estado final: activo
-[07-Oct-2025 14:52:40 America/Montevideo] === FIN verifyCredentials (success) ===
-[07-Oct-2025 14:52:40 America/Montevideo] Login exitoso para usuario ID: 4
-[07-Oct-2025 14:52:40 America/Montevideo] === FIN AuthService::login (success) ===
-[07-Oct-2025 14:52:40 America/Montevideo] === Validando estado de usuario ID: 4 ===
-[07-Oct-2025 14:52:40 America/Montevideo] === UserRepository::findById(4) ===
-[07-Oct-2025 14:52:40 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
-[07-Oct-2025 14:52:40 America/Montevideo] Usuario 4 está activo
-[07-Oct-2025 14:52:40 America/Montevideo] === Validando estado de usuario ID: 4 ===
-[07-Oct-2025 14:52:40 America/Montevideo] === UserRepository::findById(4) ===
-[07-Oct-2025 14:52:40 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
-[07-Oct-2025 14:52:40 America/Montevideo] Usuario 4 está activo
-[07-Oct-2025 16:10:48 America/Montevideo] === Validando estado de usuario ID: 4 ===
-[07-Oct-2025 16:10:48 America/Montevideo] === UserRepository::findById(4) ===
-[07-Oct-2025 16:10:48 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
-[07-Oct-2025 16:10:48 America/Montevideo] Usuario 4 está activo
-[07-Oct-2025 16:10:48 America/Montevideo] === Validando estado de usuario ID: 4 ===
-[07-Oct-2025 16:10:48 America/Montevideo] === UserRepository::findById(4) ===
-[07-Oct-2025 16:10:48 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
-[07-Oct-2025 16:10:48 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 20:42:44 America/Montevideo] PHP Notice:  Only variables should be passed by reference in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\backend\api\repositories\UserRepository.php on line 136
+[10-Oct-2025 20:42:44 America/Montevideo] PHP Notice:  Only variables should be passed by reference in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\backend\api\repositories\UserRepository.php on line 136
+[10-Oct-2025 20:42:44 America/Montevideo] PHP Notice:  Only variables should be passed by reference in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\backend\api\repositories\UserRepository.php on line 136
+[10-Oct-2025 20:42:44 America/Montevideo] PHP Notice:  Only variables should be passed by reference in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\backend\api\repositories\UserRepository.php on line 136
+[10-Oct-2025 22:00:17 America/Montevideo] Login intentado: admin / admin
+[10-Oct-2025 22:00:17 America/Montevideo] === INICIO AuthService::login ===
+[10-Oct-2025 22:00:17 America/Montevideo] Intentando login para: admin
+[10-Oct-2025 22:00:17 America/Montevideo] === INICIO verifyCredentials ===
+[10-Oct-2025 22:00:17 America/Montevideo] Identifier: admin
+[10-Oct-2025 22:00:17 America/Montevideo] Usuario encontrado: admin
+[10-Oct-2025 22:00:17 America/Montevideo] Estado del usuario: activo
+[10-Oct-2025 22:00:17 America/Montevideo] Usuario activo, verificando contraseña...
+[10-Oct-2025 22:00:17 America/Montevideo] Password verify: OK
+[10-Oct-2025 22:00:17 America/Montevideo] Usuario estado final: activo
+[10-Oct-2025 22:00:17 America/Montevideo] === FIN verifyCredentials (success) ===
+[10-Oct-2025 22:00:17 America/Montevideo] Login exitoso para usuario ID: 1
+[10-Oct-2025 22:00:17 America/Montevideo] === FIN AuthService::login (success) ===
+[10-Oct-2025 22:00:17 America/Montevideo] === INICIO AuthService::login ===
+[10-Oct-2025 22:00:17 America/Montevideo] Intentando login para: admin
+[10-Oct-2025 22:00:17 America/Montevideo] === INICIO verifyCredentials ===
+[10-Oct-2025 22:00:17 America/Montevideo] Identifier: admin
+[10-Oct-2025 22:00:17 America/Montevideo] Usuario encontrado: admin
+[10-Oct-2025 22:00:17 America/Montevideo] Estado del usuario: activo
+[10-Oct-2025 22:00:17 America/Montevideo] Usuario activo, verificando contraseña...
+[10-Oct-2025 22:00:18 America/Montevideo] Password verify: OK
+[10-Oct-2025 22:00:18 America/Montevideo] Usuario estado final: activo
+[10-Oct-2025 22:00:18 America/Montevideo] === FIN verifyCredentials (success) ===
+[10-Oct-2025 22:00:18 America/Montevideo] Login exitoso para usuario ID: 1
+[10-Oct-2025 22:00:18 America/Montevideo] === FIN AuthService::login (success) ===
+[10-Oct-2025 22:00:18 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[10-Oct-2025 22:00:18 America/Montevideo] === UserRepository::findById(1) ===
+[10-Oct-2025 22:00:18 America/Montevideo] Usuario ID 1 encontrado: admin (estado: activo)
+[10-Oct-2025 22:00:18 America/Montevideo] Usuario 1 está activo
+[10-Oct-2025 22:00:18 America/Montevideo] === AdminController::listUsers - INICIO ===
+[10-Oct-2025 22:00:18 America/Montevideo] Usuarios obtenidos: 9
+[10-Oct-2025 22:00:18 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[10-Oct-2025 22:00:18 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[10-Oct-2025 22:00:18 America/Montevideo] === UserRepository::findById(1) ===
+[10-Oct-2025 22:00:18 America/Montevideo] Usuario ID 1 encontrado: admin (estado: activo)
+[10-Oct-2025 22:00:18 America/Montevideo] Usuario 1 está activo
+[10-Oct-2025 22:00:18 America/Montevideo] === AdminController::listMessages - INICIO ===
+[10-Oct-2025 22:00:18 America/Montevideo] Mensajes obtenidos: 4
+[10-Oct-2025 22:00:18 America/Montevideo] === AdminController::listMessages - SUCCESS ===
+[10-Oct-2025 22:00:29 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[10-Oct-2025 22:00:29 America/Montevideo] === UserRepository::findById(1) ===
+[10-Oct-2025 22:00:29 America/Montevideo] Usuario ID 1 encontrado: admin (estado: activo)
+[10-Oct-2025 22:00:29 America/Montevideo] Usuario 1 está activo
+[10-Oct-2025 22:00:29 America/Montevideo] === AdminController::toggleUserStatus(9) - INICIO ===
+[10-Oct-2025 22:00:29 America/Montevideo] Cambiando status de usuario 9 a: suspendido
+[10-Oct-2025 22:00:29 America/Montevideo] Resultado cambio status: {"success":true,"message":"Estado actualizado"}
+[10-Oct-2025 22:00:29 America/Montevideo] === AdminController::toggleUserStatus - FIN ===
+[10-Oct-2025 22:00:29 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[10-Oct-2025 22:00:29 America/Montevideo] === UserRepository::findById(1) ===
+[10-Oct-2025 22:00:29 America/Montevideo] Usuario ID 1 encontrado: admin (estado: activo)
+[10-Oct-2025 22:00:29 America/Montevideo] Usuario 1 está activo
+[10-Oct-2025 22:00:29 America/Montevideo] === AdminController::listUsers - INICIO ===
+[10-Oct-2025 22:00:29 America/Montevideo] Usuarios obtenidos: 9
+[10-Oct-2025 22:00:29 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[10-Oct-2025 22:00:34 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[10-Oct-2025 22:00:34 America/Montevideo] === UserRepository::findById(1) ===
+[10-Oct-2025 22:00:34 America/Montevideo] Usuario ID 1 encontrado: admin (estado: activo)
+[10-Oct-2025 22:00:34 America/Montevideo] Usuario 1 está activo
+[10-Oct-2025 22:00:34 America/Montevideo] === AdminController::getUser(9) - INICIO ===
+[10-Oct-2025 22:00:34 America/Montevideo] Usuario 9 encontrado y enviado
+[10-Oct-2025 22:00:34 America/Montevideo] === AdminController::getUser - FIN ===
+[10-Oct-2025 22:00:42 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[10-Oct-2025 22:00:42 America/Montevideo] === UserRepository::findById(1) ===
+[10-Oct-2025 22:00:42 America/Montevideo] Usuario ID 1 encontrado: admin (estado: activo)
+[10-Oct-2025 22:00:42 America/Montevideo] Usuario 1 está activo
+[10-Oct-2025 22:00:42 America/Montevideo] === AdminController::updateUser(9) - INICIO ===
+[10-Oct-2025 22:00:42 America/Montevideo] Raw input para update: {"name":"juanpalote","email":"juanpalo@gmail.com"}
+[10-Oct-2025 22:00:42 America/Montevideo] Datos para actualizar ID 9: {"name":"juanpalote","email":"juanpalo@gmail.com"}
+[10-Oct-2025 22:00:42 America/Montevideo] === AdminService::updateUser - INICIO ===
+[10-Oct-2025 22:00:42 America/Montevideo] ID: 9, Datos: {"name":"juanpalote","email":"juanpalo@gmail.com"}
+[10-Oct-2025 22:00:42 America/Montevideo] === AdminRepository::updateUser - INICIO ===
+[10-Oct-2025 22:00:42 America/Montevideo] ID: 9, Datos: {"name":"juanpalote","email":"juanpalo@gmail.com"}
+[10-Oct-2025 22:00:42 America/Montevideo] Campo name -> username = 'juanpalote'
+[10-Oct-2025 22:00:42 America/Montevideo] Campo email -> email = 'juanpalo@gmail.com'
+[10-Oct-2025 22:00:42 America/Montevideo] SQL a ejecutar: UPDATE users SET username = ?, email = ?, updated_at = NOW() WHERE id = ?
+[10-Oct-2025 22:00:42 America/Montevideo] Valores: ["juanpalote","juanpalo@gmail.com"] [ID: 9]
+[10-Oct-2025 22:00:42 America/Montevideo] UPDATE completado - Filas afectadas: 1
+[10-Oct-2025 22:00:42 America/Montevideo] === AdminRepository::updateUser - SUCCESS ===
+[10-Oct-2025 22:00:42 America/Montevideo] Filas afectadas: 1
+[10-Oct-2025 22:00:42 America/Montevideo] === AdminService::updateUser - SUCCESS ===
+[10-Oct-2025 22:00:42 America/Montevideo] Resultado update: {"success":true,"message":"Usuario actualizado"}
+[10-Oct-2025 22:00:42 America/Montevideo] === AdminController::updateUser - FIN ===
+[10-Oct-2025 22:00:43 America/Montevideo] === Validando estado de usuario ID: 1 ===
+[10-Oct-2025 22:00:43 America/Montevideo] === UserRepository::findById(1) ===
+[10-Oct-2025 22:00:43 America/Montevideo] Usuario ID 1 encontrado: admin (estado: activo)
+[10-Oct-2025 22:00:43 America/Montevideo] Usuario 1 está activo
+[10-Oct-2025 22:00:43 America/Montevideo] === AdminController::listUsers - INICIO ===
+[10-Oct-2025 22:00:43 America/Montevideo] Usuarios obtenidos: 9
+[10-Oct-2025 22:00:43 America/Montevideo] === AdminController::listUsers - SUCCESS ===
+[10-Oct-2025 22:02:16 America/Montevideo] Login intentado: martin@martin.com / martin123
+[10-Oct-2025 22:02:16 America/Montevideo] === INICIO AuthService::login ===
+[10-Oct-2025 22:02:16 America/Montevideo] Intentando login para: martin@martin.com
+[10-Oct-2025 22:02:16 America/Montevideo] === INICIO verifyCredentials ===
+[10-Oct-2025 22:02:16 America/Montevideo] Identifier: martin@martin.com
+[10-Oct-2025 22:02:16 America/Montevideo] Usuario encontrado: martin
+[10-Oct-2025 22:02:16 America/Montevideo] Estado del usuario: activo
+[10-Oct-2025 22:02:16 America/Montevideo] Usuario activo, verificando contraseña...
+[10-Oct-2025 22:02:17 America/Montevideo] Password verify: OK
+[10-Oct-2025 22:02:17 America/Montevideo] Usuario estado final: activo
+[10-Oct-2025 22:02:17 America/Montevideo] === FIN verifyCredentials (success) ===
+[10-Oct-2025 22:02:17 America/Montevideo] Login exitoso para usuario ID: 4
+[10-Oct-2025 22:02:17 America/Montevideo] === FIN AuthService::login (success) ===
+[10-Oct-2025 22:02:17 America/Montevideo] === INICIO AuthService::login ===
+[10-Oct-2025 22:02:17 America/Montevideo] Intentando login para: martin@martin.com
+[10-Oct-2025 22:02:17 America/Montevideo] === INICIO verifyCredentials ===
+[10-Oct-2025 22:02:17 America/Montevideo] Identifier: martin@martin.com
+[10-Oct-2025 22:02:17 America/Montevideo] Usuario encontrado: martin
+[10-Oct-2025 22:02:17 America/Montevideo] Estado del usuario: activo
+[10-Oct-2025 22:02:17 America/Montevideo] Usuario activo, verificando contraseña...
+[10-Oct-2025 22:02:17 America/Montevideo] Password verify: OK
+[10-Oct-2025 22:02:17 America/Montevideo] Usuario estado final: activo
+[10-Oct-2025 22:02:17 America/Montevideo] === FIN verifyCredentials (success) ===
+[10-Oct-2025 22:02:17 America/Montevideo] Login exitoso para usuario ID: 4
+[10-Oct-2025 22:02:17 America/Montevideo] === FIN AuthService::login (success) ===
+[10-Oct-2025 22:02:17 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:02:17 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:02:17 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:02:17 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:02:17 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:02:17 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:02:17 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:02:17 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:02:36 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:02:36 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:02:36 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:02:36 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:03:07 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:03:07 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:03:07 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:03:07 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:03:16 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:03:16 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:03:16 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:03:16 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:03:16 America/Montevideo] ⚠️ ADVERTENCIA: Petición sin cuerpo recibida
+[10-Oct-2025 22:03:16 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:03:16 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:03:16 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:03:16 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:03:23 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:03:23 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:03:23 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:03:23 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:03:23 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:03:23 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:03:23 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:03:23 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:03:23 America/Montevideo] Raw input recibido (length=278): {"id":137,"partidaId":137,"ronda":1,"turno":1,"jugadorActivo":1,"jugadorQueTiroDado":1,"restriccion":6,"colocadosEnTurno":0,"mano1":["dino1","dino2","dino4","dino1","trex","dino3"],"mano2":["dino1","dino4","dino2","dino2","dino4","trex"],"colocaciones":[],"jugador2":"juansito"}
+[10-Oct-2025 22:03:23 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:03:23 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":1,"colocaciones_count":0}
+[10-Oct-2025 22:03:23 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:03:23 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:03:23 America/Montevideo] ✅ Validaciones pasadas: ronda=1, turno=1, jugadorActivo=1
+[10-Oct-2025 22:03:23 America/Montevideo] Estado formateado para BD: {"recintos_count":0,"ronda_actual":1,"jugador_activo":1}
+[10-Oct-2025 22:03:23 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:03:26 America/Montevideo] === INICIO validarColocacionDino ===
+[10-Oct-2025 22:03:26 America/Montevideo] Método: POST
+[10-Oct-2025 22:03:26 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:03:26 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:03:26 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:03:26 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:03:26 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:03:26 America/Montevideo] ✅ Usuario autenticado: 4
+[10-Oct-2025 22:03:26 America/Montevideo] Datos recibidos para validación: {"partidaId":137,"restriccion":6,"recintoId":"prado-diferencia","especie":"dino1"}
+[10-Oct-2025 22:03:26 America/Montevideo] ✅ COLOCACIÓN VÁLIDA: Dado tirado (restricción=6), recinto=prado-diferencia, especie=dino1
+[10-Oct-2025 22:03:26 America/Montevideo] === FIN validarColocacionDino ===
+[10-Oct-2025 22:03:26 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:03:26 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:03:26 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:03:26 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:03:26 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:03:26 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:03:26 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:03:26 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:03:26 America/Montevideo] Raw input recibido (length=330): {"id":137,"partidaId":137,"ronda":1,"turno":1,"jugadorActivo":1,"jugadorQueTiroDado":1,"restriccion":6,"colocadosEnTurno":1,"mano1":["dino1","dino2","dino4","trex","dino3"],"mano2":["dino1","dino4","dino2","dino2","dino4","trex"],"colocaciones":[{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"}],"jugador2":"juansito"}
+[10-Oct-2025 22:03:26 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:03:26 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":1,"colocaciones_count":1}
+[10-Oct-2025 22:03:26 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:03:26 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:03:26 America/Montevideo] ✅ Validaciones pasadas: ronda=1, turno=1, jugadorActivo=1
+[10-Oct-2025 22:03:26 America/Montevideo] Estado formateado para BD: {"recintos_count":1,"ronda_actual":1,"jugador_activo":1}
+[10-Oct-2025 22:03:26 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:03:42 America/Montevideo] === INICIO validarColocacionDino ===
+[10-Oct-2025 22:03:42 America/Montevideo] Método: POST
+[10-Oct-2025 22:03:42 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:03:42 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:03:42 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:03:42 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:03:42 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:03:42 America/Montevideo] ✅ Usuario autenticado: 4
+[10-Oct-2025 22:03:42 America/Montevideo] Datos recibidos para validación: {"partidaId":137,"restriccion":6,"recintoId":"rey-selva","especie":"trex"}
+[10-Oct-2025 22:03:42 America/Montevideo] ✅ COLOCACIÓN VÁLIDA: Dado tirado (restricción=6), recinto=rey-selva, especie=trex
+[10-Oct-2025 22:03:42 America/Montevideo] === FIN validarColocacionDino ===
+[10-Oct-2025 22:03:42 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:03:42 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:03:42 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:03:42 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:03:42 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:03:42 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:03:42 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:03:42 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:03:42 America/Montevideo] Raw input recibido (length=376): {"id":137,"partidaId":137,"ronda":1,"turno":1,"jugadorActivo":2,"jugadorQueTiroDado":1,"restriccion":6,"colocadosEnTurno":2,"mano1":["dino1","dino2","dino4","trex","dino3"],"mano2":["dino1","dino4","dino2","dino2","dino4"],"colocaciones":[{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"}],"jugador2":"juansito"}
+[10-Oct-2025 22:03:42 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:03:42 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":1,"colocaciones_count":2}
+[10-Oct-2025 22:03:42 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:03:42 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:03:42 America/Montevideo] ✅ Validaciones pasadas: ronda=1, turno=1, jugadorActivo=2
+[10-Oct-2025 22:03:42 America/Montevideo] Estado formateado para BD: {"recintos_count":2,"ronda_actual":1,"jugador_activo":2}
+[10-Oct-2025 22:03:42 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:03:42 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:03:42 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:03:42 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:03:42 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:03:42 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:03:42 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:03:42 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:03:42 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:03:42 America/Montevideo] Raw input recibido (length=379): {"id":137,"partidaId":137,"ronda":1,"turno":2,"jugadorActivo":2,"jugadorQueTiroDado":2,"restriccion":null,"colocadosEnTurno":0,"mano1":["dino1","dino4","dino2","dino2","dino4"],"mano2":["dino1","dino2","dino4","trex","dino3"],"colocaciones":[{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"}],"jugador2":"juansito"}
+[10-Oct-2025 22:03:42 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:03:42 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":1,"colocaciones_count":2}
+[10-Oct-2025 22:03:42 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:03:42 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:03:42 America/Montevideo] ✅ Validaciones pasadas: ronda=1, turno=2, jugadorActivo=2
+[10-Oct-2025 22:03:42 America/Montevideo] Estado formateado para BD: {"recintos_count":2,"ronda_actual":1,"jugador_activo":2}
+[10-Oct-2025 22:03:42 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:03:44 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:03:44 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:03:44 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:03:44 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:03:44 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:03:44 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:03:44 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:03:44 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:03:44 America/Montevideo] Raw input recibido (length=376): {"id":137,"partidaId":137,"ronda":1,"turno":2,"jugadorActivo":2,"jugadorQueTiroDado":2,"restriccion":4,"colocadosEnTurno":0,"mano1":["dino1","dino4","dino2","dino2","dino4"],"mano2":["dino1","dino2","dino4","trex","dino3"],"colocaciones":[{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"}],"jugador2":"juansito"}
+[10-Oct-2025 22:03:44 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:03:44 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":1,"colocaciones_count":2}
+[10-Oct-2025 22:03:44 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:03:44 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:03:44 America/Montevideo] ✅ Validaciones pasadas: ronda=1, turno=2, jugadorActivo=2
+[10-Oct-2025 22:03:44 America/Montevideo] Estado formateado para BD: {"recintos_count":2,"ronda_actual":1,"jugador_activo":2}
+[10-Oct-2025 22:03:44 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:03:46 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:03:46 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:03:46 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:03:46 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:03:46 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:03:46 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:03:46 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:03:46 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:03:46 America/Montevideo] Raw input recibido (length=376): {"id":137,"partidaId":137,"ronda":1,"turno":2,"jugadorActivo":2,"jugadorQueTiroDado":2,"restriccion":4,"colocadosEnTurno":0,"mano1":["dino1","dino4","dino2","dino2","dino4"],"mano2":["dino1","dino2","dino4","trex","dino3"],"colocaciones":[{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"}],"jugador2":"juansito"}
+[10-Oct-2025 22:03:46 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:03:46 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":1,"colocaciones_count":2}
+[10-Oct-2025 22:03:46 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:03:46 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:03:46 America/Montevideo] ✅ Validaciones pasadas: ronda=1, turno=2, jugadorActivo=2
+[10-Oct-2025 22:03:46 America/Montevideo] Estado formateado para BD: {"recintos_count":2,"ronda_actual":1,"jugador_activo":2}
+[10-Oct-2025 22:03:46 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:03:49 America/Montevideo] === INICIO validarColocacionDino ===
+[10-Oct-2025 22:03:49 America/Montevideo] Método: POST
+[10-Oct-2025 22:03:49 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:03:49 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:03:49 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:03:49 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:03:49 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:03:49 America/Montevideo] ✅ Usuario autenticado: 4
+[10-Oct-2025 22:03:49 America/Montevideo] Datos recibidos para validación: {"partidaId":137,"restriccion":4,"recintoId":"prado-diferencia","especie":"trex"}
+[10-Oct-2025 22:03:49 America/Montevideo] ✅ COLOCACIÓN VÁLIDA: Dado tirado (restricción=4), recinto=prado-diferencia, especie=trex
+[10-Oct-2025 22:03:49 America/Montevideo] === FIN validarColocacionDino ===
+[10-Oct-2025 22:03:49 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:03:49 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:03:49 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:03:49 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:03:49 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:03:49 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:03:49 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:03:49 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:03:49 America/Montevideo] Raw input recibido (length=429): {"id":137,"partidaId":137,"ronda":1,"turno":2,"jugadorActivo":2,"jugadorQueTiroDado":2,"restriccion":4,"colocadosEnTurno":1,"mano1":["dino1","dino4","dino2","dino2","dino4"],"mano2":["dino1","dino2","dino4","dino3"],"colocaciones":[{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"},{"recinto":"prado-diferencia","jugador":2,"especie":"trex"}],"jugador2":"juansito"}
+[10-Oct-2025 22:03:49 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:03:49 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":1,"colocaciones_count":3}
+[10-Oct-2025 22:03:49 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:03:49 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:03:49 America/Montevideo] ✅ Validaciones pasadas: ronda=1, turno=2, jugadorActivo=2
+[10-Oct-2025 22:03:49 America/Montevideo] Estado formateado para BD: {"recintos_count":2,"ronda_actual":1,"jugador_activo":2}
+[10-Oct-2025 22:03:49 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:03:58 America/Montevideo] === INICIO validarColocacionDino ===
+[10-Oct-2025 22:03:58 America/Montevideo] Método: POST
+[10-Oct-2025 22:03:58 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:03:58 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:03:58 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:03:58 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:03:58 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:03:58 America/Montevideo] ✅ Usuario autenticado: 4
+[10-Oct-2025 22:03:58 America/Montevideo] Datos recibidos para validación: {"partidaId":137,"restriccion":4,"recintoId":"trio-frondoso","especie":"dino2"}
+[10-Oct-2025 22:03:58 America/Montevideo] ✅ COLOCACIÓN VÁLIDA: Dado tirado (restricción=4), recinto=trio-frondoso, especie=dino2
+[10-Oct-2025 22:03:58 America/Montevideo] === FIN validarColocacionDino ===
+[10-Oct-2025 22:03:58 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:03:58 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:03:58 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:03:58 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:03:58 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:03:58 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:03:58 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:03:58 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:03:58 America/Montevideo] Raw input recibido (length=479): {"id":137,"partidaId":137,"ronda":1,"turno":2,"jugadorActivo":1,"jugadorQueTiroDado":2,"restriccion":4,"colocadosEnTurno":2,"mano1":["dino1","dino4","dino2","dino4"],"mano2":["dino1","dino2","dino4","dino3"],"colocaciones":[{"recinto":"trio-frondoso","jugador":1,"especie":"dino2"},{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"},{"recinto":"prado-diferencia","jugador":2,"especie":"trex"}],"jugador2":"juansito"}
+[10-Oct-2025 22:03:58 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:03:58 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":1,"colocaciones_count":4}
+[10-Oct-2025 22:03:58 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:03:58 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:03:58 America/Montevideo] ✅ Validaciones pasadas: ronda=1, turno=2, jugadorActivo=1
+[10-Oct-2025 22:03:58 America/Montevideo] Estado formateado para BD: {"recintos_count":3,"ronda_actual":1,"jugador_activo":1}
+[10-Oct-2025 22:03:58 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:03:58 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:03:58 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:03:58 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:03:58 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:03:58 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:03:58 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:03:58 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:03:58 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:03:58 America/Montevideo] Raw input recibido (length=482): {"id":137,"partidaId":137,"ronda":1,"turno":3,"jugadorActivo":1,"jugadorQueTiroDado":1,"restriccion":null,"colocadosEnTurno":0,"mano1":["dino1","dino2","dino4","dino3"],"mano2":["dino1","dino4","dino2","dino4"],"colocaciones":[{"recinto":"trio-frondoso","jugador":1,"especie":"dino2"},{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"},{"recinto":"prado-diferencia","jugador":2,"especie":"trex"}],"jugador2":"juansito"}
+[10-Oct-2025 22:03:58 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:03:58 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":1,"colocaciones_count":4}
+[10-Oct-2025 22:03:58 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:03:58 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:03:58 America/Montevideo] ✅ Validaciones pasadas: ronda=1, turno=3, jugadorActivo=1
+[10-Oct-2025 22:03:58 America/Montevideo] Estado formateado para BD: {"recintos_count":3,"ronda_actual":1,"jugador_activo":1}
+[10-Oct-2025 22:03:58 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:04:01 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:04:01 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:04:01 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:04:01 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:04:01 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:04:01 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:04:01 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:04:01 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:04:01 America/Montevideo] Raw input recibido (length=479): {"id":137,"partidaId":137,"ronda":1,"turno":3,"jugadorActivo":1,"jugadorQueTiroDado":1,"restriccion":2,"colocadosEnTurno":0,"mano1":["dino1","dino2","dino4","dino3"],"mano2":["dino1","dino4","dino2","dino4"],"colocaciones":[{"recinto":"trio-frondoso","jugador":1,"especie":"dino2"},{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"},{"recinto":"prado-diferencia","jugador":2,"especie":"trex"}],"jugador2":"juansito"}
+[10-Oct-2025 22:04:01 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:04:01 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":1,"colocaciones_count":4}
+[10-Oct-2025 22:04:01 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:04:01 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:04:01 America/Montevideo] ✅ Validaciones pasadas: ronda=1, turno=3, jugadorActivo=1
+[10-Oct-2025 22:04:01 America/Montevideo] Estado formateado para BD: {"recintos_count":3,"ronda_actual":1,"jugador_activo":1}
+[10-Oct-2025 22:04:01 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:04:15 America/Montevideo] === INICIO validarColocacionDino ===
+[10-Oct-2025 22:04:15 America/Montevideo] Método: POST
+[10-Oct-2025 22:04:15 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:04:15 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:04:15 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:04:15 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:04:15 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:04:15 America/Montevideo] ✅ Usuario autenticado: 4
+[10-Oct-2025 22:04:15 America/Montevideo] Datos recibidos para validación: {"partidaId":137,"restriccion":2,"recintoId":"isla-solitario","especie":"dino3"}
+[10-Oct-2025 22:04:15 America/Montevideo] ✅ COLOCACIÓN VÁLIDA: Dado tirado (restricción=2), recinto=isla-solitario, especie=dino3
+[10-Oct-2025 22:04:15 America/Montevideo] === FIN validarColocacionDino ===
+[10-Oct-2025 22:04:15 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:04:15 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:04:15 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:04:15 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:04:15 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:04:15 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:04:15 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:04:15 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:04:15 America/Montevideo] Raw input recibido (length=530): {"id":137,"partidaId":137,"ronda":1,"turno":3,"jugadorActivo":1,"jugadorQueTiroDado":1,"restriccion":2,"colocadosEnTurno":1,"mano1":["dino1","dino2","dino4"],"mano2":["dino1","dino4","dino2","dino4"],"colocaciones":[{"recinto":"trio-frondoso","jugador":1,"especie":"dino2"},{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"},{"recinto":"prado-diferencia","jugador":2,"especie":"trex"},{"recinto":"isla-solitario","jugador":1,"especie":"d
+[10-Oct-2025 22:04:15 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:04:15 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":1,"colocaciones_count":5}
+[10-Oct-2025 22:04:15 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:04:15 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:04:15 America/Montevideo] ✅ Validaciones pasadas: ronda=1, turno=3, jugadorActivo=1
+[10-Oct-2025 22:04:15 America/Montevideo] Estado formateado para BD: {"recintos_count":4,"ronda_actual":1,"jugador_activo":1}
+[10-Oct-2025 22:04:15 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:04:16 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:04:16 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:04:16 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:04:16 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:04:16 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:04:16 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:04:16 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:04:16 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:04:16 America/Montevideo] Raw input recibido (length=530): {"id":137,"partidaId":137,"ronda":1,"turno":3,"jugadorActivo":2,"jugadorQueTiroDado":1,"restriccion":2,"colocadosEnTurno":1,"mano1":["dino1","dino2","dino4"],"mano2":["dino1","dino4","dino2","dino4"],"colocaciones":[{"recinto":"trio-frondoso","jugador":1,"especie":"dino2"},{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"},{"recinto":"prado-diferencia","jugador":2,"especie":"trex"},{"recinto":"isla-solitario","jugador":1,"especie":"d
+[10-Oct-2025 22:04:16 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:04:16 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":1,"colocaciones_count":5}
+[10-Oct-2025 22:04:16 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:04:16 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:04:16 America/Montevideo] ✅ Validaciones pasadas: ronda=1, turno=3, jugadorActivo=2
+[10-Oct-2025 22:04:16 America/Montevideo] Estado formateado para BD: {"recintos_count":4,"ronda_actual":1,"jugador_activo":2}
+[10-Oct-2025 22:04:16 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:04:21 America/Montevideo] === INICIO validarColocacionDino ===
+[10-Oct-2025 22:04:21 America/Montevideo] Método: POST
+[10-Oct-2025 22:04:21 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:04:21 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:04:21 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:04:21 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:04:21 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:04:21 America/Montevideo] ✅ Usuario autenticado: 4
+[10-Oct-2025 22:04:21 America/Montevideo] Datos recibidos para validación: {"partidaId":137,"restriccion":2,"recintoId":"isla-solitario","especie":"dino4"}
+[10-Oct-2025 22:04:21 America/Montevideo] ✅ COLOCACIÓN VÁLIDA: Dado tirado (restricción=2), recinto=isla-solitario, especie=dino4
+[10-Oct-2025 22:04:21 America/Montevideo] === FIN validarColocacionDino ===
+[10-Oct-2025 22:04:21 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:04:21 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:04:21 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:04:21 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:04:21 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:04:21 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:04:21 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:04:21 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:04:21 America/Montevideo] Raw input recibido (length=581): {"id":137,"partidaId":137,"ronda":1,"turno":3,"jugadorActivo":2,"jugadorQueTiroDado":1,"restriccion":2,"colocadosEnTurno":2,"mano1":["dino1","dino2","dino4"],"mano2":["dino1","dino4","dino2"],"colocaciones":[{"recinto":"trio-frondoso","jugador":1,"especie":"dino2"},{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"},{"recinto":"prado-diferencia","jugador":2,"especie":"trex"},{"recinto":"isla-solitario","jugador":1,"especie":"dino3"},{
+[10-Oct-2025 22:04:21 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:04:21 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":1,"colocaciones_count":6}
+[10-Oct-2025 22:04:21 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:04:21 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:04:21 America/Montevideo] ✅ Validaciones pasadas: ronda=1, turno=3, jugadorActivo=2
+[10-Oct-2025 22:04:21 America/Montevideo] Estado formateado para BD: {"recintos_count":4,"ronda_actual":1,"jugador_activo":2}
+[10-Oct-2025 22:04:21 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:04:21 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:04:21 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:04:21 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:04:21 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:04:21 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:04:21 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:04:21 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:04:21 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:04:21 America/Montevideo] Raw input recibido (length=630): {"id":137,"partidaId":137,"ronda":2,"turno":1,"jugadorActivo":2,"jugadorQueTiroDado":2,"restriccion":null,"colocadosEnTurno":0,"mano1":["dino5","trex","dino5","dino3","dino5","dino5"],"mano2":["dino1","trex","dino1","dino4","dino5","dino4"],"colocaciones":[{"recinto":"trio-frondoso","jugador":1,"especie":"dino2"},{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"},{"recinto":"prado-diferencia","jugador":2,"especie":"trex"},{"recinto":
+[10-Oct-2025 22:04:21 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:04:21 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":2,"colocaciones_count":6}
+[10-Oct-2025 22:04:21 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:04:21 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:04:21 America/Montevideo] ✅ Validaciones pasadas: ronda=2, turno=1, jugadorActivo=2
+[10-Oct-2025 22:04:21 America/Montevideo] Estado formateado para BD: {"recintos_count":4,"ronda_actual":2,"jugador_activo":2}
+[10-Oct-2025 22:04:21 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:04:26 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:04:26 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:04:26 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:04:26 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:04:26 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:04:26 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:04:26 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:04:26 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:04:26 America/Montevideo] Raw input recibido (length=627): {"id":137,"partidaId":137,"ronda":2,"turno":1,"jugadorActivo":2,"jugadorQueTiroDado":2,"restriccion":5,"colocadosEnTurno":0,"mano1":["dino5","trex","dino5","dino3","dino5","dino5"],"mano2":["dino1","trex","dino1","dino4","dino5","dino4"],"colocaciones":[{"recinto":"trio-frondoso","jugador":1,"especie":"dino2"},{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"},{"recinto":"prado-diferencia","jugador":2,"especie":"trex"},{"recinto":"is
+[10-Oct-2025 22:04:26 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:04:26 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":2,"colocaciones_count":6}
+[10-Oct-2025 22:04:26 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:04:26 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:04:26 America/Montevideo] ✅ Validaciones pasadas: ronda=2, turno=1, jugadorActivo=2
+[10-Oct-2025 22:04:26 America/Montevideo] Estado formateado para BD: {"recintos_count":4,"ronda_actual":2,"jugador_activo":2}
+[10-Oct-2025 22:04:26 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:04:30 America/Montevideo] === INICIO validarColocacionDino ===
+[10-Oct-2025 22:04:30 America/Montevideo] Método: POST
+[10-Oct-2025 22:04:30 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:04:30 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:04:30 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:04:30 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:04:30 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:04:30 America/Montevideo] ✅ Usuario autenticado: 4
+[10-Oct-2025 22:04:30 America/Montevideo] Datos recibidos para validación: {"partidaId":137,"restriccion":5,"recintoId":"prado-diferencia","especie":"dino4"}
+[10-Oct-2025 22:04:30 America/Montevideo] ✅ COLOCACIÓN VÁLIDA: Dado tirado (restricción=5), recinto=prado-diferencia, especie=dino4
+[10-Oct-2025 22:04:30 America/Montevideo] === FIN validarColocacionDino ===
+[10-Oct-2025 22:04:30 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:04:30 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:04:30 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:04:30 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:04:30 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:04:30 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:04:30 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:04:30 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:04:30 America/Montevideo] Raw input recibido (length=680): {"id":137,"partidaId":137,"ronda":2,"turno":1,"jugadorActivo":2,"jugadorQueTiroDado":2,"restriccion":5,"colocadosEnTurno":1,"mano1":["dino5","trex","dino5","dino3","dino5","dino5"],"mano2":["dino1","trex","dino1","dino5","dino4"],"colocaciones":[{"recinto":"trio-frondoso","jugador":1,"especie":"dino2"},{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"},{"recinto":"prado-diferencia","jugador":2,"especie":"trex"},{"recinto":"prado-dife
+[10-Oct-2025 22:04:30 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:04:30 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":2,"colocaciones_count":7}
+[10-Oct-2025 22:04:30 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:04:30 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:04:30 America/Montevideo] ✅ Validaciones pasadas: ronda=2, turno=1, jugadorActivo=2
+[10-Oct-2025 22:04:30 America/Montevideo] Estado formateado para BD: {"recintos_count":4,"ronda_actual":2,"jugador_activo":2}
+[10-Oct-2025 22:04:30 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:04:34 America/Montevideo] === INICIO validarColocacionDino ===
+[10-Oct-2025 22:04:34 America/Montevideo] Método: POST
+[10-Oct-2025 22:04:34 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:04:34 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:04:34 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:04:34 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:04:34 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:04:34 America/Montevideo] ✅ Usuario autenticado: 4
+[10-Oct-2025 22:04:34 America/Montevideo] Datos recibidos para validación: {"partidaId":137,"restriccion":5,"recintoId":"pradera-amor","especie":"dino3"}
+[10-Oct-2025 22:04:34 America/Montevideo] ✅ COLOCACIÓN VÁLIDA: Dado tirado (restricción=5), recinto=pradera-amor, especie=dino3
+[10-Oct-2025 22:04:34 America/Montevideo] === FIN validarColocacionDino ===
+[10-Oct-2025 22:04:34 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:04:34 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:04:34 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:04:34 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:04:34 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:04:34 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:04:34 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:04:34 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:04:34 America/Montevideo] Raw input recibido (length=729): {"id":137,"partidaId":137,"ronda":2,"turno":1,"jugadorActivo":1,"jugadorQueTiroDado":2,"restriccion":5,"colocadosEnTurno":2,"mano1":["dino5","trex","dino5","dino5","dino5"],"mano2":["dino1","trex","dino1","dino5","dino4"],"colocaciones":[{"recinto":"trio-frondoso","jugador":1,"especie":"dino2"},{"recinto":"pradera-amor","jugador":1,"especie":"dino3"},{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"},{"recinto":"prado-diferencia","ju
+[10-Oct-2025 22:04:34 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:04:34 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":2,"colocaciones_count":8}
+[10-Oct-2025 22:04:34 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:04:34 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:04:34 America/Montevideo] ✅ Validaciones pasadas: ronda=2, turno=1, jugadorActivo=1
+[10-Oct-2025 22:04:34 America/Montevideo] Estado formateado para BD: {"recintos_count":5,"ronda_actual":2,"jugador_activo":1}
+[10-Oct-2025 22:04:34 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:04:34 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:04:34 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:04:34 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:04:34 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:04:34 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:04:34 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:04:34 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:04:34 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:04:34 America/Montevideo] Raw input recibido (length=732): {"id":137,"partidaId":137,"ronda":2,"turno":2,"jugadorActivo":1,"jugadorQueTiroDado":1,"restriccion":null,"colocadosEnTurno":0,"mano1":["dino1","trex","dino1","dino5","dino4"],"mano2":["dino5","trex","dino5","dino5","dino5"],"colocaciones":[{"recinto":"trio-frondoso","jugador":1,"especie":"dino2"},{"recinto":"pradera-amor","jugador":1,"especie":"dino3"},{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"},{"recinto":"prado-diferencia",
+[10-Oct-2025 22:04:34 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:04:34 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":2,"colocaciones_count":8}
+[10-Oct-2025 22:04:34 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:04:34 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:04:34 America/Montevideo] ✅ Validaciones pasadas: ronda=2, turno=2, jugadorActivo=1
+[10-Oct-2025 22:04:34 America/Montevideo] Estado formateado para BD: {"recintos_count":5,"ronda_actual":2,"jugador_activo":1}
+[10-Oct-2025 22:04:34 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:04:46 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:04:46 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:04:46 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:04:46 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:04:46 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:04:46 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:04:46 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:04:46 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:04:46 America/Montevideo] Raw input recibido (length=729): {"id":137,"partidaId":137,"ronda":2,"turno":2,"jugadorActivo":1,"jugadorQueTiroDado":1,"restriccion":5,"colocadosEnTurno":0,"mano1":["dino1","trex","dino1","dino5","dino4"],"mano2":["dino5","trex","dino5","dino5","dino5"],"colocaciones":[{"recinto":"trio-frondoso","jugador":1,"especie":"dino2"},{"recinto":"pradera-amor","jugador":1,"especie":"dino3"},{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"},{"recinto":"prado-diferencia","ju
+[10-Oct-2025 22:04:46 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:04:46 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":2,"colocaciones_count":8}
+[10-Oct-2025 22:04:46 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:04:46 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:04:46 America/Montevideo] ✅ Validaciones pasadas: ronda=2, turno=2, jugadorActivo=1
+[10-Oct-2025 22:04:46 America/Montevideo] Estado formateado para BD: {"recintos_count":5,"ronda_actual":2,"jugador_activo":1}
+[10-Oct-2025 22:04:46 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:04:46 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:04:46 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:04:46 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:04:46 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:04:46 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:04:46 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:04:46 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:04:46 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:04:46 America/Montevideo] Raw input recibido (length=729): {"id":137,"partidaId":137,"ronda":2,"turno":2,"jugadorActivo":1,"jugadorQueTiroDado":1,"restriccion":5,"colocadosEnTurno":0,"mano1":["dino1","trex","dino1","dino5","dino4"],"mano2":["dino5","trex","dino5","dino5","dino5"],"colocaciones":[{"recinto":"trio-frondoso","jugador":1,"especie":"dino2"},{"recinto":"pradera-amor","jugador":1,"especie":"dino3"},{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"},{"recinto":"prado-diferencia","ju
+[10-Oct-2025 22:04:46 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:04:46 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":2,"colocaciones_count":8}
+[10-Oct-2025 22:04:46 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:04:46 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:04:46 America/Montevideo] ✅ Validaciones pasadas: ronda=2, turno=2, jugadorActivo=1
+[10-Oct-2025 22:04:46 America/Montevideo] Estado formateado para BD: {"recintos_count":5,"ronda_actual":2,"jugador_activo":1}
+[10-Oct-2025 22:04:46 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:05:16 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:05:16 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:05:16 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:05:16 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:05:16 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:05:16 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:05:16 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:05:16 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:05:16 America/Montevideo] Raw input recibido (length=729): {"id":137,"partidaId":137,"ronda":2,"turno":2,"jugadorActivo":1,"jugadorQueTiroDado":1,"restriccion":5,"colocadosEnTurno":0,"mano1":["dino1","trex","dino1","dino5","dino4"],"mano2":["dino5","trex","dino5","dino5","dino5"],"colocaciones":[{"recinto":"trio-frondoso","jugador":1,"especie":"dino2"},{"recinto":"pradera-amor","jugador":1,"especie":"dino3"},{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"},{"recinto":"prado-diferencia","ju
+[10-Oct-2025 22:05:16 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:05:16 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":2,"colocaciones_count":8}
+[10-Oct-2025 22:05:16 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:05:16 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:05:16 America/Montevideo] ✅ Validaciones pasadas: ronda=2, turno=2, jugadorActivo=1
+[10-Oct-2025 22:05:16 America/Montevideo] Estado formateado para BD: {"recintos_count":5,"ronda_actual":2,"jugador_activo":1}
+[10-Oct-2025 22:05:16 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:05:30 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:05:30 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:05:30 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:05:30 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:05:30 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:05:30 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:05:30 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:05:30 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:05:30 America/Montevideo] Raw input recibido (length=729): {"id":137,"partidaId":137,"ronda":2,"turno":2,"jugadorActivo":1,"jugadorQueTiroDado":1,"restriccion":5,"colocadosEnTurno":0,"mano1":["dino1","trex","dino1","dino5","dino4"],"mano2":["dino5","trex","dino5","dino5","dino5"],"colocaciones":[{"recinto":"trio-frondoso","jugador":1,"especie":"dino2"},{"recinto":"pradera-amor","jugador":1,"especie":"dino3"},{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"},{"recinto":"prado-diferencia","ju
+[10-Oct-2025 22:05:30 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:05:30 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":2,"colocaciones_count":8}
+[10-Oct-2025 22:05:30 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:05:30 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:05:30 America/Montevideo] ✅ Validaciones pasadas: ronda=2, turno=2, jugadorActivo=1
+[10-Oct-2025 22:05:30 America/Montevideo] Estado formateado para BD: {"recintos_count":5,"ronda_actual":2,"jugador_activo":1}
+[10-Oct-2025 22:05:30 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:05:36 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:05:36 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:05:36 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:05:36 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:05:36 America/Montevideo] ⚠️ ADVERTENCIA: Petición sin cuerpo recibida
+[10-Oct-2025 22:05:36 America/Montevideo] PHP Notice:  session_start(): ps_files_cleanup_dir: opendir(C:\Windows\Temp) failed: No error (0) in C:\Users\USUARIO\Documents\GitHub\Draftosaurus\backend\api\helpers\AuthHelper.php on line 15
+[10-Oct-2025 22:05:36 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:05:36 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:05:36 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:05:36 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:05:42 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:05:42 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:05:42 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:05:42 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:05:42 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:05:42 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:05:42 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:05:42 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:05:42 America/Montevideo] Raw input recibido (length=729): {"id":137,"partidaId":137,"ronda":2,"turno":2,"jugadorActivo":1,"jugadorQueTiroDado":1,"restriccion":5,"colocadosEnTurno":0,"mano1":["dino1","trex","dino1","dino5","dino4"],"mano2":["dino5","trex","dino5","dino5","dino5"],"colocaciones":[{"recinto":"trio-frondoso","jugador":1,"especie":"dino2"},{"recinto":"pradera-amor","jugador":1,"especie":"dino3"},{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"},{"recinto":"prado-diferencia","ju
+[10-Oct-2025 22:05:42 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:05:42 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":2,"colocaciones_count":8}
+[10-Oct-2025 22:05:42 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:05:42 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:05:42 America/Montevideo] ✅ Validaciones pasadas: ronda=2, turno=2, jugadorActivo=1
+[10-Oct-2025 22:05:42 America/Montevideo] Estado formateado para BD: {"recintos_count":5,"ronda_actual":2,"jugador_activo":1}
+[10-Oct-2025 22:05:42 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:05:45 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:05:45 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:05:45 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:05:45 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:05:45 America/Montevideo] ⚠️ ADVERTENCIA: Petición sin cuerpo recibida
+[10-Oct-2025 22:05:45 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:05:45 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:05:45 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:05:45 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:05:46 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:05:46 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:05:46 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:05:46 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:05:46 America/Montevideo] ⚠️ ADVERTENCIA: Petición sin cuerpo recibida
+[10-Oct-2025 22:05:46 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:05:46 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:05:46 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:05:46 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:05:51 America/Montevideo] === INICIO validarColocacionDino ===
+[10-Oct-2025 22:05:51 America/Montevideo] Método: POST
+[10-Oct-2025 22:05:51 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:05:51 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:05:51 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:05:51 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:05:51 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:05:51 America/Montevideo] ✅ Usuario autenticado: 4
+[10-Oct-2025 22:05:51 America/Montevideo] Datos recibidos para validación: {"partidaId":137,"restriccion":5,"recintoId":"prado-diferencia","especie":"dino5"}
+[10-Oct-2025 22:05:51 America/Montevideo] ✅ COLOCACIÓN VÁLIDA: Dado tirado (restricción=5), recinto=prado-diferencia, especie=dino5
+[10-Oct-2025 22:05:51 America/Montevideo] === FIN validarColocacionDino ===
+[10-Oct-2025 22:05:51 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:05:51 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:05:51 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:05:51 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:05:51 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:05:51 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:05:51 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:05:51 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:05:51 America/Montevideo] Raw input recibido (length=782): {"id":137,"partidaId":137,"ronda":2,"turno":2,"jugadorActivo":1,"jugadorQueTiroDado":1,"restriccion":5,"colocadosEnTurno":1,"mano1":["dino1","trex","dino1","dino4"],"mano2":["dino5","trex","dino5","dino5","dino5"],"colocaciones":[{"recinto":"trio-frondoso","jugador":1,"especie":"dino2"},{"recinto":"pradera-amor","jugador":1,"especie":"dino3"},{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"},{"recinto":"prado-diferencia","jugador":2
+[10-Oct-2025 22:05:51 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:05:51 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":2,"colocaciones_count":9}
+[10-Oct-2025 22:05:51 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:05:51 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:05:51 America/Montevideo] ✅ Validaciones pasadas: ronda=2, turno=2, jugadorActivo=1
+[10-Oct-2025 22:05:51 America/Montevideo] Estado formateado para BD: {"recintos_count":5,"ronda_actual":2,"jugador_activo":1}
+[10-Oct-2025 22:05:51 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:05:54 America/Montevideo] === INICIO validarColocacionDino ===
+[10-Oct-2025 22:05:54 America/Montevideo] Método: POST
+[10-Oct-2025 22:05:54 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:05:54 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:05:54 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:05:54 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:05:54 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:05:54 America/Montevideo] ✅ Usuario autenticado: 4
+[10-Oct-2025 22:05:54 America/Montevideo] Datos recibidos para validación: {"partidaId":137,"restriccion":5,"recintoId":"rio","especie":"dino5"}
+[10-Oct-2025 22:05:54 America/Montevideo] ✅ COLOCACIÓN VÁLIDA: Dado tirado (restricción=5), recinto=rio, especie=dino5
+[10-Oct-2025 22:05:54 America/Montevideo] === FIN validarColocacionDino ===
+[10-Oct-2025 22:05:54 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:05:54 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:05:54 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:05:54 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:05:54 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:05:54 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:05:54 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:05:54 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:05:54 America/Montevideo] Raw input recibido (length=822): {"id":137,"partidaId":137,"ronda":2,"turno":2,"jugadorActivo":2,"jugadorQueTiroDado":1,"restriccion":5,"colocadosEnTurno":2,"mano1":["dino1","trex","dino1","dino4"],"mano2":["dino5","trex","dino5","dino5"],"colocaciones":[{"recinto":"trio-frondoso","jugador":1,"especie":"dino2"},{"recinto":"pradera-amor","jugador":1,"especie":"dino3"},{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"},{"recinto":"prado-diferencia","jugador":2,"especi
+[10-Oct-2025 22:05:54 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:05:54 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":2,"colocaciones_count":10}
+[10-Oct-2025 22:05:54 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:05:54 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:05:54 America/Montevideo] ✅ Validaciones pasadas: ronda=2, turno=2, jugadorActivo=2
+[10-Oct-2025 22:05:54 America/Montevideo] Estado formateado para BD: {"recintos_count":6,"ronda_actual":2,"jugador_activo":2}
+[10-Oct-2025 22:05:54 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:05:54 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:05:54 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:05:54 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:05:54 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:05:54 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:05:54 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:05:54 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:05:54 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:05:54 America/Montevideo] Raw input recibido (length=825): {"id":137,"partidaId":137,"ronda":2,"turno":3,"jugadorActivo":2,"jugadorQueTiroDado":2,"restriccion":null,"colocadosEnTurno":0,"mano1":["dino5","trex","dino5","dino5"],"mano2":["dino1","trex","dino1","dino4"],"colocaciones":[{"recinto":"trio-frondoso","jugador":1,"especie":"dino2"},{"recinto":"pradera-amor","jugador":1,"especie":"dino3"},{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"},{"recinto":"prado-diferencia","jugador":2,"esp
+[10-Oct-2025 22:05:54 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:05:54 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":2,"colocaciones_count":10}
+[10-Oct-2025 22:05:54 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:05:54 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:05:54 America/Montevideo] ✅ Validaciones pasadas: ronda=2, turno=3, jugadorActivo=2
+[10-Oct-2025 22:05:54 America/Montevideo] Estado formateado para BD: {"recintos_count":6,"ronda_actual":2,"jugador_activo":2}
+[10-Oct-2025 22:05:54 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:06:06 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:06:06 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:06:06 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:06:06 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:06:06 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:06:06 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:06:06 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:06:06 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:06:06 America/Montevideo] Raw input recibido (length=825): {"id":137,"partidaId":137,"ronda":2,"turno":3,"jugadorActivo":2,"jugadorQueTiroDado":2,"restriccion":null,"colocadosEnTurno":0,"mano1":["dino5","trex","dino5","dino5"],"mano2":["dino1","trex","dino1","dino4"],"colocaciones":[{"recinto":"trio-frondoso","jugador":1,"especie":"dino2"},{"recinto":"pradera-amor","jugador":1,"especie":"dino3"},{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"},{"recinto":"prado-diferencia","jugador":2,"esp
+[10-Oct-2025 22:06:06 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:06:06 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":2,"colocaciones_count":10}
+[10-Oct-2025 22:06:06 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:06:06 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:06:06 America/Montevideo] ✅ Validaciones pasadas: ronda=2, turno=3, jugadorActivo=2
+[10-Oct-2025 22:06:06 America/Montevideo] Estado formateado para BD: {"recintos_count":6,"ronda_actual":2,"jugador_activo":2}
+[10-Oct-2025 22:06:06 America/Montevideo] ✅ Partida guardada exitosamente en BD
+[10-Oct-2025 22:07:52 America/Montevideo] Login intentado: martin@martin.com / martin123
+[10-Oct-2025 22:07:52 America/Montevideo] === INICIO AuthService::login ===
+[10-Oct-2025 22:07:52 America/Montevideo] Intentando login para: martin@martin.com
+[10-Oct-2025 22:07:52 America/Montevideo] === INICIO verifyCredentials ===
+[10-Oct-2025 22:07:52 America/Montevideo] Identifier: martin@martin.com
+[10-Oct-2025 22:07:52 America/Montevideo] Usuario encontrado: martin
+[10-Oct-2025 22:07:52 America/Montevideo] Estado del usuario: activo
+[10-Oct-2025 22:07:52 America/Montevideo] Usuario activo, verificando contraseña...
+[10-Oct-2025 22:07:52 America/Montevideo] Password verify: OK
+[10-Oct-2025 22:07:52 America/Montevideo] Usuario estado final: activo
+[10-Oct-2025 22:07:52 America/Montevideo] === FIN verifyCredentials (success) ===
+[10-Oct-2025 22:07:52 America/Montevideo] Login exitoso para usuario ID: 4
+[10-Oct-2025 22:07:52 America/Montevideo] === FIN AuthService::login (success) ===
+[10-Oct-2025 22:07:52 America/Montevideo] === INICIO AuthService::login ===
+[10-Oct-2025 22:07:52 America/Montevideo] Intentando login para: martin@martin.com
+[10-Oct-2025 22:07:52 America/Montevideo] === INICIO verifyCredentials ===
+[10-Oct-2025 22:07:52 America/Montevideo] Identifier: martin@martin.com
+[10-Oct-2025 22:07:52 America/Montevideo] Usuario encontrado: martin
+[10-Oct-2025 22:07:52 America/Montevideo] Estado del usuario: activo
+[10-Oct-2025 22:07:52 America/Montevideo] Usuario activo, verificando contraseña...
+[10-Oct-2025 22:07:52 America/Montevideo] Password verify: OK
+[10-Oct-2025 22:07:52 America/Montevideo] Usuario estado final: activo
+[10-Oct-2025 22:07:52 America/Montevideo] === FIN verifyCredentials (success) ===
+[10-Oct-2025 22:07:52 America/Montevideo] Login exitoso para usuario ID: 4
+[10-Oct-2025 22:07:52 America/Montevideo] === FIN AuthService::login (success) ===
+[10-Oct-2025 22:07:52 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:07:52 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:07:52 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:07:52 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:07:52 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:07:52 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:07:52 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:07:52 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:07:59 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:07:59 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:07:59 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:07:59 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:07:59 America/Montevideo] ⚠️ ADVERTENCIA: Petición sin cuerpo recibida
+[10-Oct-2025 22:07:59 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:07:59 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:07:59 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:07:59 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:08:07 America/Montevideo] === DEBUG GUARDAR ESTADO PARTIDA ===
+[10-Oct-2025 22:08:07 America/Montevideo] Método HTTP: POST
+[10-Oct-2025 22:08:07 America/Montevideo] Content-Type: application/json
+[10-Oct-2025 22:08:07 America/Montevideo] === Validando estado de usuario ID: 4 ===
+[10-Oct-2025 22:08:07 America/Montevideo] === UserRepository::findById(4) ===
+[10-Oct-2025 22:08:07 America/Montevideo] Usuario ID 4 encontrado: martin (estado: activo)
+[10-Oct-2025 22:08:07 America/Montevideo] Usuario 4 está activo
+[10-Oct-2025 22:08:07 America/Montevideo] ✅ Usuario autenticado: ID=4, Username=martin
+[10-Oct-2025 22:08:07 America/Montevideo] Raw input recibido (length=825): {"id":137,"partidaId":137,"ronda":2,"turno":3,"jugadorActivo":2,"jugadorQueTiroDado":2,"restriccion":null,"colocadosEnTurno":0,"mano1":["dino5","trex","dino5","dino5"],"mano2":["dino1","trex","dino1","dino4"],"colocaciones":[{"recinto":"trio-frondoso","jugador":1,"especie":"dino2"},{"recinto":"pradera-amor","jugador":1,"especie":"dino3"},{"recinto":"rey-selva","jugador":2,"especie":"trex"},{"recinto":"prado-diferencia","jugador":1,"especie":"dino1"},{"recinto":"prado-diferencia","jugador":2,"esp
+[10-Oct-2025 22:08:07 America/Montevideo] ✅ JSON decodificado correctamente
+[10-Oct-2025 22:08:07 America/Montevideo] Datos principales: {"id":137,"partidaId":137,"ronda":2,"colocaciones_count":10}
+[10-Oct-2025 22:08:07 America/Montevideo] ✅ ID de partida válido: 137
+[10-Oct-2025 22:08:07 America/Montevideo] ✅ Acceso validado correctamente
+[10-Oct-2025 22:08:07 America/Montevideo] ✅ Validaciones pasadas: ronda=2, turno=3, jugadorActivo=2
+[10-Oct-2025 22:08:07 America/Montevideo] Estado formateado para BD: {"recintos_count":6,"ronda_actual":2,"jugador_activo":2}
+[10-Oct-2025 22:08:07 America/Montevideo] ✅ Partida guardada exitosamente en BD
