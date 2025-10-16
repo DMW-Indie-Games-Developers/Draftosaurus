@@ -13,6 +13,7 @@ $routes = [
     '/login' => 'views/login.html',
     '/perfil' => 'views/perfil.html',
     '/tablero' => 'views/tablero.html',
+    '/tracking' => 'views/tracking.html',
     '/ranking' => 'views/ranking.html',
     '/admin' => 'views/admin.html',
 ];

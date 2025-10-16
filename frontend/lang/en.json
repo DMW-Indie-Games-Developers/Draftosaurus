@@ -27,11 +27,7 @@
     "board": "Board",
     "ranking": "Ranking",
     "admin": "Admin",
-    "language": "Language",
-    "info": "Info",
-    "howToPlay": "How To Play",
-    "contact": "Contact",
-    "dmw": "DMW"
+    "language": "Language"
   },
   "home": {
     "title": "Draftosaurus",
@@ -40,59 +36,72 @@
     "learnMore": "Learn More",
     "description": "Collect dinosaurs and build the best jurassic park",
     "carousel": {
-      "title": "Draftosaurus",
-      "subtitle": "You can't wait to see these incredible Dinosaurs.",
-      "slide2Title": "Incredible Dinosaurs",
-      "slide2Text": "Top quality dinosaur figures.",
-      "slide3Title": "Magic Board",
-      "slide3Text": "Incredible enclosures to place your dinosaurs.",
+      "slide1": {
+        "title": "Draftosaurus",
+        "description": "You can't wait to see these amazing Dinosaurs."
+      },
+      "slide2": {
+        "title": "Amazing Dinosaurs",
+        "description": "Top quality dinosaur figures."
+      },
+      "slide3": {
+        "title": "Magic Board",
+        "description": "Amazing enclosures to place your dinosaurs."
+      },
       "previous": "Previous",
       "next": "Next"
     },
-    "gameInfo": {
+    "info": {
       "title": "Game Information: Draftosaurus",
-      "duration": "Duration",
-      "durationText": "Approx. 15-20 minutes per game.",
-      "players": "Number of Players",
-      "playersText": "2 to 5 players.",
-      "gameType": "Game Type",
-      "gameTypeText": "Fast strategy and dinosaur drafting game."
+      "duration": {
+        "title": "Duration",
+        "text": "Approx. 15-20 minutes per game."
+      },
+      "players": {
+        "title": "Number of Players",
+        "text": "2 to 5 players."
+      },
+      "type": {
+        "title": "Game Type",
+        "text": "Quick strategy and dinosaur drafting game."
+      }
     },
     "howToPlay": {
       "title": "How to Play Draftosaurus",
-      "subtitle": "Build Your Dino-Park in 3 Simple Steps",
-      "step1Title": "Take Your Dino Hand",
-      "step1Text": "Each player receives a handful of adorable dinosaur figures.",
-      "step2Title": "Pick and Pass",
-      "step2Text": "Select a dinosaur for your park and pass the rest of your hand to the next player.",
-      "step3Title": "Place and Score!",
-      "step3Text": "Decide where to place your dino in one of the six zones of your board to maximize your points.",
-      "conclusion": "Placement strategy and quick decisions will lead you to victory!",
+      "subtitle": "Build your Dino-Park in 3 Easy Steps",
+      "step1": {
+        "title": "Take your Dino Hand",
+        "description": "Each player receives a handful of adorable dinosaur figures."
+      },
+      "step2": {
+        "title": "Choose and Pass",
+        "description": "Select a dinosaur for your park and pass the rest of your hand to the next player."
+      },
+      "step3": {
+        "title": "Place and Score!",
+        "description": "Decide where to place your dino in one of the six zones on your board to maximize your points."
+      },
+      "strategy": "Placement strategy and quick decisions will lead you to victory!",
       "downloadManual": "Download the complete manual (PDF)"
     },
     "aboutUs": {
       "title": "About Dreams Magic Wizard",
-      "text1": "Dreams Magic Wizard was born as an initiative of a team of four UTU students, united by the same dream: to transform the passion for technology, creativity and virtual entertainment into an innovative proposal.",
-      "text2": "Our venture arises from the conviction that digital entertainment is not only a form of fun, but a powerful tool for social connection, learning and expression. Through the development of video games, interactive applications and virtual experiences, we seek to contribute to the growth of the national creative industry, generating opportunities for young talents and promoting a positive vision of the use of technology.",
-      "text3": "Thank you for being part of our adventure and for allowing us to share our dreams with you!"
+      "description1": "Dreams Magic Wizard was born as an initiative of a team of four UTU students, united by the same dream: to transform passion for technology, creativity and virtual entertainment into an innovative proposal.",
+      "description2": "Our venture arises from the conviction that digital entertainment is not just a form of fun, but a powerful tool for social connection, learning and expression. Through the development of video games, interactive applications and virtual experiences, we seek to contribute to the growth of the national creative industry, generating opportunities for young talents and promoting a positive vision of the use of technology.",
+      "description3": "Thank you for being part of our adventure and for allowing us to share our dreams with you!"
     },
     "contact": {
       "title": "Contact Us",
-      "subtitle": "Do you have questions, suggestions or just want to say hello? We'd love to hear from you!",
+      "subtitle": "Have questions, suggestions, or just want to say hello? We'd love to hear from you!",
       "fullName": "Full Name",
-      "email": "Email Address",
+      "fullNamePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your.email@example.com",
       "subject": "Subject",
+      "subjectPlaceholder": "E.g: Question about the game",
       "message": "Your Message",
-      "send": "Send Message",
-      "placeholders": {
-        "name": "Your name",
-        "email": "your.email@example.com",
-        "subject": "Ex: Game inquiry",
-        "message": "Write your message here..."
-      }
-    },
-    "footer": {
-      "copyright": "© 2025 Dreams Magic Wizard. All rights reserved."
+      "messagePlaceholder": "Write your message here...",
+      "sendButton": "Send Message"
     }
   },
   "login": {
@@ -133,6 +142,7 @@
     "saveNickname": "Save Nickname",
     "cancelEdit": "Cancel",
     "createGame": "Create Game",
+    "trackingMode": "🦕 Draftosaurus Tracker",
     "savedGames": "Saved Games",
     "ranking": "My Ranking",
     "position": "Position",

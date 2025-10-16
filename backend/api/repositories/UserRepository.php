@@ -133,7 +133,13 @@ class UserRepository
             return false;
         }
 
-        $stmt->bind_param("ssss", $user->getUsername(), $user->getEmail(), $user->getPassword(), $user->getNickname());
+        // Asignar a variables para evitar el error "Only variables should be passed by reference"
+        $username = $user->getUsername();
+        $email = $user->getEmail();
+        $password = $user->getPassword();
+        $nickname = $user->getNickname();
+
+        $stmt->bind_param("ssss", $username, $email, $password, $nickname);
         if (!$stmt->execute()) {
             $error = $stmt->error;
             $stmt->close();

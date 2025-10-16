@@ -17,7 +17,7 @@ window.addLanguageSelector = function(containerId) {
     <select id="language-selector" class="form-select form-select-sm"
             style="background-color: rgba(255,255,255,0.1); color: white; border: 1px solid rgba(255,255,255,0.3);">
       <option value="es">🇪🇸 ES</option>
-      <option value="en">🇬🇧 EN</option>
+      <option value="en">EN EN</option>
     </select>
   `;
 

@@ -130,6 +130,11 @@ document.addEventListener('DOMContentLoaded', function () {
   // ✅ CORREGIDO: El botón "Crear Partida" ahora verifica partidas guardadas
   on('crear-partida-btn', 'click', verificarPartidaAntesDeCrear);
 
+  // Botón de Draftosaurus Tracker - redirigir a tracking.html
+  on('btn-tracking-mode', 'click', function() {
+    window.location.href = '/tracking';
+  });
+
   // (Botón de partidas guardadas removido)
 
   // Botón de cerrar sesión

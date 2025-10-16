@@ -7,7 +7,11 @@
       "Bash(cat:*)",
       "Bash(git add:*)",
       "Bash(php:*)",
-      "Bash(mysql:*)"
+      "Bash(mysql:*)",
+      "Bash(dir:*)",
+      "WebSearch",
+      "WebFetch(domain:www.ultraboardgames.com)",
+      "WebFetch(domain:cdn.1j1ju.com)"
     ],
     "deny": [],
     "ask": []
