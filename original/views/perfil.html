@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil de Usuario</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/perfil.css">
+    <link rel="stylesheet" href="css/modal-custom.css">
+</head>
+
+<body>
+    <div class="container d-flex flex-column align-items-center justify-content-center" style="min-height: 100vh;">
+        <!-- Layout con dos tarjetas separadas -->
+        <div class="row w-100" style="max-width: 1000px;">
+            <!-- TARJETA IZQUIERDA: Perfil -->
+            <div class="col-md-6 mb-4">
+                <div class="profile-card">
+                    <!-- Avatar centrado -->
+                    <div class="text-center mb-3">
+                        <div class="avatar-container position-relative d-inline-block">
+                            <img src="img/isotipoOficial.png" alt="Avatar" class="profile-avatar" id="avatar-img">
+                            <input type="file" id="avatar-input" accept="image/*" style="display:none">
+                            <div id="edit-avatar-overlay"
+                                class="edit-avatar-overlay d-flex align-items-center justify-content-center">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                                    class="bi bi-pencil" viewBox="0 0 16 16">
+                                    <path
+                                        d="M12.146.854a.5.5 0 0 1 .708 0l2.292 2.292a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zm.708-.708A1.5 1.5 0 0 0 12.146.146l-10 10a1.5 1.5 0 0 0-.33.5l-2 5a1.5 1.5 0 0 0 1.95 1.95l5-2a1.5 1.5 0 0 0 .5-.33l10-10a1.5 1.5 0 0 0 0-2.121l-2.292-2.292z" />
+                                    </svg>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Nombre principal editable con doble click -->
+                    <div class="text-center mb-3">
+                        <div id="user-name-display">
+                            <h2 class="mb-2 nickname-editable" id="user-name" title="Doble click para editar">Usuario</h2>
+                        </div>
+                        <div id="user-name-edit" class="d-none">
+                            <div class="input-group mb-2">
+                                <input type="text" class="form-control" id="nickname-input" placeholder="Ingresa tu nickname" maxlength="50">
+                                <button class="btn btn-success" id="save-nickname-btn">Guardar</button>
+                                <button class="btn btn-secondary" id="cancel-nickname-btn">Cancelar</button>
+                            </div>
+                            <small class="text-muted">Máximo 50 caracteres. Deja vacío para usar tu username.</small>
+                        </div>
+                    </div>
+
+                    <!-- Estadísticas personales -->
+                    <div class="stats-section mb-3">
+                        <h5 class="text-warning mb-2">📊 Mis Estadísticas</h5>
+                        <p><strong>Puntos totales:</strong> <span id="user-puntos">0</span></p>
+                        <p><strong>Partidas jugadas:</strong> <span id="user-jugadas">0</span></p>
+                        <p><strong>Partidas ganadas:</strong> <span id="user-ganadas">0</span></p>
+                        <p><strong>Ratio de victorias:</strong> <span id="user-ratio">0%</span></p>
+                    </div>
+
+                    <!-- Información adicional -->
+                    <div id="user-info">
+                        <h6 class="text-muted">Información de cuenta</h6>
+                        <small class="text-muted d-block">Email: martin@martin.com</small>
+                        <small class="text-muted d-block">Creado: 27/8/2025</small>
+                        <small class="text-muted d-block">Última actualización: 11/9/2025</small>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TARJETA DERECHA: Ranking -->
+            <div class="col-md-6 mb-4">
+                <div class="profile-card">
+                    <div class="ranking-section">
+                        <h4 class="text-warning mb-3">🏆 Ranking</h4>
+
+                        <!-- Tu posición actual -->
+                        <div class="current-position mb-3 p-3 bg-dark rounded">
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div>
+                                    <h6 class="mb-1 text-warning">Tu posición actual</h6>
+                                    <span class="h3 text-light">#<span id="user-position">-</span></span>
+                                </div>
+                                <div class="text-end">
+                                    <small class="text-muted">de <span id="total-players">-</span> jugadores</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Progreso hacia siguiente posición -->
+                        <div class="progress-section mb-3">
+                            <div class="d-flex justify-content-between align-items-center mb-2">
+                                <small class="text-warning">Progreso al siguiente rango</small>
+                                <small class="text-warning"><span id="points-needed">-</span> pts restantes</small>
+                            </div>
+                            <div class="progress" style="height: 8px;">
+                                <div class="progress-bar bg-warning" role="progressbar" id="rank-progress" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
+
+                        <!-- Top 3 jugadores -->
+                        <div class="top-players">
+                            <h6 class="text-warning mb-2">🔝 Top 3</h6>
+                            <div id="top-players-list">
+                                <div class="d-flex justify-content-center">
+                                    <small class="text-muted">Cargando ranking...</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Botón ver ranking completo -->
+                        <div class="text-center mt-3">
+                            <a href="/ranking" class="btn btn-outline-warning btn-sm">Ver Ranking Completo</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- BOTONES CENTRADOS -->
+        <div class="d-flex flex-column align-items-center mt-4 gap-3">
+            <button class="btn btn-custom" id="crear-partida-btn">Crear Partida</button>
+            <button class="btn btn-custom" id="btn-logout">Cerrar Sesión</button>
+        </div>
+
+        <!-- Modal Crear Partida -->
+        <div class="modal fade" id="modalCrearPartida" tabindex="-1" aria-labelledby="modalCrearPartidaLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content draftosaurus-modal">
+                    <div class="modal-header draftosaurus-modal">
+                        <h5 class="modal-title draftosaurus-modal" id="modalCrearPartidaLabel">Crear Partida</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body draftosaurus-modal">
+                        <div class="d-flex justify-content-center mb-3 gap-3">
+                            <button class="btn btn-outline-light rounded-pill px-4" id="btnInvitado">Invitado</button>
+                            <button class="btn btn-outline-light rounded-pill px-4" id="btnUsers">Usuario</button>
+                        </div>
+                        <div id="loginJugador2" class="d-none">
+                            <div class="text-center mb-2 login-title">Inicio Sesión Jugador 2</div>
+                            <form id="formLoginJugador2">
+                                <div class="mb-2">
+                                    <label class="form-label">Correo Electrónico</label>
+                                    <input type="email" class="form-control rounded-pill bg-dark text-light"
+                                        id="emailJugador2" required>
+                                </div>
+                                <div class="mb-2">
+                                    <label class="form-label">Password</label>
+                                    <input type="password" class="form-control rounded-pill bg-dark text-light"
+                                        id="passwordJugador2" required>
+                                </div>
+                                <button type="submit" class="btn btn-custom w-100 mt-2">Iniciar Sesión</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Invitado -->
+        <div class="modal fade" id="modalInvitado" tabindex="-1" aria-labelledby="modalInvitadoLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content draftosaurus-modal">
+                    <div class="modal-header draftosaurus-modal">
+                        <h5 class="modal-title draftosaurus-modal" id="modalInvitadoLabel">Jugador Invitado</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body draftosaurus-modal">
+                        <p class="modal-info">Ingresa un nombre para el jugador invitado (opcional: se mostrará en el
+                            tablero).</p>
+                        <form id="formInvitado">
+                            <div class="mb-2">
+                                <label class="form-label">Nombre</label>
+                                <input type="text" class="form-control rounded-pill bg-dark text-light" id="guestName"
+                                    placeholder="Anónimo" maxlength="30">
+                            </div>
+                            <button type="submit" class="btn btn-custom w-100 mt-2">Iniciar como Invitado</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/perfil.js"></script>
+</body>
+
+</html>

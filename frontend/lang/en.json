@@ -1,0 +1,232 @@
+{
+  "common": {
+    "welcome": "Welcome",
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register",
+    "email": "Email",
+    "username": "Username",
+    "password": "Password",
+    "confirmPassword": "Confirm Password",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "save": "Save",
+    "delete": "Delete",
+    "edit": "Edit",
+    "back": "Back",
+    "close": "Close",
+    "yes": "Yes",
+    "no": "No",
+    "loading": "Loading...",
+    "error": "Error",
+    "success": "Success"
+  },
+  "nav": {
+    "home": "Home",
+    "profile": "Profile",
+    "board": "Board",
+    "ranking": "Ranking",
+    "admin": "Admin",
+    "language": "Language"
+  },
+  "home": {
+    "title": "Draftosaurus",
+    "subtitle": "The most fun dinosaur game",
+    "playNow": "Play Now",
+    "learnMore": "Learn More",
+    "description": "Collect dinosaurs and build the best jurassic park",
+    "carousel": {
+      "slide1": {
+        "title": "Draftosaurus",
+        "description": "You can't wait to see these amazing Dinosaurs."
+      },
+      "slide2": {
+        "title": "Amazing Dinosaurs",
+        "description": "Top quality dinosaur figures."
+      },
+      "slide3": {
+        "title": "Magic Board",
+        "description": "Amazing enclosures to place your dinosaurs."
+      },
+      "previous": "Previous",
+      "next": "Next"
+    },
+    "info": {
+      "title": "Game Information: Draftosaurus",
+      "duration": {
+        "title": "Duration",
+        "text": "Approx. 15-20 minutes per game."
+      },
+      "players": {
+        "title": "Number of Players",
+        "text": "2 to 5 players."
+      },
+      "type": {
+        "title": "Game Type",
+        "text": "Quick strategy and dinosaur drafting game."
+      }
+    },
+    "howToPlay": {
+      "title": "How to Play Draftosaurus",
+      "subtitle": "Build your Dino-Park in 3 Easy Steps",
+      "step1": {
+        "title": "Take your Dino Hand",
+        "description": "Each player receives a handful of adorable dinosaur figures."
+      },
+      "step2": {
+        "title": "Choose and Pass",
+        "description": "Select a dinosaur for your park and pass the rest of your hand to the next player."
+      },
+      "step3": {
+        "title": "Place and Score!",
+        "description": "Decide where to place your dino in one of the six zones on your board to maximize your points."
+      },
+      "strategy": "Placement strategy and quick decisions will lead you to victory!",
+      "downloadManual": "Download the complete manual (PDF)"
+    },
+    "aboutUs": {
+      "title": "About Dreams Magic Wizard",
+      "description1": "Dreams Magic Wizard was born as an initiative of a team of four UTU students, united by the same dream: to transform passion for technology, creativity and virtual entertainment into an innovative proposal.",
+      "description2": "Our venture arises from the conviction that digital entertainment is not just a form of fun, but a powerful tool for social connection, learning and expression. Through the development of video games, interactive applications and virtual experiences, we seek to contribute to the growth of the national creative industry, generating opportunities for young talents and promoting a positive vision of the use of technology.",
+      "description3": "Thank you for being part of our adventure and for allowing us to share our dreams with you!"
+    },
+    "contact": {
+      "title": "Contact Us",
+      "subtitle": "Have questions, suggestions, or just want to say hello? We'd love to hear from you!",
+      "fullName": "Full Name",
+      "fullNamePlaceholder": "Your name",
+      "email": "Email",
+      "emailPlaceholder": "your.email@example.com",
+      "subject": "Subject",
+      "subjectPlaceholder": "E.g: Question about the game",
+      "message": "Your Message",
+      "messagePlaceholder": "Write your message here...",
+      "sendButton": "Send Message"
+    }
+  },
+  "login": {
+    "title": "Login",
+    "emailPlaceholder": "Enter your email or username",
+    "passwordPlaceholder": "Enter your password",
+    "loginButton": "Sign In",
+    "noAccount": "Don't have an account?",
+    "registerHere": "Register here",
+    "forgotPassword": "Forgot your password?",
+    "error": "Login error",
+    "success": "Successfully logged in"
+  },
+  "register": {
+    "title": "Create Account",
+    "usernamePlaceholder": "Choose a username",
+    "emailPlaceholder": "Your email address",
+    "passwordPlaceholder": "Create a password",
+    "confirmPasswordPlaceholder": "Confirm your password",
+    "registerButton": "Create Account",
+    "haveAccount": "Already have an account?",
+    "loginHere": "Login here",
+    "error": "Registration error",
+    "success": "Account created successfully",
+    "passwordMismatch": "Passwords do not match"
+  },
+  "profile": {
+    "title": "My Profile",
+    "stats": "Statistics",
+    "totalPoints": "Total Points",
+    "gamesPlayed": "Games Played",
+    "gamesWon": "Games Won",
+    "winRate": "Win Rate",
+    "avatar": "Avatar",
+    "changeAvatar": "Change Avatar",
+    "nickname": "Nickname",
+    "editNickname": "Edit Nickname",
+    "saveNickname": "Save Nickname",
+    "cancelEdit": "Cancel",
+    "createGame": "Create Game",
+    "trackingMode": "🦕 Draftosaurus Tracker",
+    "savedGames": "Saved Games",
+    "ranking": "My Ranking",
+    "position": "Position",
+    "topPlayers": "Top Players",
+    "pointsToNextRank": "Points to next rank",
+    "info": "Information",
+    "createdAt": "Created at",
+    "updatedAt": "Last updated"
+  },
+  "game": {
+    "title": "Game",
+    "newGame": "New Game",
+    "continueGame": "Continue Game",
+    "saveGame": "Save Game",
+    "exitGame": "Exit Game",
+    "round": "Round",
+    "turn": "Turn",
+    "player": "Player",
+    "opponent": "Opponent",
+    "yourTurn": "Your Turn",
+    "opponentTurn": "Opponent's Turn",
+    "selectDino": "Select a Dinosaur",
+    "placeDino": "Place the Dinosaur",
+    "score": "Score",
+    "gameOver": "Game Over",
+    "winner": "Winner",
+    "playAgain": "Play Again",
+    "vsGuest": "Guest",
+    "vsPlayer": "User",
+    "guestName": "Name",
+    "guestPlayer": "Guest Player",
+    "guestInfo": "Enter a name for the guest player (optional: will be displayed on the board).",
+    "anonymous": "Anonymous",
+    "startAsGuest": "Start as Guest",
+    "player2Login": "Player 2 Login",
+    "enterGuestName": "Enter guest name",
+    "createNewGame": "Create Game",
+    "resumeSavedGame": "Resume saved game?",
+    "continueWith": "Continue with",
+    "savedOn": "Saved on",
+    "deleteGame": "Delete Game"
+  },
+  "ranking": {
+    "title": "Global Ranking",
+    "position": "Position",
+    "player": "Player",
+    "points": "Points",
+    "wins": "Wins",
+    "games": "Games",
+    "winRate": "Win Rate %",
+    "yourPosition": "Your Position",
+    "topPlayers": "Top Players",
+    "viewComplete": "View Full Ranking",
+    "of": "of",
+    "players": "players",
+    "ptsRemaining": "pts remaining"
+  },
+  "admin": {
+    "title": "Admin Panel",
+    "users": "Users",
+    "games": "Games",
+    "messages": "Messages",
+    "stats": "Statistics",
+    "totalUsers": "Total Users",
+    "activeUsers": "Active Users",
+    "totalGames": "Total Games",
+    "settings": "Settings"
+  },
+  "errors": {
+    "networkError": "Network error",
+    "unauthorized": "Unauthorized",
+    "notFound": "Not found",
+    "serverError": "Server error",
+    "invalidCredentials": "Invalid credentials",
+    "sessionExpired": "Session expired",
+    "generic": "An error occurred"
+  },
+  "messages": {
+    "avatarUpdated": "Avatar updated successfully",
+    "nicknameUpdated": "Nickname updated successfully",
+    "gameCreated": "Game created successfully",
+    "gameSaved": "Game saved successfully",
+    "gameDeleted": "Game deleted successfully",
+    "confirm": "Are you sure?",
+    "confirmDelete": "Are you sure you want to delete?"
+  }
+}

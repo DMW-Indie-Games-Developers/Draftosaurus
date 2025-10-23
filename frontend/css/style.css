@@ -1,0 +1,271 @@
+body {
+    background-color: black;
+}
+
+/* Loading Screen Animation */
+#loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #1a0033 0%, #000000 70%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+    transition: opacity 0.5s ease;
+}
+
+.loading-animation {
+    width: 250px;
+    height: 250px;
+    object-fit: cover;
+    animation: pulse 1.5s ease-in-out infinite;
+    mix-blend-mode: screen;
+    filter: brightness(1.3) contrast(1.2) drop-shadow(0 0 30px rgba(142, 45, 226, 0.5));
+    border-radius: 50%;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+/* Navbar color negro */
+.navbar {
+    background-color: #000000 !important;
+}
+
+.navbar-brand img {
+    height: 70px;
+    width: 70px;
+    object-fit: cover;
+    border-radius: 50%;
+    mix-blend-mode: screen;
+    filter: brightness(1.3) contrast(1.2) drop-shadow(0 0 15px rgba(142, 45, 226, 0.4));
+    animation: pulse 1.5s ease-in-out infinite;
+}
+
+/* Estilo del menú desplegable */
+.dropdown-menu-dark {
+    background-color: #050202 !important;
+    border-radius: 8px;
+    font-weight: 500;
+}
+
+.dropdown-item {
+    padding: 12px 20px;
+    transition: background-color 0.2s ease;
+    color: #fff;
+}
+
+.dropdown-item:hover {
+    background-color: #444;
+    color: #ffc107;
+}
+
+.dropdown-item i {
+    font-size: 1.2em;
+    margin-right: 8px;
+}
+
+.dropdown-divider {
+    border-color: #444;
+}
+
+/* Para el ícono del menú principal */
+.bi-three-dots-vertical {
+    font-size: 1.2em;
+}
+
+.carousel-item img {
+    max-height: 500px;
+    /* Ajusta a lo que quieras */
+    object-fit: cover;
+    /* Recorta la imagen si es necesario */
+    width: 100%;
+    /* Que siga ocupando todo el ancho */
+}
+
+
+.card-custom {
+    background-color: #281039;
+    border-radius: 15px;
+    transition: transform 0.2s;
+}
+
+.card-custom:hover {
+    transform: scale(1.05);
+
+}
+
+.icon-style {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+#como-jugar .list-group-item {
+    background-color: #281039;
+    /* fondo oscuro, gris azulado */
+    color: #fff;
+    /* texto claro */
+    border-color: #000000;
+    /* borde tenue */
+}
+
+#como-jugar .list-group-item .fw-bold {
+    color: #ffc107;
+    /* resaltado amarillo para títulos */
+}
+
+/* Opcional: sombra suave para la lista */
+#como-jugar .list-group {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+
+section {
+    background: linear-gradient(to bottom, #8e2de2, #000000);
+    color: white;
+    padding: 50px 20px;
+}
+
+
+#contacto {
+    background: linear-gradient(to bottom, #8e2de2, #000000);
+    /* Un degradado más oscuro, similar al resto */
+    color: #fff;
+    /* Texto claro */
+    padding: 50px 20px;
+}
+
+#contacto .card {
+    background-color: #281039;
+    /* Igual que las cards de arriba */
+    border-radius: 15px;
+    color: #fff;
+}
+
+#contacto .form-label {
+    color: #ffc107;
+    /* Igual que los títulos resaltados de la sección "Cómo Jugar" */
+}
+
+#contacto .form-control {
+    background-color: #3a1c5f;
+    /* Campo de texto más oscuro */
+    color: #fff;
+    border: 1px solid #5a2e8a;
+}
+
+#contacto .form-control::placeholder {
+    color: #bbb;
+}
+
+#contacto button.btn-primary {
+    background-color: #8e2de2;
+    border: none;
+}
+
+#contacto button.btn-primary:hover {
+    background-color: #3A1C5F;
+}
+
+.footer {
+    background-color: #212529;
+    color: white;
+    padding: 40px 0;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.footer a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+
+
+btn-zoom img {
+    width: auto;
+    /* Ajusta a lo que quieras (ej: 150px) */
+    height: 10px;
+    /* Mantiene proporción */
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.btn-zoom:hover img {
+    transform: scale(1.1);
+}
+
+#registrarse {
+    background: linear-gradient(to bottom, #8e2de2, #000000);
+    color: #fff;
+    padding: 50px 20px;
+}
+
+#registrarse .card {
+    background-color: #281039;
+    border-radius: 15px;
+    color: #fff;
+}
+
+#registrarse .form-label {
+    color: #ffc107;
+}
+
+#registrarse .form-control {
+    background-color: #3a1c5f;
+    color: #fff;
+    border: 1px solid #5a2e8a;
+}
+
+#registrarse .form-control::placeholder {
+    color: #fff;
+}
+
+#registrarse button.btn-primary {
+    background-color: #8e2de2;
+    border: none;
+}
+
+#registrarse button.btn-primary:hover {
+    background-color: #3a1c5f;
+}
+
+
+/* Estilo para los enlaces del navbar */
+.navbar-nav .nav-link {
+    color: #fff;
+    transition: color 0.2s ease, background-color 0.2s ease;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+}
+
+.navbar-nav .nav-link:hover {
+    color: #ffc107 !important;
+    background-color: #333;
+    text-decoration: none;
+}
+
+/* Estilo del botón de menú (opcional) */
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24'%3E%3Cpath fill='%23fff' d='M3 12h18v2H3z'/%3E%3Cpath fill='%23fff' d='M3 7h18v2H3z'/%3E%3Cpath fill='%23fff' d='M3 17h18v2H3z'/%3E%3C/svg%3E");
+    filter: brightness(1.2);
+}
+
+.navbar-toggler:hover {
+    background-color: #333;
+    transform: scale(1.05);
+}

@@ -1,5 +1,14 @@
-api/config/Database.php
+# Archivos de configuración con credenciales
+.env
+
+# Archivos de logs
 public/login_debug.log
 public/php_errors.log
-public/login_debug.log
-public/login_debug.log
+
+# Archivos del IDE
+.idea/
+.vscode/
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
