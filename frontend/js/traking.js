@@ -380,7 +380,15 @@ let cantidadesSeleccionadas = {
 };
 
 function abrirModalSeleccion() {
-  const modal = new bootstrap.Modal(document.getElementById('modalSeleccionDinos'));
+  console.log(`🦕 Abriendo modal de selección para ronda ${ronda}`);
+
+  const modalElement = document.getElementById('modalSeleccionDinos');
+  if (!modalElement) {
+    console.error('❌ No se encontró el elemento modalSeleccionDinos');
+    return;
+  }
+
+  const modal = new bootstrap.Modal(modalElement);
   modal.show();
 
   // Reiniciar cantidades
@@ -393,6 +401,8 @@ function abrirModalSeleccion() {
     trex: 0
   };
 
+  console.log('🔄 Cantidades de selección reiniciadas');
+
   // Actualizar displays
   especies.forEach(esp => {
     const display = document.querySelector(`.qty-display[data-especie="${esp}"]`);
@@ -400,6 +410,9 @@ function abrirModalSeleccion() {
   });
 
   actualizarContadorSeleccion();
+  actualizarBotonesQuantity();
+
+  console.log('✅ Modal de selección configurado');
 
   // Actualizar instrucción
   const instruccion = document.getElementById('modal-instruccion');
@@ -551,9 +564,11 @@ function renderMano() {
     img.dataset.especie = esp;
     img.dataset.index = idx;
     img.style.cursor = 'grab';
+    img.style.touchAction = 'none'; // Prevenir scroll en móviles
 
     grid.appendChild(img);
 
+    // ===== EVENTOS PARA DESKTOP (Drag and Drop) =====
     img.addEventListener('dragstart', e => {
       if (fase !== 'colocar') {
         console.warn('⚠️ No es fase de colocar, bloqueando drag');
@@ -574,6 +589,109 @@ function renderMano() {
       img.style.cursor = 'grab';
       clearHighlight();
       console.log('🏁 Terminó arrastre');
+    });
+
+    // ===== EVENTOS PARA MÓVIL (Touch) =====
+    let touchStarted = false;
+    let clonedImg = null;
+
+    img.addEventListener('touchstart', e => {
+      if (fase !== 'colocar') {
+        console.warn('⚠️ No es fase de colocar, bloqueando touch');
+        return;
+      }
+      e.preventDefault();
+      touchStarted = true;
+      draggedDino = { especie: esp, index: idx };
+      img.classList.add('dragging');
+      highlightRecintos(esp);
+      console.log('📱 Touch iniciado:', esp, 'index:', idx);
+
+      // Crear clon visual que sigue al dedo
+      clonedImg = img.cloneNode(true);
+      clonedImg.style.position = 'fixed';
+      clonedImg.style.zIndex = '9999';
+      clonedImg.style.opacity = '0.8';
+      clonedImg.style.pointerEvents = 'none';
+      clonedImg.style.width = img.offsetWidth + 'px';
+      clonedImg.style.height = img.offsetHeight + 'px';
+      document.body.appendChild(clonedImg);
+
+      const touch = e.touches[0];
+      // Centrar el dino bajo el dedo restando la mitad del ancho/alto
+      clonedImg.style.left = (touch.clientX - img.offsetWidth / 2) + 'px';
+      clonedImg.style.top = (touch.clientY - img.offsetHeight / 2) + 'px';
+    });
+
+    img.addEventListener('touchmove', e => {
+      if (!touchStarted || !clonedImg) return;
+      e.preventDefault();
+
+      const touch = e.touches[0];
+      const imgWidth = parseInt(clonedImg.style.width);
+      const imgHeight = parseInt(clonedImg.style.height);
+
+      // Centrar el dino bajo el dedo
+      clonedImg.style.left = (touch.clientX - imgWidth / 2) + 'px';
+      clonedImg.style.top = (touch.clientY - imgHeight / 2) + 'px';
+
+      // Detectar sobre qué recinto está el dedo
+      const elementBelow = document.elementFromPoint(touch.clientX, touch.clientY);
+      const recinto = elementBelow?.closest('.recinto');
+
+      // Limpiar highlights previos
+      document.querySelectorAll('.recinto').forEach(r => r.classList.remove('highlight'));
+
+      // Highlight del recinto bajo el dedo
+      if (recinto && !recinto.classList.contains('recinto-disabled')) {
+        recinto.classList.add('highlight');
+      }
+    });
+
+    img.addEventListener('touchend', async e => {
+      if (!touchStarted) return;
+      e.preventDefault();
+      touchStarted = false;
+
+      const touch = e.changedTouches[0];
+      const elementBelow = document.elementFromPoint(touch.clientX, touch.clientY);
+      const recinto = elementBelow?.closest('.recinto');
+
+      // Remover clon visual
+      if (clonedImg) {
+        clonedImg.remove();
+        clonedImg = null;
+      }
+
+      img.classList.remove('dragging');
+      clearHighlight();
+
+      if (recinto && draggedDino) {
+        const tipoRecinto = recinto.dataset.tipo;
+        const especieDino = draggedDino.especie;
+
+        if (puedeColocarDino(recinto, tipoRecinto, especieDino)) {
+          console.log('📱 Touch: Colocando dino en recinto');
+          await colocarDino(recinto, especieDino);
+        } else {
+          alert('No puedes colocar el dinosaurio aquí según las reglas del recinto');
+        }
+      }
+
+      draggedDino = null;
+      console.log('📱 Touch finalizado');
+    });
+
+    img.addEventListener('touchcancel', () => {
+      if (clonedImg) {
+        clonedImg.remove();
+        clonedImg = null;
+      }
+      touchStarted = false;
+      img.classList.remove('dragging');
+      clearHighlight();
+      draggedDino = null;
+      console.log('📱 Touch cancelado');
     });
   });
 
@@ -793,6 +911,8 @@ let cantidadesIntercambio = {
 let dinosEsperados = 0;
 
 function abrirModalIntercambio(cantidadEsperada) {
+  console.log(`📦 Abriendo modal de intercambio - Se esperan ${cantidadEsperada} dinosaurios`);
+
   dinosEsperados = cantidadEsperada;
 
   const modal = new bootstrap.Modal(document.getElementById('modalIntercambio'));
@@ -808,6 +928,8 @@ function abrirModalIntercambio(cantidadEsperada) {
     trex: 0
   };
 
+  console.log('🔄 Cantidades de intercambio reiniciadas:', cantidadesIntercambio);
+
   // Actualizar displays
   especies.forEach(esp => {
     const display = document.querySelector(`.qty-display-intercambio[data-especie="${esp}"]`);
@@ -815,6 +937,9 @@ function abrirModalIntercambio(cantidadEsperada) {
   });
 
   actualizarContadorIntercambio();
+  actualizarBotonesIntercambio();
+
+  console.log('✅ Modal de intercambio configurado y botones actualizados');
 
   // Actualizar instrucción
   const instruccion = document.getElementById('intercambio-instruccion');
@@ -870,16 +995,24 @@ function actualizarContadorIntercambio() {
 function actualizarBotonesIntercambio() {
   const totalActual = Object.values(cantidadesIntercambio).reduce((a, b) => a + b, 0);
 
+  console.log(`🔘 Actualizando botones - Total actual: ${totalActual}, Esperados: ${dinosEsperados}`);
+
   especies.forEach(especie => {
     const btnPlus = document.querySelector(`.btn-plus-intercambio[data-especie="${especie}"]`);
     const btnMinus = document.querySelector(`.btn-minus-intercambio[data-especie="${especie}"]`);
 
     if (btnPlus) {
-      btnPlus.disabled = totalActual >= dinosEsperados;
+      // Solo deshabilitar si ya alcanzamos el máximo de dinos esperados
+      const debeDeshabilitarPlus = totalActual >= dinosEsperados;
+      btnPlus.disabled = debeDeshabilitarPlus;
+      console.log(`  ${especie} +: ${debeDeshabilitarPlus ? 'DESHABILITADO' : 'HABILITADO'}`);
     }
 
     if (btnMinus) {
-      btnMinus.disabled = cantidadesIntercambio[especie] === 0;
+      // Solo deshabilitar si no hay ningún dino de esta especie
+      const debeDeshabilitarMinus = cantidadesIntercambio[especie] === 0;
+      btnMinus.disabled = debeDeshabilitarMinus;
+      console.log(`  ${especie} -: ${debeDeshabilitarMinus ? 'DESHABILITADO' : 'HABILITADO'}`);
     }
   });
 }
@@ -1023,6 +1156,32 @@ function actualizarContadores() {
 document.addEventListener('DOMContentLoaded', () => {
   console.log('🎮 Inicializando modo tracking (1 jugador)...');
 
+  // ===== PREVENIR ZOOM POR DOBLE TAP EN iOS =====
+  let lastTouchEnd = 0;
+  document.addEventListener('touchend', (e) => {
+    const now = Date.now();
+    if (now - lastTouchEnd <= 300) {
+      e.preventDefault();
+      // Si es doble tap, no hacer nada (prevenir zoom)
+    }
+    lastTouchEnd = now;
+  }, { passive: false });
+
+  // Prevenir zoom con pellizco (pinch)
+  document.addEventListener('gesturestart', (e) => {
+    e.preventDefault();
+  });
+
+  document.addEventListener('gesturechange', (e) => {
+    e.preventDefault();
+  });
+
+  document.addEventListener('gestureend', (e) => {
+    e.preventDefault();
+  });
+
+  console.log('✅ Prevención de zoom configurada');
+
   // Inicializar puntuaciones
   document.querySelectorAll('.recinto').forEach(recinto => {
     puntuacionesJugador[recinto.id] = 0;
@@ -1051,6 +1210,26 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnElegir = document.getElementById('btn-elegir-dinos');
   if (btnElegir) {
     btnElegir.addEventListener('click', abrirModalSeleccion);
+  }
+
+  // Configurar eventos de los botones de intercambio +/-
+  document.querySelectorAll('.btn-plus-intercambio').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const especie = btn.dataset.especie;
+      cambiarCantidadIntercambio(especie, 1);
+    });
+  });
+
+  document.querySelectorAll('.btn-minus-intercambio').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const especie = btn.dataset.especie;
+      cambiarCantidadIntercambio(especie, -1);
+    });
+  });
+
+  const btnConfirmarIntercambio = document.getElementById('btn-confirmar-intercambio');
+  if (btnConfirmarIntercambio) {
+    btnConfirmarIntercambio.addEventListener('click', confirmarIntercambio);
   }
 
   // Configurar drag & drop en recintos
@@ -1104,6 +1283,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnReiniciar = document.getElementById('btn-reiniciar-partida');
   if (btnReiniciar) {
     btnReiniciar.addEventListener('click', confirmarReinicioPartida);
+    // Soporte táctil explícito para móviles
+    btnReiniciar.addEventListener('touchend', (e) => {
+      e.preventDefault();
+      confirmarReinicioPartida();
+    });
+    console.log('✅ Botón reiniciar configurado');
+  } else {
+    console.warn('⚠️ No se encontró el botón reiniciar partida');
   }
 
   // Botón de ayuda

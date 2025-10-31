@@ -8,7 +8,7 @@
         integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
     <title>Draftosaurus</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=20251024005">
 </head>
 
 <!-- Loading Animation -->
@@ -41,7 +41,7 @@
                         <a class="nav-link" href="#info">Info</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#como-jugar">Como Jugar</a>
+                        <a class="nav-link" href="#como-jugar" data-i18n="nav.howToPlay">Como Jugar</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -64,7 +64,7 @@
                             <li>
                                 <a class="dropdown-item d-flex align-items-center" href="#como-jugar">
                                     <i class="bi bi-play-circle me-2"></i>
-                                    Como Jugar
+                                    <span data-i18n="nav.howToPlay">Como Jugar</span>
                                 </a>
                             </li>
                             <li>
@@ -76,7 +76,7 @@
                             <li>
                                 <a class="dropdown-item d-flex align-items-center" href="#contacto">
                                     <i class="bi bi-envelope me-2"></i>
-                                    Contacto
+                                    <span data-i18n="nav.contact">Contacto</span>
                                 </a>
                             </li>
                             <li>
@@ -221,10 +221,18 @@
                         </li>
                     </ol>
                     <p class="mt-4">
-                        <span data-i18n="home.howToPlay.strategy">¡La estrategia de colocación y las decisiones rápidas te llevarán a la victoria!</span> <a
-                            href="resources/Manual_Draftosaurus.pdf"
-                            class="btn btn-link text-decoration-none fw-bold p-0" data-i18n="home.howToPlay.downloadManual">Descarga el manual completo (PDF)</a>
+                        <span data-i18n="home.howToPlay.strategy">¡La estrategia de colocación y las decisiones rápidas te llevarán a la victoria!</span>
                     </p>
+                    <div class="text-center mt-3">
+                        <a href="resources/Manual_Draftosaurus.pdf" download="Manual_Draftosaurus.pdf" title="Descargar Manual de Draftosaurus (PDF)">
+                            <img src="img/descargamanual.png"
+                                 alt="Descargar Manual de Draftosaurus"
+                                 class="img-fluid rounded shadow-sm"
+                                 style="max-width: 400px; cursor: pointer; transition: transform 0.3s ease, box-shadow 0.3s ease;"
+                                 onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 16px rgba(0,0,0,0.3)';"
+                                 onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 6px rgba(0,0,0,0.1)';">
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -335,7 +343,7 @@
             const userId = localStorage.getItem('userId');
             if (userId) {
                 try {
-                    const r = await fetch('/mi-perfil');
+                    const r = await fetch(apiUrl('/mi-perfil'));
                     const j = await r.json();
                     // Solo redirigir si NO hay error (sesión válida)
                     if (!j.error) {
@@ -407,13 +415,19 @@
                     };
 
                     try {
-                        const response = await fetch('/api/models/contacto', {
+                        const response = await fetch(apiUrl('/api/models/contacto'), {
                             method: 'POST',
                             headers: {
                                 'Content-Type': 'application/json',
                             },
                             body: JSON.stringify(formData)
                         });
+
+                        // Verificar si la respuesta es JSON válido
+                        const contentType = response.headers.get('content-type');
+                        if (!contentType || !contentType.includes('application/json')) {
+                            throw new Error('La respuesta del servidor no es JSON válido');
+                        }
 
                         const result = await response.json();
 
@@ -428,7 +442,7 @@
                         }
                     } catch (error) {
                         console.error('Error:', error);
-                        alert('Error al enviar el mensaje. Por favor, inténtalo de nuevo.');
+                        alert('Error al enviar el mensaje. Por favor, inténtalo de nuevo.\n\nDetalle: ' + error.message);
                     }
                 });
             }

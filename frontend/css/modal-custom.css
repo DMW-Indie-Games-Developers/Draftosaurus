@@ -1,21 +1,45 @@
 /* Estilos personalizados para las modals de Draftosaurus */
+/* COINCIDE CON EL FONDO DEL INDEX (#281039) */
 
 .modal-content.draftosaurus-modal {
   background: linear-gradient(to bottom, #8e2de2, #000000);
+  /* Mismo degradado que el index */
   border-radius: 20px;
-  color: #ffc107;
-  box-shadow: 0 0 20px rgba(0,0,0,0.5);
-  border: 2px solid #ffc107;
+  color: white;
+  box-shadow: 0 5px 25px rgba(142, 45, 226, 0.5);
+  border: 2px solid rgba(142, 45, 226, 0.5);
 }
 
 .modal-header.draftosaurus-modal {
-  border: none;
+  border-bottom: 1px solid rgba(142, 45, 226, 0.3);
   background: transparent;
+  /* Sin gradiente extra en el header, usa el del modal */
+  border-radius: 18px 18px 0 0;
+  justify-content: center;
+  /* Centrar el contenido del header */
+  position: relative;
 }
 
 .modal-title.draftosaurus-modal {
   color: #ffc107;
+  /* Amarillo del index */
   font-weight: bold;
+  text-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
+  text-align: center;
+  /* Centrar el texto */
+  width: 100%;
+  /* Ocupar todo el ancho */
+}
+
+/* Posicionar el botón de cerrar a la derecha */
+.draftosaurus-modal .btn-close {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  filter: invert(1);
+  /* Botón de cerrar blanco */
+  opacity: 0.8;
 }
 
 .draftosaurus-modal .btn,
@@ -24,16 +48,21 @@
 }
 
 .draftosaurus-modal .btn-custom {
-  background: #7b2ff2;
-  color: #fff;
+  background: #8e2de2;
+  /* Morado del index */
+  color: white;
   border: none;
   font-weight: bold;
-  box-shadow: 0 2px 8px rgba(58,12,163,0.2);
+  box-shadow: 0 2px 8px rgba(142, 45, 226, 0.3);
+  transition: all 0.3s ease;
 }
 
 .draftosaurus-modal .btn-custom:hover {
-  background: #3a0ca3;
-  color: #ffc107;
+  background: #3a1c5f;
+  /* Morado oscuro del index en hover */
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(142, 45, 226, 0.6);
 }
 
 .draftosaurus-modal .form-label {
@@ -41,39 +70,62 @@
   font-weight: bold;
 }
 
-.draftosaurus-modal .form-control {
-  background: #2d1a4d;
-  color: #fff;
-  border: 1px solid #ffc107;
+.draftosaurus-modal .form-control,
+.draftosaurus-modal .form-control.bg-dark {
+  background: transparent !important;
+  /* Fondo transparente para que se vea el degradado del modal */
+  color: #fff !important;
+  border: 1px solid rgba(142, 45, 226, 0.5) !important;
 }
 
-.draftosaurus-modal .form-control:focus {
-  border-color: #7b2ff2;
-  box-shadow: 0 0 0 2px #3a0ca333;
+.draftosaurus-modal .form-control:focus,
+.draftosaurus-modal .form-control.bg-dark:focus {
+  border-color: #8e2de2 !important;
+  box-shadow: 0 0 0 3px rgba(142, 45, 226, 0.3) !important;
+  background: rgba(0, 0, 0, 0.2) !important;
+  /* Fondo semi-transparente al hacer focus */
 }
 
 .draftosaurus-modal .modal-body {
   padding: 2rem 1.5rem;
+  background: transparent;
+  /* Asegurar que el body sea transparente */
+}
+
+/* Asegurar que todos los contenedores internos sean transparentes */
+.draftosaurus-modal .d-flex,
+.draftosaurus-modal #loginJugador2,
+.draftosaurus-modal form {
+  background: transparent !important;
 }
 
 .draftosaurus-modal .modal-footer {
-  border: none;
+  border-top: 1px solid rgba(142, 45, 226, 0.3);
   background: transparent;
+  padding: 1rem 1.5rem;
 }
 
-.draftosaurus-modal .btn-close {
-  filter: invert(70%) sepia(100%) saturate(500%) hue-rotate(10deg);
+.draftosaurus-modal .btn-close:hover {
+  opacity: 1;
+  filter: invert(1) brightness(1.2);
 }
 
 /* Botones de tipo de jugador */
 .draftosaurus-modal .btn-outline-light {
   color: #ffc107;
+  /* Amarillo del index */
   border-color: #ffc107;
   background: transparent;
+  transition: all 0.3s ease;
+  font-weight: 600;
 }
 .draftosaurus-modal .btn-outline-light:hover {
-  background: #3a0ca3;
-  color: #fff;
+  background: #8e2de2;
+  /* Morado del index */
+  color: white;
+  border-color: #8e2de2;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(142, 45, 226, 0.4);
 }
 
 /* Centrado y padding extra */
@@ -91,11 +143,37 @@
 
 /* Título de la sección de login dentro del modal */
 .draftosaurus-modal .login-title {
-  color: #ffffff;
+  color: #ffc107;
+  /* Amarillo del index */
   font-size: 1.1rem;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(255, 193, 7, 0.2);
 }
 
 /* Mensaje informativo dentro del modal */
 .draftosaurus-modal .modal-info {
-  color: #e6d7a7;
+  color: rgba(255, 255, 255, 0.9);
+  /* Blanco suave */
+  line-height: 1.6;
+}
+
+/* Animación suave al abrir el modal */
+.modal.fade .modal-dialog {
+  transition: transform 0.3s ease-out;
+}
+
+.modal.show .modal-dialog {
+  transform: none;
+}
+
+/* Placeholder personalizado */
+.draftosaurus-modal .form-control::placeholder {
+  color: rgba(255, 193, 7, 0.4);
+  font-style: italic;
+}
+
+/* Mejora visual para inputs */
+.draftosaurus-modal .form-control:hover:not(:focus) {
+  border-color: #ffc107;
+  transition: border-color 0.2s ease;
 }

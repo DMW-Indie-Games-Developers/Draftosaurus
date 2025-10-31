@@ -15,13 +15,14 @@
 <body>
     <!-- Language Selector - Fixed Top Right -->
     <div class="position-fixed top-0 end-0 m-3" style="z-index: 1050;">
-        <select id="language-selector" class="form-select form-select-sm" style="background-color: rgba(0,0,0,0.7); color: white; border: 1px solid rgba(255,255,255,0.3);">
+        <select id="language-selector" class="form-select form-select-sm"
+            style="background-color: rgba(0,0,0,0.7); color: white; border: 1px solid rgba(255,255,255,0.3);">
             <option value="es">🇪🇸 ES</option>
             <option value="en">🇺🇸 EN</option>
         </select>
     </div>
 
-    <div class="container d-flex flex-column align-items-center justify-content-center" style="min-height: 100vh;">
+    <div class="container d-flex flex-column align-items-center justify-content-start pt-5" style="min-height: 100vh;">
         <!-- Layout con dos tarjetas separadas -->
         <div class="row w-100" style="max-width: 1000px;">
             <!-- TARJETA IZQUIERDA: Perfil -->
@@ -38,7 +39,7 @@
                                     class="bi bi-pencil" viewBox="0 0 16 16">
                                     <path
                                         d="M12.146.854a.5.5 0 0 1 .708 0l2.292 2.292a.5.5 0 0 1 0 .708l-10 10a.5.5 0 0 1-.168.11l-5 2a.5.5 0 0 1-.65-.65l2-5a.5.5 0 0 1 .11-.168l10-10zm.708-.708A1.5 1.5 0 0 0 12.146.146l-10 10a1.5 1.5 0 0 0-.33.5l-2 5a1.5 1.5 0 0 0 1.95 1.95l5-2a1.5 1.5 0 0 0 .5-.33l10-10a1.5 1.5 0 0 0 0-2.121l-2.292-2.292z" />
-                                    </svg>
+                                </svg>
                             </div>
                         </div>
                     </div>
@@ -46,13 +47,18 @@
                     <!-- Nombre principal editable con doble click -->
                     <div class="text-center mb-3">
                         <div id="user-name-display">
-                            <h2 class="mb-2 nickname-editable" id="user-name" title="Doble click para editar">Usuario</h2>
+                            <h2 class="mb-2 nickname-editable" id="user-name" title="Doble click para editar">Usuario
+                            </h2>
                         </div>
                         <div id="user-name-edit" class="d-none">
                             <div class="input-group mb-2">
-                                <input type="text" class="form-control" id="nickname-input" data-i18n-placeholder="profile.editNickname" placeholder="Ingresa tu nickname" maxlength="50">
-                                <button class="btn btn-success" id="save-nickname-btn" data-i18n="profile.saveNickname">Guardar</button>
-                                <button class="btn btn-secondary" id="cancel-nickname-btn" data-i18n="common.cancel">Cancelar</button>
+                                <input type="text" class="form-control" id="nickname-input"
+                                    data-i18n-placeholder="profile.editNickname" placeholder="Ingresa tu nickname"
+                                    maxlength="50">
+                                <button class="btn btn-success" id="save-nickname-btn"
+                                    data-i18n="profile.saveNickname">Guardar</button>
+                                <button class="btn btn-secondary" id="cancel-nickname-btn"
+                                    data-i18n="common.cancel">Cancelar</button>
                             </div>
                             <small class="text-muted">Máximo 50 caracteres. Deja vacío para usar tu username.</small>
                         </div>
@@ -61,16 +67,20 @@
                     <!-- Estadísticas personales -->
                     <div class="stats-section mb-3">
                         <h5 class="text-warning mb-2" data-i18n="profile.stats">📊 Mis Estadísticas</h5>
-                        <p><strong data-i18n="profile.totalPoints">Puntos totales:</strong> <span id="user-puntos">0</span></p>
-                        <p><strong data-i18n="profile.gamesPlayed">Partidas jugadas:</strong> <span id="user-jugadas">0</span></p>
-                        <p><strong data-i18n="profile.gamesWon">Partidas ganadas:</strong> <span id="user-ganadas">0</span></p>
-                        <p><strong data-i18n="profile.winRate">Ratio de victorias:</strong> <span id="user-ratio">0%</span></p>
+                        <p><strong data-i18n="profile.totalPoints">Puntos totales:</strong> <span
+                                id="user-puntos">0</span></p>
+                        <p><strong data-i18n="profile.gamesPlayed">Partidas jugadas:</strong> <span
+                                id="user-jugadas">0</span></p>
+                        <p><strong data-i18n="profile.gamesWon">Partidas ganadas:</strong> <span
+                                id="user-ganadas">0</span></p>
+                        <p><strong data-i18n="profile.winRate">Ratio de victorias:</strong> <span
+                                id="user-ratio">0%</span></p>
                     </div>
 
                     <!-- Información adicional -->
                     <div id="user-info">
                         <h6 class="text-muted">Información de cuenta</h6>
-                        <small class="text-muted d-block">Email: martin@martin.com</small>
+                        <small class="text-muted d-block">Email: usuario@correo.com</small>
                         <small class="text-muted d-block">Creado: 27/8/2025</small>
                         <small class="text-muted d-block">Última actualización: 11/9/2025</small>
                     </div>
@@ -91,7 +101,9 @@
                                     <span class="h3 text-light">#<span id="user-position">-</span></span>
                                 </div>
                                 <div class="text-end">
-                                    <small class="text-muted"><span data-i18n="ranking.of">de</span> <span id="total-players">-</span> <span data-i18n="ranking.players">jugadores</span></small>
+                                    <small class="text-muted"><span data-i18n="ranking.of">de</span> <span
+                                            id="total-players">-</span> <span
+                                            data-i18n="ranking.players">jugadores</span></small>
                                 </div>
                             </div>
                         </div>
@@ -99,11 +111,14 @@
                         <!-- Progreso hacia siguiente posición -->
                         <div class="progress-section mb-3">
                             <div class="d-flex justify-content-between align-items-center mb-2">
-                                <small class="text-warning" data-i18n="profile.pointsToNextRank">Progreso al siguiente rango</small>
-                                <small class="text-warning"><span id="points-needed">-</span> <span data-i18n="ranking.ptsRemaining">pts restantes</span></small>
+                                <small class="text-warning" data-i18n="profile.pointsToNextRank">Progreso al siguiente
+                                    rango</small>
+                                <small class="text-warning"><span id="points-needed">-</span> <span
+                                        data-i18n="ranking.ptsRemaining">pts restantes</span></small>
                             </div>
                             <div class="progress" style="height: 8px;">
-                                <div class="progress-bar bg-warning" role="progressbar" id="rank-progress" style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+                                <div class="progress-bar bg-warning" role="progressbar" id="rank-progress"
+                                    style="width: 0%" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
                             </div>
                         </div>
 
@@ -119,17 +134,22 @@
 
                         <!-- Botón ver ranking completo -->
                         <div class="text-center mt-3">
-                            <a href="/ranking" class="btn btn-outline-warning btn-sm" data-i18n="ranking.viewComplete">Ver Ranking Completo</a>
+                            <a href="/ranking" class="btn btn-outline-warning btn-sm"
+                                data-i18n="ranking.viewComplete">Ver Ranking Completo</a>
+                        </div>
+                        
+                        <!-- Botones de Acción movidos aquí -->
+                        <div class="mt-4 d-flex gap-2">
+                            <button class="btn btn-custom rounded-pill w-100" id="crear-partida-btn" data-i18n="profile.createGame">Crear Partida</button>
+                            <button class="btn btn-warning rounded-pill w-100" id="btn-tracking-mode" data-i18n="profile.trackingMode">🦕 Draftosaurus Tracker</button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- BOTONES CENTRADOS -->
-        <div class="d-flex flex-column align-items-center mt-4 gap-3">
-            <button class="btn btn-custom" id="crear-partida-btn" data-i18n="profile.createGame">Crear Partida</button>
-            <button class="btn btn-warning" id="btn-tracking-mode" data-i18n="profile.trackingMode">🦕 Draftosaurus Tracker</button>
+        <!-- BOTÓN DE CERRAR SESIÓN -->
+        <div class="d-flex flex-column align-items-center mt-4 pb-5">
             <button class="btn btn-custom" id="btn-logout" data-i18n="common.logout">Cerrar Sesión</button>
         </div>
 
@@ -139,16 +159,21 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content draftosaurus-modal">
                     <div class="modal-header draftosaurus-modal">
-                        <h5 class="modal-title draftosaurus-modal" id="modalCrearPartidaLabel" data-i18n="game.createNewGame">Crear Partida</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" data-i18n-title="common.close" aria-label="Cerrar"></button>
+                        <h5 class="modal-title draftosaurus-modal" id="modalCrearPartidaLabel"
+                            data-i18n="game.createNewGame">Crear Partida</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" data-i18n-title="common.close"
+                            aria-label="Cerrar"></button>
                     </div>
                     <div class="modal-body draftosaurus-modal">
                         <div class="d-flex justify-content-center mb-3 gap-3">
-                            <button class="btn btn-outline-light rounded-pill px-4" id="btnInvitado" data-i18n="game.vsGuest">Invitado</button>
-                            <button class="btn btn-outline-light rounded-pill px-4" id="btnUsers" data-i18n="game.vsPlayer">Usuario</button>
+                            <button class="btn btn-outline-light rounded-pill px-4" id="btnInvitado"
+                                data-i18n="game.vsGuest">Invitado</button>
+                            <button class="btn btn-outline-light rounded-pill px-4" id="btnUsers"
+                                data-i18n="game.vsPlayer">Usuario</button>
                         </div>
                         <div id="loginJugador2" class="d-none">
-                            <div class="text-center mb-2 login-title" data-i18n="game.player2Login">Inicio Sesión Jugador 2</div>
+                            <div class="text-center mb-2 login-title" data-i18n="game.player2Login">Inicio Sesión
+                                Jugador 2</div>
                             <form id="formLoginJugador2">
                                 <div class="mb-2">
                                     <label class="form-label" data-i18n="common.email">Correo Electrónico</label>
@@ -160,7 +185,8 @@
                                     <input type="password" class="form-control rounded-pill bg-dark text-light"
                                         id="passwordJugador2" required>
                                 </div>
-                                <button type="submit" class="btn btn-custom w-100 mt-2" data-i18n="common.login">Iniciar Sesión</button>
+                                <button type="submit" class="btn btn-custom w-100 mt-2" data-i18n="common.login">Iniciar
+                                    Sesión</button>
                             </form>
                         </div>
                     </div>
@@ -174,18 +200,22 @@
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content draftosaurus-modal">
                     <div class="modal-header draftosaurus-modal">
-                        <h5 class="modal-title draftosaurus-modal" id="modalInvitadoLabel" data-i18n="game.guestPlayer">Jugador Invitado</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" data-i18n-title="common.close" aria-label="Cerrar"></button>
+                        <h5 class="modal-title draftosaurus-modal" id="modalInvitadoLabel"
+                            data-i18n="game.guestPlayer">Jugador Invitado</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" data-i18n-title="common.close"
+                            aria-label="Cerrar"></button>
                     </div>
                     <div class="modal-body draftosaurus-modal">
-                        <p class="modal-info" data-i18n="game.guestInfo">Ingresa un nombre para el jugador invitado (opcional: se mostrará en el tablero).</p>
+                        <p class="modal-info" data-i18n="game.guestInfo">Ingresa un nombre para el jugador invitado
+                            (opcional: se mostrará en el tablero).</p>
                         <form id="formInvitado">
                             <div class="mb-2">
                                 <label class="form-label" data-i18n="game.guestName">Nombre</label>
                                 <input type="text" class="form-control rounded-pill bg-dark text-light" id="guestName"
                                     data-i18n-placeholder="game.anonymous" placeholder="Anónimo" maxlength="30">
                             </div>
-                            <button type="submit" class="btn btn-custom w-100 mt-2" data-i18n="game.startAsGuest">Iniciar como Invitado</button>
+                            <button type="submit" class="btn btn-custom w-100 mt-2"
+                                data-i18n="game.startAsGuest">Iniciar como Invitado</button>
                         </form>
                     </div>
                 </div>
@@ -203,7 +233,7 @@
     <script src="js/i18n-simple.js"></script>
 
     <!-- Scripts de la aplicación -->
-    <script src="js/perfil.js"></script>
+    <script src="js/perfil.js?v=20251023001"></script>
 
     <!-- Initialize language selector -->
     <script>
@@ -217,7 +247,7 @@
 
                     selector.value = window.i18n.getCurrentLanguage();
 
-                    selector.addEventListener('change', async function(e) {
+                    selector.addEventListener('change', async function (e) {
                         console.log('[PERFIL] Cambiando idioma a:', e.target.value);
                         await window.i18n.setLanguage(e.target.value);
                     });
@@ -238,3 +268,6 @@
 </body>
 
 </html>
+
+
+

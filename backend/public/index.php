@@ -15,6 +15,11 @@ require_once __DIR__ . '/../api/controllers/AdminController.php';
 require_once __DIR__ . '/../api/repositories/AdminRepository.php';
 require_once __DIR__ . '/../api/services/AdminService.php';
 require_once __DIR__ . '/../api/helpers/AuthHelper.php';
+require_once __DIR__ . '/../api/helpers/AuditLogger.php';
+require_once __DIR__ . '/../api/helpers/CsrfHelper.php';
+require_once __DIR__ . '/../api/helpers/RateLimiter.php';
+require_once __DIR__ . '/../api/helpers/ProgressiveRateLimiter.php';
+require_once __DIR__ . '/../api/helpers/SessionTracker.php';
 require_once __DIR__ . '/../api/config/Database.php';
 require_once __DIR__ . '/../api/repositories/UserRepository.php';
 require_once __DIR__ . '/../api/services/AuthService.php';
@@ -35,9 +40,27 @@ require_once __DIR__ . '/../usermodel/Contacto.php';
 
 AuthHelper::iniciarSesion();
 
+// Limpiar cualquier salida previa (errores, warnings, etc.)
+ob_clean();
+
 // Cabeceras CORS y JSON
 header('Content-Type: application/json');
-header('Access-Control-Allow-Origin: http://localhost:3000');
+
+// Permitir tanto localhost como el dominio de producción
+$allowed_origins = [
+    'http://localhost:3000',
+    'http://localhost:8000',
+    'http://draftosaurus.duckdns.org',
+    'https://draftosaurus.duckdns.org',
+    'http://api.draftosaurus.duckdns.org',
+    'https://api.draftosaurus.duckdns.org'
+];
+
+$origin = $_SERVER['HTTP_ORIGIN'] ?? '';
+if (in_array($origin, $allowed_origins)) {
+    header('Access-Control-Allow-Origin: ' . $origin);
+}
+
 header('Access-Control-Allow-Credentials: true');
 header('Access-Control-Allow-Methods: GET, POST, PUT, DELETE, PATCH, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type, Authorization');
@@ -62,6 +85,25 @@ try {
         /* ---------- AUTH ---------- */
         case 'login':
             if ($method === 'POST') {
+                // SEGURIDAD: Rate Limiting - 5 intentos por minuto por IP
+                if (!RateLimiter::check('login', 5, 60)) {
+                    // Log del intento de rate limit
+                    AuditLogger::log(
+                        AuditLogger::ACTION_RATE_LIMIT_HIT,
+                        null,
+                        "Rate limit excedido en login",
+                        ['ip' => $_SERVER['REMOTE_ADDR'] ?? 'unknown']
+                    );
+
+                    http_response_code(429);
+                    echo json_encode([
+                        'success' => false,
+                        'message' => 'Demasiados intentos de login. Por favor espera 1 minuto e intenta nuevamente.',
+                        'code' => 'RATE_LIMIT_EXCEEDED'
+                    ]);
+                    exit;
+                }
+
                 $controller->login();
                 exit;
             }
@@ -71,6 +113,24 @@ try {
 
         case 'register':
             if ($method === 'POST') {
+                // SEGURIDAD: Rate Limiting - 3 registros por hora por IP (más restrictivo)
+                if (!RateLimiter::check('register', 3, 3600)) {
+                    AuditLogger::log(
+                        AuditLogger::ACTION_RATE_LIMIT_HIT,
+                        null,
+                        "Rate limit excedido en registro",
+                        ['ip' => $_SERVER['REMOTE_ADDR'] ?? 'unknown']
+                    );
+
+                    http_response_code(429);
+                    echo json_encode([
+                        'success' => false,
+                        'message' => 'Demasiados intentos de registro. Por favor espera 1 hora e intenta nuevamente.',
+                        'code' => 'RATE_LIMIT_EXCEEDED'
+                    ]);
+                    exit;
+                }
+
                 $controller->register();
                 exit;
             }
@@ -79,6 +139,11 @@ try {
             break;
 
         case 'logout':
+            // SESSION TRACKING: Registrar logout antes de destruir sesión
+            if (isset($_SESSION['userId'])) {
+                SessionTracker::registerLogout($_SESSION['userId']);
+            }
+
             $_SESSION = [];
             session_destroy();
             if (ini_get('session.use_cookies')) {
@@ -87,6 +152,40 @@ try {
             }
             http_response_code(200);
             echo json_encode(['success' => true]);
+            break;
+
+        case 'csrf-token':
+            if ($method === 'GET') {
+                // Generar o retornar el token CSRF de la sesión actual
+                $token = CsrfHelper::generateToken();
+                echo json_encode([
+                    'success' => true,
+                    'csrf_token' => $token
+                ]);
+                exit;
+            }
+            http_response_code(405);
+            echo json_encode(['success' => false, 'message' => 'Método no permitido']);
+            break;
+
+        case 'login-status':
+            if ($method === 'GET') {
+                // Retornar información sobre el estado de rate limiting del login
+                $status = ProgressiveRateLimiter::getStatus();
+                $remainingAttempts = max(0, 6 - $status['attempt_count']);
+
+                echo json_encode([
+                    'success' => true,
+                    'attempts_made' => $status['attempt_count'],
+                    'remaining_attempts' => $remainingAttempts,
+                    'is_blocked' => $status['is_blocked'],
+                    'wait_seconds' => $status['wait_seconds'] ?? 0,
+                    'next_block_duration' => $status['next_block_duration']
+                ]);
+                exit;
+            }
+            http_response_code(405);
+            echo json_encode(['success' => false, 'message' => 'Método no permitido']);
             break;
 
         case 'verify-user':
@@ -116,13 +215,16 @@ try {
             // GET /perfil/me
             if ($method === 'GET' && ($uri[1] ?? '') === 'me') {
                 $user = AuthHelper::requireActiveUser();
+                $avatar = $user['avatar'] ?? 'img/isotipoOficial.png';
                 echo json_encode([
                     'success' => true,
                     'id' => $user['id'],
                     'username' => $user['username'],
                     'email' => $user['email'],
+                    'rol' => $user['rol'] ?? 'jugador', // IMPORTANTE: Incluir el rol
                     'nickname' => $user['nickname'] ?? null,
-                    'avatar' => $user['avatar'] ?? 'img/isotipoOficial.png',
+                    'avatar' => $avatar,
+                    'foto_perfil' => $avatar, // Alias para compatibilidad
                     'puntuacion_total' => $user['puntuacion_total'] ?? 0,
                     'partidas_jugadas' => $user['partidas_jugadas'] ?? 0,
                     'partidas_ganadas' => $user['partidas_ganadas'] ?? 0,
@@ -133,7 +235,7 @@ try {
 
             // GET /perfil/{id}
             if ($method === 'GET' && isset($uri[1]) && is_numeric($uri[1])) {
-                $userId = (int)$uri[1];
+                $userId = (int) $uri[1];
                 echo json_encode($controller->getPerfil($userId));
                 exit;
             }
@@ -215,16 +317,17 @@ try {
             try {
                 $db = Database::getInstance()->getConnection();
                 $services['database']['status'] = ($db && $db->ping()) ? 'up' : 'down';
-                if ($services['database']['status'] === 'down') $status = 'DEGRADED';
+                if ($services['database']['status'] === 'down')
+                    $status = 'DEGRADED';
             } catch (Exception $e) {
                 $services['database']['status'] = 'down';
                 $status = 'DEGRADED';
             }
             $endpoints = [
-                ['method' => 'GET',  'path' => '/health', 'description' => 'Estado de la aplicación'],
+                ['method' => 'GET', 'path' => '/health', 'description' => 'Estado de la aplicación'],
                 ['method' => 'POST', 'path' => '/login', 'description' => 'Login con email o username'],
                 ['method' => 'POST', 'path' => '/register', 'description' => 'Crear nuevo usuario'],
-                ['method' => 'GET',  'path' => '/perfil/me', 'description' => 'Obtener perfil actual'],
+                ['method' => 'GET', 'path' => '/perfil/me', 'description' => 'Obtener perfil actual'],
             ];
             http_response_code(200);
             echo json_encode(['success' => true, 'status' => $status, 'timestamp' => date('c'), 'services' => $services, 'endpoints' => $endpoints]);
@@ -271,20 +374,40 @@ try {
                     $user = AuthHelper::requireActiveUser();
                     $userId = $user['id'];
 
+                    // SEGURIDAD: Rate Limiting - 5 uploads por hora por usuario
+                    if (!RateLimiter::check('avatar_upload_' . $userId, 5, 3600)) {
+                        http_response_code(429);
+                        echo json_encode([
+                            'success' => false,
+                            'message' => 'Demasiados cambios de avatar. Espera 1 hora.'
+                        ]);
+                        exit;
+                    }
+
                     if (!isset($_FILES['avatar']) || $_FILES['avatar']['error'] !== UPLOAD_ERR_OK) {
                         throw new Exception('No se recibió ningún archivo válido');
                     }
 
                     $file = $_FILES['avatar'];
 
+                    // SEGURIDAD: Validar tipo MIME del navegador
                     $allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
                     if (!in_array($file['type'], $allowedTypes)) {
                         throw new Exception('Formato no soportado');
                     }
 
-                    $maxSize = 3 * 1024 * 1024;
+                    // SEGURIDAD: Validar magic bytes (contenido real del archivo)
+                    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+                    $mimeType = finfo_file($finfo, $file['tmp_name']);
+                    finfo_close($finfo);
+
+                    if (!in_array($mimeType, $allowedTypes)) {
+                        throw new Exception('El archivo no es una imagen válida');
+                    }
+
+                    $maxSize = 5 * 1024 * 1024; // 5MB
                     if ($file['size'] > $maxSize) {
-                        throw new Exception('Archivo muy grande');
+                        throw new Exception('Archivo muy grande (máximo 5MB)');
                     }
 
                     $uploadDir = __DIR__ . '/uploads/avatars/';
@@ -292,22 +415,31 @@ try {
                         mkdir($uploadDir, 0755, true);
                     }
 
-                    $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
-                    $filename = 'avatar_' . $userId . '_' . time() . '.' . $extension;
+                    // SEGURIDAD: Usar hash aleatorio en lugar de nombre predecible
+                    $extension = match($mimeType) {
+                        'image/jpeg' => 'jpg',
+                        'image/png' => 'png',
+                        'image/webp' => 'webp',
+                        'image/gif' => 'gif',
+                        default => 'jpg'
+                    };
+                    $randomHash = bin2hex(random_bytes(16));
+                    $filename = 'avatar_' . $userId . '_' . $randomHash . '.' . $extension;
                     $filepath = $uploadDir . $filename;
 
                     if (!move_uploaded_file($file['tmp_name'], $filepath)) {
                         throw new Exception('Error al guardar');
                     }
 
-                    $avatarUrl = 'http://localhost:4000/uploads/avatars/' . $filename;
+                    $avatarUrl = '/uploads/avatars/' . $filename;
                     $controller = new PerfilController();
                     $result = $controller->updateAvatar($userId, $avatarUrl);
 
                     if ($result['success']) {
                         echo json_encode(['success' => true, 'message' => 'Avatar actualizado', 'avatarUrl' => $avatarUrl]);
                     } else {
-                        if (file_exists($filepath)) unlink($filepath);
+                        if (file_exists($filepath))
+                            unlink($filepath);
                         echo json_encode($result);
                     }
 
@@ -329,7 +461,7 @@ try {
 
                 if ($method === 'GET') {
                     if (isset($uri[3]) && is_numeric($uri[3])) {
-                        $controller->obtener((int)$uri[3]);
+                        $controller->obtener((int) $uri[3]);
                         exit;
                     } elseif (isset($uri[3]) && $uri[3] === 'estadisticas') {
                         $controller->estadisticas();
@@ -341,7 +473,7 @@ try {
                 }
 
                 if ($method === 'DELETE' && isset($uri[3]) && is_numeric($uri[3])) {
-                    $controller->eliminar((int)$uri[3]);
+                    $controller->eliminar((int) $uri[3]);
                     exit;
                 }
 
@@ -434,60 +566,73 @@ try {
             if ($sub === 'admin') {
                 $controller = new AdminController();
                 $op = $uri[2] ?? '';
-                $id = (int)($uri[3] ?? 0);
+                $id = (int) ($uri[3] ?? 0);
                 $extra = $uri[4] ?? '';
+
+                // SEGURIDAD CRÍTICA: Verificar que el usuario sea administrador
+                // Esta verificación debe estar ANTES de cualquier operación
+                try {
+                    $adminUser = AuthHelper::requireAdmin();
+                    error_log("Admin access granted to user: " . $adminUser['username'] . " (ID: " . $adminUser['id'] . ")");
+                } catch (Exception $e) {
+                    error_log("Admin access denied: " . $e->getMessage());
+                    // requireAdmin ya respondió con 403, solo salimos
+                    exit;
+                }
 
                 switch ($method) {
                     case 'GET':
                         if ($op === 'users' && $id === 0) {
-                            try {
-                                AuthHelper::requireActiveUser();
-                                $controller->listUsers();
-                            } catch (Exception $e) {}
+                            $controller->listUsers();
                             exit;
                         } elseif ($op === 'users' && $id > 0) {
-                            try {
-                                AuthHelper::requireActiveUser();
-                                $controller->getUser($id);
-                            } catch (Exception $e) {}
+                            $controller->getUser($id);
                             exit;
                         } elseif ($op === 'messages') {
-                            try {
-                                AuthHelper::requireActiveUser();
-                                $controller->listMessages();
-                            } catch (Exception $e) {}
+                            $controller->listMessages();
+                            exit;
+                        } elseif ($op === 'audit-logs') {
+                            $controller->getAuditLogs();
+                            exit;
+                        } elseif ($op === 'audit-stats') {
+                            $controller->getAuditStats();
+                            exit;
+                        } elseif ($op === 'online-users') {
+                            $controller->getOnlineUsers();
+                            exit;
+                        } elseif ($op === 'session-stats') {
+                            $controller->getSessionStats();
+                            exit;
+                        } elseif ($op === 'recent-sessions') {
+                            $controller->getRecentSessions();
+                            exit;
+                        } elseif ($op === 'system-stats') {
+                            $controller->getSystemStats();
                             exit;
                         }
                         break;
 
                     case 'POST':
                         if ($op === 'users') {
-                            try {
-                                AuthHelper::requireActiveUser();
-                                $controller->createUser();
-                            } catch (Exception $e) {}
+                            $controller->createUser();
                             exit;
                         }
                         break;
 
                     case 'PUT':
                         if ($op === 'users' && $id > 0) {
-                            try {
-                                AuthHelper::requireActiveUser();
-                                $controller->updateUser($id);
-                            } catch (Exception $e) {}
+                            $controller->updateUser($id);
                             exit;
                         }
                         break;
 
                     case 'PATCH':
                         if ($op === 'users' && $id > 0 && $extra === 'status') {
-                            try {
-                                AuthHelper::requireActiveUser();
-                                $controller->toggleUserStatus($id);
-                            } catch (Exception $e) {}
+                            $controller->toggleUserStatus($id);
                             exit;
                         }
+                        // SEGURIDAD: Endpoint de cambio de rol eliminado por seguridad
+                        // Los cambios de rol deben hacerse directamente en la base de datos
                         break;
                 }
 
@@ -528,20 +673,40 @@ try {
                     $user = AuthHelper::requireActiveUser();
                     $userId = $user['id'];
 
+                    // SEGURIDAD: Rate Limiting - 5 uploads por hora por usuario
+                    if (!RateLimiter::check('avatar_upload_' . $userId, 5, 3600)) {
+                        http_response_code(429);
+                        echo json_encode([
+                            'success' => false,
+                            'message' => 'Demasiados cambios de avatar. Espera 1 hora.'
+                        ]);
+                        exit;
+                    }
+
                     if (!isset($_FILES['avatar']) || $_FILES['avatar']['error'] !== UPLOAD_ERR_OK) {
                         throw new Exception('No se recibió ningún archivo válido');
                     }
 
                     $file = $_FILES['avatar'];
 
+                    // SEGURIDAD: Validar tipo MIME del navegador
                     $allowedTypes = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
                     if (!in_array($file['type'], $allowedTypes)) {
                         throw new Exception('Formato no soportado');
                     }
 
-                    $maxSize = 3 * 1024 * 1024;
+                    // SEGURIDAD: Validar magic bytes (contenido real del archivo)
+                    $finfo = finfo_open(FILEINFO_MIME_TYPE);
+                    $mimeType = finfo_file($finfo, $file['tmp_name']);
+                    finfo_close($finfo);
+
+                    if (!in_array($mimeType, $allowedTypes)) {
+                        throw new Exception('El archivo no es una imagen válida');
+                    }
+
+                    $maxSize = 5 * 1024 * 1024; // 5MB
                     if ($file['size'] > $maxSize) {
-                        throw new Exception('Archivo muy grande');
+                        throw new Exception('Archivo muy grande (máximo 5MB)');
                     }
 
                     $uploadDir = __DIR__ . '/uploads/avatars/';
@@ -549,22 +714,31 @@ try {
                         mkdir($uploadDir, 0755, true);
                     }
 
-                    $extension = pathinfo($file['name'], PATHINFO_EXTENSION);
-                    $filename = 'avatar_' . $userId . '_' . time() . '.' . $extension;
+                    // SEGURIDAD: Usar hash aleatorio en lugar de nombre predecible
+                    $extension = match($mimeType) {
+                        'image/jpeg' => 'jpg',
+                        'image/png' => 'png',
+                        'image/webp' => 'webp',
+                        'image/gif' => 'gif',
+                        default => 'jpg'
+                    };
+                    $randomHash = bin2hex(random_bytes(16));
+                    $filename = 'avatar_' . $userId . '_' . $randomHash . '.' . $extension;
                     $filepath = $uploadDir . $filename;
 
                     if (!move_uploaded_file($file['tmp_name'], $filepath)) {
                         throw new Exception('Error al guardar');
                     }
 
-                    $avatarUrl = 'http://localhost:4000/uploads/avatars/' . $filename;
+                    $avatarUrl = '/uploads/avatars/' . $filename;
                     $controller = new PerfilController();
                     $result = $controller->updateAvatar($userId, $avatarUrl);
 
                     if ($result['success']) {
                         echo json_encode(['success' => true, 'message' => 'Avatar actualizado', 'avatarUrl' => $avatarUrl]);
                     } else {
-                        if (file_exists($filepath)) unlink($filepath);
+                        if (file_exists($filepath))
+                            unlink($filepath);
                         echo json_encode($result);
                     }
 

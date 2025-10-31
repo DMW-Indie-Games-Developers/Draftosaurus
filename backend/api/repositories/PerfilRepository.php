@@ -152,6 +152,7 @@ class PerfilRepository {
                 nickname,
                 CASE WHEN nickname IS NOT NULL AND nickname != '' THEN nickname ELSE username END as display_name,
                 avatar,
+                avatar as foto_perfil,
                 puntuacion_total,
                 partidas_jugadas,
                 partidas_ganadas,

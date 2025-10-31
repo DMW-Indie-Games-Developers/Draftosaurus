@@ -382,6 +382,10 @@ function confirmarSeleccion() {
   manos[1] = [...dinosSeleccionados];
   manos[2] = [...dinosSeleccionados];
 
+  // Resetear contadores para la nueva ronda
+  dinosColocados = { 1: 0, 2: 0 };
+  dinosDescartados = { 1: 0, 2: 0 };
+
   console.log('Dinosaurios seleccionados:', dinosSeleccionados);
   console.log('Manos asignadas:', manos);
 
@@ -406,7 +410,7 @@ function tirarDadoAutomatico() {
   const restriccionText = document.getElementById('tracking-restriccion-text');
 
   if (dadoImg) {
-    dadoImg.src = `/img/dado/dado${valor}.png`;
+    dadoImg.src = `/img/dado/dado${valor}.png?v=${Date.now()}`;
   }
 
   if (restriccionText) {
@@ -425,15 +429,24 @@ function tirarDadoAutomatico() {
 
 /* ===== RENDERIZAR MANO ===== */
 function renderMano(jugador) {
+  console.log(`🖼️ Renderizando mano del jugador ${jugador}`);
+  console.log('  - Mano actual:', manos[jugador]);
+
   const grid = document.getElementById('tracking-dino-grid');
-  if (!grid) return;
+  if (!grid) {
+    console.log('  ❌ No se encontró el grid');
+    return;
+  }
 
   grid.innerHTML = '';
 
   if (!manos[jugador] || manos[jugador].length === 0) {
+    console.log('  ⚠️ Mano vacía - mostrando mensaje');
     grid.innerHTML = '<p class="text-center text-muted">No hay dinosaurios disponibles</p>';
     return;
   }
+
+  console.log(`  ✅ Renderizando ${manos[jugador].length} dinosaurios`);
 
   manos[jugador].forEach((esp, idx) => {
     const img = document.createElement('img');
@@ -442,19 +455,119 @@ function renderMano(jugador) {
     img.draggable = true;
     img.dataset.especie = esp;
     img.dataset.index = idx;
+    img.style.cursor = 'grab';
+    img.style.touchAction = 'none'; // Prevenir scroll en móviles
 
     grid.appendChild(img);
 
+    // ===== EVENTOS PARA DESKTOP (Drag and Drop) =====
     img.addEventListener('dragstart', e => {
       draggedDino = { especie: esp, index: idx, jugador: jugadorActivo };
       img.classList.add('dragging');
+      img.style.cursor = 'grabbing';
       e.dataTransfer.setData('text/plain', esp);
       highlightRecintos(esp);
     });
 
     img.addEventListener('dragend', () => {
       img.classList.remove('dragging');
+      img.style.cursor = 'grab';
       clearHighlight();
+    });
+
+    // ===== EVENTOS PARA MÓVIL (Touch) =====
+    let touchStarted = false;
+    let clonedImg = null;
+
+    img.addEventListener('touchstart', e => {
+      e.preventDefault();
+      touchStarted = true;
+      draggedDino = { especie: esp, index: idx, jugador: jugadorActivo };
+      img.classList.add('dragging');
+      highlightRecintos(esp);
+      console.log('📱 Touch iniciado:', esp);
+
+      // Crear clon visual
+      clonedImg = img.cloneNode(true);
+      clonedImg.style.position = 'fixed';
+      clonedImg.style.zIndex = '9999';
+      clonedImg.style.opacity = '0.8';
+      clonedImg.style.pointerEvents = 'none';
+      clonedImg.style.width = img.offsetWidth + 'px';
+      clonedImg.style.height = img.offsetHeight + 'px';
+      document.body.appendChild(clonedImg);
+
+      const touch = e.touches[0];
+      // Centrar el dino bajo el dedo restando la mitad del ancho/alto
+      clonedImg.style.left = (touch.clientX - img.offsetWidth / 2) + 'px';
+      clonedImg.style.top = (touch.clientY - img.offsetHeight / 2) + 'px';
+    });
+
+    img.addEventListener('touchmove', e => {
+      if (!touchStarted || !clonedImg) return;
+      e.preventDefault();
+
+      const touch = e.touches[0];
+      const imgWidth = parseInt(clonedImg.style.width);
+      const imgHeight = parseInt(clonedImg.style.height);
+
+      // Centrar el dino bajo el dedo
+      clonedImg.style.left = (touch.clientX - imgWidth / 2) + 'px';
+      clonedImg.style.top = (touch.clientY - imgHeight / 2) + 'px';
+
+      const elementBelow = document.elementFromPoint(touch.clientX, touch.clientY);
+      const recinto = elementBelow?.closest('.recinto');
+
+      document.querySelectorAll('.recinto').forEach(r => r.classList.remove('highlight'));
+
+      if (recinto && !recinto.classList.contains('recinto-disabled')) {
+        recinto.classList.add('highlight');
+      }
+    });
+
+    img.addEventListener('touchend', async e => {
+      if (!touchStarted) return;
+      e.preventDefault();
+      touchStarted = false;
+
+      const touch = e.changedTouches[0];
+      const elementBelow = document.elementFromPoint(touch.clientX, touch.clientY);
+      const recinto = elementBelow?.closest('.recinto');
+
+      if (clonedImg) {
+        clonedImg.remove();
+        clonedImg = null;
+      }
+
+      img.classList.remove('dragging');
+      img.style.cursor = 'grab';
+      clearHighlight();
+
+      if (recinto && draggedDino) {
+        const tipoRecinto = recinto.dataset.tipo;
+        const especieDino = draggedDino.especie;
+
+        if (puedeColocarDino(recinto, tipoRecinto, especieDino)) {
+          console.log('📱 Touch: Colocando dino');
+          await colocarDino(recinto, especieDino);
+        } else {
+          alert('No puedes colocar el dinosaurio aquí según las reglas del recinto');
+        }
+      }
+
+      draggedDino = null;
+    });
+
+    img.addEventListener('touchcancel', () => {
+      if (clonedImg) {
+        clonedImg.remove();
+        clonedImg = null;
+      }
+      touchStarted = false;
+      img.classList.remove('dragging');
+      img.style.cursor = 'grab';
+      clearHighlight();
+      draggedDino = null;
     });
   });
 }
@@ -503,6 +616,9 @@ async function colocarDino(recinto, especie) {
     actualizarUI();
   } else if (dinosColocados[1] === dinosColocados[2]) {
     // Ambos colocaron, pasar a fase de descarte
+    console.log(`Turno ${turno}: Ambos jugadores colocaron`);
+    console.log(`Manos restantes - J1: ${manos[1].length}, J2: ${manos[2].length}`);
+
     fase = 'descartar';
     mostrarDescarte();
   }
@@ -511,6 +627,12 @@ async function colocarDino(recinto, especie) {
 /* ===== DESCARTE ===== */
 function mostrarDescarte() {
   console.log('🗑️ Fase de descarte');
+  console.log('Estado ANTES del descarte:');
+  console.log('  - Turno:', turno);
+  console.log('  - Mano J1:', manos[1]);
+  console.log('  - Mano J2:', manos[2]);
+  console.log('  - Jugador activo:', jugadorActivo);
+  console.log('  - Jugador que tiró dado:', jugadorQueTiroDado);
 
   // Cada jugador debe descartar 1 dinosaurio
   // Simulamos que cada jugador descarta uno aleatorio
@@ -518,38 +640,52 @@ function mostrarDescarte() {
     const indexDescarte1 = Math.floor(Math.random() * manos[1].length);
     const descartado1 = manos[1].splice(indexDescarte1, 1)[0];
     dinosDescartados[1]++;
-    console.log(`Jugador 1 descarta: ${descartado1}`);
+    console.log(`✂️ Jugador 1 descarta: ${descartado1} (quedan ${manos[1].length})`);
+  } else {
+    console.log('⚠️ Jugador 1 no tiene dinos para descartar');
   }
 
   if (manos[2].length > 0) {
     const indexDescarte2 = Math.floor(Math.random() * manos[2].length);
     const descartado2 = manos[2].splice(indexDescarte2, 1)[0];
     dinosDescartados[2]++;
-    console.log(`Jugador 2 descarta: ${descartado2}`);
+    console.log(`✂️ Jugador 2 descarta: ${descartado2} (quedan ${manos[2].length})`);
+  } else {
+    console.log('⚠️ Jugador 2 no tiene dinos para descartar');
   }
 
   actualizarContadores();
 
-  // Intercambiar manos
-  const temp = [...manos[1]];
-  manos[1] = [...manos[2]];
-  manos[2] = temp;
+  console.log('Estado DESPUÉS del descarte:');
+  console.log('  - Mano J1:', manos[1]);
+  console.log('  - Mano J2:', manos[2]);
 
-  console.log('🔄 Manos intercambiadas');
-  console.log('Mano J1:', manos[1]);
-  console.log('Mano J2:', manos[2]);
-
-  // Cambiar jugador que tira el dado
-  jugadorQueTiroDado = jugadorQueTiroDado === 1 ? 2 : 1;
-  jugadorActivo = jugadorQueTiroDado;
-
-  // Avanzar turno
-  turno++;
-
-  if (turno > TURNOS_POR_RONDA) {
-    // Fin de la ronda
+  // Verificar si las manos quedaron vacías (fin de ronda)
+  if (manos[1].length === 0 && manos[2].length === 0) {
+    console.log('🏁 Manos vacías - Fin de la ronda');
     finalizarRonda();
   } else {
+    // Intercambiar manos
+    const temp = [...manos[1]];
+    manos[1] = [...manos[2]];
+    manos[2] = temp;
+
+    console.log('🔄 Manos intercambiadas');
+    console.log('  - Nueva mano J1:', manos[1]);
+    console.log('  - Nueva mano J2:', manos[2]);
+
+    // Cambiar jugador que tira el dado
+    jugadorQueTiroDado = jugadorQueTiroDado === 1 ? 2 : 1;
+    jugadorActivo = jugadorQueTiroDado;
+
+    console.log('🎯 Nuevo turno:');
+    console.log('  - Jugador que tirará dado:', jugadorQueTiroDado);
+    console.log('  - Jugador activo:', jugadorActivo);
+
+    // Avanzar turno
+    turno++;
+    console.log('  - Turno:', turno);
+
     // Continuar con siguiente turno
     fase = 'tirarDado';
     tirarDadoAutomatico();

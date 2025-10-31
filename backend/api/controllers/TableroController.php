@@ -2,16 +2,19 @@
 declare(strict_types=1);
 
 require_once __DIR__ . '/../services/TableroService.php';
+require_once __DIR__ . '/../services/ValidacionService.php';
 require_once __DIR__ . '/../helpers/AuthHelper.php';
 require_once __DIR__ . '/../config/Database.php';
 
 class TableroController
 {
     private TableroService $service;
+    private ValidacionService $validacionService;
 
     public function __construct()
     {
         $this->service = new TableroService();
+        $this->validacionService = new ValidacionService();
     }
 
     /* ===== MÉTODOS AUXILIARES ===== */
@@ -49,28 +52,43 @@ class TableroController
     /* ===== CREAR PARTIDA ===== */
     public function crearPartida(): void
     {
+        error_log("=== INICIO crearPartida ===");
         try {
             $user = AuthHelper::requireActiveUser();
+            error_log("✅ Usuario autenticado: ID={$user['id']}, Username={$user['username']}");
+
             $input = $this->getInput();
+            error_log("Input recibido: " . json_encode($input));
 
             $jugador1_id = $user['id'];
             $esInvitado = $input['esInvitado'] ?? false;
             $nombreJugador2 = $input['nombre_jugador2'] ?? 'Invitado';
+
+            error_log("Jugador 1 ID: $jugador1_id");
+            error_log("Es invitado: " . ($esInvitado ? 'SÍ' : 'NO'));
+            error_log("Nombre Jugador 2: $nombreJugador2");
 
             $jugador2_id = null;
             $name_invitado = null;
 
             if ($esInvitado) {
                 $name_invitado = $nombreJugador2;
+                error_log("Modo invitado - nombre: $name_invitado");
             } else {
                 // Si no es invitado, buscar el ID del usuario por nombre
+                error_log("Buscando usuario registrado: $nombreJugador2");
                 $jugador2_id = $this->buscarUsuarioPorNombre($nombreJugador2);
+                error_log("Resultado búsqueda - Jugador 2 ID: " . ($jugador2_id ?? 'NULL'));
+
                 if (!$jugador2_id) {
+                    error_log("❌ Usuario no encontrado: $nombreJugador2");
                     throw new Exception('Usuario no encontrado: ' . $nombreJugador2);
                 }
             }
 
+            error_log("Llamando a service->crearPartida(jugador1=$jugador1_id, jugador2=$jugador2_id, invitado=$name_invitado)");
             $partidaId = $this->service->crearPartida($jugador1_id, $jugador2_id, $name_invitado);
+            error_log("✅ Partida creada con ID: $partidaId");
 
             $this->sendResponse([
                 'success' => true,
@@ -80,8 +98,11 @@ class TableroController
             ]);
 
         } catch (Exception $e) {
+            error_log("❌ ERROR en crearPartida: " . $e->getMessage());
+            error_log("Stack trace: " . $e->getTraceAsString());
             $this->sendResponse(['success' => false, 'error' => $e->getMessage()], 500);
         }
+        error_log("=== FIN crearPartida ===");
     }
 
     /* ===== GUARDAR ESTADO PARTIDA ===== */
@@ -450,10 +471,10 @@ class TableroController
         }
     }
 
-    /* ===== VALIDAR COLOCACIÓN DE DINOSAURIO ===== */
+    /* ===== VALIDAR COLOCACIÓN DE DINOSAURIO (CON VALIDACIONES COMPLETAS) ===== */
     public function validarColocacionDino(): void
     {
-        error_log("=== INICIO validarColocacionDino ===");
+        error_log("=== INICIO validarColocacionDino (con ValidacionService) ===");
         error_log("Método: " . ($_SERVER['REQUEST_METHOD'] ?? 'unknown'));
         error_log("Content-Type: " . ($_SERVER['CONTENT_TYPE'] ?? 'unknown'));
 
@@ -477,9 +498,6 @@ class TableroController
             }
 
             $partidaId = (int) ($datos['partidaId'] ?? 0);
-            $restriccion = $datos['restriccion'] ?? null;
-            $recintoId = $datos['recintoId'] ?? '';
-            $especie = $datos['especie'] ?? '';
 
             if (!$partidaId) {
                 error_log("❌ ERROR: ID de partida no proporcionado");
@@ -492,6 +510,7 @@ class TableroController
                 return;
             }
 
+            // Validar acceso a la partida
             if (!$this->service->validarAccesoPartida($partidaId, $user['id'])) {
                 error_log("❌ ERROR: Sin permisos para partida $partidaId");
                 $this->sendResponse([
@@ -503,8 +522,31 @@ class TableroController
                 return;
             }
 
-            // 🛡️ VALIDACIÓN PRINCIPAL: Debe haber tirado el dado
-            if ($restriccion === null) {
+            // Cargar estado completo de la partida
+            error_log("Cargando estado de partida $partidaId...");
+            $estadoPartida = $this->service->cargarPartida($partidaId);
+
+            if (!$estadoPartida) {
+                error_log("❌ ERROR: No se pudo cargar la partida $partidaId");
+                $this->sendResponse([
+                    'success' => false,
+                    'esValida' => false,
+                    'mensaje' => 'No se pudo cargar el estado de la partida',
+                    'codigo' => 'PARTIDA_NO_ENCONTRADA'
+                ], 404);
+                return;
+            }
+
+            error_log("Estado de partida cargado: " . json_encode([
+                'jugadorActivo' => $estadoPartida['jugadorActivo'],
+                'jugadorQueTiroDado' => $estadoPartida['jugadorQueTiroDado'],
+                'restriccion' => $estadoPartida['restriccion'],
+                'ronda' => $estadoPartida['ronda'],
+                'turno' => $estadoPartida['turno']
+            ]));
+
+            // 🛡️ VALIDACIÓN ANTI-TRAMPA: Debe haber tirado el dado
+            if ($estadoPartida['restriccion'] === null) {
                 error_log("❌ COLOCACIÓN DENEGADA: No se ha tirado el dado (partidaId=$partidaId)");
                 $this->sendResponse([
                     'success' => false,
@@ -515,20 +557,22 @@ class TableroController
                 return;
             }
 
-            // Validar restricción del dado (1-6)
-            if ($restriccion < 1 || $restriccion > 6) {
-                error_log("❌ RESTRICCIÓN INVÁLIDA: $restriccion");
+            // 🛡️ VALIDACIÓN COMPLETA usando ValidacionService
+            $resultado = $this->validacionService->validarColocacion($datos, $estadoPartida);
+
+            if (!$resultado['valida']) {
+                error_log("❌ VALIDACIÓN FALLIDA: " . $resultado['razon']);
                 $this->sendResponse([
                     'success' => false,
                     'esValida' => false,
-                    'mensaje' => 'Restricción del dado inválida',
-                    'codigo' => 'RESTRICCION_INVALIDA'
+                    'mensaje' => $resultado['razon'],
+                    'codigo' => 'COLOCACION_INVALIDA'
                 ]);
                 return;
             }
 
-            error_log("✅ COLOCACIÓN VÁLIDA: Dado tirado (restricción=$restriccion), recinto=$recintoId, especie=$especie");
-
+            // ✅ Todas las validaciones pasadas
+            error_log("✅ COLOCACIÓN VÁLIDA - Todas las validaciones pasadas");
             $this->sendResponse([
                 'success' => true,
                 'esValida' => true,

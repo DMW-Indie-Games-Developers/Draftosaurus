@@ -45,6 +45,108 @@
     </nav>
 
     <div class="container py-4">
+        <!-- Dashboard de Estadísticas -->
+        <div class="row mb-4">
+            <div class="col-md-3">
+                <div class="card bg-primary text-white shadow">
+                    <div class="card-body">
+                        <h6 class="card-title">👥 Usuarios Online</h6>
+                        <h2 class="mb-0" id="statOnlineUsers">-</h2>
+                        <small>Activos ahora</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-success text-white shadow">
+                    <div class="card-body">
+                        <h6 class="card-title">📊 Sesiones Hoy</h6>
+                        <h2 class="mb-0" id="statSessionsToday">-</h2>
+                        <small>Inicios de sesión</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-info text-white shadow">
+                    <div class="card-body">
+                        <h6 class="card-title">👤 Usuarios Únicos</h6>
+                        <h2 class="mb-0" id="statUniqueUsers">-</h2>
+                        <small>Hoy</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="card bg-warning text-white shadow">
+                    <div class="card-body">
+                        <h6 class="card-title">⏱️ Tiempo Promedio</h6>
+                        <h2 class="mb-0" id="statAvgDuration">-</h2>
+                        <small>minutos/sesión</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Usuarios Online -->
+        <div class="card mb-4 shadow">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">🟢 Usuarios Activos Ahora</h5>
+                <button class="btn btn-sm btn-outline-light" onclick="loadOnlineUsers()">
+                    🔄 Actualizar
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover">
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>Email</th>
+                                <th>Rol</th>
+                                <th>IP</th>
+                                <th>Login</th>
+                                <th>Última Actividad</th>
+                            </tr>
+                        </thead>
+                        <tbody id="onlineUsersTable">
+                            <tr>
+                                <td colspan="6" class="text-center">Cargando...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sesiones Recientes -->
+        <div class="card mb-4 shadow">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">📜 Historial de Sesiones</h5>
+                <button class="btn btn-sm btn-outline-light" onclick="loadRecentSessions()">
+                    🔄 Actualizar
+                </button>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-dark table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <th>Usuario</th>
+                                <th>IP</th>
+                                <th>Login</th>
+                                <th>Logout</th>
+                                <th>Duración</th>
+                                <th>Estado</th>
+                            </tr>
+                        </thead>
+                        <tbody id="recentSessionsTable">
+                            <tr>
+                                <td colspan="6" class="text-center">Cargando...</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
         <div class="card mb-4 shadow">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5 class="mb-0">Gestión de Usuarios</h5>

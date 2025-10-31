@@ -178,4 +178,42 @@ class AuthHelper {
 
         return $validation['user'];
     }
+
+    /**
+     * NUEVO: Middleware para APIs que requieren rol de administrador
+     */
+    public static function requireAdmin(): array {
+        $user = self::requireActiveUser();
+
+        if ($user['rol'] !== 'admin') {
+            error_log("requireAdmin: Usuario {$user['id']} ({$user['username']}) intentó acceder a función de admin sin permisos");
+            http_response_code(403);
+            echo json_encode([
+                'error' => 'Acceso denegado: Se requieren permisos de administrador',
+                'code' => 'FORBIDDEN'
+            ]);
+            exit;
+        }
+
+        error_log("requireAdmin: Usuario admin {$user['id']} ({$user['username']}) accedió a función administrativa");
+        return $user;
+    }
+
+    /**
+     * NUEVO: Obtiene el usuario actual de la sesión (para audit logs)
+     * No termina la ejecución, solo retorna null si no hay usuario
+     */
+    public static function getCurrentUser(): ?array {
+        self::iniciarSesion();
+
+        if (!isset($_SESSION['userId'])) {
+            return null;
+        }
+
+        $userId = $_SESSION['userId'];
+        $authService = AuthService::getInstance();
+        $validation = $authService->validateUserStatus($userId);
+
+        return $validation['valid'] ? $validation['user'] : null;
+    }
 }

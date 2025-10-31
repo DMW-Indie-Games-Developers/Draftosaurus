@@ -2,6 +2,8 @@
 
 require_once __DIR__ . '/../services/ContactoService.php';
 require_once __DIR__ . '/../helpers/AuthHelper.php';
+require_once __DIR__ . '/../helpers/RateLimiter.php';
+require_once __DIR__ . '/../helpers/AuditLogger.php';
 
 class ContactoController {
     private $contactoService;
@@ -16,6 +18,9 @@ class ContactoController {
      */
     public function crear() {
         try {
+            // SEGURIDAD: Rate limiting para prevenir spam (5 mensajes por hora)
+            RateLimiter::requireLimit('contact', 5, 3600);
+
             // Verificar que sea POST
             if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
                 http_response_code(405);
@@ -46,6 +51,14 @@ class ContactoController {
             // Establecer código de respuesta apropiado
             if ($resultado['success']) {
                 http_response_code(201); // Creado
+
+                // AUDIT LOG: Mensaje de contacto enviado
+                AuditLogger::log(
+                    AuditLogger::ACTION_CONTACT_SUBMITTED,
+                    null,
+                    "Mensaje de contacto enviado desde: " . ($datos['email'] ?? 'email no proporcionado'),
+                    ['nombre' => $datos['nombre'] ?? 'N/A', 'asunto' => $datos['asunto'] ?? 'N/A']
+                );
             } else {
                 http_response_code(400); // Error de validación
             }
@@ -68,16 +81,8 @@ class ContactoController {
      */
     public function listar() {
         try {
-            // Verificar que el usuario sea administrador
-            $user = AuthHelper::requireActiveUser();
-            if ($user['rol'] !== 'admin') {
-                http_response_code(403);
-                echo json_encode([
-                    'success' => false,
-                    'message' => 'No tienes permisos para acceder a esta información'
-                ]);
-                return;
-            }
+            // SEGURIDAD: Verificar que el usuario sea administrador
+            AuthHelper::requireAdmin();
 
             // Obtener parámetros de paginación
             $pagina = isset($_GET['pagina']) ? max(1, intval($_GET['pagina'])) : 1;
@@ -109,16 +114,8 @@ class ContactoController {
      */
     public function obtener($id) {
         try {
-            // Verificar que el usuario sea administrador
-            $user = AuthHelper::requireActiveUser();
-            if ($user['rol'] !== 'admin') {
-                http_response_code(403);
-                echo json_encode([
-                    'success' => false,
-                    'message' => 'No tienes permisos para acceder a esta información'
-                ]);
-                return;
-            }
+            // SEGURIDAD: Verificar que el usuario sea administrador
+            AuthHelper::requireAdmin();
 
             // Validar ID
             if (!is_numeric($id) || $id <= 0) {
@@ -156,16 +153,8 @@ class ContactoController {
      */
     public function eliminar($id) {
         try {
-            // Verificar que el usuario sea administrador
-            $user = AuthHelper::requireActiveUser();
-            if ($user['rol'] !== 'admin') {
-                http_response_code(403);
-                echo json_encode([
-                    'success' => false,
-                    'message' => 'No tienes permisos para realizar esta acción'
-                ]);
-                return;
-            }
+            // SEGURIDAD: Verificar que el usuario sea administrador
+            AuthHelper::requireAdmin();
 
             // Validar ID
             if (!is_numeric($id) || $id <= 0) {
@@ -203,16 +192,8 @@ class ContactoController {
      */
     public function estadisticas() {
         try {
-            // Verificar que el usuario sea administrador
-            $user = AuthHelper::requireActiveUser();
-            if ($user['rol'] !== 'admin') {
-                http_response_code(403);
-                echo json_encode([
-                    'success' => false,
-                    'message' => 'No tienes permisos para acceder a esta información'
-                ]);
-                return;
-            }
+            // SEGURIDAD: Verificar que el usuario sea administrador
+            AuthHelper::requireAdmin();
 
             $resultado = $this->contactoService->obtenerEstadisticas();
 

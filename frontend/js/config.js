@@ -3,7 +3,7 @@
  * Define la URL base de la API Backend
  */
 
-const API_BASE_URL = 'http://localhost:4000';
+const API_BASE_URL = 'https://api.draftosaurus.duckdns.org';
 
 // Helper para construir URLs de API
 window.API_BASE_URL = API_BASE_URL;

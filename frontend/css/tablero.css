@@ -68,6 +68,29 @@ body {
 
 .recinto.highlight {
   background-color: rgba(0, 255, 0, 0.3);
+  box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+  border: 2px dashed #0f0;
+}
+
+/* Feedback visual para móviles */
+@media (max-width: 480px) {
+  .recinto:active {
+    transform: scale(1.05);
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .recinto.highlight {
+    animation: pulse-recinto 1s infinite;
+  }
+}
+
+@keyframes pulse-recinto {
+  0%, 100% {
+    background-color: rgba(0, 255, 0, 0.3);
+  }
+  50% {
+    background-color: rgba(0, 255, 0, 0.5);
+  }
 }
 
 #bosque-semejanza {
@@ -163,12 +186,22 @@ body {
   object-fit: contain;
   transition: all 0.2s ease;
   border: 1px solid rgba(255, 255, 255, 0.1);
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  touch-action: none;
 }
 
 .dino-panel .dino-grid img:hover {
   transform: scale(1.05);
   background: rgba(255, 255, 255, 0.25);
   box-shadow: 0 2px 8px rgba(255, 255, 255, 0.1);
+}
+
+.dino-panel .dino-grid img.dragging {
+  opacity: 0.5;
+  transform: scale(0.95);
+  border: 2px solid #ffc107;
 }
 
 /* Panel dado */
@@ -217,21 +250,21 @@ body {
   margin: 0 auto;
 }
 
-/* Media queries para pantallas chicas */
+/* Media queries para pantallas chicas - TABLETS */
 @media (max-width: 768px) {
   .main-layout {
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    padding: 15px;
+    padding: 10px;
   }
 
   .sidebar.right {
     order: 1;
     width: 100%;
-    max-width: 180px;
-    margin-bottom: 15px;
-    padding: 15px;
+    max-width: 160px;
+    margin-bottom: 10px;
+    padding: 12px;
   }
 
   .tablero {
@@ -243,43 +276,203 @@ body {
   .dino-panel {
     order: 3;
     width: 90%;
-    max-width: 350px;
-    margin-top: 20px;
+    max-width: 400px;
+    margin-top: 15px;
   }
 
   .dino-panel .dino-grid {
     grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-  }
-
-  .sidebar.right .dado-img {
-    width: 100px;
-    height: 100px;
-  }
-}
-
-@media (max-width: 480px) {
-  .dino-panel .dino-grid {
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-  }
-
-  .dino-panel .dino-grid img {
-    padding: 6px;
-  }
-
-  .sidebar.right {
-    padding: 15px;
-  }
-
-  .sidebar.right h4 {
-    font-size: 14px;
-    margin-bottom: 15px;
+    gap: 12px;
   }
 
   .sidebar.right .dado-img {
     width: 90px;
     height: 90px;
+  }
+
+  .sidebar.right .dado-img:hover {
+    transform: rotate(0deg) scale(1.8);
+  }
+}
+
+/* Media query para móviles - iPhone 12, smartphones */
+@media (max-width: 480px) {
+  body {
+    padding: 0;
+    margin: 0;
+  }
+
+  .main-layout {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 5px;
+    gap: 8px;
+    align-items: flex-start;
+  }
+
+  /* DADO: Pequeño a la izquierda */
+  .sidebar.right {
+    order: 1;
+    width: 85px !important;
+    padding: 8px !important;
+    flex-shrink: 0;
+    margin: 0 !important;
+    align-self: flex-start;
+  }
+
+  .sidebar.right h4 {
+    font-size: 11px !important;
+    margin: 0 0 8px 0 !important;
+  }
+
+  .sidebar.right .dado-img {
+    width: 70px !important;
+    height: 70px !important;
+    cursor: pointer !important;
+  }
+
+  .sidebar.right .dado-img:hover {
+    transform: scale(1.2) !important;
+  }
+
+  .sidebar.right #jugador-info {
+    margin-top: 8px !important;
+    gap: 5px !important;
+  }
+
+  .sidebar.right #tablero-avatar {
+    width: 30px !important;
+    height: 30px !important;
+  }
+
+  .sidebar.right #turno-text {
+    font-size: 9px !important;
+    line-height: 1.1 !important;
+    word-break: break-word;
+  }
+
+  .sidebar.right #restriccion-text {
+    font-size: 9px !important;
+    margin-top: 5px !important;
+  }
+
+  .sidebar.right #tirar-dado-btn {
+    padding: 5px 8px !important;
+    font-size: 10px !important;
+    margin-top: 5px !important;
+  }
+
+  /* 📱 MÓVIL: Indicar que el área del dado es clickeable */
+  .sidebar.right.dado-clickeable {
+    border: 2px solid #ffc107 !important;
+    box-shadow: 0 0 15px rgba(255, 193, 7, 0.6) !important;
+    animation: pulse-dado 2s infinite;
+  }
+
+  @keyframes pulse-dado {
+    0%, 100% {
+      box-shadow: 0 0 15px rgba(255, 193, 7, 0.6);
+    }
+    50% {
+      box-shadow: 0 0 25px rgba(255, 193, 7, 0.9);
+    }
+  }
+
+  .sidebar.right.dado-clickeable .dado-img {
+    animation: shake-dado 3s infinite;
+  }
+
+  @keyframes shake-dado {
+    0%, 90%, 100% {
+      transform: rotate(0deg);
+    }
+    92% {
+      transform: rotate(-5deg);
+    }
+    94% {
+      transform: rotate(5deg);
+    }
+    96% {
+      transform: rotate(-3deg);
+    }
+    98% {
+      transform: rotate(3deg);
+    }
+  }
+
+  .sidebar.right .score-row {
+    font-size: 10px !important;
+    padding: 3px 5px !important;
+    margin: 3px 0 !important;
+  }
+
+  /* DINOSAURIOS: Grande a la derecha en 3 columnas */
+  .dino-panel {
+    order: 2;
+    width: calc(100% - 95px) !important;
+    max-width: none !important;
+    margin: 0 !important;
+    padding: 10px !important;
+    flex-grow: 1;
+  }
+
+  .dino-panel h4 {
+    font-size: 14px !important;
+    margin: 0 0 10px 0 !important;
+  }
+
+  .dino-panel .dino-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  .dino-panel .dino-grid img {
+    width: 100% !important;
+    padding: 6px !important;
+    border-radius: 6px !important;
+  }
+
+  .dino-panel .score-bajo-dinos {
+    font-size: 14px !important;
+    margin-top: 8px !important;
+  }
+
+  /* TABLERO: Debajo de todo, ancho completo */
+  .tablero {
+    order: 3;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 8px 0 0 0 !important;
+  }
+
+  /* Ajustar tamaño de dinosaurios en recintos para móviles */
+  .dino-in-recinto {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  .recinto-score {
+    width: 25px !important;
+    height: 25px !important;
+    font-size: 8px !important;
+    top: -5px !important;
+    right: -5px !important;
+  }
+
+  /* Botón de reglas más pequeño */
+  .rules-btn {
+    width: 40px !important;
+    height: 40px !important;
+    font-size: 20px !important;
+    bottom: 10px !important;
+    right: 10px !important;
+  }
+
+  .rules-content {
+    padding: 15px !important;
+    margin: 10px !important;
+    max-height: 70vh !important;
+    font-size: 14px !important;
   }
 }
 
@@ -389,32 +582,38 @@ body {
 }
 
 .rules-content {
-  background: white;
+  background: #281039;
+  /* Mismo color que las cards del index */
   padding: 30px;
   border-radius: 15px;
   max-width: 600px;
   max-height: 80vh;
   overflow-y: auto;
   margin: 20px;
+  border: 2px solid rgba(142, 45, 226, 0.5);
 }
 
 .rules-content h2 {
   margin-top: 0;
-  color: #333;
+  color: #ffc107;
+  /* Color destacado del index */
+  text-shadow: 0 0 10px rgba(255, 193, 7, 0.3);
 }
 
 .rules-content ul {
   text-align: left;
-  color: #444;
+  color: #fff;
 }
 
 .rules-content li {
   margin-bottom: 10px;
   line-height: 1.4;
+  color: #fff;
 }
 
 .close-btn {
-  background: #333;
+  background: #8e2de2;
+  /* Mismo color que los botones del index */
   color: white;
   border: none;
   padding: 10px 20px;
@@ -422,6 +621,13 @@ body {
   cursor: pointer;
   font-size: 16px;
   margin-top: 20px;
+  transition: all 0.3s ease;
+}
+
+.close-btn:hover {
+  background: #3a1c5f;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(142, 45, 226, 0.6);
 }
 
 .recinto-disabled {
@@ -442,8 +648,10 @@ body {
 /* 🛡️ ESTILOS PARA DINOSAURIOS DESHABILITADOS */
 .dino-panel.disabled {
   opacity: 0.4;
-  pointer-events: none;
+  pointer-events: all !important; /* Permitir touch en móvil para tirar dado */
   position: relative;
+  cursor: pointer !important; /* Mostrar que es clickeable */
+  z-index: 100 !important; /* Asegurar que esté por encima */
 }
 
 .dino-panel.disabled::before {
@@ -464,6 +672,38 @@ body {
   border-radius: 10px;
   z-index: 10;
   animation: pulse-warning 2s infinite;
+  pointer-events: all; /* PERMITIR clicks en el overlay */
+  cursor: pointer;
+}
+
+/* 📱 MÓVIL: Panel clickeable para tirar dado */
+@media (max-width: 480px) {
+  .dino-panel.disabled {
+    cursor: pointer !important;
+    border: 3px solid #ffc107 !important;
+    box-shadow: 0 0 20px rgba(255, 193, 7, 0.8) !important;
+  }
+
+  .dino-panel.disabled::before {
+    content: "👆 TOCA AQUÍ PARA TIRAR EL DADO" !important;
+    color: #ffc107 !important;
+    text-shadow: 0 0 10px rgba(255, 193, 7, 0.9) !important;
+    font-size: 14px !important;
+    animation: pulse-tap 1.5s infinite !important;
+    pointer-events: all !important;
+    cursor: pointer !important;
+  }
+
+  @keyframes pulse-tap {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.9;
+    }
+    50% {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+  }
 }
 
 @keyframes pulse-warning {

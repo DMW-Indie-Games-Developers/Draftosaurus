@@ -53,14 +53,23 @@ document.addEventListener('DOMContentLoaded', function () {
         el('user-info').innerHTML = infoHtml;
       }
 
-      // Avatar - Si viene del backend con http:// usarlo, sino usar ruta local por defecto
+      // Avatar - Usar foto_perfil si existe, sino usar default
       const avatarImg = el('avatar-img');
       if (avatarImg) {
-        if (data.avatar && data.avatar.startsWith('http://')) {
-          avatarImg.src = data.avatar;
+        if (data.foto_perfil) {
+          // Si es URL completa, usarla directamente
+          if (data.foto_perfil.startsWith('http://') || data.foto_perfil.startsWith('https://')) {
+            avatarImg.src = data.foto_perfil;
+          } else {
+            // Si es ruta relativa, usar apiUrl para construir la URL completa
+            avatarImg.src = apiUrl(data.foto_perfil);
+          }
         } else {
           avatarImg.src = 'img/isotipoOficial.png';
         }
+        avatarImg.onerror = function() {
+          this.src = 'img/isotipoOficial.png';
+        };
       }
 
       // Cargar datos de ranking
@@ -88,8 +97,8 @@ document.addEventListener('DOMContentLoaded', function () {
       return;
     }
 
-    if (file.size > 3 * 1024 * 1024) {
-      alert('El archivo es demasiado grande. Máximo 3MB.');
+    if (file.size > 5 * 1024 * 1024) {
+      alert('El archivo es demasiado grande. Máximo 5MB.');
       return;
     }
 
@@ -112,10 +121,16 @@ document.addEventListener('DOMContentLoaded', function () {
         if (res.success && res.avatarUrl) {
           const avatarImg = el('avatar-img');
           if (avatarImg) {
-            // Agregar timestamp para evitar cache
-            avatarImg.src = res.avatarUrl + '?t=' + Date.now();
+            // Construir URL correcta y agregar timestamp para evitar cache
+            const fullUrl = res.avatarUrl.startsWith('http') ? res.avatarUrl : apiUrl(res.avatarUrl);
+            avatarImg.src = fullUrl + '?t=' + Date.now();
           }
           alert('Avatar actualizado correctamente');
+
+          // ✅ RECARGAR DATOS DEL PERFIL Y RANKING para mostrar avatar actualizado
+          setTimeout(() => {
+            cargarRankingData(); // Recargar el top 3 con el nuevo avatar
+          }, 500);
         } else {
           alert(res.message || 'Error en la subida');
         }
@@ -149,14 +164,14 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (data.success) {
         localStorage.clear();
-        window.location.href = '/home';
+        window.location.href = '/';
       } else {
         alert('Error al cerrar sesión');
       }
     } catch (error) {
       console.error('Error:', error);
       localStorage.clear();
-      window.location.href = '/home';
+      window.location.href = '/';
     }
   });
 
@@ -616,9 +631,9 @@ document.addEventListener('DOMContentLoaded', function () {
         const data = await res.json();
 
         if (data.success && data.user) {
-          // Usar display_name (nickname si existe, sino username)
-          const displayName = data.user.display_name || data.user.username;
-          crearPartida(false, displayName);
+          // Enviar el username real para la búsqueda en BD
+          const username = data.user.username;
+          crearPartida(false, username);
         } else {
           alert('Login fallido: ' + (data.message || 'Credenciales incorrectas'));
         }
@@ -799,21 +814,29 @@ document.addEventListener('DOMContentLoaded', function () {
     if (!container) return;
 
     const medals = ['🥇', '🥈', '🥉'];
-    const html = topPlayers.map((player, index) => `
-      <div class="d-flex justify-content-between align-items-center mb-2 p-2 bg-dark rounded">
-        <div class="d-flex align-items-center">
-          <span class="me-2">${medals[index] || '#' + player.position}</span>
-          <img src="${player.avatar || 'img/isotipoOficial.png'}" alt="Avatar"
-               class="rounded-circle me-2" style="width: 30px; height: 30px; object-fit: cover;">
-          <span class="text-light">${player.display_name}</span>
+    const html = topPlayers.map((player, index) => {
+      // ✅ CORREGIDO: Usar foto_perfil y construir URL completa
+      const avatarUrl = player.foto_perfil
+        ? (player.foto_perfil.startsWith('http') ? player.foto_perfil : apiUrl(player.foto_perfil))
+        : 'img/isotipoOficial.png';
+
+      return `
+        <div class="d-flex justify-content-between align-items-center mb-2 p-2 bg-dark rounded">
+          <div class="d-flex align-items-center">
+            <span class="me-2">${medals[index] || '#' + player.position}</span>
+            <img src="${avatarUrl}" alt="Avatar"
+                 class="rounded-circle me-2" style="width: 30px; height: 30px; object-fit: cover;"
+                 onerror="this.src='img/isotipoOficial.png'">
+            <span class="text-light">${player.display_name}</span>
+          </div>
+          <div class="text-end">
+            <small class="text-warning fw-bold">${player.puntuacion_total} pts</small>
+            <br>
+            <small class="text-muted">${player.partidas_ganadas}/${player.partidas_jugadas}</small>
+          </div>
         </div>
-        <div class="text-end">
-          <small class="text-warning fw-bold">${player.puntuacion_total} pts</small>
-          <br>
-          <small class="text-muted">${player.partidas_ganadas}/${player.partidas_jugadas}</small>
-        </div>
-      </div>
-    `).join('');
+      `;
+    }).join('');
 
     container.innerHTML = html;
   }

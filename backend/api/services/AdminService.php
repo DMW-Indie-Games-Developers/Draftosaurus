@@ -95,6 +95,13 @@ class AdminService
         }
     }
 
+    /**
+     * SEGURIDAD: Método de cambio de rol ELIMINADO por seguridad
+     *
+     * Los cambios de rol deben hacerse directamente en la base de datos.
+     * Ver documentación en AdminController para instrucciones SQL.
+     */
+
     // Métodos para mensajes
     public function getAllMessages(): array
     {

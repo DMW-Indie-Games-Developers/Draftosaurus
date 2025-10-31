@@ -15,6 +15,16 @@ class AuthService
     private static ?AuthService $instance = null;
     private ?UserRepository $userRepository;
 
+    // Configuración de tiempos de bloqueo (en minutos)
+    private const BLOCK_TIMES = [
+        1 => 1,    // 1er bloqueo: 1 minuto
+        2 => 5,    // 2do bloqueo: 5 minutos
+        3 => 15,   // 3er bloqueo: 15 minutos
+        4 => 1440  // 4to bloqueo: 24 horas (1440 minutos)
+    ];
+
+    private const MAX_ATTEMPTS = 3;
+
     private function __construct()
     {
         $this->userRepository = UserRepository::getInstance();
@@ -90,12 +100,30 @@ class AuthService
         error_log("Usuario encontrado: " . $user->getUsername());
         error_log("Estado del usuario: " . $user->getEstado());
 
+        // Verificar si el usuario está bloqueado por intentos fallidos
+        $blockCheck = $this->loginAttemptService->checkLoginAttempt($user->getId());
+        if ($blockCheck['blocked']) {
+            error_log("ACCESO DENEGADO: Usuario bloqueado temporalmente");
+            error_log("=== FIN verifyCredentials (usuario bloqueado) ===");
+            return false;
+        }
+
         // NUEVA VALIDACIÓN: Verificar si el usuario está suspendido
         if (!$user->isActive()) {
             error_log("ACCESO DENEGADO: Usuario suspendido");
             error_log("=== FIN verifyCredentials (usuario suspendido) ===");
             return false;
         }
+
+        // Verificar la contraseña
+        if (!password_verify($plainPassword, $user->getPassword())) {
+            // Registrar intento fallido
+            $this->loginAttemptService->recordFailedAttempt($user->getId());
+            return false;
+        }
+
+        // Éxito: reiniciar contadores de intentos fallidos
+        $this->loginAttemptService->resetFailedAttempts($user->getId());
 
         error_log("Usuario activo, verificando contraseña...");
 
@@ -120,9 +148,9 @@ class AuthService
     {
         error_log("=== INICIO AuthService::login ===");
         error_log("Intentando login para: $identifier");
-        
+
         $user = $this->verifyCredentials($identifier, $password);
-        
+
         if ($user === false) {
             // Necesitamos ser más específicos sobre por qué falló
             $userExists = $this->userRepository->findByUsernameOrEmail($identifier);
@@ -152,11 +180,11 @@ class AuthService
             'success' => true,
             'message' => 'Login exitoso.',
             'user' => [
-                'id'       => $user->getId(),
+                'id' => $user->getId(),
                 'username' => $user->getUsername(),
-                'email'    => $user->getEmail(),
-                'rol'      => $user->getRol(),
-                'estado'   => $user->getEstado(),
+                'email' => $user->getEmail(),
+                'rol' => $user->getRol(),
+                'estado' => $user->getEstado(),
             ]
         ];
     }

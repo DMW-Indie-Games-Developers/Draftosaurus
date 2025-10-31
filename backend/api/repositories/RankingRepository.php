@@ -17,7 +17,7 @@ class RankingRepository {
 
         try {
             // En MySQLi, los parámetros se marcan con '?'
-            $sql = "SELECT username, puntuacion_total FROM users ORDER BY puntuacion_total DESC LIMIT ?";
+            $sql = "SELECT username, puntuacion_total, avatar as foto_perfil FROM users ORDER BY puntuacion_total DESC LIMIT ?";
             $stmt = $this->conn->prepare($sql);
 
             // Se especifica el tipo de dato ('i' para entero) y se pasa la variable

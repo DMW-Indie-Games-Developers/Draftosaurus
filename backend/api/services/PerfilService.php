@@ -22,6 +22,7 @@ class PerfilService {
             'email' => $user['email'],
             'nickname' => $user['nickname'] ?? null,
             'avatar' => $user['avatar'],
+            'foto_perfil' => $user['avatar'], // Alias para compatibilidad
             'puntuacion_total' => (int)($user['puntuacion_total'] ?? 0),
             'partidas_jugadas' => (int)($user['partidas_jugadas'] ?? 0),
             'partidas_ganadas' => (int)($user['partidas_ganadas'] ?? 0),

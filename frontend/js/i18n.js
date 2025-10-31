@@ -13,6 +13,9 @@ class I18n {
 
   // Inicializar y cargar traducciones
   async init() {
+    // Establecer el idioma en el HTML desde el inicio
+    document.documentElement.lang = this.currentLang;
+
     await this.loadTranslations();
     this.isLoaded = true;
   }
@@ -20,7 +23,9 @@ class I18n {
   // Cargar traducciones desde archivos JSON
   async loadTranslations() {
     try {
-      const response = await fetch(`/lang/${this.currentLang}.json`);
+      // Agregar timestamp para evitar caché
+      const cacheBuster = new Date().getTime();
+      const response = await fetch(`/lang/${this.currentLang}.json?v=${cacheBuster}`);
       this.translations = await response.json();
 
       // Aplicar traducciones después de cargar
@@ -59,6 +64,10 @@ class I18n {
 
     this.currentLang = lang;
     localStorage.setItem('language', lang);
+
+    // Actualizar el atributo lang del HTML para los navegadores
+    document.documentElement.lang = lang;
+
     await this.loadTranslations();
 
     // Disparar evento personalizado para que otros componentes se enteren
@@ -68,6 +77,7 @@ class I18n {
   // Aplicar traducciones a elementos con data-i18n
   applyTranslations() {
     console.log('Aplicando traducciones para idioma:', this.currentLang);
+    console.log('Traducciones cargadas:', this.translations);
 
     // Traducir elementos con data-i18n (textos)
     document.querySelectorAll('[data-i18n]').forEach(element => {

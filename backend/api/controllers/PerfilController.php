@@ -29,6 +29,17 @@ class PerfilController {
     // Endpoint para actualizar el nickname
     public function updateNickname($userId, $nickname) {
         $result = $this->service->updateNickname($userId, $nickname);
+
+        // AUDIT LOG: Perfil actualizado (nickname)
+        if ($result['success']) {
+            AuditLogger::log(
+                AuditLogger::ACTION_PROFILE_UPDATED,
+                $userId,
+                "Usuario actualizó su nickname",
+                ['new_nickname' => $nickname]
+            );
+        }
+
         return $result; // El servicio ya devuelve el formato correcto con success y message
     }
 

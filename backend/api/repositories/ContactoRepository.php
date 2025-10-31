@@ -16,16 +16,18 @@ class ContactoRepository {
      */
     public function crear(Contacto $contacto) {
         try {
-            $sql = "INSERT INTO contacto (nombre, email, asunto, mensaje, fecha_envio) 
+            $sql = "INSERT INTO contacto (nombre, email, asunto, mensaje, fecha_envio)
                     VALUES (?, ?, ?, ?, NOW())";
-            
+
             $stmt = $this->db->prepare($sql);
-            $stmt->bind_param("ssss", 
-                $contacto->getNombre(),
-                $contacto->getEmail(),
-                $contacto->getAsunto(),
-                $contacto->getMensaje()
-            );
+
+            // bind_param requiere variables, no puede recibir resultados de funciones directamente
+            $nombre = $contacto->getNombre();
+            $email = $contacto->getEmail();
+            $asunto = $contacto->getAsunto();
+            $mensaje = $contacto->getMensaje();
+
+            $stmt->bind_param("ssss", $nombre, $email, $asunto, $mensaje);
 
             if ($stmt->execute()) {
                 $contacto->setId($this->db->insert_id);

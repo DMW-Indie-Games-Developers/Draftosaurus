@@ -35,10 +35,10 @@ try {
         throw new Exception('Formato de archivo no soportado. Use JPEG, PNG, WEBP o GIF.');
     }
     
-    // Validar tamaño (3MB máximo)
-    $maxSize = 3 * 1024 * 1024; // 3MB
+    // Validar tamaño (5MB máximo)
+    $maxSize = 5 * 1024 * 1024; // 5MB
     if ($file['size'] > $maxSize) {
-        throw new Exception('El archivo es demasiado grande. Máximo 3MB.');
+        throw new Exception('El archivo es demasiado grande. Máximo 5MB.');
     }
     
     // Crear directorio si no existe

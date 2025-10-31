@@ -1,6 +1,16 @@
 // admin.js - Versión con debugging y correcciones
-document.addEventListener("DOMContentLoaded", () => {
+
+// Variable global para almacenar el token CSRF
+let csrfToken = null;
+
+document.addEventListener("DOMContentLoaded", async () => {
     console.log("=== Admin panel cargado ===");
+
+    // SEGURIDAD: Verificar que el usuario sea admin ANTES de hacer nada
+    await verifyAdminAccess();
+
+    // SEGURIDAD: Obtener token CSRF
+    await getCsrfToken();
 
     // Logout
     document.getElementById("logoutBtn")?.addEventListener("click", async () => {
@@ -21,8 +31,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     // Cargar datos iniciales
+    loadSessionStats();
+    loadOnlineUsers();
+    loadRecentSessions();
     loadUsers();
     loadMessages();
+
+    // Auto-refresh de estadísticas cada 30 segundos
+    setInterval(() => {
+        loadSessionStats();
+        loadOnlineUsers();
+    }, 30000);
 
     // Listeners de botones - PREVENIR DOBLE CLICK
     const saveNewBtn = document.getElementById("saveNewUser");
@@ -189,18 +208,24 @@ async function saveNewUser() {
     saveBtn.textContent = "Guardando...";
     saveBtn.disabled = true;
 
-    const data = { name, email, password };
+    const data = {
+        name,
+        email,
+        password,
+        csrf_token: csrfToken // Incluir token CSRF
+    };
     console.log("=== DATOS A ENVIAR ===");
-    console.log(JSON.stringify({ name, email, password: "[HIDDEN]" }));
+    console.log(JSON.stringify({ name, email, password: "[HIDDEN]", csrf_token: csrfToken ? "[PRESENT]" : "[MISSING]" }));
 
     try {
         console.log("Enviando petición POST...");
-        
+
         const res = await fetch(apiUrl('/api/admin/users'), {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json"
+                "Accept": "application/json",
+                "X-CSRF-TOKEN": csrfToken // También enviar en header
             },
             credentials: 'include',
             body: JSON.stringify(data)
@@ -323,9 +348,10 @@ async function saveEditUser() {
     // CORRECCIÓN IMPORTANTE: usar 'name' no 'username'
     const data = {
         name: document.getElementById("editName").value.trim(),  // ← CORREGIDO
-        email: document.getElementById("editEmail").value.trim()
+        email: document.getElementById("editEmail").value.trim(),
+        csrf_token: csrfToken // Incluir token CSRF
     };
-    
+
     const pwd = document.getElementById("editPassword").value;
     if (pwd) {
         data.password = pwd;
@@ -340,7 +366,8 @@ async function saveEditUser() {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
-                "Accept": "application/json"
+                "Accept": "application/json",
+                "X-CSRF-TOKEN": csrfToken // También enviar en header
             },
             credentials: 'include',
             body: JSON.stringify(data)
@@ -398,9 +425,15 @@ async function toggleStatus(id, currentStatus) {
     try {
         const res = await fetch(apiUrl(`/api/admin/users/${id}/status`), {
             method: "PATCH",
-            headers: { "Content-Type": "application/json" },
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": csrfToken // También enviar en header
+            },
             credentials: 'include',
-            body: JSON.stringify({ status: newStatus })
+            body: JSON.stringify({
+                status: newStatus,
+                csrf_token: csrfToken
+            })
         });
 
         const r = await res.json();
@@ -479,4 +512,241 @@ function openMessageModal(mensaje) {
   const modal = new bootstrap.Modal(document.getElementById('viewMessageModal'));
   modal.show();
 }
+}
+
+/* ---------- SEGURIDAD ---------- */
+
+/**
+ * Obtiene el token CSRF del servidor
+ */
+async function getCsrfToken() {
+    console.log("=== Obteniendo token CSRF ===");
+
+    try {
+        const res = await fetch(apiUrl('/csrf-token'), {
+            credentials: 'include'
+        });
+
+        if (!res.ok) {
+            console.error("Error al obtener token CSRF:", res.status);
+            return;
+        }
+
+        const data = await res.json();
+        csrfToken = data.csrf_token;
+        console.log("✓ Token CSRF obtenido correctamente");
+
+    } catch (error) {
+        console.error("Error al obtener token CSRF:", error);
+    }
+}
+
+/**
+ * Verifica que el usuario actual tenga permisos de administrador
+ * Si no es admin, redirige inmediatamente
+ */
+async function verifyAdminAccess() {
+    console.log("=== Verificando permisos de administrador ===");
+
+    try {
+        const res = await fetch(apiUrl('/perfil/me'), {
+            credentials: 'include'
+        });
+
+        if (!res.ok) {
+            console.error("Error al verificar usuario:", res.status);
+            console.log("No hay sesión activa, redirigiendo a login...");
+            window.location.href = '/login';
+            return;
+        }
+
+        const data = await res.json();
+        console.log("Usuario actual:", data);
+
+        // Verificar si el usuario tiene rol de admin
+        // IMPORTANTE: Usamos el rol del servidor, NO del localStorage (que puede ser manipulado)
+        const userRol = data.rol;
+
+        console.log("Rol desde servidor:", userRol);
+
+        if (userRol !== 'admin') {
+            console.error("⚠️ ACCESO DENEGADO: El usuario no es administrador");
+            console.log("Redirigiendo a perfil de usuario...");
+
+            alert('Acceso denegado: No tienes permisos de administrador');
+
+            // Redirigir al perfil normal
+            window.location.href = '/perfil';
+            return;
+        }
+
+        console.log("✓ Acceso de administrador verificado correctamente");
+
+    } catch (error) {
+        console.error("Error al verificar permisos:", error);
+        alert('Error al verificar permisos. Redirigiendo al login...');
+        window.location.href = '/login';
+    }
+}
+
+/* ---------- ESTADÍSTICAS Y SESIONES ---------- */
+
+/**
+ * Carga las estadísticas de sesiones
+ */
+async function loadSessionStats() {
+    try {
+        console.log("=== Cargando estadísticas de sesiones ===");
+
+        const res = await fetch(apiUrl('/api/admin/session-stats'), {
+            credentials: 'include'
+        });
+
+        if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+        }
+
+        const data = await res.json();
+        console.log("Estadísticas recibidas:", data);
+
+        if (data.success && data.stats) {
+            const stats = data.stats;
+
+            // Actualizar dashboard
+            document.getElementById('statOnlineUsers').textContent = stats.online_now || 0;
+            document.getElementById('statSessionsToday').textContent = stats.sessions_today || 0;
+            document.getElementById('statUniqueUsers').textContent = stats.unique_users_today || 0;
+            document.getElementById('statAvgDuration').textContent = stats.avg_session_duration || '0';
+        }
+
+    } catch (error) {
+        console.error('Error cargando estadísticas de sesiones:', error);
+    }
+}
+
+/**
+ * Carga los usuarios actualmente online
+ */
+async function loadOnlineUsers() {
+    try {
+        console.log("=== Cargando usuarios online ===");
+
+        const res = await fetch(apiUrl('/api/admin/online-users'), {
+            credentials: 'include'
+        });
+
+        if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+        }
+
+        const data = await res.json();
+        console.log("Usuarios online recibidos:", data);
+
+        const tbody = document.getElementById('onlineUsersTable');
+        if (!tbody) return;
+
+        tbody.innerHTML = '';
+
+        if (data.success && data.online_users && data.online_users.length > 0) {
+            data.online_users.forEach(user => {
+                const tr = document.createElement('tr');
+
+                const loginTime = new Date(user.login_time).toLocaleString('es-ES');
+                const lastActivity = new Date(user.last_activity).toLocaleString('es-ES');
+
+                tr.innerHTML = `
+                    <td><strong>${user.username}</strong></td>
+                    <td>${user.email}</td>
+                    <td><span class="badge ${user.rol === 'admin' ? 'bg-danger' : 'bg-info'}">${user.rol}</span></td>
+                    <td><code>${user.ip_address}</code></td>
+                    <td>${loginTime}</td>
+                    <td>${lastActivity}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        } else {
+            tbody.innerHTML = '<tr><td colspan="6" class="text-center text-muted">No hay usuarios online actualmente</td></tr>';
+        }
+
+    } catch (error) {
+        console.error('Error cargando usuarios online:', error);
+        const tbody = document.getElementById('onlineUsersTable');
+        if (tbody) {
+            tbody.innerHTML = '<tr><td colspan="6" class="text-center text-danger">Error al cargar usuarios online</td></tr>';
+        }
+    }
+}
+
+/**
+ * Carga el historial de sesiones recientes
+ */
+async function loadRecentSessions() {
+    try {
+        console.log("=== Cargando sesiones recientes ===");
+
+        const res = await fetch(apiUrl('/api/admin/recent-sessions?limit=50'), {
+            credentials: 'include'
+        });
+
+        if (!res.ok) {
+            throw new Error(`HTTP error! status: ${res.status}`);
+        }
+
+        const data = await res.json();
+        console.log("Sesiones recientes recibidas:", data);
+
+        const tbody = document.getElementById('recentSessionsTable');
+        if (!tbody) return;
+
+        tbody.innerHTML = '';
+
+        if (data.success && data.sessions && data.sessions.length > 0) {
+            data.sessions.forEach(session => {
+                const tr = document.createElement('tr');
+
+                const loginTime = new Date(session.login_time).toLocaleString('es-ES', {
+                    day: '2-digit',
+                    month: '2-digit',
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+
+                const logoutTime = session.logout_time
+                    ? new Date(session.logout_time).toLocaleString('es-ES', {
+                        day: '2-digit',
+                        month: '2-digit',
+                        hour: '2-digit',
+                        minute: '2-digit'
+                    })
+                    : '-';
+
+                const duration = session.duration_minutes
+                    ? `${session.duration_minutes} min`
+                    : '-';
+
+                const statusBadge = session.is_active == 1
+                    ? '<span class="badge bg-success">Activa</span>'
+                    : '<span class="badge bg-secondary">Cerrada</span>';
+
+                tr.innerHTML = `
+                    <td>${session.username}</td>
+                    <td><small><code>${session.ip_address}</code></small></td>
+                    <td><small>${loginTime}</small></td>
+                    <td><small>${logoutTime}</small></td>
+                    <td>${duration}</td>
+                    <td>${statusBadge}</td>
+                `;
+                tbody.appendChild(tr);
+            });
+        } else {
+            tbody.innerHTML = '<tr><td colspan="6" class="text-center text-muted">No hay sesiones recientes</td></tr>';
+        }
+
+    } catch (error) {
+        console.error('Error cargando sesiones recientes:', error);
+        const tbody = document.getElementById('recentSessionsTable');
+        if (tbody) {
+            tbody.innerHTML = '<tr><td colspan="6" class="text-center text-danger">Error al cargar sesiones</td></tr>';
+        }
+    }
 }

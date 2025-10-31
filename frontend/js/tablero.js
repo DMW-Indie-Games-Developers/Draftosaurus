@@ -1,5 +1,97 @@
 /* =====  tablero.js - SISTEMA COMPLETO CON VALIDACIÓN DE REGLAS  ===== */
 
+/* ===== PANEL DE DEBUG MÓVIL (DEBE IR PRIMERO) ===== */
+let debugPanel = null;
+let debugLogs = [];
+
+function initDebugPanel() {
+  if (debugPanel) {
+    console.log('🐛 Debug panel ya existe');
+    return;
+  }
+
+  console.log('🐛 Creando debug panel...');
+
+  debugPanel = document.createElement('div');
+  debugPanel.id = 'mobile-debug-panel';
+  debugPanel.style.cssText = `
+    position: fixed;
+    bottom: 60px;
+    left: 10px;
+    right: 10px;
+    max-height: 150px;
+    background: rgba(0, 0, 0, 0.9);
+    color: #0f0;
+    font-family: monospace;
+    font-size: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 9999;
+    overflow-y: auto;
+    border: 2px solid #0f0;
+    display: none;
+  `;
+
+  const toggleBtn = document.createElement('button');
+  toggleBtn.id = 'debug-toggle-btn';
+  toggleBtn.textContent = '🐛 DEBUG';
+  toggleBtn.style.cssText = `
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    width: 80px;
+    height: 50px;
+    background: lime;
+    color: black;
+    border: 3px solid black;
+    border-radius: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    z-index: 10000;
+    cursor: pointer;
+    touch-action: manipulation;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  `;
+
+  const toggleFunction = () => {
+    console.log('🐛 Toggle button clicked');
+    debugPanel.style.display = debugPanel.style.display === 'none' ? 'block' : 'none';
+  };
+
+  toggleBtn.onclick = toggleFunction;
+  toggleBtn.addEventListener('touchend', (e) => {
+    e.preventDefault();
+    toggleFunction();
+  }, { passive: false });
+
+  if (document.body) {
+    document.body.appendChild(debugPanel);
+    document.body.appendChild(toggleBtn);
+    console.log('✅ Debug panel y botón agregados al DOM');
+  } else {
+    console.error('❌ document.body no existe aún');
+  }
+}
+
+function mobileLog(message, color = '#0f0') {
+  console.log(message);
+
+  if (!debugPanel) initDebugPanel();
+
+  const timestamp = new Date().toLocaleTimeString();
+  const logEntry = `[${timestamp}] ${message}`;
+
+  debugLogs.push(logEntry);
+  if (debugLogs.length > 20) debugLogs.shift();
+
+  const logLine = document.createElement('div');
+  logLine.style.color = color;
+  logLine.textContent = logEntry;
+
+  debugPanel.appendChild(logLine);
+  debugPanel.scrollTop = debugPanel.scrollHeight;
+}
+
 /* ------ VALIDACIONES ANTI-TRAMPA ------ */
 
 // 1. Bloqueo frontal: sin sesión → login
@@ -153,7 +245,8 @@ function deshabilitarDinosauriosSinDado() {
 
     // Agregar clase CSS de deshabilitado
     dinosPanel.classList.add('disabled');
-    dinosPanel.style.pointerEvents = 'none';
+    // 📱 FORZAR pointer-events='all' para permitir click en móvil que tire el dado
+    dinosPanel.style.pointerEvents = 'all';
     dinosPanel.title = '🎲 Primero debes tirar el dado';
 
     // Crear overlay visual con transición
@@ -254,33 +347,86 @@ let jugadorActivo = jugadorQueTiroDado;
 let restriccionActual = null;
 let turno = 1;
 let ronda = 1;
+let fase = 'tirar_dado'; // Fases: 'tirar_dado', 'colocar', 'descartar'
 let ID_PARTIDA = null;
 const TOTAL_RONDAS = 4;
+const TURNOS_POR_RONDA = 3;
 const TOTAL_DINOSAURIOS = 12;
 let colocadosEnTurno = 0;
+let dinosDescartados = 0;
+let jugadoresQueHanJugado = []; // Rastrea qué jugadores completaron colocar+descartar
+let jugadoresQueDescartaron = []; // Rastrea qué jugadores ya descartaron en este turno
 
 let manos = { 1: [], 2: [] };
 let puntuacionesJugadores = { 1: {}, 2: {} };
 
 /* ------ CONFIGURACIÓN DEL JUEGO ------ */
 const especies = ['dino1', 'dino2', 'dino3', 'dino4', 'dino5', 'trex'];
+// 🎲 RESTRICCIONES DEL DADO (6 caras reales: 1-6)
+// NOTA: El jugador que TIRA el dado juega SIN restricción (muestra dado6.png)
+// El OTRO jugador debe seguir la restricción del dado
 const restricciones = {
   1: "Zona izquierda",
   2: "Zona derecha",
   3: "Zona boscosa",
   4: "Recinto vacío",
-  5: "Recinto sin T-REX",
-  6: "Sin restricción"
+  5: "Recinto sin T-Rex",
+  6: "Zona rocosa"
 };
 
 /* ------ PROPIEDADES FÍSICAS DE LOS DINOSAURIOS ------ */
+// 🔬 CONSTANTE GRAVITACIONAL: Aceleración debido a la gravedad en la Tierra
+const GRAVEDAD = 9.8; // m/s² (metros por segundo al cuadrado)
+
 const propiedadesFisicas = {
-  'dino1': { nombre: 'Compsognathus', masa: 2.5 },     // kg
-  'dino2': { nombre: 'Velociraptor', masa: 15.0 },     // kg
-  'dino3': { nombre: 'Parasaurolophus', masa: 3500.0 }, // kg
-  'dino4': { nombre: 'Triceratops', masa: 6000.0 },    // kg
-  'dino5': { nombre: 'Brontosaurus', masa: 15000.0 },  // kg
-  'trex': { nombre: 'Tyrannosaurus Rex', masa: 7000.0 } // kg
+  'dino1': {
+    nombre: 'Compsognathus',
+    masa: 2.5,
+    epoca: 'Jurásico Tardío (150 millones de años)',
+    localizacion: 'Alemania y Francia',
+    dieta: 'Carnívoro - Cazaba insectos, lagartos y mamíferos primitivos',
+    info: 'Su nombre significa "mandíbula elegante". Era un dinosaurio pequeño, ágil y bípedo, del tamaño de un pollo grande. Pertenece al grupo de los terópodos, el mismo que incluye al T-Rex.'
+  },
+  'dino2': {
+    nombre: 'Velociraptor',
+    masa: 15.0,
+    epoca: 'Cretácico Tardío (75-71 millones de años)',
+    localizacion: 'Mongolia (Desierto de Gobi) y China',
+    dieta: 'Carnívoro - Cazaba en grupo protocerátops y pequeños reptiles',
+    info: 'Contrario a Jurassic Park, el Velociraptor real estaba cubierto de plumas y era del tamaño de un pavo grande. Tenía una garra en forma de hoz en el segundo dedo de su pata que usaba como arma principal.'
+  },
+  'dino3': {
+    nombre: 'Parasaurolophus',
+    masa: 3500.0,
+    epoca: 'Cretácico Tardío (76-73 millones de años)',
+    localizacion: 'Norteamérica (Canadá y Estados Unidos)',
+    dieta: 'Herbívoro - Se alimentaba de helechos y coníferas',
+    info: 'Famoso por su enorme cresta craneal hueca en forma de tubo. Se cree que esta cresta actuaba como una trompeta natural para comunicarse con su manada. Usaba su pico ancho para arrancar hojas y cientos de dientes para masticarlas.'
+  },
+  'dino4': {
+    nombre: 'Triceratops',
+    masa: 6000.0,
+    epoca: 'Cretácico Tardío (68-66 millones de años)',
+    localizacion: 'Oeste de Norteamérica',
+    dieta: 'Herbívoro - Su pico en forma de loro le permitía arrancar vegetación dura',
+    info: 'Reconocible por sus tres cuernos faciales y su gran gola ósea. Es considerado el "tanque" del Cretácico. Su principal depredador era el T-Rex, y se han encontrado fósiles con marcas de mordidas que demuestran feroces batallas.'
+  },
+  'dino5': {
+    nombre: 'Brontosaurus',
+    masa: 15000.0,
+    epoca: 'Jurásico Tardío (156-146 millones de años)',
+    localizacion: 'Estados Unidos (Wyoming, Utah, Colorado, Oklahoma)',
+    dieta: 'Herbívoro - Se alimentaba de hojas de las copas de los árboles',
+    info: 'Su nombre significa "lagarto del trueno". Tragaba piedras (gastrolitos) para triturar las fibras vegetales. En 2015 se confirmó que hay suficientes diferencias para considerarlo un género distinto del Apatosaurus, devolviéndole su nombre icónico.'
+  },
+  'trex': {
+    nombre: 'Tyrannosaurus Rex',
+    masa: 7000.0,
+    epoca: 'Cretácico Tardío (68-66 millones de años)',
+    localizacion: 'Norteamérica occidental (Canadá hasta Texas)',
+    dieta: 'Carnívoro superdepredador - Cazaba hadrosáuridos y Triceratops',
+    info: 'Ápice depredador de su ecosistema con la mordida más poderosa conocida, capaz de triturar hueso. Aunque sus brazos eran pequeños, eran musculosos. Tenía agudo olfato y visión binocular, lo que lo convertía en un cazador formidable.'
+  }
 };
 
 /* ------ CONFIGURACIÓN DE RECINTOS ------ */
@@ -376,7 +522,12 @@ async function autoSave() {
     mano1: manos[1],
     mano2: manos[2],
     colocaciones,
-    jugador2: rivalNombre
+    jugador2: rivalNombre,
+    fase,
+    dinosDescartados,
+    bolsaDeDinosaurios,
+    jugadoresQueHanJugado,
+    jugadoresQueDescartaron
   };
 
   try {
@@ -419,7 +570,12 @@ window.addEventListener('beforeunload', function (e) {
         jugador: +d.dataset.jugador,
         especie: d.dataset.especie
       })),
-      jugador2: rivalNombre
+      jugador2: rivalNombre,
+      fase,
+      dinosDescartados,
+      bolsaDeDinosaurios,
+      jugadoresQueHanJugado,
+      jugadoresQueDescartaron
     };
 
     localStorage.setItem(LS_KEY, JSON.stringify({ ...payload, ts: Date.now() }));
@@ -452,8 +608,13 @@ async function cargarAvatarUsuario() {
     const userData = await response.json();
 
     if (userData.success !== false && userData.avatar) {
-      localStorage.setItem('userAvatar', userData.avatar);
-      return userData.avatar;
+      let avatarUrl = userData.avatar;
+      // Si el avatar comienza con /uploads/, agregar el prefijo del backend
+      if (avatarUrl && avatarUrl.startsWith('/uploads/')) {
+        avatarUrl = API_BASE_URL + avatarUrl;
+      }
+      localStorage.setItem('userAvatar', avatarUrl);
+      return avatarUrl;
     } else {
       return 'img/isotipoOficial.png';
     }
@@ -468,7 +629,11 @@ async function actualizarAvatarEnUI() {
   if (avatarImg) {
     const esJugador1 = jugadorActivo === 1;
     if (esJugador1) {
-      const userAvatar = localStorage.getItem('userAvatar') || await cargarAvatarUsuario();
+      let userAvatar = localStorage.getItem('userAvatar') || await cargarAvatarUsuario();
+      // Si el avatar comienza con /uploads/, agregar el prefijo del backend
+      if (userAvatar && userAvatar.startsWith('/uploads/')) {
+        userAvatar = API_BASE_URL + userAvatar;
+      }
       avatarImg.src = userAvatar;
     } else {
       avatarImg.src = 'img/isotipoOficial.png';
@@ -537,15 +702,27 @@ function puedeColocarDino(recinto, tipoRecinto, especieDino) {
       const ambiente = recinto.dataset.ambiente;
 
       switch (restriccionActual) {
-        case 1: if (zona !== 'izquierda') return false; break;
-        case 2: if (zona !== 'derecha') return false; break;
-        case 3: if (ambiente !== 'boscoso') return false; break;
-        case 4: if (cantidadDinos > 0) return false; break;
-        case 5:
-          const tieneTrex = dinosauriosEnRecinto.some(d => d.dataset.especie === 'trex');
-          if (tieneTrex) return false;
+        case 1: // Zona izquierda
+          if (zona !== 'izquierda') return false;
           break;
-        case 6: break;
+        case 2: // Zona derecha
+          if (zona !== 'derecha') return false;
+          break;
+        case 3: // Zona boscosa (ambiente boscoso)
+          if (ambiente !== 'boscoso') return false;
+          break;
+        case 4: // Recinto vacío
+          if (cantidadDinos > 0) return false;
+          break;
+        case 5: // Recinto sin T-Rex (solo verifica T-Rex propios)
+          const tieneTrexPropio = dinosauriosEnRecinto.some(d =>
+            d.dataset.especie === 'trex' && +d.dataset.jugador === jugadorActivo
+          );
+          if (tieneTrexPropio) return false;
+          break;
+        case 7: // Zona rocosa (ambiente rocoso)
+          if (ambiente !== 'rocoso') return false;
+          break;
       }
     }
   }
@@ -708,7 +885,9 @@ function calcularPesoRecinto(recintoId) {
     const especie = dino.dataset.especie;
     const propiedades = propiedadesFisicas[especie];
     if (propiedades) {
-      pesoTotal += propiedades.masa;
+      // 🔬 FÍSICA: Aplicar fórmula Peso = Masa × Gravedad
+      // Peso (N) = Masa (kg) × g (9.8 m/s²)
+      pesoTotal += propiedades.masa * GRAVEDAD;
     }
   });
 
@@ -716,12 +895,14 @@ function calcularPesoRecinto(recintoId) {
 }
 
 function formatearPeso(peso) {
-  if (peso === 0) return '0kg';
+  if (peso === 0) return '0N';
 
+  // 🔬 FÍSICA: El peso se mide en Newtons (N), no en kg
+  // 1 kN (kilonewton) = 1000 N
   if (peso >= 1000) {
-    return `${(peso / 1000).toFixed(1)}t`; // Toneladas
+    return `${(peso / 1000).toFixed(1)} kN`; // Kilonewtons
   } else {
-    return `${peso.toFixed(1)}kg`; // Kilogramos
+    return `${peso.toFixed(1)} N`; // Newtons
   }
 }
 
@@ -734,7 +915,9 @@ function calcularPesoTotalJugador(jugador) {
     const especie = dino.dataset.especie;
     const propiedades = propiedadesFisicas[especie];
     if (propiedades) {
-      pesoTotal += propiedades.masa;
+      // 🔬 FÍSICA: Aplicar fórmula Peso = Masa × Gravedad
+      // Peso (N) = Masa (kg) × g (9.8 m/s²)
+      pesoTotal += propiedades.masa * GRAVEDAD;
     }
   });
 
@@ -850,28 +1033,95 @@ function clearHighlight() {
 
 /* ===== FUNCIONES AUXILIARES ===== */
 
+// Bolsa global de dinosaurios (se inicializa al comenzar el juego)
+let bolsaDeDinosaurios = [];
+let colocandoDino = false; // Flag para prevenir múltiples colocaciones simultáneas
+
+function inicializarBolsa() {
+  // Crear bolsa con 8 dinosaurios de cada especie (48 total)
+  // Se descartan 2 de cada especie automáticamente
+  bolsaDeDinosaurios = [];
+  especies.forEach(especie => {
+    for (let i = 0; i < 8; i++) {
+      bolsaDeDinosaurios.push(especie);
+    }
+  });
+
+  // Mezclar la bolsa (algoritmo Fisher-Yates)
+  for (let i = bolsaDeDinosaurios.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [bolsaDeDinosaurios[i], bolsaDeDinosaurios[j]] = [bolsaDeDinosaurios[j], bolsaDeDinosaurios[i]];
+  }
+
+  console.log('🎲 Bolsa inicializada con 48 dinosaurios:', bolsaDeDinosaurios.length);
+}
+
 function generarMano() {
-  return Array.from({ length: 6 }, () => especies[Math.floor(Math.random() * especies.length)]);
+  // Sacar 6 dinosaurios aleatorios de la bolsa
+  if (bolsaDeDinosaurios.length < 6) {
+    console.warn('⚠️ No hay suficientes dinosaurios en la bolsa');
+    return [];
+  }
+
+  const mano = bolsaDeDinosaurios.splice(0, 6);
+  console.log(`🎴 Mano generada (quedan ${bolsaDeDinosaurios.length} en bolsa):`, mano);
+  return mano;
 }
 
 function renderMano(jugador) {
   const grid = document.querySelector('.dino-grid');
   grid.innerHTML = '';
+
+  // Si estamos en fase de descartar, mostrar interfaz especial
+  if (fase === 'descartar') {
+    renderManoParaDescartar(jugador);
+    return;
+  }
+
+  // Renderizado normal para fase de colocar
   manos[jugador].forEach((esp, idx) => {
     const img = document.createElement('img');
     img.src = `/img/imagen_Tablero/${esp}.png`;
     img.className = 'dino-img';
-    img.draggable = true;
+    // Solo draggable en fase colocar
+    img.draggable = (fase === 'colocar');
     img.dataset.especie = esp;
     img.dataset.index = idx;
 
     // Agregar tooltip con información de peso
     const propiedades = propiedadesFisicas[esp];
     if (propiedades) {
-      img.title = `${propiedades.nombre} - ${formatearPeso(propiedades.masa)}`;
+      const peso = propiedades.masa * GRAVEDAD;
+      img.title = `${propiedades.nombre} - ${formatearPeso(peso)}\n\nDoble click para más información`;
     }
 
     grid.appendChild(img);
+
+    // 📚 EVENTO DE DOBLE CLICK para mostrar información educativa (DESKTOP)
+    img.addEventListener('dblclick', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      console.log('📚 Doble click en dinosaurio:', esp);
+      mostrarInfoDinosaurio(esp);
+    });
+
+    // 📚 EVENTO DE DOBLE TAP para mostrar información educativa (MÓVIL)
+    let lastTap = 0;
+    img.addEventListener('touchend', (e) => {
+      const currentTime = new Date().getTime();
+      const tapLength = currentTime - lastTap;
+
+      // Si el tiempo entre taps es menor a 300ms, es un doble tap
+      if (tapLength < 300 && tapLength > 0) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log('📚 Doble tap en dinosaurio:', esp);
+        mostrarInfoDinosaurio(esp);
+        lastTap = 0; // Reset
+      } else {
+        lastTap = currentTime;
+      }
+    });
 
     img.addEventListener('dragstart', e => {
       // 🛡️ VALIDACIÓN: No permitir drag si no se tiró el dado
@@ -879,6 +1129,13 @@ function renderMano(jugador) {
         e.preventDefault();
         alert('🎲 Primero debes tirar el dado antes de arrastrar dinosaurios');
         console.warn('🚫 Intento de drag sin tirar dado - BLOQUEADO');
+        return false;
+      }
+
+      // 🛡️ VALIDACIÓN: Solo permitir drag en fase colocar
+      if (fase !== 'colocar') {
+        e.preventDefault();
+        console.warn('🚫 Solo puedes arrastrar en fase colocar');
         return false;
       }
 
@@ -891,7 +1148,403 @@ function renderMano(jugador) {
       img.classList.remove('dragging');
       clearHighlight();
     });
+
+    // 📱 SOPORTE TÁCTIL (TOUCH) PARA MÓVILES
+    let touchStartX, touchStartY;
+    let touchedDino = null;
+
+    img.addEventListener('touchstart', e => {
+      mobileLog('📱 TOUCHSTART detectado');
+
+      // Validaciones igual que drag
+      if (restriccionActual === null) {
+        mobileLog('🚫 Dado no tirado', '#f00');
+        alert('🎲 Primero debes tirar el dado antes de arrastrar dinosaurios');
+        return;
+      }
+      if (fase !== 'colocar') {
+        mobileLog(`🚫 Fase incorrecta: ${fase}`, '#f00');
+        return;
+      }
+
+      touchStartX = e.touches[0].clientX;
+      touchStartY = e.touches[0].clientY;
+
+      draggedDino = { especie: esp, index: idx, jugador: jugadorActivo };
+      touchedDino = img;
+      img.classList.add('dragging');
+      img.style.opacity = '0.5';
+      highlightRecintos(esp);
+
+      mobileLog(`✅ Dino: ${esp}, idx: ${idx}`, '#0ff');
+
+      e.preventDefault();
+      e.stopPropagation();
+    }, { passive: false });
+
+    img.addEventListener('touchmove', e => {
+      if (!touchedDino) return;
+      e.preventDefault();
+      e.stopPropagation();
+    }, { passive: false });
+
+    img.addEventListener('touchend', async e => {
+      if (!touchedDino) {
+        mobileLog('⚠️ touchend sin dino', '#ff0');
+        return;
+      }
+
+      mobileLog('📱 TOUCHEND');
+
+      const touch = e.changedTouches[0];
+      const touchX = touch.clientX;
+      const touchY = touch.clientY;
+
+      mobileLog(`📍 Pos: (${Math.round(touchX)}, ${Math.round(touchY)})`);
+
+      // Temporalmente ocultar el dino para que elementFromPoint encuentre el recinto
+      img.style.pointerEvents = 'none';
+      const elementAtPoint = document.elementFromPoint(touchX, touchY);
+      img.style.pointerEvents = 'auto';
+
+      mobileLog(`🎯 Elem: ${elementAtPoint?.className || 'null'}`);
+
+      // Buscar el recinto más cercano
+      let recinto = elementAtPoint;
+      let intentos = 0;
+      while (recinto && !recinto.classList.contains('recinto') && intentos < 10) {
+        recinto = recinto.parentElement;
+        intentos++;
+      }
+
+      mobileLog(`🏛️ Recinto: ${recinto?.id || 'ninguno'}`);
+
+      img.style.opacity = '1';
+      img.classList.remove('dragging');
+      clearHighlight();
+
+      if (recinto && recinto.classList.contains('recinto') && !recinto.classList.contains('recinto-disabled')) {
+        const tipoRecinto = recinto.dataset.tipo;
+        const especieDino = draggedDino.especie;
+        const dinoIndex = draggedDino.index; // Guardar antes de limpiar
+
+        mobileLog(`🔍 Valid: ${recinto.id}, ${tipoRecinto}`, '#0ff');
+
+        if (puedeColocarDino(recinto, tipoRecinto, especieDino)) {
+          mobileLog('✅ Colocando...', '#0f0');
+          try {
+            // NO limpiar draggedDino todavía, lo necesita colocarDino()
+            await colocarDino(recinto, especieDino);
+            mobileLog('✅ Colocación terminada', '#0f0');
+
+            // AHORA sí limpiar después de colocar
+            touchedDino = null;
+            draggedDino = null;
+            mobileLog('🧹 Limpiado después de colocar');
+          } catch (err) {
+            mobileLog(`❌ Error colocando: ${err.message}`, '#f00');
+            console.error('Error en colocarDino:', err);
+            // Limpiar incluso si hay error
+            touchedDino = null;
+            draggedDino = null;
+          }
+        } else {
+          const mensaje = obtenerMensajeError(recinto, especieDino);
+          mobileLog(`🚫 ${mensaje}`, '#f00');
+          alert(mensaje);
+          // Limpiar si no se puede colocar
+          touchedDino = null;
+          draggedDino = null;
+        }
+      } else {
+        mobileLog('⚠️ Recinto inválido', '#ff0');
+        // Limpiar si recinto inválido
+        touchedDino = null;
+        draggedDino = null;
+      }
+
+      e.preventDefault();
+      e.stopPropagation();
+    }, { passive: false });
   });
+}
+
+function renderManoParaDescartar(jugador) {
+  const grid = document.querySelector('.dino-grid');
+  grid.innerHTML = '';
+
+  if (!manos[jugador] || manos[jugador].length === 0) {
+    grid.innerHTML = '<p class="text-center text-muted">No hay dinosaurios para descartar</p>';
+    return;
+  }
+
+  // Verificar si este jugador ya descartó
+  const yaDescarto = jugadoresQueDescartaron.includes(jugador);
+
+  // Crear mensaje de instrucción
+  const instruccion = document.createElement('p');
+  instruccion.className = yaDescarto ? 'text-center text-success mb-3' : 'text-center text-warning mb-3';
+  instruccion.innerHTML = yaDescarto
+    ? '<strong>✅ Ya descartaste. Esperando al otro jugador...</strong>'
+    : '<strong>🗑️ Selecciona un dinosaurio para DESCARTAR</strong>';
+  grid.appendChild(instruccion);
+
+  // Renderizar dinosaurios con estilo de descarte
+  manos[jugador].forEach((esp, idx) => {
+    const container = document.createElement('div');
+    container.className = 'dino-descarte-container';
+    container.style.cssText = 'display: inline-block; margin: 5px; cursor: pointer; position: relative;';
+
+    const img = document.createElement('img');
+    img.src = `/img/imagen_Tablero/${esp}.png`;
+    img.className = 'dino-img dino-descartable';
+    img.draggable = false; // NO permitir drag en fase descarte
+    img.dataset.especie = esp;
+    img.dataset.index = idx;
+
+    // Si ya descartó, deshabilitar visualmente
+    if (yaDescarto) {
+      img.style.cssText = 'border: 3px solid #6c757d; border-radius: 8px; transition: all 0.3s; width: 80px; height: 80px; opacity: 0.4; cursor: not-allowed;';
+      container.style.cursor = 'not-allowed';
+    } else {
+      img.style.cssText = 'border: 3px solid #dc3545; border-radius: 8px; transition: all 0.3s; width: 80px; height: 80px;';
+    }
+
+    // Agregar tooltip
+    const propiedades = propiedadesFisicas[esp];
+    if (propiedades) {
+      img.title = yaDescarto ? 'Ya descartaste en este turno' : `${propiedades.nombre} - Click para descartar`;
+    }
+
+    container.appendChild(img);
+    grid.appendChild(container);
+
+    // Solo agregar eventos si NO ha descartado
+    if (!yaDescarto) {
+      // Evento hover
+      img.addEventListener('mouseenter', () => {
+        img.style.transform = 'scale(1.1)';
+        img.style.borderColor = '#ff0000';
+      });
+
+      img.addEventListener('mouseleave', () => {
+        img.style.transform = 'scale(1)';
+        img.style.borderColor = '#dc3545';
+      });
+
+      // Evento click para descartar (desktop)
+      img.addEventListener('click', () => {
+        mobileLog(`🗑️ Click en dino para descartar: ${esp}`);
+        descartarDino(idx, esp);
+      });
+
+      // Evento táctil para móviles
+      img.addEventListener('touchend', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        mobileLog(`🗑️ Touch en dino para descartar: ${esp}`);
+        descartarDino(idx, esp);
+      }, { passive: false });
+    }
+  });
+}
+
+/* ===== FUNCIÓN PARA DESCARTAR DINOSAURIO ===== */
+let descartandoDino = false; // Flag para prevenir múltiples descartes
+
+async function descartarDino(index, especie) {
+  mobileLog(`🗑️ descartarDino() ejecutándose - especie: ${especie}, index: ${index}`);
+
+  // Prevenir múltiples descartes simultáneos
+  if (descartandoDino) {
+    console.warn('⚠️ Ya se está descartando un dinosaurio');
+    mobileLog('⚠️ Descarte ya en proceso', '#ff0');
+    return;
+  }
+
+  // 🛡️ VALIDACIÓN: Verificar que el jugador no haya descartado ya
+  if (jugadoresQueDescartaron.includes(jugadorActivo)) {
+    console.warn(`⚠️ El jugador ${jugadorActivo} ya descartó en este turno`);
+    mobileLog('⚠️ Ya descartaste', '#f00');
+    alert('⚠️ Ya descartaste un dinosaurio en este turno. Espera al otro jugador.');
+    return;
+  }
+
+  descartandoDino = true;
+  console.log(`🗑️ Descartando dinosaurio: ${especie} del jugador ${jugadorActivo}`);
+  mobileLog(`✅ Descartando ${especie}`, '#0f0');
+
+  // Obtener el elemento visual del dinosaurio
+  const grid = document.querySelector('.dino-grid');
+  const dinoElements = grid.querySelectorAll('.dino-descartable');
+
+  // Solo deshabilitar el dinosaurio que se está descartando
+  if (dinoElements[index]) {
+    dinoElements[index].style.pointerEvents = 'none';
+    dinoElements[index].style.cursor = 'not-allowed';
+    dinoElements[index].style.transition = 'all 0.3s ease-out';
+    dinoElements[index].style.opacity = '0';
+    dinoElements[index].style.transform = 'scale(0.5)';
+  }
+
+  // Esperar a que termine la animación
+  await new Promise(resolve => setTimeout(resolve, 300));
+
+  // Remover de la mano
+  console.log(`🗑️ ANTES de remover - Mano J${jugadorActivo}:`, manos[jugadorActivo]);
+  console.log(`🗑️ Removiendo index ${index}, especie: ${especie}`);
+
+  const removed = manos[jugadorActivo].splice(index, 1);
+  dinosDescartados++;
+
+  // Marcar que este jugador ya descartó
+  if (!jugadoresQueDescartaron.includes(jugadorActivo)) {
+    jugadoresQueDescartaron.push(jugadorActivo);
+  }
+
+  console.log(`📊 Descartados total: ${dinosDescartados}`);
+  console.log(`✅ Dinosaurio removido:`, removed);
+  console.log(`🎴 DESPUÉS de remover - Mano J${jugadorActivo} (${manos[jugadorActivo].length} dinos):`, manos[jugadorActivo]);
+  console.log(`🔒 Jugadores que ya descartaron:`, jugadoresQueDescartaron);
+
+  // 💾 Guardar estado
+  await autoSave();
+
+  // Verificar si terminó el turno/ronda
+  verificarFinTurno();
+
+  // Reiniciar flag
+  descartandoDino = false;
+}
+
+/* ===== VERIFICAR FIN DE TURNO ===== */
+function verificarFinTurno() {
+  console.log(`📊 Verificando fin de turno: Turno=${turno}, Ronda=${ronda}`);
+  console.log(`👥 Jugador ${jugadorActivo} completó su turno`);
+
+  // Marcar que este jugador completó su turno
+  if (!jugadoresQueHanJugado.includes(jugadorActivo)) {
+    jugadoresQueHanJugado.push(jugadorActivo);
+  }
+
+  console.log(`✅ Jugadores que completaron: ${jugadoresQueHanJugado.join(', ')}`);
+
+  // Verificar si ambos jugadores han jugado
+  if (jugadoresQueHanJugado.length < 2) {
+    // Cambiar al otro jugador
+    jugadorActivo = jugadorActivo === 1 ? 2 : 1;
+
+    // 🎲 REGLA IMPORTANTE: Solo el jugador que tiró el dado juega sin restricción
+    // El segundo jugador debe jugar CON la restricción del dado del primer jugador
+    if (jugadorActivo === jugadorQueTiroDado) {
+      // Este jugador debe tirar el dado (no debería pasar aquí en medio de un turno)
+      fase = 'tirar_dado';
+      restriccionActual = null;
+      console.log(`🎲 ${jugadorActivo === 1 ? jugadorActualNombre : rivalNombre} debe tirar el dado`);
+    } else {
+      // Este jugador juega con la restricción ya existente
+      fase = 'colocar';
+      // NO resetear restriccionActual - mantener la del jugador que tiró el dado
+      console.log(`🔒 ${jugadorActivo === 1 ? jugadorActualNombre : rivalNombre} juega CON restricción: ${restricciones[restriccionActual]}`);
+    }
+
+    console.log(`🔄 Cambiando a jugador ${jugadorActivo}`);
+    console.log(`🔒 Jugadores que ya descartaron (no se limpia aún):`, jugadoresQueDescartaron);
+
+    actualizarUI();
+    autoSave();
+    return;
+  }
+
+  // Ambos jugadores jugaron: intercambiar manos y avanzar turno
+  console.log(`🎴 Manos ANTES de intercambio:`);
+  console.log(`   J1 (${jugadorActualNombre}): ${manos[1].length} dinos →`, manos[1]);
+  console.log(`   J2 (${rivalNombre}): ${manos[2].length} dinos →`, manos[2]);
+
+  const manosRestantes = {
+    1: [...manos[1]],
+    2: [...manos[2]]
+  };
+
+  console.log(`🔄 Intercambiando manos: J1 pasa ${manosRestantes[1].length} dinos, J2 pasa ${manosRestantes[2].length} dinos`);
+
+  // Intercambiar manos
+  manos[1] = manosRestantes[2];
+  manos[2] = manosRestantes[1];
+
+  console.log(`🎴 Manos DESPUÉS de intercambio:`);
+  console.log(`   J1 (${jugadorActualNombre}): ${manos[1].length} dinos →`, manos[1]);
+  console.log(`   J2 (${rivalNombre}): ${manos[2].length} dinos →`, manos[2]);
+
+  // Limpiar lista de jugadores que han jugado
+  jugadoresQueHanJugado = [];
+  jugadoresQueDescartaron = []; // Limpiar también los que descartaron
+
+  // Verificar si terminó la ronda (después del turno 3)
+  if (turno >= TURNOS_POR_RONDA) {
+    console.log('🏁 Ronda completada - Finalizando ronda');
+    finalizarRonda();
+  } else {
+    // Incrementar turno para el siguiente
+    turno++;
+    console.log(`➡️ Avanzando a turno ${turno}`);
+
+    // 🔄 ALTERNAR quién tira el dado en cada turno
+    // Turno impar: jugador original tira
+    // Turno par: el otro jugador tira
+    jugadorQueTiroDado = jugadorQueTiroDado === 1 ? 2 : 1;
+    console.log(`🔄 Ahora tira el dado: Jugador ${jugadorQueTiroDado}`);
+
+    // Continuar con el siguiente turno
+    fase = 'tirar_dado';
+    restriccionActual = null;
+
+    // El jugador activo es quien debe tirar el dado
+    jugadorActivo = jugadorQueTiroDado;
+
+    console.log(`🎲 Turno ${turno} - ${jugadorActivo === 1 ? jugadorActualNombre : rivalNombre} debe tirar el dado`);
+
+    actualizarUI();
+    autoSave();
+  }
+}
+
+/* ===== FINALIZAR RONDA ===== */
+function finalizarRonda() {
+  console.log(`🏁 Fin de la ronda ${ronda}`);
+
+  // Reiniciar variables de ronda
+  turno = 1;
+  ronda++;
+  jugadoresQueHanJugado = []; // Resetear para la nueva ronda
+  jugadoresQueDescartaron = []; // Resetear también los que descartaron
+
+  // Verificar si terminó el juego
+  if (ronda > TOTAL_RONDAS) {
+    console.log('🏆 Juego terminado');
+    mostrarResultadosFinal();
+    return;
+  }
+
+  // Nueva ronda: generar nuevas manos
+  fase = 'tirar_dado';
+  restriccionActual = null;
+
+  // 🔄 ALTERNAR quién tira el dado al inicio de cada ronda
+  jugadorQueTiroDado = jugadorQueTiroDado === 1 ? 2 : 1;
+  jugadorActivo = jugadorQueTiroDado;
+
+  console.log(`🆕 Comenzando ronda ${ronda}`);
+  console.log(`🎲 El jugador ${jugadorQueTiroDado} (${jugadorQueTiroDado === 1 ? jugadorActualNombre : rivalNombre}) comenzará tirando el dado`);
+
+  // Generar nuevas manos para ambos jugadores
+  manos[1] = generarMano();
+  manos[2] = generarMano();
+
+  alert(`Ronda ${ronda - 1} completada. Comenzando ronda ${ronda}...`);
+
+  actualizarUI();
+  autoSave();
 }
 
 function actualizarUI() {
@@ -912,20 +1565,46 @@ function actualizarUI() {
   actualizarPuntuacionJugadorActivo();
   actualizarPuntuacionesVisualesRecintos();
   actualizarVisibilidadDinos();
+  actualizarEstadoRecintos(); // Deshabilitar recintos en fase descarte
   actualizarAvatarEnUI();
 
   const turnoText = document.getElementById('turno-text');
-  const dadoBtn = document.getElementById('tirar-dado-btn');
 
-  if (restriccionActual === null) {
-    turnoText.textContent = `Ronda ${ronda} - Turno ${turno} - ${nombreTurno} debe tirar dado`;
-  } else if (jugadorActivo === jugadorQueTiroDado) {
-    turnoText.textContent = `Ronda ${ronda} - Turno ${turno} - ${nombreTurno} debe colocar (SIN restricciones)`;
-  } else {
-    turnoText.textContent = `Ronda ${ronda} - Turno ${turno} - ${nombreTurno} debe colocar (CON restricción: ${restricciones[restriccionActual]})`;
+  // Mostrar información según la fase actual
+  let faseTexto = '';
+  if (fase === 'tirar_dado') {
+    faseTexto = `${nombreTurno} debe tirar dado`;
+  } else if (fase === 'colocar') {
+    if (jugadorActivo === jugadorQueTiroDado) {
+      faseTexto = `${nombreTurno} debe colocar (SIN restricciones)`;
+    } else {
+      faseTexto = `${nombreTurno} debe colocar (CON restricción: ${restricciones[restriccionActual]})`;
+    }
+  } else if (fase === 'descartar') {
+    faseTexto = `${nombreTurno} debe descartar 1 dinosaurio`;
   }
 
-  dadoBtn.style.display = restriccionActual === null ? 'inline-block' : 'none';
+  turnoText.textContent = `Ronda ${ronda} - Turno ${turno} - ${faseTexto}`;
+
+  // 🎲 ACTUALIZAR IMAGEN DEL DADO Y RESTRICCIÓN
+  const dadoImg = document.getElementById('dado-img');
+  const restriccionText = document.getElementById('restriccion-text');
+
+  if (fase === 'colocar') {
+    if (jugadorActivo === jugadorQueTiroDado) {
+      // El jugador que tiró el dado ve "Sin restricción" (dado6.png)
+      if (dadoImg) dadoImg.src = '/img/dado/dado6.png';
+      if (restriccionText) restriccionText.textContent = 'Sin restricción';
+    } else {
+      // El otro jugador ve la restricción del dado
+      if (dadoImg) dadoImg.src = `/img/dado/dado${restriccionActual === 6 ? '7' : restriccionActual}.png`;
+      if (restriccionText) restriccionText.textContent = restricciones[restriccionActual];
+    }
+  } else if (fase === 'tirar_dado') {
+    // Estado inicial del dado
+    if (dadoImg) dadoImg.src = '/img/dado/dado.png';
+    if (restriccionText) restriccionText.textContent = 'Esperando...';
+  }
 
   // 🛡️ VALIDACIÓN: Deshabilitar dinosaurios si no se tiró el dado
   deshabilitarDinosauriosSinDado();
@@ -1011,6 +1690,28 @@ function actualizarVisibilidadDinos() {
   document.querySelectorAll('.dino-in-recinto').forEach(d => {
     d.style.display = (+d.dataset.jugador === jugadorActivo) ? 'block' : 'none';
   });
+
+  // El panel de dinos maneja el click/touch automáticamente basado en la clase 'disabled'
+}
+
+function actualizarEstadoRecintos() {
+  const recintos = document.querySelectorAll('.recinto');
+
+  if (fase === 'descartar') {
+    // Deshabilitar recintos durante fase de descarte
+    recintos.forEach(recinto => {
+      recinto.style.opacity = '0.5';
+      recinto.style.pointerEvents = 'none';
+      recinto.style.cursor = 'not-allowed';
+    });
+  } else {
+    // Habilitar recintos en otras fases
+    recintos.forEach(recinto => {
+      recinto.style.opacity = '1';
+      recinto.style.pointerEvents = 'auto';
+      recinto.style.cursor = 'pointer';
+    });
+  }
 }
 
 /* ===== INICIALIZAR PARTIDA ===== */
@@ -1025,6 +1726,14 @@ async function inicializarPartidaNueva() {
   jugadorActivo = jugadorQueTiroDado;
   restriccionActual = null;
   colocadosEnTurno = 0;
+  fase = 'tirar_dado'; // Inicializar en fase de tirar dado
+  dinosDescartados = 0;
+  jugadoresQueHanJugado = [];
+  jugadoresQueDescartaron = [];
+
+  // Inicializar bolsa de 48 dinosaurios
+  inicializarBolsa();
+
   manos[1] = generarMano();
   manos[2] = generarMano();
 
@@ -1120,10 +1829,32 @@ async function cargarPartidaYRestaurar(idPartida) {
     turno = partida.turno || 1;
     jugadorActivo = partida.jugadorActivo || 1;
     jugadorQueTiroDado = partida.jugadorQueTiroDado || 1;
-    restriccionActual = partida.restriccion || null;
     colocadosEnTurno = partida.colocadosEnTurno || 0;
     manos[1] = Array.isArray(partida.mano1) ? partida.mano1 : [];
     manos[2] = Array.isArray(partida.mano2) ? partida.mano2 : [];
+
+    // Restaurar estado de fase y bolsa
+    fase = partida.fase || 'tirar_dado';
+    dinosDescartados = partida.dinosDescartados || 0;
+    bolsaDeDinosaurios = Array.isArray(partida.bolsaDeDinosaurios) ? partida.bolsaDeDinosaurios : [];
+    jugadoresQueHanJugado = Array.isArray(partida.jugadoresQueHanJugado) ? partida.jugadoresQueHanJugado : [];
+    jugadoresQueDescartaron = Array.isArray(partida.jugadoresQueDescartaron) ? partida.jugadoresQueDescartaron : [];
+
+    // 🔧 CORRECCIÓN: Si la fase es 'tirar_dado', la restricción debe ser null
+    // Esto evita el bug de "Ya hay restricción activa" al cargar partida
+    if (fase === 'tirar_dado') {
+      restriccionActual = null;
+      console.log('🔧 Fase tirar_dado detectada - restriccionActual reseteada a null');
+    } else {
+      restriccionActual = partida.restriccion || null;
+      console.log(`🔧 Fase ${fase} - restriccionActual cargada: ${restriccionActual}`);
+    }
+
+    // Si no hay bolsa guardada, inicializarla
+    if (bolsaDeDinosaurios.length === 0) {
+      inicializarBolsa();
+      console.log('⚠️ No había bolsa guardada, se inicializó una nueva');
+    }
 
     // Limpiar tablero
     document.querySelectorAll('.dino-in-recinto').forEach(d => d.remove());
@@ -1145,12 +1876,7 @@ async function cargarPartidaYRestaurar(idPartida) {
     }
 
     // Restaurar estado del dado
-    if (restriccionActual !== null) {
-      const dadoImg = document.getElementById('dado-img');
-      const restriccionText = document.getElementById('restriccion-text');
-      if (dadoImg) dadoImg.src = `/img/dado/dado${restriccionActual}.png`;
-      if (restriccionText) restriccionText.textContent = restricciones[restriccionActual];
-    }
+    // La actualización se hará en actualizarUI() que se llama después
 
     // ✅ GUARDAR ID_PARTIDA EN LOCALSTORAGE
     localStorage.setItem('partidaIdActual', ID_PARTIDA.toString());
@@ -1622,9 +2348,374 @@ window.testModal = function() {
 
 console.log('🔧 Función testModal() disponible - úsala en la consola escribiendo: testModal()');
 
+/* ===== FUNCIÓN DE SIMULACIÓN DE PARTIDA (PARA DEBUG) ===== */
+window.simularPartida = async function() {
+  console.log('🎮 ========================================');
+  console.log('🎮 INICIANDO SIMULACIÓN DE PARTIDA');
+  console.log('🎮 ========================================');
+
+  // Resetear estado
+  ronda = 1;
+  turno = 1;
+  fase = 'tirar_dado';
+  jugadorActivo = 1;
+  jugadorQueTiroDado = 1;
+  restriccionActual = null;
+  jugadoresQueHanJugado = [];
+  dinosDescartados = 0;
+
+  // Inicializar bolsa y manos
+  inicializarBolsa();
+  manos[1] = generarMano();
+  manos[2] = generarMano();
+
+  console.log('🎴 Manos iniciales:');
+  console.log(`   J1: ${manos[1].length} dinos →`, manos[1]);
+  console.log(`   J2: ${manos[2].length} dinos →`, manos[2]);
+
+  // Simular 3 turnos
+  for (let t = 1; t <= 3; t++) {
+    console.log(`\n🔷 ========== TURNO ${t} ==========`);
+
+    // Jugador 1
+    console.log(`\n👤 JUGADOR 1 (${jugadorActualNombre})`);
+    console.log(`   Mano ANTES: ${manos[1].length} dinos →`, manos[1]);
+
+    // Simular tirar dado
+    fase = 'colocar';
+    restriccionActual = Math.floor(Math.random() * 6) + 1;
+    console.log(`   🎲 Tiró dado: ${restriccionActual} (${restricciones[restriccionActual]})`);
+
+    // Simular colocar (remover 1 dino)
+    const dino1Colocar = manos[1][0];
+    manos[1].splice(0, 1);
+    console.log(`   ✅ Colocó: ${dino1Colocar} → Quedan ${manos[1].length} dinos →`, manos[1]);
+
+    // Simular descartar (remover 1 dino)
+    fase = 'descartar';
+    const dino1Descartar = manos[1][0];
+    manos[1].splice(0, 1);
+    console.log(`   🗑️ Descartó: ${dino1Descartar} → Quedan ${manos[1].length} dinos →`, manos[1]);
+
+    // Marcar jugador 1 como completado
+    jugadoresQueHanJugado.push(1);
+    jugadorActivo = 2;
+    fase = 'tirar_dado';
+    restriccionActual = null;
+
+    // Jugador 2
+    console.log(`\n👤 JUGADOR 2 (${rivalNombre})`);
+    console.log(`   Mano ANTES: ${manos[2].length} dinos →`, manos[2]);
+
+    // Simular tirar dado
+    fase = 'colocar';
+    restriccionActual = Math.floor(Math.random() * 6) + 1;
+    console.log(`   🎲 Tiró dado: ${restriccionActual} (${restricciones[restriccionActual]})`);
+
+    // Simular colocar (remover 1 dino)
+    const dino2Colocar = manos[2][0];
+    manos[2].splice(0, 1);
+    console.log(`   ✅ Colocó: ${dino2Colocar} → Quedan ${manos[2].length} dinos →`, manos[2]);
+
+    // Simular descartar (remover 1 dino)
+    fase = 'descartar';
+    const dino2Descartar = manos[2][0];
+    manos[2].splice(0, 1);
+    console.log(`   🗑️ Descartó: ${dino2Descartar} → Quedan ${manos[2].length} dinos →`, manos[2]);
+
+    // Marcar jugador 2 como completado
+    jugadoresQueHanJugado.push(2);
+
+    // INTERCAMBIO
+    console.log(`\n🔄 ========== INTERCAMBIO ==========`);
+    console.log(`🎴 Manos ANTES de intercambio:`);
+    console.log(`   J1: ${manos[1].length} dinos →`, manos[1]);
+    console.log(`   J2: ${manos[2].length} dinos →`, manos[2]);
+
+    const temp1 = [...manos[1]];
+    const temp2 = [...manos[2]];
+    manos[1] = temp2;
+    manos[2] = temp1;
+
+    console.log(`🎴 Manos DESPUÉS de intercambio:`);
+    console.log(`   J1: ${manos[1].length} dinos →`, manos[1]);
+    console.log(`   J2: ${manos[2].length} dinos →`, manos[2]);
+
+    // Reset para siguiente turno
+    jugadoresQueHanJugado = [];
+    jugadorActivo = 1;
+    fase = 'tirar_dado';
+    restriccionActual = null;
+    turno++;
+  }
+
+  console.log('\n🎮 ========================================');
+  console.log('🎮 SIMULACIÓN COMPLETADA');
+  console.log('🎮 ========================================');
+};
+
+console.log('🔧 Función simularPartida() disponible - úsala en la consola escribiendo: simularPartida()');
+
 /* ===== RESTO DEL FLUJO DE JUEGO ===== */
 
+/* ===== FUNCIÓN COLOCAR DINO (GLOBAL PARA SER ACCESIBLE DESDE TOUCH EVENTS) ===== */
+async function colocarDino(recinto, especie) {
+  // 🛡️ FLAG DE BLOQUEO: Prevenir colocaciones múltiples durante lag
+  if (colocandoDino) {
+    console.warn('⚠️ Ya hay una colocación en proceso, ignorando click');
+    mobileLog('⚠️ Colocación en proceso...', '#ff0');
+    return;
+  }
+  colocandoDino = true;
+
+  mobileLog(`🦕 colocarDino() - especie: ${especie}, recinto: ${recinto.id}`);
+
+  // 🛡️ VALIDACIÓN ANTI-TRAMPA: Marcar como jugada crítica
+  marcarJugadaCritica(true);
+
+  // 🛡️ VALIDACIÓN BACKEND: Verificar con el servidor antes de colocar
+  try {
+    // Validar que tenemos datos requeridos
+    if (!ID_PARTIDA) {
+      console.error('❌ ERROR: No hay ID_PARTIDA para validación');
+      mobileLog('❌ No ID_PARTIDA', '#f00');
+      alert('Error: Datos de partida no disponibles');
+      marcarJugadaCritica(false);
+      colocandoDino = false;
+      return;
+    }
+
+    const datosValidacion = {
+      partidaId: parseInt(ID_PARTIDA),
+      restriccion: restriccionActual,
+      recintoId: recinto.id || '',
+      especie: especie || ''
+    };
+
+    console.log('🛡️ Enviando validación backend:', datosValidacion);
+    mobileLog('📡 Validando backend...', '#0ff');
+
+    const validacionBackend = await fetch(apiUrl('/api/tablero/validarColocacionDino'), {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify(datosValidacion),
+      credentials: 'include'
+    });
+
+    if (!validacionBackend.ok) {
+      console.error('❌ HTTP Error:', validacionBackend.status);
+      mobileLog(`❌ HTTP ${validacionBackend.status}`, '#f00');
+      throw new Error(`HTTP ${validacionBackend.status}: ${validacionBackend.statusText}`);
+    }
+
+    const validacionResult = await validacionBackend.json();
+    console.log('📨 Respuesta validación backend:', validacionResult);
+    mobileLog('📨 Backend OK', '#0f0');
+
+    if (!validacionResult.success || !validacionResult.esValida) {
+      console.error('🚫 VALIDACIÓN BACKEND FALLIDA:', validacionResult);
+      mobileLog('🚫 Validación falló', '#f00');
+      alert(validacionResult.mensaje || '🚫 No se puede colocar el dinosaurio');
+      marcarJugadaCritica(false);
+      colocandoDino = false;
+      return;
+    }
+
+    console.log('✅ VALIDACIÓN BACKEND EXITOSA:', validacionResult.mensaje);
+    mobileLog('✅ Validación exitosa', '#0f0');
+  } catch (error) {
+    console.error('❌ ERROR COMPLETO en validación backend:', error);
+    console.error('Stack trace:', error.stack);
+    mobileLog(`❌ Error: ${error.message}`, '#f00');
+
+    // Tolerancia a fallos: Si hay error de conectividad, usar validación local
+    if (restriccionActual === null) {
+      alert('🎲 Primero debes tirar el dado antes de colocar dinosaurios (validación local)');
+      marcarJugadaCritica(false);
+      colocandoDino = false;
+      return;
+    }
+
+    console.warn('⚠️ Usando validación local debido a error de conectividad');
+    mobileLog('⚠️ Usando validación local', '#ff0');
+    // Continuar con la colocación usando validación local
+  }
+
+  mobileLog('🎨 Creando clon visual...', '#0ff');
+  const dinoClone = document.createElement('img');
+  dinoClone.src = `/img/imagen_Tablero/${especie}.png`;
+  dinoClone.className = 'dino-in-recinto';
+  dinoClone.dataset.especie = especie;
+  dinoClone.dataset.jugador = jugadorActivo;
+  dinoClone.style.pointerEvents = 'none';
+  recinto.appendChild(dinoClone);
+  mobileLog('✅ Dino añadido al DOM', '#0f0');
+
+  // Actualizar inmediatamente el peso de este recinto
+  const peso = calcularPesoRecinto(recinto.id);
+  const scoreElement = recinto.querySelector('.recinto-score');
+  if (scoreElement) {
+    scoreElement.textContent = formatearPeso(peso);
+  }
+
+  // Actualizar puntuaciones inmediatamente
+  actualizarPuntuaciones();
+  actualizarPuntuacionesAmbosJugadores();
+
+  // Verificar que draggedDino existe y tiene index
+  if (!draggedDino || draggedDino.index === undefined) {
+    mobileLog('❌ draggedDino inválido', '#f00');
+    console.error('draggedDino:', draggedDino);
+    marcarJugadaCritica(false);
+    colocandoDino = false;
+    return;
+  }
+
+  manos[jugadorActivo].splice(draggedDino.index, 1);
+  mobileLog(`🗑️ Dino eliminado de mano (quedan ${manos[jugadorActivo].length})`, '#0ff');
+
+  // Cambiar a fase de descarte
+  fase = 'descartar';
+  mobileLog('✅ Fase → descartar', '#0f0');
+
+  actualizarUI();
+  await autoSave();
+
+  // 🛡️ VALIDACIÓN ANTI-TRAMPA: Desactivar protección después de colocar dinosaurio
+  marcarJugadaCritica(false);
+  colocandoDino = false; // Liberar flag de bloqueo
+  mobileLog('🏁 colocarDino() completado', '#0f0');
+}
+
+/* ===== FUNCIÓN PARA MOSTRAR INFORMACIÓN EDUCATIVA DEL DINOSAURIO ===== */
+function mostrarInfoDinosaurio(especie) {
+  const props = propiedadesFisicas[especie];
+  if (!props) return;
+
+  const peso = props.masa * GRAVEDAD;
+
+  // Crear modal
+  const modal = document.createElement('div');
+  modal.id = 'dino-info-modal';
+  modal.style.cssText = `
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10000;
+    padding: 20px;
+  `;
+
+  const content = document.createElement('div');
+  content.style.cssText = `
+    background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+    border: 2px solid #4CAF50;
+    border-radius: 15px;
+    padding: 25px;
+    max-width: 600px;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 10px 40px rgba(76, 175, 80, 0.3);
+  `;
+
+  content.innerHTML = `
+    <div style="text-align: center; margin-bottom: 20px;">
+      <img src="/img/imagen_Tablero/${especie}.png" alt="${props.nombre}"
+           style="width: 120px; height: 120px; object-fit: contain; margin-bottom: 15px;">
+      <h2 style="color: #4CAF50; margin: 0; font-size: 28px;">${props.nombre}</h2>
+    </div>
+
+    <div style="background: #222; padding: 15px; border-radius: 10px; margin-bottom: 15px;">
+      <p style="margin: 5px 0; color: #fff; font-size: 16px;">
+        <strong style="color: #4CAF50;">⚖️ Masa:</strong> ${props.masa.toLocaleString()} kg
+      </p>
+      <p style="margin: 5px 0; color: #fff; font-size: 16px;">
+        <strong style="color: #4CAF50;">💪 Peso (Fuerza):</strong> ${formatearPeso(peso)}
+      </p>
+      <p style="margin: 5px 0; color: #888; font-size: 13px; font-style: italic;">
+        Calculado con: Peso = ${props.masa} kg × 9.8 m/s² = ${peso.toFixed(1)} N
+      </p>
+    </div>
+
+    <div style="margin-bottom: 15px;">
+      <p style="color: #fff; margin: 10px 0;">
+        <strong style="color: #FFB74D;">🕰️ Época:</strong><br>
+        <span style="color: #ddd;">${props.epoca}</span>
+      </p>
+      <p style="color: #fff; margin: 10px 0;">
+        <strong style="color: #64B5F6;">📍 Localización:</strong><br>
+        <span style="color: #ddd;">${props.localizacion}</span>
+      </p>
+      <p style="color: #fff; margin: 10px 0;">
+        <strong style="color: #81C784;">🍖 Dieta:</strong><br>
+        <span style="color: #ddd;">${props.dieta}</span>
+      </p>
+    </div>
+
+    <div style="background: #1a1a1a; padding: 15px; border-radius: 10px; border-left: 4px solid #4CAF50;">
+      <p style="color: #fff; margin: 0; line-height: 1.6;">
+        <strong style="color: #4CAF50;">ℹ️ Información adicional:</strong><br>
+        <span style="color: #ccc;">${props.info}</span>
+      </p>
+    </div>
+
+    <button id="close-dino-info" style="
+      margin-top: 20px;
+      width: 100%;
+      padding: 12px;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s;
+    " onmouseover="this.style.background='#45a049'" onmouseout="this.style.background='#4CAF50'">
+      Cerrar
+    </button>
+  `;
+
+  modal.appendChild(content);
+  document.body.appendChild(modal);
+
+  // Cerrar modal
+  const closeBtn = document.getElementById('close-dino-info');
+  const cerrarModal = () => {
+    modal.remove();
+  };
+
+  closeBtn.addEventListener('click', cerrarModal);
+  modal.addEventListener('click', (e) => {
+    if (e.target === modal) cerrarModal();
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  console.log('✅ DOMContentLoaded disparado');
+
+  // 🐛 INICIALIZAR DEBUG PANEL PRIMERO
+  initDebugPanel();
+  mobileLog('🚀 Debug panel listo', '#ff0');
+
+  // Verificar que el botón existe
+  setTimeout(() => {
+    const btn = document.getElementById('debug-toggle-btn');
+    if (btn) {
+      console.log('✅ Botón debug encontrado en el DOM');
+    } else {
+      console.error('❌ Botón debug NO encontrado');
+    }
+  }, 1000);
+
   // 🛡️ ACTIVAR VALIDACIONES ANTI-TRAMPA
   console.log('🛡️ Iniciando validaciones de seguridad...');
 
@@ -1642,12 +2733,16 @@ document.addEventListener('DOMContentLoaded', () => {
   cargarAvatarUsuario();
 
   const recintos = document.querySelectorAll('.recinto');
-  const dadoBtn = document.getElementById('tirar-dado-btn');
   const dadoImg = document.getElementById('dado-img');
   const restriccionText = document.getElementById('restriccion-text');
 
   async function tirarDado() {
-    if (restriccionActual !== null) return;
+    mobileLog('🎲 tirarDado() ejecutándose');
+
+    if (restriccionActual !== null) {
+      mobileLog('⚠️ Ya hay restricción activa', '#ff0');
+      return;
+    }
 
     // 🛡️ VALIDACIÓN ANTI-TRAMPA: Marcar como jugada crítica
     marcarJugadaCritica(true);
@@ -1655,15 +2750,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // No permitir tirar dado si la partida ya terminó
     if (ronda > TOTAL_RONDAS) {
       console.warn('⚠️ No se puede tirar dado: partida terminada');
+      mobileLog('⚠️ Partida terminada', '#f00');
       marcarJugadaCritica(false); // Desactivar protección
       mostrarResultadosFinal();
       return;
     }
 
-    const valor = Math.floor(Math.random() * 6) + 1;
-    dadoImg.src = `/img/dado/dado${valor}.png`;
+    // 🎲 El dado tiene 6 caras normales: 1, 2, 3, 4, 5, 6
+    const valor = Math.floor(Math.random() * 6) + 1; // Genera 1-6
+    mobileLog(`🎲 Dado: ${valor}`, '#0ff');
+    dadoImg.src = `/img/dado/dado${valor === 6 ? '7' : valor}.png`; // dado6.png no existe, usar dado7.png para valor 6
     restriccionActual = valor;
     restriccionText.textContent = restricciones[valor];
+
+    // Cambiar a fase de colocación
+    fase = 'colocar';
+    mobileLog(`✅ Fase → colocar`, '#0f0');
+
     actualizarUI();
     await autoSave();
 
@@ -1671,139 +2774,8 @@ document.addEventListener('DOMContentLoaded', () => {
     marcarJugadaCritica(false);
   }
 
-  async function colocarDino(recinto, especie) {
-    // 🛡️ VALIDACIÓN ANTI-TRAMPA: Marcar como jugada crítica
-    marcarJugadaCritica(true);
-
-    // 🛡️ VALIDACIÓN BACKEND: Verificar con el servidor antes de colocar
-    try {
-      // Validar que tenemos datos requeridos
-      if (!ID_PARTIDA) {
-        console.error('❌ ERROR: No hay ID_PARTIDA para validación');
-        alert('Error: Datos de partida no disponibles');
-        marcarJugadaCritica(false);
-        return;
-      }
-
-      const datosValidacion = {
-        partidaId: parseInt(ID_PARTIDA),
-        restriccion: restriccionActual,
-        recintoId: recinto.id || '',
-        especie: especie || ''
-      };
-
-      console.log('🛡️ Enviando validación backend:', datosValidacion);
-
-      const validacionBackend = await fetch(apiUrl('/api/tablero/validarColocacionDino'), {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(datosValidacion),
-        credentials: 'include'
-      });
-
-      if (!validacionBackend.ok) {
-        console.error('❌ HTTP Error:', validacionBackend.status);
-        throw new Error(`HTTP ${validacionBackend.status}: ${validacionBackend.statusText}`);
-      }
-
-      const validacionResult = await validacionBackend.json();
-      console.log('📨 Respuesta validación backend:', validacionResult);
-
-      if (!validacionResult.success || !validacionResult.esValida) {
-        console.error('🚫 VALIDACIÓN BACKEND FALLIDA:', validacionResult);
-        alert(validacionResult.mensaje || '🚫 No se puede colocar el dinosaurio');
-        marcarJugadaCritica(false);
-        return;
-      }
-
-      console.log('✅ VALIDACIÓN BACKEND EXITOSA:', validacionResult.mensaje);
-    } catch (error) {
-      console.error('❌ ERROR COMPLETO en validación backend:', error);
-      console.error('Stack trace:', error.stack);
-
-      // Tolerancia a fallos: Si hay error de conectividad, usar validación local
-      if (restriccionActual === null) {
-        alert('🎲 Primero debes tirar el dado antes de colocar dinosaurios (validación local)');
-        marcarJugadaCritica(false);
-        return;
-      }
-
-      console.warn('⚠️ Usando validación local debido a error de conectividad');
-      // Continuar con la colocación usando validación local
-    }
-
-    const dinoClone = document.createElement('img');
-    dinoClone.src = `/img/imagen_Tablero/${especie}.png`;
-    dinoClone.className = 'dino-in-recinto';
-    dinoClone.dataset.especie = especie;
-    dinoClone.dataset.jugador = jugadorActivo;
-    dinoClone.style.pointerEvents = 'none';
-    recinto.appendChild(dinoClone);
-
-    // Actualizar inmediatamente el peso de este recinto
-    const peso = calcularPesoRecinto(recinto.id);
-    const scoreElement = recinto.querySelector('.recinto-score');
-    if (scoreElement) {
-      scoreElement.textContent = formatearPeso(peso);
-    }
-
-    // Actualizar puntuaciones inmediatamente
-    actualizarPuntuaciones();
-    actualizarPuntuacionesAmbosJugadores();
-
-    manos[jugadorActivo].splice(draggedDino.index, 1);
-    colocadosEnTurno++;
-    await autoSave();
-
-    if (colocadosEnTurno === 2) {
-      const ultimo = jugadorActivo;
-      colocadosEnTurno = 0;
-      restriccionActual = null;
-      restriccionText.textContent = "Esperando...";
-      dadoImg.src = "/img/dado/dado.png";
-
-      turno++;
-      // ✅ VALIDACIÓN CRÍTICA: Si turno > 3, nueva ronda
-      if (turno > 3) {
-        ronda++;
-        turno = 1; // Reset turno
-
-        // ✅ VALIDACIÓN: Si ronda > 4, finalizar
-        if (ronda > TOTAL_RONDAS || validarFinDeJuego()) {
-          console.log('🏁 Finalizando partida: ronda=', ronda, 'TOTAL_RONDAS=', TOTAL_RONDAS);
-          mostrarResultadosFinal();
-          return;
-        }
-
-        manos[1] = generarMano();
-        manos[2] = generarMano();
-      } else {
-        const manosRestantes = {
-          1: [...manos[1]],
-          2: [...manos[2]]
-        };
-        manos[1] = manosRestantes[2];
-        manos[2] = manosRestantes[1];
-      }
-
-      jugadorQueTiroDado = ultimo;
-      jugadorActivo = jugadorQueTiroDado;
-
-      // Solo guardar si la partida no ha terminado
-      if (ronda <= TOTAL_RONDAS) {
-        await autoSave();
-      }
-    } else {
-      jugadorActivo = jugadorActivo === 1 ? 2 : 1;
-    }
-    actualizarUI();
-
-    // 🛡️ VALIDACIÓN ANTI-TRAMPA: Desactivar protección después de colocar dinosaurio
-    marcarJugadaCritica(false);
-  }
+  // NOTA: colocarDino() ahora está definida globalmente (antes del DOMContentLoaded)
+  // para ser accesible desde los event listeners de touch
 
   /* ===== FUNCIONES GLOBALES PARA EL MODAL ===== */
   window.irAPerfil = function () {
@@ -1831,6 +2803,11 @@ document.addEventListener('DOMContentLoaded', () => {
     colocadosEnTurno = 0;
     manos = { 1: [], 2: [] };
     puntuacionesJugadores = { 1: {}, 2: {} };
+    fase = 'tirar_dado';
+    dinosDescartados = 0;
+    bolsaDeDinosaurios = [];
+    jugadoresQueHanJugado = [];
+    jugadoresQueDescartaron = [];
 
     // Limpiar el tablero visual
     document.querySelectorAll('.dino-in-recinto').forEach(dino => dino.remove());
@@ -1853,12 +2830,13 @@ document.addEventListener('DOMContentLoaded', () => {
     location.href = '/perfil'; // Ir al perfil para crear nueva partida
   };
 
-  dadoBtn.addEventListener('click', tirarDado);
+  // El panel de dinos ahora maneja el touch para tirar dado (código más abajo)
 
   recintos.forEach(recinto => {
     recinto.addEventListener('dragover', e => {
       e.preventDefault();
-      if (!recinto.classList.contains('recinto-disabled')) {
+      // Solo permitir dragover en fase 'colocar'
+      if (fase === 'colocar' && !recinto.classList.contains('recinto-disabled')) {
         recinto.classList.add('highlight');
       }
     });
@@ -1873,6 +2851,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (recinto.classList.contains('recinto-disabled')) return;
       if (!draggedDino || draggedDino.jugador !== jugadorActivo) return;
+
+      // 🛡️ VALIDACIÓN: Solo permitir colocar en fase 'colocar'
+      if (fase !== 'colocar') {
+        alert("⚠️ No puedes colocar dinosaurios en esta fase. Debes estar en fase de colocación.");
+        console.warn(`🚫 Intento de colocar dinosaurio en fase '${fase}' - BLOQUEADO`);
+        return;
+      }
 
       const tipoRecinto = recinto.dataset.tipo;
       const especieDino = draggedDino.especie;
@@ -1905,6 +2890,77 @@ document.addEventListener('DOMContentLoaded', () => {
   const btnAyuda = document.getElementById('btn-ayuda');
   if (btnAyuda) {
     btnAyuda.addEventListener('click', mostrarAyudaReglas);
+  }
+
+  // 📱 MÓVIL: Listener global para el panel de dinos - tirar dado al tocar panel deshabilitado
+  const dinoPanel = document.querySelector('.dino-panel');
+  if (dinoPanel) {
+    mobileLog('📱 Agregando listeners al panel de dinos');
+    mobileLog(`📱 Panel encontrado: ${dinoPanel ? 'SI' : 'NO'}`);
+
+    // Monitor del estado del panel cada 2 segundos
+    setInterval(() => {
+      const isDisabled = dinoPanel.classList.contains('disabled');
+      const styles = window.getComputedStyle(dinoPanel);
+      const pointerEvents = styles.pointerEvents;
+      const zIndex = styles.zIndex;
+
+      mobileLog(`📊 Estado panel: disabled=${isDisabled}, pointer-events=${pointerEvents}, z-index=${zIndex}, fase=${fase}`);
+    }, 2000);
+
+    // Agregar listener al document para capturar TODOS los eventos
+    document.addEventListener('touchstart', (e) => {
+      mobileLog(`🌍 TouchStart en: ${e.target.className} (id: ${e.target.id})`);
+    }, { passive: false, capture: true });
+
+    // Agregar TODOS los eventos posibles para debug
+    ['touchstart', 'touchmove', 'touchend', 'click', 'mousedown', 'mouseup'].forEach(eventType => {
+      dinoPanel.addEventListener(eventType, (e) => {
+        mobileLog(`🎯 Evento: ${eventType} en panel`);
+      }, { passive: false, capture: true });
+    });
+
+    // Listener principal en touchend
+    dinoPanel.addEventListener('touchend', (e) => {
+      const isDisabled = dinoPanel.classList.contains('disabled');
+      mobileLog(`📱 TouchEnd PRINCIPAL - disabled: ${isDisabled}, fase: ${fase}, restriccion: ${restriccionActual}`);
+
+      // Solo si el panel está deshabilitado Y estamos en fase tirar_dado
+      if (isDisabled && fase === 'tirar_dado' && restriccionActual === null) {
+        mobileLog('📱 ✅ Condiciones cumplidas! Tirando dado...');
+
+        // Prevenir el comportamiento por defecto
+        e.preventDefault();
+        e.stopPropagation();
+
+        // Tirar el dado directamente llamando a la función
+        mobileLog('🎲 Ejecutando tirarDado()...');
+        tirarDado();
+        mobileLog('✅ tirarDado() ejecutado');
+      } else {
+        mobileLog(`⏸️ Condiciones NO cumplidas:`);
+        mobileLog(`   - disabled: ${isDisabled} (necesita: true)`);
+        mobileLog(`   - fase: ${fase} (necesita: tirar_dado)`);
+        mobileLog(`   - restriccion: ${restriccionActual} (necesita: null)`);
+      }
+    }, { passive: false, capture: true });
+
+    // También agregar click para desktop/debug
+    dinoPanel.addEventListener('click', (e) => {
+      const isDisabled = dinoPanel.classList.contains('disabled');
+      mobileLog(`🖱️ Click PRINCIPAL - disabled: ${isDisabled}, fase: ${fase}`);
+
+      if (isDisabled && fase === 'tirar_dado' && restriccionActual === null) {
+        e.preventDefault();
+        e.stopPropagation();
+        mobileLog('🎲 Ejecutando tirarDado() desde click...');
+        tirarDado();
+      }
+    }, { capture: true });
+
+    mobileLog('✅ Listeners agregados con capture:true');
+  } else {
+    mobileLog('❌ ERROR: No se encontró .dino-panel');
   }
 });
 

@@ -1,5 +1,5 @@
 'use strict';
-const BASE = window.API_BASE_URL || 'http://localhost:4000';
+const BASE = window.API_BASE_URL || 'https://api.draftosaurus.duckdns.org';
 
 /* ---------- Función auxiliar ---------- */
 async function postJson(url, datos) {
@@ -63,7 +63,9 @@ function showError(message) {
     const loginForm = document.querySelector('.login-form');
     if (loginForm) loginForm.appendChild(errorDiv);
   }
-  errorDiv.textContent = message;
+  // Convertir saltos de línea a <br> para HTML
+  const htmlMessage = message.replace(/\n/g, '<br>');
+  errorDiv.innerHTML = htmlMessage;
   errorDiv.style.display = 'block';
 }
 
@@ -130,7 +132,7 @@ document.addEventListener('DOMContentLoaded', () => {
       loginBtn.disabled = true;
 
       try {
-        const { ok, json } = await postJson(`${BASE}/login`, {
+        const { ok, status, json } = await postJson(`${BASE}/login`, {
           identifier: identificador,
           password: clave
         });
@@ -145,13 +147,62 @@ document.addEventListener('DOMContentLoaded', () => {
           // Redirección según rol
           location.href = (u.rol === 'admin') ? '/admin' : '/perfil';
         } else {
-          let msg = 'Credenciales incorrectas.';
-          if (json?.code === 'ACCOUNT_SUSPENDED') {
-            msg = json.message || 'Tu cuenta ha sido suspendida. Contactá al administrador.';
-          } else if (json?.message) {
-            msg = json.message;
+          // ✅ MANEJO DE RATE LIMITING
+          if (status === 429) {
+            // Bloqueado por demasiados intentos
+            const waitSeconds = json?.retry_after || json?.wait_seconds || 0;
+            const attemptNumber = json?.attempt_number || 0;
+
+            if (waitSeconds > 0) {
+              const minutes = Math.floor(waitSeconds / 60);
+              const seconds = waitSeconds % 60;
+              const timeStr = minutes > 0
+                ? `${minutes} minuto(s) y ${seconds} segundo(s)`
+                : `${seconds} segundo(s)`;
+
+              showError(`🔒 Demasiados intentos fallidos (${attemptNumber} intentos). Tu cuenta está temporalmente bloqueada. Espera ${timeStr} antes de intentar nuevamente.`);
+            } else {
+              showError('🔒 Demasiados intentos fallidos. Por favor espera antes de intentar nuevamente.');
+            }
+          } else {
+            // Login fallido por credenciales incorrectas
+            let msg = 'Credenciales incorrectas.';
+
+            if (json?.code === 'ACCOUNT_SUSPENDED') {
+              msg = json.message || 'Tu cuenta ha sido suspendida. Contactá al administrador.';
+            } else if (json?.code === 'LOGIN_BLOCKED') {
+              msg = json.error || json.message || 'Cuenta bloqueada temporalmente.';
+            } else if (json?.message) {
+              msg = json.message;
+            }
+
+            showError(msg);
+
+            // ✅ CONSULTAR ESTADO DE RATE LIMITING después de fallo
+            try {
+              const statusResp = await fetch(`${BASE}/login-status`, {
+                credentials: 'include'
+              });
+              const statusData = await statusResp.json();
+
+              if (statusData.success && statusData.remaining_attempts !== undefined) {
+                const remaining = statusData.remaining_attempts;
+
+                if (remaining > 0 && remaining <= 3) {
+                  // Mostrar advertencia si quedan 3 o menos intentos
+                  const warningMsg = remaining === 1
+                    ? `⚠️ ¡ADVERTENCIA! Te queda ${remaining} intento antes de que tu cuenta sea bloqueada temporalmente.`
+                    : `⚠️ ¡ADVERTENCIA! Te quedan ${remaining} intentos antes de que tu cuenta sea bloqueada temporalmente.`;
+
+                  setTimeout(() => {
+                    showError(msg + '\n\n' + warningMsg);
+                  }, 500);
+                }
+              }
+            } catch (statusError) {
+              console.error('Error consultando estado de login:', statusError);
+            }
           }
-          showError(msg);
         }
       } catch (e) {
         console.error('Error de conexión:', e);

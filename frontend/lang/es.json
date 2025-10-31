@@ -27,7 +27,9 @@
     "board": "Tablero",
     "ranking": "Ranking",
     "admin": "Admin",
-    "language": "Idioma"
+    "language": "Idioma",
+    "howToPlay": "Como Jugar",
+    "contact": "Contacto"
   },
   "home": {
     "title": "Draftosaurus",

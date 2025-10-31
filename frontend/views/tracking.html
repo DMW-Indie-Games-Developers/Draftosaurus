@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Draftosaurus - Tracking Mode</title>
 
   <!-- Bootstrap CSS -->
@@ -174,6 +174,83 @@
         <div class="modal-footer justify-content-center">
           <button type="button" class="btn btn-custom" id="btn-confirmar-seleccion" disabled>
             Confirmar Selección
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DE INTERCAMBIO -->
+  <div class="modal fade" id="modalIntercambio" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content draftosaurus-modal">
+        <div class="modal-header">
+          <h5 class="modal-title">🔄 Intercambio de Dinosaurios</h5>
+        </div>
+        <div class="modal-body">
+          <p class="text-center mb-3">
+            <strong id="intercambio-instruccion">Indica cuántos dinosaurios recibiste del rival</strong>
+          </p>
+
+          <!-- Grid de dinosaurios con controles de cantidad -->
+          <div class="dino-quantity-grid" id="modal-intercambio-grid">
+            <div class="dino-quantity-item" data-especie="dino1">
+              <img src="img/imagen_Tablero/dino1.png" alt="Dino 1">
+              <div class="quantity-controls">
+                <button class="btn-qty btn-minus-intercambio" data-especie="dino1">-</button>
+                <span class="qty-display-intercambio" data-especie="dino1">0</span>
+                <button class="btn-qty btn-plus-intercambio" data-especie="dino1">+</button>
+              </div>
+            </div>
+            <div class="dino-quantity-item" data-especie="dino2">
+              <img src="img/imagen_Tablero/dino2.png" alt="Dino 2">
+              <div class="quantity-controls">
+                <button class="btn-qty btn-minus-intercambio" data-especie="dino2">-</button>
+                <span class="qty-display-intercambio" data-especie="dino2">0</span>
+                <button class="btn-qty btn-plus-intercambio" data-especie="dino2">+</button>
+              </div>
+            </div>
+            <div class="dino-quantity-item" data-especie="dino3">
+              <img src="img/imagen_Tablero/dino3.png" alt="Dino 3">
+              <div class="quantity-controls">
+                <button class="btn-qty btn-minus-intercambio" data-especie="dino3">-</button>
+                <span class="qty-display-intercambio" data-especie="dino3">0</span>
+                <button class="btn-qty btn-plus-intercambio" data-especie="dino3">+</button>
+              </div>
+            </div>
+            <div class="dino-quantity-item" data-especie="dino4">
+              <img src="img/imagen_Tablero/dino4.png" alt="Dino 4">
+              <div class="quantity-controls">
+                <button class="btn-qty btn-minus-intercambio" data-especie="dino4">-</button>
+                <span class="qty-display-intercambio" data-especie="dino4">0</span>
+                <button class="btn-qty btn-plus-intercambio" data-especie="dino4">+</button>
+              </div>
+            </div>
+            <div class="dino-quantity-item" data-especie="dino5">
+              <img src="img/imagen_Tablero/dino5.png" alt="Dino 5">
+              <div class="quantity-controls">
+                <button class="btn-qty btn-minus-intercambio" data-especie="dino5">-</button>
+                <span class="qty-display-intercambio" data-especie="dino5">0</span>
+                <button class="btn-qty btn-plus-intercambio" data-especie="dino5">+</button>
+              </div>
+            </div>
+            <div class="dino-quantity-item" data-especie="trex">
+              <img src="img/imagen_Tablero/trex.png" alt="T-Rex">
+              <div class="quantity-controls">
+                <button class="btn-qty btn-minus-intercambio" data-especie="trex">-</button>
+                <span class="qty-display-intercambio" data-especie="trex">0</span>
+                <button class="btn-qty btn-plus-intercambio" data-especie="trex">+</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="text-center mt-3">
+            <small class="text-muted">Total recibido: <span id="contador-intercambio">0</span>/<span id="esperados-intercambio">0</span></small>
+          </div>
+        </div>
+        <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-custom" id="btn-confirmar-intercambio" disabled>
+            Confirmar Intercambio
           </button>
         </div>
       </div>

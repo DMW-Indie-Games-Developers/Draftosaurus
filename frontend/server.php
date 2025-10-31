@@ -10,6 +10,7 @@ $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 // Rutas HTML principales
 $routes = [
     '/' => 'views/index.html',
+    '/home' => 'views/index.html',
     '/login' => 'views/login.html',
     '/perfil' => 'views/perfil.html',
     '/tablero' => 'views/tablero.html',

@@ -85,15 +85,28 @@ body {
     font-size: 1.2em;
 }
 
-.carousel-item img {
-    max-height: 500px;
-    /* Ajusta a lo que quieras */
-    object-fit: cover;
-    /* Recorta la imagen si es necesario */
-    width: 100%;
-    /* Que siga ocupando todo el ancho */
+/* Carousel sin bordes negros - altura reducida */
+.carousel,
+.carousel-inner {
+    background-color: transparent !important;
 }
 
+.carousel-item {
+    height: 500px !important;
+    overflow: hidden !important;
+    background-color: transparent !important;
+}
+
+.carousel-item img,
+.carousel-item img.d-block,
+.carousel-item img.w-100 {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    display: block !important;
+    margin: 0 !important;
+}
 
 .card-custom {
     background-color: #281039;
@@ -196,11 +209,9 @@ section {
 
 
 
-btn-zoom img {
+.btn-zoom img {
     width: auto;
-    /* Ajusta a lo que quieras (ej: 150px) */
-    height: 10px;
-    /* Mantiene proporción */
+    height: 80px;
     transition: transform 0.3s ease;
     display: inline-block;
 }

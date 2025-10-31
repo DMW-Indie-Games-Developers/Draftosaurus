@@ -53,6 +53,37 @@ class AuthController
             return;
         }
 
+        // SEGURIDAD: Validación de formato de email
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            http_response_code(400);
+            echo json_encode(['success' => false, 'message' => 'El email no tiene un formato válido.']);
+            return;
+        }
+
+        // SEGURIDAD: Validación de username
+        // - Entre 3 y 30 caracteres
+        // - Solo alfanuméricos, guiones y guiones bajos
+        // - No permite XSS
+        if (strlen($username) < 3 || strlen($username) > 30) {
+            http_response_code(400);
+            echo json_encode(['success' => false, 'message' => 'El username debe tener entre 3 y 30 caracteres.']);
+            return;
+        }
+
+        if (!preg_match('/^[a-zA-Z0-9_-]+$/', $username)) {
+            http_response_code(400);
+            echo json_encode(['success' => false, 'message' => 'El username solo puede contener letras, números, guiones y guiones bajos.']);
+            return;
+        }
+
+        // SEGURIDAD: Validación de contraseña
+        // - Mínimo 6 caracteres (se puede ajustar según necesidad)
+        if (strlen($password) < 6) {
+            http_response_code(400);
+            echo json_encode(['success' => false, 'message' => 'La contraseña debe tener al menos 6 caracteres.']);
+            return;
+        }
+
         // Delegamos la creación al servicio
         $result = $this->authService->register($username, $email, $password);
 
@@ -65,6 +96,13 @@ class AuthController
 
         // Mapeo de códigos de negocio a códigos HTTP
         if ($result['success'] === true) {
+            // AUDIT LOG: Usuario registrado exitosamente
+            AuditLogger::log(
+                AuditLogger::ACTION_REGISTER,
+                $result['user']['id'],
+                "Nuevo usuario registrado: $username",
+                ['email' => $email]
+            );
             http_response_code(201); // Creado
         } else {
             $code = isset($result['code']) ? $result['code'] : 'error';
@@ -87,10 +125,19 @@ class AuthController
      *  - 200 OK si las credenciales son correctas.
      *  - 400 Bad Request si faltan campos o están vacíos.
      *  - 401 Unauthorized si las credenciales no son válidas.
+     *  - 429 Too Many Requests si está bloqueado por intentos fallidos.
      *  - 500 Internal Server Error para errores inesperados.
      */
     public function login()
     {
+        // Asegurar que la sesión esté iniciada
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+
+        // SEGURIDAD: Verificar bloqueo progresivo ANTES de procesar el login
+        ProgressiveRateLimiter::requireNotBlocked();
+
         $raw = file_get_contents("php://input");
         $data = json_decode($raw, true);
 
@@ -112,17 +159,8 @@ class AuthController
         $identifier = trim((string) $identifier);
         $password = (string) $password;
 
-        // ✅ DEBUG: Guardá lo que llega
-        error_log("Login intentado: $identifier / $password");
-        file_put_contents('login_debug.log', "Login: $identifier / $password\n", FILE_APPEND);
-
-        if ($identifier === '' || $password === '') {
-            http_response_code(400);
-            echo json_encode(['success' => false, 'message' => 'Identificador y contraseña no pueden estar vacíos.']);
-            return;
-        }
-
-        $result = $this->authService->login($identifier, $password);
+        // SEGURIDAD: Solo loguear el identifier, NUNCA la contraseña
+        error_log("Login intentado para: $identifier");
 
         if ($identifier === '' || $password === '') {
             http_response_code(400);
@@ -142,8 +180,34 @@ class AuthController
         if ($result['success']) {
             $_SESSION['userId'] = $result['user']['id'];
             $_SESSION['rol'] = $result['user']['rol'];
+
+            // SEGURIDAD: Resetear bloqueo progresivo después de login exitoso
+            ProgressiveRateLimiter::reset();
+
+            // AUDIT LOG: Login exitoso
+            AuditLogger::log(
+                AuditLogger::ACTION_LOGIN_SUCCESS,
+                $result['user']['id'],
+                "Login exitoso",
+                ['username' => $result['user']['username']]
+            );
+
+            // SESSION TRACKING: Registrar inicio de sesión
+            SessionTracker::registerLogin($result['user']['id']);
+
             http_response_code(200);
         } else {
+            // SEGURIDAD: Registrar intento fallido para bloqueo progresivo
+            ProgressiveRateLimiter::recordFailedAttempt($identifier);
+
+            // AUDIT LOG: Login fallido
+            AuditLogger::log(
+                AuditLogger::ACTION_LOGIN_FAILED,
+                null,
+                "Intento de login fallido para: $identifier",
+                ['identifier' => $identifier]
+            );
+
             http_response_code(401);
         }
 

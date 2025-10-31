@@ -172,29 +172,31 @@
   padding: 10px 15px;
 }
 
-/* Modal personalizado para Draftosaurus */
+/* Modal personalizado para Draftosaurus - COINCIDE CON INDEX */
 .draftosaurus-modal {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  background: #281039;
+  /* Mismo color que las cards del index */
   color: white;
-  border: 2px solid rgba(255, 193, 7, 0.3);
+  border: 2px solid rgba(142, 45, 226, 0.5);
   border-radius: 15px;
 }
 
 .draftosaurus-modal .modal-header {
-  border-bottom: 1px solid rgba(255, 193, 7, 0.2);
+  border-bottom: 1px solid rgba(142, 45, 226, 0.3);
+  background: linear-gradient(to bottom, #8e2de2, #281039);
 }
 
 .draftosaurus-modal .modal-footer {
-  border-top: 1px solid rgba(255, 193, 7, 0.2);
+  border-top: 1px solid rgba(142, 45, 226, 0.3);
 }
 
 .draftosaurus-modal .btn-close {
   filter: invert(1);
 }
 
-/* Botón personalizado */
+/* Botón personalizado - COINCIDE CON INDEX */
 .btn-custom {
-  background: linear-gradient(135deg, #8e2de2 0%, #4a00e0 100%);
+  background: #8e2de2;
   color: white;
   border: none;
   padding: 10px 30px;
@@ -204,9 +206,9 @@
 }
 
 .btn-custom:hover {
-  background: linear-gradient(135deg, #4a00e0 0%, #8e2de2 100%);
+  background: #3a1c5f;
   transform: translateY(-2px);
-  box-shadow: 0 5px 15px rgba(142, 45, 226, 0.4);
+  box-shadow: 0 5px 15px rgba(142, 45, 226, 0.6);
 }
 
 .btn-custom:disabled {
