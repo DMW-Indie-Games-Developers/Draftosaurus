@@ -4,93 +4,93 @@
 let debugPanel = null;
 let debugLogs = [];
 
-function initDebugPanel() {
-  if (debugPanel) {
-    console.log('🐛 Debug panel ya existe');
-    return;
-  }
-
-  console.log('🐛 Creando debug panel...');
-
-  debugPanel = document.createElement('div');
-  debugPanel.id = 'mobile-debug-panel';
-  debugPanel.style.cssText = `
-    position: fixed;
-    bottom: 60px;
-    left: 10px;
-    right: 10px;
-    max-height: 150px;
-    background: rgba(0, 0, 0, 0.9);
-    color: #0f0;
-    font-family: monospace;
-    font-size: 10px;
-    padding: 10px;
-    border-radius: 5px;
-    z-index: 9999;
-    overflow-y: auto;
-    border: 2px solid #0f0;
-    display: none;
-  `;
-
-  const toggleBtn = document.createElement('button');
-  toggleBtn.id = 'debug-toggle-btn';
-  toggleBtn.textContent = '🐛 DEBUG';
-  toggleBtn.style.cssText = `
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    width: 80px;
-    height: 50px;
-    background: lime;
-    color: black;
-    border: 3px solid black;
-    border-radius: 10px;
-    font-size: 16px;
-    font-weight: bold;
-    z-index: 10000;
-    cursor: pointer;
-    touch-action: manipulation;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  `;
-
-  const toggleFunction = () => {
-    console.log('🐛 Toggle button clicked');
-    debugPanel.style.display = debugPanel.style.display === 'none' ? 'block' : 'none';
-  };
-
-  toggleBtn.onclick = toggleFunction;
-  toggleBtn.addEventListener('touchend', (e) => {
-    e.preventDefault();
-    toggleFunction();
-  }, { passive: false });
-
-  if (document.body) {
-    document.body.appendChild(debugPanel);
-    document.body.appendChild(toggleBtn);
-    console.log('✅ Debug panel y botón agregados al DOM');
-  } else {
-    console.error('❌ document.body no existe aún');
-  }
-}
-
-function mobileLog(message, color = '#0f0') {
-  console.log(message);
-
-  if (!debugPanel) initDebugPanel();
-
-  const timestamp = new Date().toLocaleTimeString();
-  const logEntry = `[${timestamp}] ${message}`;
-
-  debugLogs.push(logEntry);
-  if (debugLogs.length > 20) debugLogs.shift();
-
-  const logLine = document.createElement('div');
-  logLine.style.color = color;
-  logLine.textContent = logEntry;
-
-  debugPanel.appendChild(logLine);
-  debugPanel.scrollTop = debugPanel.scrollHeight;
-}
+// function initDebugPanel() {
+//   if (debugPanel) {
+//     console.log('🐛 Debug panel ya existe');
+//     return;
+//   }
+//
+//   console.log('🐛 Creando debug panel...');
+//
+//   debugPanel = document.createElement('div');
+//   debugPanel.id = 'mobile-debug-panel';
+//   debugPanel.style.cssText = `
+//     position: fixed;
+//     bottom: 60px;
+//     left: 10px;
+//     right: 10px;
+//     max-height: 150px;
+//     background: rgba(0, 0, 0, 0.9);
+//     color: #0f0;
+//     font-family: monospace;
+//     font-size: 10px;
+//     padding: 10px;
+//     border-radius: 5px;
+//     z-index: 9999;
+//     overflow-y: auto;
+//     border: 2px solid #0f0;
+//     display: none;
+//   `;
+//
+//   const toggleBtn = document.createElement('button');
+//   toggleBtn.id = 'debug-toggle-btn';
+//   toggleBtn.textContent = '🐛 DEBUG';
+//   toggleBtn.style.cssText = `
+//     position: fixed;
+//     bottom: 10px;
+//     left: 10px;
+//     width: 80px;
+//     height: 50px;
+//     background: lime;
+//     color: black;
+//     border: 3px solid black;
+//     border-radius: 10px;
+//     font-size: 16px;
+//     font-weight: bold;
+//     z-index: 10000;
+//     cursor: pointer;
+//     touch-action: manipulation;
+//     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+//   `;
+//
+//   const toggleFunction = () => {
+//     console.log('🐛 Toggle button clicked');
+//     debugPanel.style.display = debugPanel.style.display === 'none' ? 'block' : 'none';
+//   };
+//
+//   toggleBtn.onclick = toggleFunction;
+//   toggleBtn.addEventListener('touchend', (e) => {
+//     e.preventDefault();
+//     toggleFunction();
+//   }, { passive: false });
+//
+//   if (document.body) {
+//     document.body.appendChild(debugPanel);
+//     document.body.appendChild(toggleBtn);
+//     console.log('✅ Debug panel y botón agregados al DOM');
+//   } else {
+//     console.error('❌ document.body no existe aún');
+//   }
+// }
+//
+// function mobileLog(message, color = '#0f0') {
+//   console.log(message);
+//
+//   if (!debugPanel) initDebugPanel();
+//
+//   const timestamp = new Date().toLocaleTimeString();
+//   const logEntry = `[${timestamp}] ${message}`;
+//
+//   debugLogs.push(logEntry);
+//   if (debugLogs.length > 20) debugLogs.shift();
+//
+//   const logLine = document.createElement('div');
+//   logLine.style.color = color;
+//   logLine.textContent = logEntry;
+//
+//   debugPanel.appendChild(logLine);
+//   debugPanel.scrollTop = debugPanel.scrollHeight;
+// }
 
 /* ------ VALIDACIONES ANTI-TRAMPA ------ */
 
@@ -720,7 +720,7 @@ function puedeColocarDino(recinto, tipoRecinto, especieDino) {
           );
           if (tieneTrexPropio) return false;
           break;
-        case 7: // Zona rocosa (ambiente rocoso)
+        case 6: // Zona rocosa (ambiente rocoso)
           if (ambiente !== 'rocoso') return false;
           break;
       }
@@ -1154,16 +1154,16 @@ function renderMano(jugador) {
     let touchedDino = null;
 
     img.addEventListener('touchstart', e => {
-      mobileLog('📱 TOUCHSTART detectado');
+// mobileLog('📱 TOUCHSTART detectado');
 
       // Validaciones igual que drag
       if (restriccionActual === null) {
-        mobileLog('🚫 Dado no tirado', '#f00');
+// mobileLog('🚫 Dado no tirado', '#f00');
         alert('🎲 Primero debes tirar el dado antes de arrastrar dinosaurios');
         return;
       }
       if (fase !== 'colocar') {
-        mobileLog(`🚫 Fase incorrecta: ${fase}`, '#f00');
+// mobileLog(`🚫 Fase incorrecta: ${fase}`, '#f00');
         return;
       }
 
@@ -1176,7 +1176,7 @@ function renderMano(jugador) {
       img.style.opacity = '0.5';
       highlightRecintos(esp);
 
-      mobileLog(`✅ Dino: ${esp}, idx: ${idx}`, '#0ff');
+// mobileLog(`✅ Dino: ${esp}, idx: ${idx}`, '#0ff');
 
       e.preventDefault();
       e.stopPropagation();
@@ -1190,24 +1190,24 @@ function renderMano(jugador) {
 
     img.addEventListener('touchend', async e => {
       if (!touchedDino) {
-        mobileLog('⚠️ touchend sin dino', '#ff0');
+// mobileLog('⚠️ touchend sin dino', '#ff0');
         return;
       }
 
-      mobileLog('📱 TOUCHEND');
+// mobileLog('📱 TOUCHEND');
 
       const touch = e.changedTouches[0];
       const touchX = touch.clientX;
       const touchY = touch.clientY;
 
-      mobileLog(`📍 Pos: (${Math.round(touchX)}, ${Math.round(touchY)})`);
+// mobileLog(`📍 Pos: (${Math.round(touchX)}, ${Math.round(touchY)})`);
 
       // Temporalmente ocultar el dino para que elementFromPoint encuentre el recinto
       img.style.pointerEvents = 'none';
       const elementAtPoint = document.elementFromPoint(touchX, touchY);
       img.style.pointerEvents = 'auto';
 
-      mobileLog(`🎯 Elem: ${elementAtPoint?.className || 'null'}`);
+// mobileLog(`🎯 Elem: ${elementAtPoint?.className || 'null'}`);
 
       // Buscar el recinto más cercano
       let recinto = elementAtPoint;
@@ -1217,7 +1217,7 @@ function renderMano(jugador) {
         intentos++;
       }
 
-      mobileLog(`🏛️ Recinto: ${recinto?.id || 'ninguno'}`);
+// mobileLog(`🏛️ Recinto: ${recinto?.id || 'ninguno'}`);
 
       img.style.opacity = '1';
       img.classList.remove('dragging');
@@ -1228,21 +1228,21 @@ function renderMano(jugador) {
         const especieDino = draggedDino.especie;
         const dinoIndex = draggedDino.index; // Guardar antes de limpiar
 
-        mobileLog(`🔍 Valid: ${recinto.id}, ${tipoRecinto}`, '#0ff');
+// mobileLog(`🔍 Valid: ${recinto.id}, ${tipoRecinto}`, '#0ff');
 
         if (puedeColocarDino(recinto, tipoRecinto, especieDino)) {
-          mobileLog('✅ Colocando...', '#0f0');
+// mobileLog('✅ Colocando...', '#0f0');
           try {
             // NO limpiar draggedDino todavía, lo necesita colocarDino()
             await colocarDino(recinto, especieDino);
-            mobileLog('✅ Colocación terminada', '#0f0');
+// mobileLog('✅ Colocación terminada', '#0f0');
 
             // AHORA sí limpiar después de colocar
             touchedDino = null;
             draggedDino = null;
-            mobileLog('🧹 Limpiado después de colocar');
+// mobileLog('🧹 Limpiado después de colocar');
           } catch (err) {
-            mobileLog(`❌ Error colocando: ${err.message}`, '#f00');
+// mobileLog(`❌ Error colocando: ${err.message}`, '#f00');
             console.error('Error en colocarDino:', err);
             // Limpiar incluso si hay error
             touchedDino = null;
@@ -1250,14 +1250,14 @@ function renderMano(jugador) {
           }
         } else {
           const mensaje = obtenerMensajeError(recinto, especieDino);
-          mobileLog(`🚫 ${mensaje}`, '#f00');
+// mobileLog(`🚫 ${mensaje}`, '#f00');
           alert(mensaje);
           // Limpiar si no se puede colocar
           touchedDino = null;
           draggedDino = null;
         }
       } else {
-        mobileLog('⚠️ Recinto inválido', '#ff0');
+// mobileLog('⚠️ Recinto inválido', '#ff0');
         // Limpiar si recinto inválido
         touchedDino = null;
         draggedDino = null;
@@ -1334,7 +1334,7 @@ function renderManoParaDescartar(jugador) {
 
       // Evento click para descartar (desktop)
       img.addEventListener('click', () => {
-        mobileLog(`🗑️ Click en dino para descartar: ${esp}`);
+// mobileLog(`🗑️ Click en dino para descartar: ${esp}`);
         descartarDino(idx, esp);
       });
 
@@ -1342,7 +1342,7 @@ function renderManoParaDescartar(jugador) {
       img.addEventListener('touchend', (e) => {
         e.preventDefault();
         e.stopPropagation();
-        mobileLog(`🗑️ Touch en dino para descartar: ${esp}`);
+// mobileLog(`🗑️ Touch en dino para descartar: ${esp}`);
         descartarDino(idx, esp);
       }, { passive: false });
     }
@@ -1353,26 +1353,26 @@ function renderManoParaDescartar(jugador) {
 let descartandoDino = false; // Flag para prevenir múltiples descartes
 
 async function descartarDino(index, especie) {
-  mobileLog(`🗑️ descartarDino() ejecutándose - especie: ${especie}, index: ${index}`);
+// mobileLog(`🗑️ descartarDino() ejecutándose - especie: ${especie}, index: ${index}`);
 
   // Prevenir múltiples descartes simultáneos
   if (descartandoDino) {
     console.warn('⚠️ Ya se está descartando un dinosaurio');
-    mobileLog('⚠️ Descarte ya en proceso', '#ff0');
+// mobileLog('⚠️ Descarte ya en proceso', '#ff0');
     return;
   }
 
   // 🛡️ VALIDACIÓN: Verificar que el jugador no haya descartado ya
   if (jugadoresQueDescartaron.includes(jugadorActivo)) {
     console.warn(`⚠️ El jugador ${jugadorActivo} ya descartó en este turno`);
-    mobileLog('⚠️ Ya descartaste', '#f00');
+// mobileLog('⚠️ Ya descartaste', '#f00');
     alert('⚠️ Ya descartaste un dinosaurio en este turno. Espera al otro jugador.');
     return;
   }
 
   descartandoDino = true;
   console.log(`🗑️ Descartando dinosaurio: ${especie} del jugador ${jugadorActivo}`);
-  mobileLog(`✅ Descartando ${especie}`, '#0f0');
+// mobileLog(`✅ Descartando ${especie}`, '#0f0');
 
   // Obtener el elemento visual del dinosaurio
   const grid = document.querySelector('.dino-grid');
@@ -2463,12 +2463,12 @@ async function colocarDino(recinto, especie) {
   // 🛡️ FLAG DE BLOQUEO: Prevenir colocaciones múltiples durante lag
   if (colocandoDino) {
     console.warn('⚠️ Ya hay una colocación en proceso, ignorando click');
-    mobileLog('⚠️ Colocación en proceso...', '#ff0');
+// mobileLog('⚠️ Colocación en proceso...', '#ff0');
     return;
   }
   colocandoDino = true;
 
-  mobileLog(`🦕 colocarDino() - especie: ${especie}, recinto: ${recinto.id}`);
+// mobileLog(`🦕 colocarDino() - especie: ${especie}, recinto: ${recinto.id}`);
 
   // 🛡️ VALIDACIÓN ANTI-TRAMPA: Marcar como jugada crítica
   marcarJugadaCritica(true);
@@ -2478,7 +2478,7 @@ async function colocarDino(recinto, especie) {
     // Validar que tenemos datos requeridos
     if (!ID_PARTIDA) {
       console.error('❌ ERROR: No hay ID_PARTIDA para validación');
-      mobileLog('❌ No ID_PARTIDA', '#f00');
+// mobileLog('❌ No ID_PARTIDA', '#f00');
       alert('Error: Datos de partida no disponibles');
       marcarJugadaCritica(false);
       colocandoDino = false;
@@ -2493,7 +2493,7 @@ async function colocarDino(recinto, especie) {
     };
 
     console.log('🛡️ Enviando validación backend:', datosValidacion);
-    mobileLog('📡 Validando backend...', '#0ff');
+// mobileLog('📡 Validando backend...', '#0ff');
 
     const validacionBackend = await fetch(apiUrl('/api/tablero/validarColocacionDino'), {
       method: 'POST',
@@ -2507,17 +2507,17 @@ async function colocarDino(recinto, especie) {
 
     if (!validacionBackend.ok) {
       console.error('❌ HTTP Error:', validacionBackend.status);
-      mobileLog(`❌ HTTP ${validacionBackend.status}`, '#f00');
+// mobileLog(`❌ HTTP ${validacionBackend.status}`, '#f00');
       throw new Error(`HTTP ${validacionBackend.status}: ${validacionBackend.statusText}`);
     }
 
     const validacionResult = await validacionBackend.json();
     console.log('📨 Respuesta validación backend:', validacionResult);
-    mobileLog('📨 Backend OK', '#0f0');
+// mobileLog('📨 Backend OK', '#0f0');
 
     if (!validacionResult.success || !validacionResult.esValida) {
       console.error('🚫 VALIDACIÓN BACKEND FALLIDA:', validacionResult);
-      mobileLog('🚫 Validación falló', '#f00');
+// mobileLog('🚫 Validación falló', '#f00');
       alert(validacionResult.mensaje || '🚫 No se puede colocar el dinosaurio');
       marcarJugadaCritica(false);
       colocandoDino = false;
@@ -2525,11 +2525,11 @@ async function colocarDino(recinto, especie) {
     }
 
     console.log('✅ VALIDACIÓN BACKEND EXITOSA:', validacionResult.mensaje);
-    mobileLog('✅ Validación exitosa', '#0f0');
+// mobileLog('✅ Validación exitosa', '#0f0');
   } catch (error) {
     console.error('❌ ERROR COMPLETO en validación backend:', error);
     console.error('Stack trace:', error.stack);
-    mobileLog(`❌ Error: ${error.message}`, '#f00');
+// mobileLog(`❌ Error: ${error.message}`, '#f00');
 
     // Tolerancia a fallos: Si hay error de conectividad, usar validación local
     if (restriccionActual === null) {
@@ -2540,11 +2540,11 @@ async function colocarDino(recinto, especie) {
     }
 
     console.warn('⚠️ Usando validación local debido a error de conectividad');
-    mobileLog('⚠️ Usando validación local', '#ff0');
+// mobileLog('⚠️ Usando validación local', '#ff0');
     // Continuar con la colocación usando validación local
   }
 
-  mobileLog('🎨 Creando clon visual...', '#0ff');
+// mobileLog('🎨 Creando clon visual...', '#0ff');
   const dinoClone = document.createElement('img');
   dinoClone.src = `/img/imagen_Tablero/${especie}.png`;
   dinoClone.className = 'dino-in-recinto';
@@ -2552,7 +2552,7 @@ async function colocarDino(recinto, especie) {
   dinoClone.dataset.jugador = jugadorActivo;
   dinoClone.style.pointerEvents = 'none';
   recinto.appendChild(dinoClone);
-  mobileLog('✅ Dino añadido al DOM', '#0f0');
+// mobileLog('✅ Dino añadido al DOM', '#0f0');
 
   // Actualizar inmediatamente el peso de este recinto
   const peso = calcularPesoRecinto(recinto.id);
@@ -2567,7 +2567,7 @@ async function colocarDino(recinto, especie) {
 
   // Verificar que draggedDino existe y tiene index
   if (!draggedDino || draggedDino.index === undefined) {
-    mobileLog('❌ draggedDino inválido', '#f00');
+// mobileLog('❌ draggedDino inválido', '#f00');
     console.error('draggedDino:', draggedDino);
     marcarJugadaCritica(false);
     colocandoDino = false;
@@ -2575,11 +2575,11 @@ async function colocarDino(recinto, especie) {
   }
 
   manos[jugadorActivo].splice(draggedDino.index, 1);
-  mobileLog(`🗑️ Dino eliminado de mano (quedan ${manos[jugadorActivo].length})`, '#0ff');
+// mobileLog(`🗑️ Dino eliminado de mano (quedan ${manos[jugadorActivo].length})`, '#0ff');
 
   // Cambiar a fase de descarte
   fase = 'descartar';
-  mobileLog('✅ Fase → descartar', '#0f0');
+// mobileLog('✅ Fase → descartar', '#0f0');
 
   actualizarUI();
   await autoSave();
@@ -2587,7 +2587,7 @@ async function colocarDino(recinto, especie) {
   // 🛡️ VALIDACIÓN ANTI-TRAMPA: Desactivar protección después de colocar dinosaurio
   marcarJugadaCritica(false);
   colocandoDino = false; // Liberar flag de bloqueo
-  mobileLog('🏁 colocarDino() completado', '#0f0');
+// mobileLog('🏁 colocarDino() completado', '#0f0');
 }
 
 /* ===== FUNCIÓN PARA MOSTRAR INFORMACIÓN EDUCATIVA DEL DINOSAURIO ===== */
@@ -2703,8 +2703,8 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log('✅ DOMContentLoaded disparado');
 
   // 🐛 INICIALIZAR DEBUG PANEL PRIMERO
-  initDebugPanel();
-  mobileLog('🚀 Debug panel listo', '#ff0');
+//   initDebugPanel();
+// mobileLog('🚀 Debug panel listo', '#ff0');
 
   // Verificar que el botón existe
   setTimeout(() => {
@@ -2737,10 +2737,10 @@ document.addEventListener('DOMContentLoaded', () => {
   const restriccionText = document.getElementById('restriccion-text');
 
   async function tirarDado() {
-    mobileLog('🎲 tirarDado() ejecutándose');
+// mobileLog('🎲 tirarDado() ejecutándose');
 
     if (restriccionActual !== null) {
-      mobileLog('⚠️ Ya hay restricción activa', '#ff0');
+// mobileLog('⚠️ Ya hay restricción activa', '#ff0');
       return;
     }
 
@@ -2750,7 +2750,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // No permitir tirar dado si la partida ya terminó
     if (ronda > TOTAL_RONDAS) {
       console.warn('⚠️ No se puede tirar dado: partida terminada');
-      mobileLog('⚠️ Partida terminada', '#f00');
+// mobileLog('⚠️ Partida terminada', '#f00');
       marcarJugadaCritica(false); // Desactivar protección
       mostrarResultadosFinal();
       return;
@@ -2758,14 +2758,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 🎲 El dado tiene 6 caras normales: 1, 2, 3, 4, 5, 6
     const valor = Math.floor(Math.random() * 6) + 1; // Genera 1-6
-    mobileLog(`🎲 Dado: ${valor}`, '#0ff');
+// mobileLog(`🎲 Dado: ${valor}`, '#0ff');
     dadoImg.src = `/img/dado/dado${valor === 6 ? '7' : valor}.png`; // dado6.png no existe, usar dado7.png para valor 6
     restriccionActual = valor;
     restriccionText.textContent = restricciones[valor];
 
     // Cambiar a fase de colocación
     fase = 'colocar';
-    mobileLog(`✅ Fase → colocar`, '#0f0');
+// mobileLog(`✅ Fase → colocar`, '#0f0');
 
     actualizarUI();
     await autoSave();
@@ -2895,8 +2895,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // 📱 MÓVIL: Listener global para el panel de dinos - tirar dado al tocar panel deshabilitado
   const dinoPanel = document.querySelector('.dino-panel');
   if (dinoPanel) {
-    mobileLog('📱 Agregando listeners al panel de dinos');
-    mobileLog(`📱 Panel encontrado: ${dinoPanel ? 'SI' : 'NO'}`);
+// mobileLog('📱 Agregando listeners al panel de dinos');
+// mobileLog(`📱 Panel encontrado: ${dinoPanel ? 'SI' : 'NO'}`);
 
     // Monitor del estado del panel cada 2 segundos
     setInterval(() => {
@@ -2905,62 +2905,62 @@ document.addEventListener('DOMContentLoaded', () => {
       const pointerEvents = styles.pointerEvents;
       const zIndex = styles.zIndex;
 
-      mobileLog(`📊 Estado panel: disabled=${isDisabled}, pointer-events=${pointerEvents}, z-index=${zIndex}, fase=${fase}`);
+// mobileLog(`📊 Estado panel: disabled=${isDisabled}, pointer-events=${pointerEvents}, z-index=${zIndex}, fase=${fase}`);
     }, 2000);
 
     // Agregar listener al document para capturar TODOS los eventos
     document.addEventListener('touchstart', (e) => {
-      mobileLog(`🌍 TouchStart en: ${e.target.className} (id: ${e.target.id})`);
+// mobileLog(`🌍 TouchStart en: ${e.target.className} (id: ${e.target.id})`);
     }, { passive: false, capture: true });
 
     // Agregar TODOS los eventos posibles para debug
     ['touchstart', 'touchmove', 'touchend', 'click', 'mousedown', 'mouseup'].forEach(eventType => {
       dinoPanel.addEventListener(eventType, (e) => {
-        mobileLog(`🎯 Evento: ${eventType} en panel`);
+// mobileLog(`🎯 Evento: ${eventType} en panel`);
       }, { passive: false, capture: true });
     });
 
     // Listener principal en touchend
     dinoPanel.addEventListener('touchend', (e) => {
       const isDisabled = dinoPanel.classList.contains('disabled');
-      mobileLog(`📱 TouchEnd PRINCIPAL - disabled: ${isDisabled}, fase: ${fase}, restriccion: ${restriccionActual}`);
+// mobileLog(`📱 TouchEnd PRINCIPAL - disabled: ${isDisabled}, fase: ${fase}, restriccion: ${restriccionActual}`);
 
       // Solo si el panel está deshabilitado Y estamos en fase tirar_dado
       if (isDisabled && fase === 'tirar_dado' && restriccionActual === null) {
-        mobileLog('📱 ✅ Condiciones cumplidas! Tirando dado...');
+// mobileLog('📱 ✅ Condiciones cumplidas! Tirando dado...');
 
         // Prevenir el comportamiento por defecto
         e.preventDefault();
         e.stopPropagation();
 
         // Tirar el dado directamente llamando a la función
-        mobileLog('🎲 Ejecutando tirarDado()...');
+// mobileLog('🎲 Ejecutando tirarDado()...');
         tirarDado();
-        mobileLog('✅ tirarDado() ejecutado');
+// mobileLog('✅ tirarDado() ejecutado');
       } else {
-        mobileLog(`⏸️ Condiciones NO cumplidas:`);
-        mobileLog(`   - disabled: ${isDisabled} (necesita: true)`);
-        mobileLog(`   - fase: ${fase} (necesita: tirar_dado)`);
-        mobileLog(`   - restriccion: ${restriccionActual} (necesita: null)`);
+// mobileLog(`⏸️ Condiciones NO cumplidas:`);
+// mobileLog(`   - disabled: ${isDisabled} (necesita: true)`);
+// mobileLog(`   - fase: ${fase} (necesita: tirar_dado)`);
+// mobileLog(`   - restriccion: ${restriccionActual} (necesita: null)`);
       }
     }, { passive: false, capture: true });
 
     // También agregar click para desktop/debug
     dinoPanel.addEventListener('click', (e) => {
       const isDisabled = dinoPanel.classList.contains('disabled');
-      mobileLog(`🖱️ Click PRINCIPAL - disabled: ${isDisabled}, fase: ${fase}`);
+// mobileLog(`🖱️ Click PRINCIPAL - disabled: ${isDisabled}, fase: ${fase}`);
 
       if (isDisabled && fase === 'tirar_dado' && restriccionActual === null) {
         e.preventDefault();
         e.stopPropagation();
-        mobileLog('🎲 Ejecutando tirarDado() desde click...');
+// mobileLog('🎲 Ejecutando tirarDado() desde click...');
         tirarDado();
       }
     }, { capture: true });
 
-    mobileLog('✅ Listeners agregados con capture:true');
+// mobileLog('✅ Listeners agregados con capture:true');
   } else {
-    mobileLog('❌ ERROR: No se encontró .dino-panel');
+// mobileLog('❌ ERROR: No se encontró .dino-panel');
   }
 });
 
